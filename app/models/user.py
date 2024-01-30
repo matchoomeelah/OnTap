@@ -6,13 +6,20 @@ from flask_login import UserMixin
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
+    # Associate with the schema
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
+    #Columns
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    # Relationships
+    breweries = db.relationship('Brewery', back_populates="creator")
+    beers = db.relationship('Beer', back_populates="creator")
+
 
     @property
     def password(self):
