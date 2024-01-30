@@ -9,7 +9,7 @@ class Brewery(db.Model):
 
     # Columns
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(255), nullable=False, unique=True)
     type = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state_province = db.Column(db.String(255), nullable=False)
