@@ -22,3 +22,4 @@ class Beer(db.Model):
     creator = db.relationship('User', back_populates="beers", cascade="all, delete")
     brewery = db.relationship('Brewery', back_populates="beers", cascade="all, delete")
     lists = db.relationship("List", secondary="beers_lists", back_populates="beers")
+    check_ins = db.relationship('CheckIn', back_populates="beer")

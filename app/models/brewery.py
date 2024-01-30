@@ -10,7 +10,7 @@ class Brewery(db.Model):
     # Columns
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
-    type = db.Column(db.String, nullable=False)
+    type = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state_province = db.Column(db.String(255), nullable=False)
     country = db.Column(db.String(255), nullable=False)
@@ -22,12 +22,3 @@ class Brewery(db.Model):
     # Relationships
     creator = db.relationship('User', back_populates="breweries", cascade="all, delete")
     beers = db.relationship('Beer', back_populates="brewery")
-
-
-
-
-    # street_address = db.Column(db.String(255), nullable=True)
-    # postal_code = db.Column(db.String(255), nullable=True)
-
-
-    # cascade="all, delete"

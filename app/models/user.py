@@ -19,6 +19,9 @@ class User(db.Model, UserMixin):
     # Relationships
     breweries = db.relationship('Brewery', back_populates="creator")
     beers = db.relationship('Beer', back_populates="creator")
+    check_ins = db.relationship('CheckIn', back_populates="user")
+    comments = db.relationship('Comment', back_populates="user")
+    lists = db.relationship('List', back_populates="user")
 
 
     @property
