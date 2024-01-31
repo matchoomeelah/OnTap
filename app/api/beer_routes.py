@@ -75,3 +75,48 @@ def create_beer():
 
     print("ERRORS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", form.errors)
     return form.errors, 400
+
+
+# Update a Beer
+@login_required
+@beer_routes.route("/<int:id>", methods=["PUT"])
+def update_beer(id):
+    beer = Beer.query.get(id)
+
+    if not beer:
+        return {"errors": {"message": "Beer not found"}}
+
+    form = BeerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+
+    if beer.creator_id == current_user.id:
+        if form.validate_on_submit:
+            image_url = form.data["image_url"]
+
+            if image_url is not None and image_url.filename != beer.image_url:
+                removed = remove_file_from_s3(beer.image_url)
+                image_url.filename = get_unique_filename(image_url.filename)
+                upload = upload_file_to_s3(image_url)
+                print(upload)
+
+                if "url" not in upload:
+                    return {"errors": {"message": "Image upload failed"}}
+
+                url = upload["url"]
+                beer.image_url = url
+
+            beer.name = form.data["name"]
+            beer.abv = form.data["abv"]
+            beer.ibu = form.data["ibu"]
+            beer.style = form.data["style"]
+            beer.description = form.data["description"]
+            beer.brewery_id = form.data["brewery_id"]
+
+            db.session.commit()
+
+            return beer.to_dict()
+
+        return form.errors, 400
+
+    return { "message": "User unauthorized"}, 401

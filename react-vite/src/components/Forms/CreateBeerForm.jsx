@@ -70,7 +70,7 @@ function CreateBeerForm() {
         const newBeer = await dispatch(thunkCreateBeer(formData));
 
         console.log(newBeer)
-        // navigate(`/beers/${newBeer.id}`);
+        navigate(`/beers/${newBeer.id}`);
     }
 
 
