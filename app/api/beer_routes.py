@@ -35,7 +35,10 @@ def get_beer_by_id(id):
 @beer_routes.route("", methods=["POST"])
 def create_beer():
     user_id = current_user.id
+    # brewery_id = request.get_json()["brewery_id"]
+    print("I MADE IT TO THE ROUTE")
 
+    # return {"message": "hi"}
     form = BeerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -55,13 +58,13 @@ def create_beer():
 
         params = {
             "name": form.data["name"],
-            "abv": form.data["abv"],
-            "ibu": form.data["ibu"],
+            "abv": float(form.data["abv"]),
+            "ibu": int(form.data["ibu"]),
             "style": form.data["style"],
             "description": form.data["description"],
             "image_url": url,
             "creator_id": user_id,
-            "brewery_id":
+            "brewery_id": form.data["brewery_id"]
         }
 
         new_beer = Beer(**params)
@@ -70,4 +73,5 @@ def create_beer():
 
         return new_beer.to_dict()
 
+    print("ERRORS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", form.errors)
     return form.errors, 400

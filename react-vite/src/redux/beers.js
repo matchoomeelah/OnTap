@@ -1,7 +1,7 @@
 //
 // Constants
 //
-// const CREATE_BEER = "beers/createBeer"
+const CREATE_BEER = "beers/createBeer"
 const GET_BEERS = "beers/getBeers"
 const GET_BEER_BY_ID = "beers/getBeerById"
 
@@ -9,6 +9,13 @@ const GET_BEER_BY_ID = "beers/getBeerById"
 //
 // Actions
 //
+export const actionCreateBeer = (beer) => {
+    return {
+        type: CREATE_BEER,
+        beer
+    }
+}
+
 export const actionGetBeers = (beers) => {
     return {
         type: GET_BEERS,
@@ -27,6 +34,29 @@ export const actionGetBeerById = (beer) => {
 //
 // Thunks
 //
+
+export const thunkCreateBeer = (beer) => async (dispatch) => {
+    // Get Response
+    const response = await fetch(`/api/beers`, {
+        method: "POST",
+        body: beer
+    })
+    console.log("IM IN THE THUNK")
+
+    const data = await response.json();
+    console.log(data);
+
+    // Extract the data
+    if (response.ok) {
+        dispatch(actionCreateBeer(data))
+    }
+    else {
+        console.log("There was an error creating your beer");
+    }
+
+    return data;
+}
+
 export const thunkGetBeers = () => async (dispatch) => {
     // Get Response
     const response = await fetch(`/api/beers`);
@@ -73,6 +103,9 @@ export const thunkGetBeerById = (id) => async (dispatch) => {
 
 export default function beersReducer(state = {}, action) {
     switch (action.type) {
+        case CREATE_BEER: {
+            return { ...state, [action.beer.id]: action.beer };
+        }
         case GET_BEERS: {
             const newBeers = {};
             action.beers.forEach(beer => {

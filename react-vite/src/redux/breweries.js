@@ -76,7 +76,7 @@ export const thunkGetBreweries = () => async (dispatch) => {
 
     // Extract the data
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     // Send to reducer or report error
     if (response.ok) {

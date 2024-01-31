@@ -23,8 +23,7 @@ function CreateBreweryForm() {
 
     // Handle no logged in user
     if (!sessionUser) {
-        // return <h1>Sign Up or Log In to Add Your Brewery!</h1>
-        return navigate('/');
+        return <h1>Sign Up or Log In to Add Your Brewery!</h1>
     }
 
 
