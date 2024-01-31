@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 # Add seed data
 def seed_breweries():
     lagunitas = Brewery(
-        name='Lagunitas',
+        name='Lagunitas Brewing Co.',
         type='Macro Brewery',
         city='Petaluma',
         state_province='California',
@@ -37,10 +37,22 @@ def seed_breweries():
         website_url="http://www.madtreebrewing.com",
         creator_id=2
         )
+    elysian = Brewery(
+        name='Elysian Brewing Company',
+        type='Macro Brewery',
+        city='Seattle',
+        state_province='Washington',
+        country='United States',
+        description="We opened our doors in 1996 when bold art and music defined Seattle. Over the past 25 years, we've carried this same spirit in the way we brew our beer - shaking up classic styles, using unusual ingredients, and learning from experimentation. Come chase down the rabbit hole with us.",
+        image_url='https://on-tap-bucket.s3.us-west-1.amazonaws.com/Elysian-logo.jpg',
+        website_url="https://www.elysianbrewing.com",
+        creator_id=2
+        )
 
     db.session.add(lagunitas)
     db.session.add(four_o_five)
     db.session.add(madtree)
+    db.session.add(elysian)
     db.session.commit()
 
 

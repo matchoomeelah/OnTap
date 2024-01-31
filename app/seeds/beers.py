@@ -33,9 +33,20 @@ def seed_beers():
         creator_id=2,
         brewery_id=3
     )
+    space_dust = Beer(
+        name="Space Dust IPA",
+        abv=8.2,
+        ibu=62,
+        style='American IPA',
+        description="Space Dust is out of this world, with 62 IBU, and 8.2% ABV. This citrus-forward IPA balances bitterness with a sweetness of hop flavors. Grapefruit, mango, and orange aromas with a medium body and a dry finish. (p.s. It's a hop, not an artichoke!)",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/elysian-space-dust.jpeg",
+        creator_id=1,
+        brewery_id=4
+    )
     db.session.add(lagunitas_IPA)
     db.session.add(lagunitas_little_sumpin)
     db.session.add(psychopathy)
+    db.session.add(space_dust)
     db.session.commit()
 
 

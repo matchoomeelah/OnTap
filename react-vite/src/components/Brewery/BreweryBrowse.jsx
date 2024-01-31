@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetBreweries } from "../../redux/breweries";
 import { useEffect } from "react";
+import { thunkGetBreweries } from "../../redux/breweries";
 import BreweryTile from "./BreweryTile";
 import "./Brewery.css"
 

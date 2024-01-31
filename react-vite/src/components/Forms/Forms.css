@@ -2,3 +2,12 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+#brewery-form-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.brewery-form {
+    margin: 0 auto;
+}

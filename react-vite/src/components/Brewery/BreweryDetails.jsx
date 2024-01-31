@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetBreweryById } from "../../redux/breweries";
+import BeerTile from "../Beer/BeerTile"
 
 function BreweryDetails() {
     const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function BreweryDetails() {
             <div id="brewery-content-container">
                 <div id="brewery-content">
                     {currBrewery?.beers.map(beer => {
-                        return <div key={beer.id}>{beer.name}</div>
+                        return <BeerTile key={beer.id} beer={beer} />
                     })}
                 </div>
                 <div id="brewery-about">

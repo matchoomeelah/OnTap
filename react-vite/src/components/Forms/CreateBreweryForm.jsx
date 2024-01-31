@@ -23,7 +23,8 @@ function CreateBreweryForm() {
 
     // Handle no logged in user
     if (!sessionUser) {
-        return <h1>Sign Up or Log In to Add Your Brewery!</h1>
+        // return <h1>Sign Up or Log In to Add Your Brewery!</h1>
+        return navigate('/');
     }
 
 
@@ -41,61 +42,65 @@ function CreateBreweryForm() {
         formData.append("website_url", websiteUrl);
         setImageLoading(true);
 
-        await dispatch(thunkCreateBrewery(formData));
+        const newBrewery = await dispatch(thunkCreateBrewery(formData));
 
-        navigate("/breweries");
+        navigate(`/breweries/${newBrewery.id}`);
     }
 
     return (
-        <div>
+        <div id="brewery-form-container">
             <h1>Create Brewery Form</h1>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <form className="brewery-form" onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="name">
-                    Name:
-                    <input
-                        id="name"
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="input"
-                        required
-                    />
+                    Name*
                 </label>
+                <input
+                    id="name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="input"
+                    required
+                />
+
                 <label htmlFor="type">
-                    Type:
-                    <input
-                        id="type"
-                        type="text"
-                        value={type}
-                        onChange={(e) => setType(e.target.value)}
-                        className="input"
-                        required
-                    />
+                    Type
                 </label>
+                <input
+                    id="type"
+                    type="text"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                    className="input"
+                    required
+                />
+
                 <label htmlFor="city">
-                    City:
-                    <input
-                        id="city"
-                        type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        className="input"
-                        required
-                    />
+                    City
                 </label>
+                <input
+                    id="city"
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="input"
+                    required
+                />
+
                 <label htmlFor="state-province">
-                    State/Province:
-                    <input
-                        id="state-province"
-                        type="text"
-                        value={stateProvince}
-                        onChange={(e) => setStateProvince(e.target.value)}
-                        className="input"
-                        required
-                    />
+                    State/Province
                 </label>
+                <input
+                    id="state-province"
+                    type="text"
+                    value={stateProvince}
+                    onChange={(e) => setStateProvince(e.target.value)}
+                    className="input"
+                    required
+                />
                 <label htmlFor="country">
-                    Country:
+                    Country
+                    </label>
                     <input
                         id="country"
                         type="text"
@@ -104,9 +109,9 @@ function CreateBreweryForm() {
                         className="input"
                         required
                     />
-                </label>
                 <label htmlFor="description">
-                    Description:
+                    Description
+                    </label>
                     <textarea
                         id="description"
                         type="text"
@@ -115,19 +120,19 @@ function CreateBreweryForm() {
                         className="input"
                         required
                     />
-                </label>
                 <label>
-                    Image:
+                    Logo
+                    </label>
                     <input
                         id="image-input"
                         type="file"
                         accept="image/*"
                         onChange={(e) => setImage(e.target.files[0])}
                     />
-                </label>
-                {(imageLoading)&& <p>Loading...</p>}
+                {(imageLoading) && <p>Loading...</p>}
                 <label>
-                    Website URL:
+                    Website URL
+                    </label>
                     <input
                         id="website-url"
                         type="text"
@@ -135,7 +140,6 @@ function CreateBreweryForm() {
                         onChange={(e) => setWebsiteUrl(e.target.value)}
                         className="input"
                     />
-                </label>
                 <button type="submit">Submit</button>
             </form>
         </div>

@@ -8,6 +8,7 @@ import CreateBreweryForm from '../components/Forms/CreateBreweryForm'
 import BreweryDetails from '../components/Brewery/BreweryDetails';
 import UpdateBreweryForm from '../components/Forms/UpdateBreweryForm';
 import UserProfile from '../components/UserProfile/UserProfile';
+import BeerDetails from '../components/Beer/BeerDetails';
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/beers",
         element: <BeerBrowse />
+      },
+      {
+        path: "/beers/:beer_id",
+        element: <BeerDetails />
       },
       {
         path: "/breweries",

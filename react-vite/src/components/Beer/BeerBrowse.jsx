@@ -1,7 +1,26 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { thunkGetBeers } from "../../redux/beers";
+import BeerTile from "./BeerTile";
+import "./Beer.css";
+
 function BeerBrowse() {
+    const dispatch = useDispatch();
+
+    const beers = useSelector(state => state.beers);
+    console.log("BEERS: ", beers);
+
+
+    useEffect(() => {
+        dispatch(thunkGetBeers());
+    }, [])
+
     return (
         <div>
             <h1>Beer Browse</h1>
+            {Object.values(beers).map(beer => {
+                return <BeerTile key={beer.id} beer={beer} />
+            })}
         </div>
     )
 }

@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import breweriesReducer from "./breweries";
 import usersReducer from "./users";
+import beersReducer from "./beers";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
-  breweries: breweriesReducer
+  breweries: breweriesReducer,
+  beers: beersReducer
 });
 
 let enhancer;

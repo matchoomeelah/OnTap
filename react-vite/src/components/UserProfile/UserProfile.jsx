@@ -14,8 +14,9 @@ function UserProfile() {
     const navigate = useNavigate();
     const { user_id } = useParams();
     const profileUser = useSelector(state => state.users.profileUser);
+    const sessionUser = useSelector(state => state.session.user);
     const breweries = useSelector(state => state.breweries);
-    console.log(profileUser);
+    // console.log(profileUser);
 
 
     useEffect(() => {
@@ -29,18 +30,18 @@ function UserProfile() {
             <UserProfileHeader user={profileUser} />
             <div id="profile-content-container">
                 <div id="profile-content">
-                    <button onClick={() => navigate(`/breweries/new`)}>Create New Brewery</button>
+                {profileUser?.id === sessionUser?.id && <button onClick={() => navigate(`/breweries/new`)}>Create New Brewery</button>}
                     {profileUser?.breweries.map(brewery => {
                         return (
-                            <div>
-                                <BreweryTile key={brewery.id} brewery={brewery} />
-                                <div className="brewery-buttons">
+                            <div key={brewery.id}>
+                                <BreweryTile brewery={brewery} />
+                                {profileUser.id === sessionUser.id && <div className="brewery-buttons">
                                     <OpenModalButton
                                         buttonText={'Delete'}
                                         modalComponent={<DeleteBreweryModal brewery={brewery} />}
                                     />
                                     <button onClick={() => navigate(`/breweries/${brewery.id}/edit`)}>Edit</button>
-                                </div>
+                                </div>}
                             </div>
                         )
                     })}

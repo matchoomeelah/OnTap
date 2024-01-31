@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { thunkSignup } from "../../redux/session";
+import { thunkLogin, thunkSignup } from "../../redux/session";
 import "./SignupForm.css";
 
 function SignupFormModal() {
@@ -37,6 +37,17 @@ function SignupFormModal() {
       closeModal();
     }
   };
+
+  const logInDemoUser = async (e) => {
+    e.preventDefault();
+
+    await dispatch(thunkLogin({
+      email: "demo@aa.io",
+      password: "password",
+    }));
+
+    closeModal();
+  }
 
   return (
     <>
@@ -84,6 +95,7 @@ function SignupFormModal() {
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
+        <button type="submit" onClick={logInDemoUser}>Demo User</button>
       </form>
     </>
   );

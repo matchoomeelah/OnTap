@@ -14,7 +14,7 @@ function UpdateBreweryForm() {
     const breweries = useSelector(state => state.breweries);
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
-    console.log(breweries);
+    // console.log(breweries);
     console.log(currBrewery);
 
 
@@ -49,7 +49,13 @@ function UpdateBreweryForm() {
 
     // Handle no logged in user
     if (!sessionUser) {
-        return <h1>Sign Up or Log In to Add Your Brewery!</h1>
+        // return <h1>Sign Up or Log In to Add Your Brewery!</h1>
+        return navigate('/');
+    }
+
+    // Handle wrong user
+    if (currBrewery?.creator_id !== sessionUser?.id) {
+        return navigate('/');
     }
 
 
