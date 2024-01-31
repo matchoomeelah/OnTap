@@ -1,15 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCreateBrewery } from "../../redux/breweries";
-import { useNavigate } from "react-router-dom";
+import { thunkGetBreweryById, thunkUpdateBrewery } from "../../redux/breweries";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "./Forms.css";
 
-function CreateBreweryForm() {
+
+function UpdateBreweryForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const sessionUser = useSelector(state => state.session.user);
+    const breweries = useSelector(state => state.breweries);
+    const { brewery_id } = useParams();
+    const currBrewery = breweries[brewery_id];
+    console.log(breweries);
+    console.log(currBrewery);
+
 
     const [name, setName] = useState("");
     const [type, setType] = useState("");
@@ -20,6 +27,25 @@ function CreateBreweryForm() {
     const [image, setImage] = useState(null);
     const [websiteUrl, setWebsiteUrl] = useState("");
     const [imageLoading, setImageLoading] = useState(false);
+
+
+    useEffect(() => {
+        dispatch(thunkGetBreweryById(brewery_id));
+    }, [brewery_id])
+
+    useEffect(() => {
+        if (currBrewery) {
+            setName(currBrewery.name);
+            setType(currBrewery.type);
+            setCity(currBrewery.city);
+            setStateProvince(currBrewery.state_province);
+            setCountry(currBrewery.country);
+            setDescription(currBrewery.description);
+            setImage(currBrewery.image_url);
+            // console.log("Image: ", currBrewery.image_url);
+            setWebsiteUrl(currBrewery.website_url);
+        }
+    }, [currBrewery])
 
     // Handle no logged in user
     if (!sessionUser) {
@@ -37,18 +63,18 @@ function CreateBreweryForm() {
         formData.append("state_province", stateProvince);
         formData.append("country", country);
         formData.append("description", description);
-        formData.append("image_url", image);
         formData.append("website_url", websiteUrl);
+        formData.append("image_url", image);
         setImageLoading(true);
 
-        await dispatch(thunkCreateBrewery(formData));
+        await dispatch(thunkUpdateBrewery(brewery_id, formData));
 
-        navigate("/breweries");
+        navigate(`/breweries/${brewery_id}`);
     }
 
     return (
         <div>
-            <h1>Create Brewery Form</h1>
+            <h1>Update Brewery Form</h1>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <label htmlFor="name">
                     Name:
@@ -142,4 +168,4 @@ function CreateBreweryForm() {
     )
 }
 
-export default CreateBreweryForm;
+export default UpdateBreweryForm;

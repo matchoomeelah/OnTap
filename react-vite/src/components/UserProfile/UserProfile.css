@@ -1,0 +1,28 @@
+#profile-header {
+    display: flex;
+    width: 95%;
+    height: 300px;
+    border: 1px solid black;
+    gap: 10px;
+}
+
+#profile-content-container {
+    display: flex;
+    width: 95%;
+    height: 400px;
+    border: 1px solid black;
+    justify-content: space-between;
+}
+
+#profile-content {
+    width: 50%;
+    height: 400px;
+    border: 1px solid green;
+}
+
+#profile-about {
+    width: 30%;
+    height: 400px;
+    border: 1px solid blue;
+    overflow: scroll;
+}

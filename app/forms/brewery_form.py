@@ -12,4 +12,6 @@ class BreweryForm(FlaskForm):
     state_province = StringField("State or Province", validators=[DataRequired()])
     country = StringField("Country", validators=[DataRequired()])
     description = StringField("Description", validators=[DataRequired()])
+    image_url = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     website_url = StringField("Website URL")
+    submit = SubmitField("Create Brewery")

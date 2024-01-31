@@ -34,4 +34,6 @@ class Brewery(db.Model):
             'description': self.description,
             'image_url': self.image_url,
             'website_url': self.website_url,
+            'beers': [beer.to_dict() for beer in self.beers],
+            'creator_id': self.creator_id
         }
