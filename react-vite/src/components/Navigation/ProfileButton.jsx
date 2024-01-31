@@ -1,15 +1,19 @@
-import { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { thunkLogout } from "../../redux/session";
-import OpenModalMenuItem from "./OpenModalMenuItem";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
+import { useState, useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function ProfileButton() {
+import * as sessionActions from '../../redux/session';
+import LoginFormModal from '../LoginFormModal/LoginFormModal';
+import SignupFormModal from '../SignupFormModal/SignupFormModal';
+import OpenModalMenuItem from './OpenModalMenuItem';
+
+
+function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  const user = useSelector((store) => store.session.user);
+  const navigate = useNavigate();
   const ulRef = useRef();
+
+  const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -20,56 +24,70 @@ function ProfileButton() {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (ulRef.current && !ulRef.current.contains(e.target)) {
+      if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
 
-    document.addEventListener("click", closeMenu);
+    document.addEventListener('click', closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  // Named function to use as a callback to close the menu
   const closeMenu = () => setShowMenu(false);
 
+
+  // Logout from current user and navigate to home page
   const logout = (e) => {
     e.preventDefault();
-    dispatch(thunkLogout());
+    dispatch(sessionActions.thunkLogout());
     closeMenu();
+    navigate('/');
   };
 
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
   return (
-    <>
-      <button onClick={toggleMenu}>
-        <i className="fas fa-user-circle" />
+    <div>
+      <button id='profile-button' onClick={toggleMenu}>
+        <i id='menu-bars' className="fas fa-bars"></i>
+        <i id='profile-icon' className="fas fa-user-circle fa-lg" />
       </button>
-      {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
-          {user ? (
-            <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
-                <button onClick={logout}>Log Out</button>
-              </li>
-            </>
-          ) : (
-            <>
-              <OpenModalMenuItem
-                itemText="Log In"
-                onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
-              />
+
+      <div id='dropdown-menu' className={ulClassName} ref={ulRef}>
+        {user ? (
+          <>
+            <div>Hello, {user.firstName}!</div>
+            <div>{user.email}</div>
+            {/* <div className='separator'></div> */}
+            {/* <div id='manage-spots-div' onClick={onClickManageSpots}>Manage Spots</div> */}
+            {/* <div id='manage-reviews-div' onClick={onClickManageReviews}>Manage Reviews</div> */}
+            {/* <div className='separator'></div> */}
+            <div>
+              <button id="logout-button" onClick={logout}>Log Out</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className='signup-menu-item'>
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-            </>
-          )}
-        </ul>
-      )}
-    </>
+            </div>
+            <div className='login-menu-item'>
+              <OpenModalMenuItem
+                itemText="Log In"
+                onItemClick={closeMenu}
+                modalComponent={<LoginFormModal />}
+              />
+            </div>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 

@@ -1,9 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 
 function Navigation() {
   const navigate = useNavigate();
+  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <nav>
@@ -15,7 +17,7 @@ function Navigation() {
         </div>
       </div>
 
-      <ProfileButton />
+      <ProfileButton id='profile-button' user={sessionUser} />
     </nav>
   );
 }

@@ -22,3 +22,16 @@ class Brewery(db.Model):
     # Relationships
     creator = db.relationship('User', back_populates="breweries", cascade="all, delete")
     beers = db.relationship('Beer', back_populates="brewery")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'type': self.type,
+            'city': self.city,
+            'state_province': self.state_province,
+            'country': self.country,
+            'description': self.description,
+            'image_url': self.image_url,
+            'website_url': self.website_url,
+        }

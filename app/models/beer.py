@@ -23,3 +23,14 @@ class Beer(db.Model):
     brewery = db.relationship('Brewery', back_populates="beers", cascade="all, delete")
     lists = db.relationship("List", secondary="beers_lists", back_populates="beers")
     check_ins = db.relationship('CheckIn', back_populates="beer")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'abv': self.abv,
+            'ibu': self.ibu,
+            'style': self.style,
+            'description': self.description,
+            'image_url': self.image_url,
+        }
