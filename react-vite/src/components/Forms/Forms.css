@@ -11,3 +11,12 @@ form {
 .brewery-form {
     margin: 0 auto;
 }
+
+#beer-form-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.beer-form {
+    margin: 0 auto;
+}

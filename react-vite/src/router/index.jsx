@@ -9,6 +9,7 @@ import BreweryDetails from '../components/Brewery/BreweryDetails';
 import UpdateBreweryForm from '../components/Forms/UpdateBreweryForm';
 import UserProfile from '../components/UserProfile/UserProfile';
 import BeerDetails from '../components/Beer/BeerDetails';
+import CreateBeerForm from '../components/Forms/CreateBeerForm';
 
 export const router = createBrowserRouter([
   {
@@ -31,16 +32,20 @@ export const router = createBrowserRouter([
         element: <BeerDetails />
       },
       {
+        path: "/beers/new",
+        element: <CreateBeerForm />
+      },
+      {
         path: "/breweries",
         element: <BreweryBrowse />
       },
       {
-        path: "/breweries/new",
-        element: <CreateBreweryForm />
-      },
-      {
         path: "/breweries/:brewery_id",
         element: <BreweryDetails />
+      },
+      {
+        path: "/breweries/new",
+        element: <CreateBreweryForm />
       },
       {
         path: "/breweries/:brewery_id/edit",

@@ -19,10 +19,3 @@
     height: 400px;
     border: 1px solid green;
 }
-
-#profile-about {
-    width: 30%;
-    height: 400px;
-    border: 1px solid blue;
-    overflow: scroll;
-}
