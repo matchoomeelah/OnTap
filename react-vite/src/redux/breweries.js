@@ -5,6 +5,7 @@ const CREATE_BREWERY = "breweries/createBrewery"
 const GET_BREWERIES = "breweries/getBreweries"
 const GET_BREWERY_BY_ID = "breweries/getBreweryById"
 const UPDATE_BREWERY = "breweries/updateBrewery"
+const DELETE_BREWERY = "breweries/deleteBrewery"
 
 //
 // Actions
@@ -33,6 +34,13 @@ export const actionUpdateBrewery = (brewery) => {
     return {
         type: UPDATE_BREWERY,
         brewery
+    }
+}
+
+export const actionDeleteBrewery = (id) => {
+    return {
+        type: DELETE_BREWERY,
+        id
     }
 }
 
@@ -122,6 +130,26 @@ export const thunkUpdateBrewery = (id, brewery) => async (dispatch) => {
     return data;
 }
 
+export const thunkDeleteBrewery = (id) => async (dispatch) => {
+    const response = await fetch(`/api/breweries/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        dispatch(actionDeleteBrewery(id));
+    }
+    else {
+        console.log("There was an error deleting the brewery")
+    }
+
+    return data;
+}
+
 
 //
 // Reducer
@@ -146,6 +174,11 @@ export default function breweriesReducer(state = {}, action) {
         }
         case UPDATE_BREWERY: {
             return { ...state, [action.brewery.id]: action.brewery };
+        }
+        case DELETE_BREWERY: {
+            const newBreweries = { ...state };
+            delete newBreweries[action.id];
+            return newBreweries;
         }
         default:
             return state;

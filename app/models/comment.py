@@ -16,5 +16,5 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     check_in_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('check_ins.id')), nullable=False)
 
-    user = db.relationship('User', back_populates="comments", cascade="all, delete")
-    check_in = db.relationship('CheckIn', back_populates="comments", cascade="all, delete")
+    user = db.relationship('User', back_populates="comments")
+    check_in = db.relationship('CheckIn', back_populates="comments")

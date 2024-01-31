@@ -19,10 +19,10 @@ class Beer(db.Model):
     brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('breweries.id')), nullable=False)
 
     # Relationships
-    creator = db.relationship('User', back_populates="beers", cascade="all, delete")
-    brewery = db.relationship('Brewery', back_populates="beers", cascade="all, delete")
+    creator = db.relationship('User', back_populates="beers")
+    brewery = db.relationship('Brewery', back_populates="beers")
     lists = db.relationship("List", secondary="beers_lists", back_populates="beers")
-    check_ins = db.relationship('CheckIn', back_populates="beer")
+    check_ins = db.relationship('CheckIn', back_populates="beer", cascade="all, delete")
 
     def to_dict(self):
         return {

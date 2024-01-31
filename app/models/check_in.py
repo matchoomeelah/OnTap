@@ -19,6 +19,6 @@ class CheckIn(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     # Relationships
-    beer = db.relationship('Beer', back_populates="check_ins", cascade="all, delete")
-    user = db.relationship('User', back_populates="check_ins", cascade="all, delete")
-    comments = db.relationship('Comment', back_populates="check_in")
+    beer = db.relationship('Beer', back_populates="check_ins")
+    user = db.relationship('User', back_populates="check_ins")
+    comments = db.relationship('Comment', back_populates="check_in", cascade="all, delete")

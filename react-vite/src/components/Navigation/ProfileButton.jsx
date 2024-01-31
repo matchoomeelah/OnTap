@@ -58,9 +58,10 @@ function ProfileButton({ user }) {
       <div id='dropdown-menu' className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>Hello, {user.firstName}!</div>
+            <div>Hello, {user.username}!</div>
             <div>{user.email}</div>
-            {/* <div className='separator'></div> */}
+            <div className='separator'></div>
+            <div onClick={() => navigate(`/users/${user.id}`)}>My Profile</div>
             {/* <div id='manage-spots-div' onClick={onClickManageSpots}>Manage Spots</div> */}
             {/* <div id='manage-reviews-div' onClick={onClickManageReviews}>Manage Reviews</div> */}
             {/* <div className='separator'></div> */}

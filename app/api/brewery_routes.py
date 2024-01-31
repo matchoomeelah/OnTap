@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from ..forms.brewery_form import BreweryForm
 from app.models import Brewery, db
 from app.api.aws_helpers import (
-    upload_file_to_s3, get_unique_filename)
+    upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 
 
 brewery_routes = Blueprint("breweries", __name__)
@@ -39,16 +39,18 @@ def create_brewery():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        url = "https://i.ibb.co/DCBFCfb/No-image-available.png"
         image_url = form.data["image_url"]
 
-        image_url.filename = get_unique_filename(image_url.filename)
-        upload = upload_file_to_s3(image_url)
-        print(upload)
+        if image_url is not None:
+            image_url.filename = get_unique_filename(image_url.filename)
+            upload = upload_file_to_s3(image_url)
+            print(upload)
 
-        if "url" not in upload:
-            return {"errors": {"message": "Image upload failed"}}
+            if "url" not in upload:
+                return {"errors": {"message": "Image upload failed"}}
 
-        url = upload["url"]
+            url = upload["url"]
 
         params = {
             "name": form.data["name"],
@@ -86,9 +88,10 @@ def update_brewery(id):
     if brewery.creator_id == current_user.id:
         if form.validate_on_submit:
             image_url = form.data["image_url"]
-            print(image_url.filename)
+            # print(image_url.filename)
 
-            if image_url.filename != brewery.image_url:
+            if image_url is not None and image_url.filename != brewery.image_url:
+                removed = remove_file_from_s3(brewery.image_url)
                 image_url.filename = get_unique_filename(image_url.filename)
                 upload = upload_file_to_s3(image_url)
                 print(upload)
@@ -119,6 +122,19 @@ def update_brewery(id):
 
 
 # Delete a Brewery
+@login_required
 @brewery_routes.route("/<int:id>", methods=["DELETE"])
 def delete_brewery(id):
-    pass
+    brewery = Brewery.query.get(id)
+
+    if not brewery:
+        return {"errors": {"message": "Brewery could not be found"}}, 404
+
+    if brewery.creator_id == current_user.id:
+        remove_file_from_s3(brewery.image_url)
+        db.session.delete(brewery)
+        db.session.commit()
+
+        return {"message": "Success"}, 200
+
+    return { "message": "User unauthorized"}, 401

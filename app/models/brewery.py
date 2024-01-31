@@ -20,8 +20,8 @@ class Brewery(db.Model):
     creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     # Relationships
-    creator = db.relationship('User', back_populates="breweries", cascade="all, delete")
-    beers = db.relationship('Beer', back_populates="brewery")
+    creator = db.relationship('User', back_populates="breweries")
+    beers = db.relationship('Beer', back_populates="brewery", cascade="all, delete")
 
     def to_dict(self):
         return {

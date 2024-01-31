@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 7ac2d56fe673
+Revision ID: c0c5f71201fb
 Revises:
-Create Date: 2024-01-30 13:53:28.185519
+Create Date: 2024-01-31 01:12:04.615493
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '7ac2d56fe673'
+revision = 'c0c5f71201fb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -42,7 +43,8 @@ def upgrade():
     sa.Column('website_url', sa.String(length=255), nullable=True),
     sa.Column('creator_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['creator_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('lists',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -108,8 +110,8 @@ def upgrade():
         op.execute(f"ALTER TABLE beers_lists SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE check_ins SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-    # ### end Alembic commands ###
 
+    # ### end Alembic commands ###
 
 
 def downgrade():

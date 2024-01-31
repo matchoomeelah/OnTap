@@ -17,5 +17,5 @@ class List(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     # Relationships
-    user = db.relationship("User", back_populates="lists", cascade="all, delete")
+    user = db.relationship("User", back_populates="lists")
     beers = db.relationship("Beer", secondary="beers_lists", back_populates="lists")
