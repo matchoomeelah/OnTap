@@ -1,7 +1,52 @@
+/* GENERAL */
+
 form {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
+
+.input {
+    width:100%;
+}
+
+.field-container {
+    width: 100%;
+}
+
+.form-label-container {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+}
+
+.error-message {
+    color: red;
+    font-size: 9px;
+    text-align: center;
+}
+
+.error-container {
+    min-height: 20px;
+    text-align: center;
+}
+
+.submit-button {
+    min-width: 100px;
+    max-width: 40%;
+    padding: 10px 20px;
+    margin: 0 auto;
+    background-color: #E05512;
+    color: white;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#image-input {
+    width: fit-content;
+}
+
+/* BREWERIES */
 
 #brewery-form-container {
     width: 60%;
@@ -11,6 +56,9 @@ form {
 .brewery-form {
     margin: 0 auto;
 }
+
+
+/* BEERS */
 
 #beer-form-container {
     width: 60%;

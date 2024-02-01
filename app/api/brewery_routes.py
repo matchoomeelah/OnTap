@@ -39,7 +39,7 @@ def create_brewery():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        url = "https://i.ibb.co/DCBFCfb/No-image-available.png"
+        url = "https://i.ibb.co/ys9X0Jg/brewery-default.jpg"
         image_url = form.data["image_url"]
 
         if image_url is not None:

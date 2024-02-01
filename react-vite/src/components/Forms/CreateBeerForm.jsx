@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Select from 'react-select'
 
-import "./Forms.css";
 import { thunkGetBreweries } from "../../redux/breweries";
 import { thunkCreateBeer } from "../../redux/beers";
 
+import "./Forms.css";
 
 function CreateBeerForm() {
     const dispatch = useDispatch();
@@ -25,13 +25,15 @@ function CreateBeerForm() {
     const [imageLoading, setImageLoading] = useState(false);
 
 
-    const breweryOptions = Object.values(breweries).map(brewery => {
+    // Create array of brewery objects for Select input
+    const breweryOptions = Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
         return {
             value: brewery.id,
             label: brewery.name
         }
     })
 
+    // Create array of beer style objects for Select input
     const BEER_STYLES = ["Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
     BEER_STYLES.sort();
     let styleOptions = BEER_STYLES.map(style => {

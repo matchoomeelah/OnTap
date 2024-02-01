@@ -41,8 +41,6 @@ function UpdateBeerForm({preBrewery}) {
         }
     })
 
-    // console.log("BREW_ID: ", breweryId)
-    // console.log("INITIAL VALUE: ", breweryOptions.find(opt => opt.value === breweryId));
     const initialValue = breweryOptions.find(opt => opt.value === breweryId);
 
     const BEER_STYLES = ["Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];

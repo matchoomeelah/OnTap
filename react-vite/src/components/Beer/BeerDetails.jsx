@@ -5,9 +5,11 @@ import { thunkGetBeerById } from "../../redux/beers";
 
 function BeerDetails() {
     const dispatch = useDispatch();
+
     const beers = useSelector(state => state.beers);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
+
     console.log(currBeer)
 
 

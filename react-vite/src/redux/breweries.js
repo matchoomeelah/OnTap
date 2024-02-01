@@ -61,12 +61,11 @@ export const thunkCreateBrewery = (brewery) => async (dispatch) => {
     // Extract the data
     if (response.ok) {
         dispatch(actionCreateBrewery(data))
+        return data;
     }
-    else {
-        console.log("There was an error");
-    }
+    console.log("There was an error creating your brewery");
 
-    return data;
+    return {"errors": data};
 }
 
 
