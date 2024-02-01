@@ -33,4 +33,5 @@ class Beer(db.Model):
             'style': self.style,
             'description': self.description,
             'image_url': self.image_url,
-        }
+            'creator_id': self.creator_id,
+            'brewery_id': self.brewery_id        }

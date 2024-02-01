@@ -10,6 +10,7 @@ import UpdateBreweryForm from '../components/Forms/UpdateBreweryForm';
 import UserProfile from '../components/UserProfile/UserProfile';
 import BeerDetails from '../components/Beer/BeerDetails';
 import CreateBeerForm from '../components/Forms/CreateBeerForm';
+import UpdateBeerForm from '../components/Forms/UpdateBeerForm';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/beers/new",
         element: <CreateBeerForm />
+      },
+      {
+        path: "/beers/:beer_id/edit",
+        element: <UpdateBeerForm />
       },
       {
         path: "/breweries",

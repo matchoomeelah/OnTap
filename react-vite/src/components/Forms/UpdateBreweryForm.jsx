@@ -14,7 +14,6 @@ function UpdateBreweryForm() {
     const breweries = useSelector(state => state.breweries);
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
-    // console.log(breweries);
     console.log(currBrewery);
 
 

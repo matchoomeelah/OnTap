@@ -4,6 +4,8 @@
 const CREATE_BEER = "beers/createBeer"
 const GET_BEERS = "beers/getBeers"
 const GET_BEER_BY_ID = "beers/getBeerById"
+const UPDATE_BEER = "beers/updateBeer"
+const DELETE_BEER = "beers/deleteBeer"
 
 
 //
@@ -30,6 +32,20 @@ export const actionGetBeerById = (beer) => {
     }
 }
 
+export const actionUpdateBeer= (beer) => {
+    return {
+        type: UPDATE_BEER,
+        beer
+    }
+}
+
+export const actionDeleteBeer= (id) => {
+    return {
+        type: DELETE_BEER,
+        id
+    }
+}
+
 
 //
 // Thunks
@@ -41,7 +57,6 @@ export const thunkCreateBeer = (beer) => async (dispatch) => {
         method: "POST",
         body: beer
     })
-    console.log("IM IN THE THUNK")
 
     const data = await response.json();
     console.log(data);
@@ -94,6 +109,49 @@ export const thunkGetBeerById = (id) => async (dispatch) => {
     return data;
 }
 
+export const thunkUpdateBeer= (id, beer) => async (dispatch) => {
+    // Get Response
+    const response = await fetch(`/api/beers/${id}`, {
+        method: "PUT",
+        body: beer
+    });
+
+    // Extract the data
+    const data = await response.json();
+
+    // Send to reducer or report error
+    if (response.ok) {
+        dispatch(actionUpdateBeer(data));
+    }
+    else {
+        console.log("There was an error updating your beer")
+    }
+
+    return data;
+}
+
+export const thunkDeleteBeer = (id) => async (dispatch) => {
+    // Get Response
+    const response = await fetch(`/api/beers/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    // Extract data
+    const data = await response.json();
+
+    //Send to reducer
+    if (response.ok) {
+        dispatch(actionDeleteBeer(id));
+    }
+    else {
+        console.log("There was an error deleting the brewery")
+    }
+
+    return data;
+}
 
 
 
@@ -116,6 +174,14 @@ export default function beersReducer(state = {}, action) {
         case GET_BEER_BY_ID: {
             const newBeers = {}
             newBeers[action.beer.id] = action.beer
+            return newBeers;
+        }
+        case UPDATE_BEER: {
+            return { ...state, [action.beer.id]: action.beer };
+        }
+        case DELETE_BEER: {
+            const newBeers = { ...state };
+            delete newBeers[action.id];
             return newBeers;
         }
         default:

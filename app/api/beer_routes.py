@@ -120,3 +120,21 @@ def update_beer(id):
         return form.errors, 400
 
     return { "message": "User unauthorized"}, 401
+
+# Delete a Beer
+@login_required
+@beer_routes.route("/<int:id>", methods=["DELETE"])
+def delete_beer(id):
+    beer = Beer.query.get(id)
+
+    if not beer:
+        return {"errors": {"message": "Beer could not be found"}}, 404
+
+    if beer.creator_id == current_user.id:
+        remove_file_from_s3(beer.image_url)
+        db.session.delete(beer)
+        db.session.commit()
+
+        return {"message": "Success"}, 200
+
+    return { "message": "User unauthorized"}, 401

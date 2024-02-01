@@ -5,9 +5,6 @@ import "./UserProfile.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetUserById } from "../../redux/users";
-import BreweryTile from "../Brewery/BreweryTile";
-import OpenModalButton from "../OpenModalButton"
-import DeleteBreweryModal from "../Modals/DeleteBreweryModal";
 import UserBreweries from "./UserBreweries";
 import UserBeers from "./UserBeers";
 
@@ -18,6 +15,7 @@ function UserProfile() {
     const profileUser = useSelector(state => state.users.profileUser);
     const sessionUser = useSelector(state => state.session.user);
     const breweries = useSelector(state => state.breweries);
+    const beers = useSelector(state => state.beers);
 
     const [showBeers, setShowBeers] = useState(true);
     const [showBreweries, setShowBreweries] = useState(false);
@@ -32,11 +30,13 @@ function UserProfile() {
         setShowBreweries(true);
     }
 
+    useEffect(() => {
+        enableShowBeers();
+    }, [])
 
     useEffect(() => {
         dispatch(thunkGetUserById(user_id));
-        enableShowBeers();
-    }, [user_id, breweries])
+    }, [user_id, breweries, beers])
 
 
     return (

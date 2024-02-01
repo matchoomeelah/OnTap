@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Select from 'react-select'
 
 import "./Forms.css";
@@ -10,7 +10,7 @@ import { thunkCreateBeer } from "../../redux/beers";
 
 function CreateBeerForm() {
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const sessionUser = useSelector(state => state.session.user);
     const breweries = useSelector(state => state.breweries);

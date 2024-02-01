@@ -21,7 +21,7 @@ function UserBeers({profileUser, sessionUser}) {
                                     buttonText={'Delete'}
                                     modalComponent={<DeleteBeerModal beer={beer} />}
                                 />
-                                <button onClick={() => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
+                                <button onClick={() => navigate(`/beers/${beer.id}/edit`, { state: {value: beer.brewery_id, label: beer.name}})}>Edit</button>
                             </div>
                         }
                     </div>
