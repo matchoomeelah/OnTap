@@ -168,6 +168,7 @@ function UpdateBeerForm({preBrewery}) {
                 </label>
                 <input
                     id="image-input"
+
                     type="file"
                     accept="image/*"
                     onChange={(e) => setImage(e.target.files[0])}

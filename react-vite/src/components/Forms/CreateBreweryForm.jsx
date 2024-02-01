@@ -6,6 +6,7 @@ import Select from "react-select";
 
 import "./Forms.css";
 
+
 function CreateBreweryForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -261,6 +262,8 @@ function CreateBreweryForm() {
                         type="file"
                         accept="image/*"
                         onChange={(e) => {
+                            // console.log(e.target.files[0]);
+                            // console.log(URL.createObjectURL(e.target.files[0]));
                             setImage(e.target.files[0])
                             if (errors.image_url) {
                                 const newErrors = { ...errors };

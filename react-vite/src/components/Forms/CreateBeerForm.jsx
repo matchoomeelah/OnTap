@@ -23,7 +23,7 @@ function CreateBeerForm() {
     const [image, setImage] = useState(null);
     const [breweryId, setBreweryId] = useState(0);
     const [imageLoading, setImageLoading] = useState(false);
-
+    const [errors, setErrors] = useState({});
 
     // Create array of brewery objects for Select input
     const breweryOptions = Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
@@ -35,27 +35,22 @@ function CreateBeerForm() {
 
     // Create array of beer style objects for Select input
     const BEER_STYLES = ["Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
-    BEER_STYLES.sort();
-    let styleOptions = BEER_STYLES.map(style => {
+    let styleOptions = BEER_STYLES.sort().map(style => {
         return {
             value: style,
             label: style
         }
     });
 
-
+    // Populate Breweries in store
     useEffect(() => {
         dispatch(thunkGetBreweries());
     }, [])
 
-    // Handle no logged in user
-    if (!sessionUser) {
-        return <h1>Sign Up or Log In to Add Your Beer!</h1>
-    }
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        setErrors({});
 
         const formData = new FormData();
         formData.append("name", name);
@@ -67,14 +62,23 @@ function CreateBeerForm() {
         formData.append("brewery_id", breweryId);
         setImageLoading(true);
 
-        console.log("submitting")
-
         const newBeer = await dispatch(thunkCreateBeer(formData));
 
         console.log(newBeer)
-        navigate(`/beers/${newBeer.id}`);
+
+        if (newBeer.errors) {
+            setErrors(newBeer.errors);
+            setImageLoading(false);
+        }
+        else {
+            navigate(`/beers/${newBeer.id}`);
+        }
     }
 
+    // Handle no logged in user
+    if (!sessionUser) {
+        return <h1>Sign Up or Log In to Add Your Beer!</h1>
+    }
 
     return (
         <div id="beer-form-container">

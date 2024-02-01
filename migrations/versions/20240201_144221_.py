@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: c0c5f71201fb
+Revision ID: f2f81c9c3548
 Revises:
-Create Date: 2024-01-31 01:12:04.615493
+Create Date: 2024-02-01 14:42:21.441532
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = 'c0c5f71201fb'
+revision = 'f2f81c9c3548'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,6 +39,7 @@ def upgrade():
     sa.Column('country', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=False),
+    sa.Column('orig_image_url', sa.Text(), nullable=False),
     sa.Column('website_url', sa.String(length=255), nullable=True),
     sa.Column('creator_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['creator_id'], ['users.id'], ),
@@ -64,6 +64,7 @@ def upgrade():
     sa.Column('style', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=False),
+    sa.Column('orig_image_url', sa.Text(), nullable=False),
     sa.Column('creator_id', sa.Integer(), nullable=False),
     sa.Column('brewery_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
@@ -110,7 +111,6 @@ def upgrade():
         op.execute(f"ALTER TABLE beers_lists SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE check_ins SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 

@@ -35,8 +35,6 @@ def get_beer_by_id(id):
 @beer_routes.route("", methods=["POST"])
 def create_beer():
     user_id = current_user.id
-    # brewery_id = request.get_json()["brewery_id"]
-    print("I MADE IT TO THE ROUTE")
 
     # return {"message": "hi"}
     form = BeerForm()
@@ -44,11 +42,13 @@ def create_beer():
 
     if form.validate_on_submit():
         url = "https://i.ibb.co/qChdf5n/default-beer.jpg"
-        image_url = form.data["image_url"]
+        orig_url = "No File Chosen"
+        image = form.data["image_url"]
 
-        if image_url is not None:
-            image_url.filename = get_unique_filename(image_url.filename)
-            upload = upload_file_to_s3(image_url)
+        if image is not None:
+            orig_url = image.filename
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
             print(upload)
 
             if "url" not in upload:
@@ -62,6 +62,7 @@ def create_beer():
             "ibu": int(form.data["ibu"]),
             "style": form.data["style"],
             "description": form.data["description"],
+            "orig_image_url": orig_url,
             "image_url": url,
             "creator_id": user_id,
             "brewery_id": form.data["brewery_id"]
@@ -91,12 +92,13 @@ def update_beer(id):
 
     if beer.creator_id == current_user.id:
         if form.validate_on_submit:
-            image_url = form.data["image_url"]
+            image = form.data["image_url"]
 
-            if image_url is not None and image_url.filename != beer.image_url:
+            if image is not None and image.filename != beer.image_url:
                 removed = remove_file_from_s3(beer.image_url)
-                image_url.filename = get_unique_filename(image_url.filename)
-                upload = upload_file_to_s3(image_url)
+                orig_url = image.filename
+                image.filename = get_unique_filename(image.filename)
+                upload = upload_file_to_s3(image)
                 print(upload)
 
                 if "url" not in upload:
@@ -104,6 +106,7 @@ def update_beer(id):
 
                 url = upload["url"]
                 beer.image_url = url
+                beer.orig_image_url = orig_url
 
             beer.name = form.data["name"]
             beer.abv = form.data["abv"]

@@ -27,7 +27,7 @@ function BreweryDetails() {
                     <h1>{currBrewery?.name}</h1>
                     <p>{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</p>
                     <p>{currBrewery?.type}</p>
-                    <a href={currBrewery?.website_url}>{currBrewery?.website_url}</a>
+                    <a href={currBrewery?.website_url} target={"_blank"}>{currBrewery?.website_url}</a>
                 </div>
             </div>
             <div id="brewery-content-container">

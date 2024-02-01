@@ -15,6 +15,7 @@ class Beer(db.Model):
     style = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False, default="A fine beer")
     image_url = db.Column(db.Text, nullable=False, default="https://i.ibb.co/DCBFCfb/No-image-available.png")
+    orig_image_url = db.Column(db.Text, nullable=False, default="no_image_available.png")
     creator_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('breweries.id')), nullable=False)
 
@@ -33,5 +34,8 @@ class Beer(db.Model):
             'style': self.style,
             'description': self.description,
             'image_url': self.image_url,
+            'orig_image_url': self.orig_image_url,
             'creator_id': self.creator_id,
-            'brewery_id': self.brewery_id        }
+            'brewery_id': self.brewery_id,
+            'brewery_name': self.brewery.name
+        }

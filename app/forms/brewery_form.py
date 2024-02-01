@@ -16,7 +16,6 @@ def name_is_unique(form, field):
 
 
 
-
 class BreweryForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired(), Length(min=1, max=60), name_is_unique])
     type = StringField("Type", validators=[DataRequired()])

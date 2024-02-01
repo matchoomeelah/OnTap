@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { thunkGetBeerById } from "../../redux/beers";
 
 function BeerDetails() {
@@ -25,6 +25,7 @@ function BeerDetails() {
                 <img src={currBeer?.image_url} />
                 <div>
                     <h1>{currBeer?.name}</h1>
+                    <p>By <NavLink to={`/breweries/${currBeer?.brewery_id}`}>{currBeer?.brewery_name}</NavLink></p>
                     <p>{currBeer?.style}</p>
                     <div>
                         <p>ABV {currBeer?.abv}%    IBU {currBeer?.ibu}</p>
@@ -34,9 +35,7 @@ function BeerDetails() {
             </div>
             <div id="beer-content-container">
                 <div id="beer-content">
-                    {/* {currBeer?.beers.map(beer => {
-                        return <div key={beer.id}>{beer.name}</div>
-                    })} */}
+
                 </div>
                 <div id="beer-photos">
                     <h4>Photos</h4>
