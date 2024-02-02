@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetBreweryById, thunkUpdateBrewery } from "../../redux/breweries";
 import { useNavigate, useParams } from "react-router-dom";
 import Select from "react-select";
+
+import { thunkGetBreweryById, thunkUpdateBrewery } from "../../redux/breweries";
 
 import "./Forms.css";
 
@@ -24,11 +25,11 @@ function UpdateBreweryForm() {
     const [stateProvince, setStateProvince] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
+    const [descriptionCharCount, setDescriptionCharCount] = useState(0);
     const [image, setImage] = useState(null);
     const [websiteUrl, setWebsiteUrl] = useState("");
     const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState({});
-
 
 
     useEffect(() => {
@@ -43,21 +44,11 @@ function UpdateBreweryForm() {
             setStateProvince(currBrewery.state_province);
             setCountry(currBrewery.country);
             setDescription(currBrewery.description);
+            setDescriptionCharCount(currBrewery.description.length)
             setImage(currBrewery.image_url);
             setWebsiteUrl(currBrewery.website_url);
         }
     }, [currBrewery])
-
-    // Handle no logged in user
-    if (!sessionUser) {
-        // return <h1>Sign Up or Log In to Add Your Brewery!</h1>
-        return navigate('/');
-    }
-
-    // Handle wrong user
-    if (currBrewery?.creator_id !== sessionUser?.id) {
-        return navigate('/');
-    }
 
     // Create array of brewery type objects for the Select input
     const breweryTypes = ["Microbrewery", "Macrobrewery", "Nanobrewery", "Regional Brewery", "Brewpub", "Taproom", "Craft Brewery", "Contract Brewing Company"];
@@ -106,6 +97,17 @@ function UpdateBreweryForm() {
         else {
             navigate(`/breweries/${newBrewery.id}`);
         }
+    }
+
+    // Handle no logged in user
+    if (!sessionUser) {
+        // return <h1>Sign Up or Log In to Add Your Brewery!</h1>
+        return navigate('/');
+    }
+
+    // Handle wrong user
+    if (currBrewery?.creator_id !== sessionUser?.id) {
+        return navigate('/');
     }
 
     return (
@@ -250,10 +252,13 @@ function UpdateBreweryForm() {
                     <textarea
                         id="description"
                         type="text"
+                        rows={5}
+                        maxLength={1024}
                         value={description}
                         className="input"
                         onChange={(e) => {
                             setDescription(e.target.value);
+                            setDescriptionCharCount(e.target.value.length)
                             if (errors.description) {
                                 const newErrors = { ...errors };
                                 delete newErrors.description;
@@ -261,6 +266,7 @@ function UpdateBreweryForm() {
                             }
                         }}
                     />
+                    <div id="description-char-count">{descriptionCharCount}/1024</div>
                 </div>
 
                 <div className="field-container">

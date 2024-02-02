@@ -69,7 +69,13 @@ def create_brewery():
 
         new_brewery = Brewery(**params)
         db.session.add(new_brewery)
-        db.session.commit()
+
+        # The only error that SHOULD happen is unique name constraint violation
+        try:
+            db.session.commit()
+        except:
+            return {"errors": {"name": "A Brewery with this name already exists"}}
+
 
         return new_brewery.to_dict()
 

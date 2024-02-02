@@ -5,6 +5,7 @@ import Select from 'react-select'
 
 import { thunkGetBreweries } from "../../redux/breweries";
 import { thunkCreateBeer } from "../../redux/beers";
+import { validateBeerForm } from "./validation";
 
 import "./Forms.css";
 
@@ -20,6 +21,7 @@ function CreateBeerForm() {
     const [ibu, setIbu] = useState("");
     const [style, setStyle] = useState("");
     const [description, setDescription] = useState("");
+    const [descriptionCharCount, setDescriptionCharCount] = useState(0);
     const [image, setImage] = useState(null);
     const [breweryId, setBreweryId] = useState(0);
     const [imageLoading, setImageLoading] = useState(false);
@@ -52,12 +54,21 @@ function CreateBeerForm() {
 
         setErrors({});
 
+        // Check for front end form errors
+        const formErrors = validateBeerForm(name, abv, ibu, style, description, breweryId);
+
+        if (Object.keys(formErrors).length > 0) {
+            console.log(formErrors)
+            setErrors(formErrors);
+            return;
+        }
+
         const formData = new FormData();
-        formData.append("name", name);
-        formData.append("abv", abv);
-        formData.append("ibu", ibu);
-        formData.append("style", style);
-        formData.append("description", description);
+        formData.append("name", name.trim());
+        formData.append("abv", abv.trim());
+        formData.append("ibu", ibu.trim());
+        formData.append("style", style.trim());
+        formData.append("description", description.trim());
         formData.append("image_url", image);
         formData.append("brewery_id", breweryId);
         setImageLoading(true);
@@ -221,9 +232,11 @@ function CreateBeerForm() {
                         id="description"
                         type="text"
                         value={description}
+                        rows={5}
                         className="input"
                         onChange={(e) => {
                             setDescription(e.target.value);
+                            setDescriptionCharCount(e.target.value.length)
                             if (errors.description) {
                                 const newErrors = { ...errors };
                                 delete newErrors.description;
@@ -231,6 +244,7 @@ function CreateBeerForm() {
                             }
                         }}
                     />
+                    <div id="description-char-count">{descriptionCharCount}/1024</div>
                 </div>
 
                 <div className="field-container">
@@ -262,80 +276,6 @@ function CreateBeerForm() {
                 <button className="submit-button" type="submit">Create Beer</button>
             </form>
         </div>
-        // <div id="beer-form-container">
-        //     <h1>Create Beer Form</h1>
-        //     <form className="beer-form" onSubmit={handleSubmit} encType="multipart/form-data">
-        //         <label htmlFor="name">
-        //             Name*
-        //         </label>
-        //         <input
-        //             id="name"
-        //             type="text"
-        //             value={name}
-        //             onChange={(e) => setName(e.target.value)}
-        //             className="input"
-        //             required
-        //         />
-        //         <label htmlFor="brewery">
-        //             Brewery*
-        //         </label>
-        //         <Select
-        //             id="brewery"
-        //             onChange={e => setBreweryId(e.value)}
-        //             options={breweryOptions}
-        //         />
-        //         <label htmlFor="abv">
-        //             ABV*
-        //         </label>
-        //         <input
-        //             id="abv"
-        //             type="text"
-        //             value={abv}
-        //             onChange={(e) => setAbv(e.target.value)}
-        //             className="input"
-        //             required
-        //         />
-        //         <label htmlFor="ibu">
-        //             IBU*
-        //         </label>
-        //         <input
-        //             id="ibu"
-        //             type="text"
-        //             value={ibu}
-        //             onChange={(e) => setIbu(e.target.value)}
-        //             className="input"
-        //             required
-        //         />
-        //         <label htmlFor="style">
-        //             Style*
-        //         </label>
-        //         <Select
-        //             id="brewery"
-        //             onChange={e => setStyle(e.value)}
-        //             options={styleOptions}
-        //         />
-        //         <label htmlFor="description">
-        //             Description*
-        //         </label>
-        //         <textarea
-        //             id="description"
-        //             value={description}
-        //             onChange={e => setDescription(e.target.value)}>
-        //         </textarea>
-        //         <label>
-        //             Logo
-        //         </label>
-        //         <input
-        //             id="image-input"
-        //             type="file"
-        //             accept="image/*"
-        //             onChange={(e) => setImage(e.target.files[0])}
-        //         />
-        //         {(imageLoading) && <p>Loading...</p>}
-        //         <button type="submit">Submit</button>
-        //     </form>
-
-        // </div>
     )
 }
 

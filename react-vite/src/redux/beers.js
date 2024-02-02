@@ -59,17 +59,14 @@ export const thunkCreateBeer = (beer) => async (dispatch) => {
     })
 
     const data = await response.json();
-    console.log(data);
 
     // Extract the data
     if (response.ok) {
         dispatch(actionCreateBeer(data))
         return data
     }
-    else {
-        console.log("There was an error creating your beer");
-    }
 
+    console.log("There was an error creating your beer");
     return {"errors": data};
 }
 
@@ -83,12 +80,11 @@ export const thunkGetBeers = () => async (dispatch) => {
     // Send to reducer or report error
     if (response.ok) {
         dispatch(actionGetBeers(data.Beers));
-    }
-    else {
-        console.log("Something went wrong getting all Beers")
+        return data;
     }
 
-    return data;
+    console.log("Something went wrong getting all Beers")
+    return {"errors": data};
 }
 
 
@@ -102,12 +98,12 @@ export const thunkGetBeerById = (id) => async (dispatch) => {
     // Send to reducer or report error
     if (response.ok) {
         dispatch(actionGetBeerById(data.Beer));
-    }
-    else {
-        console.log("Something went wrong getting a specific Beer")
+        return data;
     }
 
-    return data;
+    console.log("Something went wrong getting a specific Beer")
+    return {"errors": data};
+
 }
 
 export const thunkUpdateBeer= (id, beer) => async (dispatch) => {
@@ -123,12 +119,12 @@ export const thunkUpdateBeer= (id, beer) => async (dispatch) => {
     // Send to reducer or report error
     if (response.ok) {
         dispatch(actionUpdateBeer(data));
-    }
-    else {
-        console.log("There was an error updating your beer")
+        return data;
     }
 
-    return data;
+    console.log("There was an error updating your beer")
+    return {"errors": data};
+
 }
 
 export const thunkDeleteBeer = (id) => async (dispatch) => {
@@ -146,12 +142,12 @@ export const thunkDeleteBeer = (id) => async (dispatch) => {
     //Send to reducer
     if (response.ok) {
         dispatch(actionDeleteBeer(id));
-    }
-    else {
-        console.log("There was an error deleting the brewery")
+        return data;
     }
 
-    return data;
+    console.log("There was an error deleting the brewery")
+    return {"errors": data};
+
 }
 
 

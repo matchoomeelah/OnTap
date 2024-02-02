@@ -20,6 +20,7 @@ function CreateBreweryForm() {
     const [stateProvince, setStateProvince] = useState("");
     const [country, setCountry] = useState("");
     const [description, setDescription] = useState("");
+    const [descriptionCharCount, setDescriptionCharCount] = useState(0);
     const [image, setImage] = useState(null);
     const [websiteUrl, setWebsiteUrl] = useState("");
     const [imageLoading, setImageLoading] = useState(false);
@@ -210,10 +211,13 @@ function CreateBreweryForm() {
                     <textarea
                         id="description"
                         type="text"
+                        rows={5}
+                        maxLength={1024}
                         value={description}
                         className="input"
                         onChange={(e) => {
                             setDescription(e.target.value);
+                            setDescriptionCharCount(e.target.value.length)
                             if (errors.description) {
                                 const newErrors = { ...errors };
                                 delete newErrors.description;
@@ -221,6 +225,8 @@ function CreateBreweryForm() {
                             }
                         }}
                     />
+                    <div id="description-char-count">{descriptionCharCount}/1024</div>
+
                 </div>
 
                 <div className="field-container">

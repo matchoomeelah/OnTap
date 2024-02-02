@@ -8,6 +8,7 @@ form {
 
 .input {
     width:100%;
+    padding: 4px;
 }
 
 .field-container {
@@ -44,6 +45,7 @@ form {
 
 #image-input {
     width: fit-content;
+    margin-top: 10px;
 }
 
 .hidden-image-title {
@@ -55,6 +57,11 @@ form {
     font-size: 13.7px;
     position: relative;
     right: 160px;
+}
+
+#description-char-count {
+    float: right;
+    font-size: 12px;
 }
 
 /* BREWERIES */
