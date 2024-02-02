@@ -32,6 +32,7 @@ function BreweryDetails() {
             </div>
             <div id="brewery-content-container">
                 <div id="brewery-content">
+                    <h4>Beers</h4>
                     {currBrewery?.beers.map(beer => {
                         return <BeerTile key={beer.id} beer={beer} />
                     })}

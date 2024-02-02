@@ -39,8 +39,8 @@ function BeerDetails() {
                                 </div>
                             </div>
                             <div>
-                                <i className="fas fa-star"></i>
-                                4.0
+                                <div>Rating</div>
+                                <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
                             </div>
                         </div>
                         <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button>
