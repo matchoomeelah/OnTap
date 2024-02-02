@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import * as sessionActions from '../../redux/session';
-import LoginFormModal from '../LoginFormModal/LoginFormModal';
-import SignupFormModal from '../SignupFormModal/SignupFormModal';
+import LoginFormModal from '../Modals/LoginFormModal/LoginFormModal';
+import SignupFormModal from '../Modals/SignupFormModal/SignupFormModal';
 import OpenModalMenuItem from './OpenModalMenuItem';
 
 
