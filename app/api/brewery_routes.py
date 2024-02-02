@@ -90,7 +90,7 @@ def update_brewery(id):
 
     # If owner of the Brewery
     if brewery.creator_id == current_user.id:
-        if form.validate_on_submit:
+        if form.validate_on_submit():
             image = form.data["image_url"]
 
             if image is not None and image.filename != brewery.image_url:
@@ -115,7 +115,11 @@ def update_brewery(id):
             brewery.description = form.data["description"]
             brewery.website_url = form.data["website_url"]
 
-            db.session.commit()
+            # The only error that SHOULD happen is unique name constraint violation
+            try:
+                db.session.commit()
+            except:
+                return {"errors": {"name": "A Brewery with this name already exists"}}
 
             return brewery.to_dict()
 

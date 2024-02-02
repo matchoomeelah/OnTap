@@ -104,7 +104,7 @@ function UpdateBreweryForm() {
             setImageLoading(false);
         }
         else {
-            // navigate(`/breweries/${newBrewery.id}`);
+            navigate(`/breweries/${newBrewery.id}`);
         }
     }
 
