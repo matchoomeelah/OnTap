@@ -121,12 +121,13 @@ export const thunkUpdateBrewery = (id, brewery) => async (dispatch) => {
     // Send to reducer or report error
     if (response.ok) {
         dispatch(actionUpdateBrewery(data));
+        return data;
     }
     else {
-        console.log("There was an error");
+        console.log("There was an error updating your brewery");
     }
 
-    return data;
+    return {"errors": data};
 }
 
 export const thunkDeleteBrewery = (id) => async (dispatch) => {

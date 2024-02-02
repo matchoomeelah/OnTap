@@ -104,7 +104,7 @@ function UpdateBreweryForm() {
             setImageLoading(false);
         }
         else {
-            navigate(`/breweries/${newBrewery.id}`);
+            // navigate(`/breweries/${newBrewery.id}`);
         }
     }
 
@@ -315,7 +315,7 @@ function UpdateBreweryForm() {
                     <span id="orig-url">{currBrewery.orig_image_url}</span>
                 </div>
                 {(imageLoading) && <p>Loading...</p>}
-                <button className="submit-button" type="submit">Create Brewery</button>
+                <button className="submit-button" type="submit">Update Brewery</button>
             </form>
         </div>
     )

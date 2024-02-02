@@ -64,12 +64,13 @@ export const thunkCreateBeer = (beer) => async (dispatch) => {
     // Extract the data
     if (response.ok) {
         dispatch(actionCreateBeer(data))
+        return data
     }
     else {
         console.log("There was an error creating your beer");
     }
 
-    return data;
+    return {"errors": data};
 }
 
 export const thunkGetBeers = () => async (dispatch) => {
