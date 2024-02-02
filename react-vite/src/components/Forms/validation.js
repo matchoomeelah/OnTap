@@ -1,5 +1,5 @@
 export function validateBreweryForm(name, type, city, state_province, country, description, image_url, website_url) {
-
+    return;
 }
 
 export function validateBeerForm(name, abv, ibu, style, description, breweryId) {

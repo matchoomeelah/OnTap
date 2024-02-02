@@ -101,13 +101,12 @@ function UpdateBreweryForm() {
 
     // Handle no logged in user
     if (!sessionUser) {
-        // return <h1>Sign Up or Log In to Add Your Brewery!</h1>
-        return navigate('/');
+        return null;
     }
 
     // Handle wrong user
     if (currBrewery?.creator_id !== sessionUser?.id) {
-        return navigate('/');
+        return null;
     }
 
     return (

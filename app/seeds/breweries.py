@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 def seed_breweries():
     lagunitas = Brewery(
         name='Lagunitas Brewing Co.',
-        type='Macro Brewery',
+        type='Macrobrewery',
         city='Petaluma',
         state_province='California',
         country='United States',
@@ -17,14 +17,13 @@ def seed_breweries():
         )
     four_o_five = Brewery(
         name='405 Brewing Co.',
-        type='Micro Brewery',
+        type='Microbrewery',
         city='Norman',
         state_province='Oklahoma',
         country='United States',
         description="Norman, Oklahoma's first brewery est. 2013. Beer built by hand, Liquid Art!",
         image_url='https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/405-brewing-logo.jpg',
         orig_image_url='405-brewing-logo.jpg',
-        # image_url='https://i.ibb.co/fk3TMbn/405-brewing-logo.jpg',
         website_url='https://405brewing.com/',
         creator_id=1
         )
@@ -38,28 +37,39 @@ def seed_breweries():
         description="MadTree puts purpose in every pour. Founded in 2013, MadTree has always been driven to craft great beer - but more importantly - to build something bigger than themselves and the high-quality beer they produce. Since the beginning, MadTree has cared deeply about creating meaningful connections with their communities. They embrace their namesake and work to celebrate and protect nature while reducing their impact on the environment. They are proud members of 1% for the Planet, with a commitment to donate 1% of sales to non-profits focused on environmental sustainability. The craftspeople at MadTree wake up every day to connect people to nature and each other. MadTree. Inspiring Madness. Rooted in Purpose.",
         image_url='https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/madtree_logo.jpeg',
         orig_image_url='madtree-logo.jpg',
-        # image_url='https://i.ibb.co/BrnwhF1/madtree-logo.jpg',
         website_url="http://www.madtreebrewing.com",
         creator_id=2
         )
     elysian = Brewery(
         name='Elysian Brewing Company',
-        type='Macro Brewery',
+        type='Macrobrewery',
         city='Seattle',
         state_province='Washington',
         country='United States',
         description="We opened our doors in 1996 when bold art and music defined Seattle. Over the past 25 years, we've carried this same spirit in the way we brew our beer - shaking up classic styles, using unusual ingredients, and learning from experimentation. Come chase down the rabbit hole with us.",
-        # image_url='https://on-tap-bucket.s3.us-west-1.amazonaws.com/Elysian-logo.jpg',
         orig_image_url="Elysian-logo.jpg",
         image_url='https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Elysian-logo.jpg',
         website_url="https://www.elysianbrewing.com",
         creator_id=2
+        )
+    stone = Brewery(
+        name='Stone Brewing Co',
+        type='Regional Brewery',
+        city='Escondido',
+        state_province='California',
+        country='United States',
+        description="Founded by Greg Koch and Steve Wagner, we've come a long way since opening in San Diego County in 1996. Now the ninth-largest craft brewer in the U.S., we operate two production brewing facilities on both coasts, in Escondido, CA and Richmond, VA. Today, our beer is available in all 50 states and more than 40 different countries. But we don't just brew beer, we also take great pride serving it at our restaurants and tap rooms! In addition, we also operate the largest craft-centric beer distribution business in the U.S, serving our home region of Southern California.",
+        orig_image_url="stone_logo.jpeg",
+        image_url='https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/stone_logo.jpeg',
+        website_url="https://www.stonebrewing.com/",
+        creator_id=1
         )
 
     db.session.add(lagunitas)
     db.session.add(four_o_five)
     db.session.add(madtree)
     db.session.add(elysian)
+    db.session.add(stone)
     db.session.commit()
 
 
