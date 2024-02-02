@@ -55,7 +55,7 @@ function BeerDetails() {
                     </div>
                     <button id="check-in-button" onClick={() => alert("Feature Coming Soon!")}>Check In!</button>
                     <div id="check-in-container">
-                        {Array(5).fill(true).map(ele => {
+                        {Array(5).fill(true).map(() => {
                             return <CheckInTile />
                         })}
                     </div>
