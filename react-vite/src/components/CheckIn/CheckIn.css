@@ -1,0 +1,8 @@
+.check-in-tile-container {
+    width: 680px;
+    height: 100px;
+    background-color: #E09712;
+    margin-top: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+}
