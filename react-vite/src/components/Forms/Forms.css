@@ -40,7 +40,10 @@ form {
     background-color: #E05512;
     color: white;
     margin-top: 5px;
+    border-radius: 2px;
+    border: none;
     cursor: pointer;
+    box-shadow: 2px 2px 2px #525151;
 }
 
 #image-input {
