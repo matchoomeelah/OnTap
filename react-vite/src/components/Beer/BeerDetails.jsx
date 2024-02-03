@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { thunkGetBeerById } from "../../redux/beers";
 import CheckInTile from "../CheckIn/CheckInTile";
+// import CheckInTile from "../CheckIn/CheckInTile";
 
 function BeerDetails() {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function BeerDetails() {
 
 
     useEffect(() => {
-        dispatch(thunkGetBeerById(beer_id))
+        dispatch(thunkGetBeerById(beer_id));
     }, [beer_id])
 
 
@@ -55,8 +56,8 @@ function BeerDetails() {
                     </div>
                     <button id="check-in-button" onClick={() => alert("Feature Coming Soon!")}>Check In!</button>
                     <div id="check-in-container">
-                        {Array(5).fill(true).map(() => {
-                            return <CheckInTile />
+                        {currBeer?.check_ins.map(checkIn => {
+                            return <CheckInTile checkIn={checkIn}/>
                         })}
                     </div>
                 </div>

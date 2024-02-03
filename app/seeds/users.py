@@ -6,14 +6,34 @@ from sqlalchemy.sql import text
 def seed_users():
     demo = User(
         first_name="Demo", last_name="Lition", username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        first_name="Marnie", last_name="Mowze", username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        first_name="Bobbie", last_name="Bildur", username='bobbie', email='bobbie@aa.io', password='password')
+    fry = User(
+        first_name="Phillip J.", last_name="Fry", username='fry', email='fry@aa.io', password='password')
+    bender = User(
+        first_name="Bender", last_name="Rodriguez", username='bender', email='bender@aa.io', password='password')
+    leela = User(
+        first_name="Toranga", last_name="Leela", username='leela', email='leela@aa.io', password='password')
+    amy = User(
+        first_name="Amy", last_name="Wong", username='amy', email='amy@aa.io', password='password')
+    farnsworth = User(
+        first_name="Hubert", last_name="Farnsworth", username='hubert', email='hubert@aa.io', password='password')
+    zoidberg = User(
+        first_name="Dr.", last_name="Zoidberg", username='zoidberg', email='zoidberg@aa.io', password='password')
+    hermes = User(
+        first_name="Hermes", last_name="Conrad", username='hermes', email='hermes@aa.io', password='password')
+    zapp = User(
+        first_name="Zapp", last_name="Brannigan", username='zapp', email='zapp@aa.io', password='password')
+
+
 
     db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    db.session.add(fry)
+    db.session.add(bender)
+    db.session.add(leela)
+    db.session.add(amy)
+    db.session.add(farnsworth)
+    db.session.add(zoidberg)
+    db.session.add(hermes)
+    db.session.add(zapp)
     db.session.commit()
 
 

@@ -13,15 +13,11 @@ function UpdateBeerForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
     const sessionUser = useSelector(state => state.session.user);
     const breweries = useSelector(state => state.breweries);
     const beers = useSelector(state => state.beers);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
-    console.log(currBeer);
-    console.log(currBeer?.brewery_id, currBeer?.brewery_name)
-
 
     const [name, setName] = useState("");
     const [abv, setAbv] = useState("");
@@ -34,20 +30,13 @@ function UpdateBeerForm() {
     const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
-
-    const breweryOptions = Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
-        return {
-            value: brewery.id,
-            label: brewery.name
-        }
-    })
-
-
+    // Retrieve the current beer and breweries data
     useEffect(() => {
         dispatch(thunkGetBeerById(beer_id));
         dispatch(thunkGetBreweries());
     }, [beer_id])
 
+    // Prepopulate the form fields
     useEffect(() => {
         if (currBeer) {
             setName(currBeer.name);
@@ -61,8 +50,17 @@ function UpdateBeerForm() {
         }
     }, [currBeer])
 
+
+    // Create array of brewery objects for the Select input
+    const breweryOptions = Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
+        return {
+            value: brewery.id,
+            label: brewery.name
+        }
+    })
+
     // Create array of beer style object for the Select input
-    const BEER_STYLES = ["Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
+    const BEER_STYLES = ["American IPA", "Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
     let styleOptions = BEER_STYLES.sort().map(style => {
         return {
             value: style,
@@ -76,7 +74,6 @@ function UpdateBeerForm() {
         const origUrl = document.getElementById("orig-url");
         imageInput.classList.toggle("hidden-image-title");
         origUrl.classList.toggle("hidden-image-title");
-
     }
 
 
@@ -95,6 +92,7 @@ function UpdateBeerForm() {
             return;
         }
 
+        // Create form data to send to server
         const formData = new FormData();
         formData.append("name", name.trim());
         formData.append("abv", abv.trim());
@@ -107,8 +105,7 @@ function UpdateBeerForm() {
 
         const newBeer = await dispatch(thunkUpdateBeer(breweryId, formData));
 
-        console.log(newBeer)
-
+        // Backend error handling
         if (newBeer.errors) {
             setErrors(newBeer.errors);
             setImageLoading(false);
@@ -118,13 +115,8 @@ function UpdateBeerForm() {
         }
     }
 
-    // Handle no logged in user
-    if (!sessionUser) {
-        return null;
-    }
-
     // Handle wrong user
-    if (currBeer?.creator_id !== sessionUser?.id) {
+    if (!sessionUser || currBeer?.creator_id !== sessionUser?.id) {
         return null;
     }
 
@@ -316,83 +308,6 @@ function UpdateBeerForm() {
                 <button className="submit-button" type="submit">Update Beer</button>
             </form>
         </div>
-        // <div id="beer-form-container">
-        //     <h1>Update Beer Form</h1>
-        //     <form className="beer-form" onSubmit={handleSubmit} encType="multipart/form-data">
-        //         <label htmlFor="name">
-        //             Name*
-        //         </label>
-        //         <input
-        //             id="name"
-        //             type="text"
-        //             value={name}
-        //             onChange={(e) => setName(e.target.value)}
-        //             className="input"
-        //             required
-        //         />
-        //         <label htmlFor="brewery">
-        //             Brewery*
-        //         </label>
-        //         <Select
-        //             id="brewery"
-        //             defaultValue={{...initialValue}}
-        //             onChange={e => setBreweryId(e.value)}
-        //             options={breweryOptions}
-        //         />
-        //         <label htmlFor="abv">
-        //             ABV*
-        //         </label>
-        //         <input
-        //             id="abv"
-        //             type="text"
-        //             value={abv}
-        //             onChange={(e) => setAbv(e.target.value)}
-        //             className="input"
-        //             required
-        //         />
-        //         <label htmlFor="ibu">
-        //             IBU*
-        //         </label>
-        //         <input
-        //             id="ibu"
-        //             type="text"
-        //             value={ibu}
-        //             onChange={(e) => setIbu(e.target.value)}
-        //             className="input"
-        //             required
-        //         />
-        //         <label htmlFor="style">
-        //             Style*
-        //         </label>
-        //         <Select
-        //             id="brewery"
-        //             onChange={e => setStyle(e.value)}
-        //             options={styleOptions}
-        //         />
-        //         <label htmlFor="description">
-        //             Description*
-        //         </label>
-        //         <textarea
-        //             id="description"
-        //             rows={5}
-        //             value={description}
-        //             onChange={e => setDescription(e.target.value)}>
-        //         </textarea>
-        //         <label>
-        //             Logo
-        //         </label>
-        //         <input
-        //             id="image-input"
-
-        //             type="file"
-        //             accept="image/*"
-        //             onChange={(e) => setImage(e.target.files[0])}
-        //         />
-        //         {(imageLoading) && <p>Loading...</p>}
-        //         <button type="submit">Submit</button>
-        //     </form>
-
-        // </div>
     )
 }
 

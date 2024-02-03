@@ -37,5 +37,6 @@ class Beer(db.Model):
             'orig_image_url': self.orig_image_url,
             'creator_id': self.creator_id,
             'brewery_id': self.brewery_id,
-            'brewery_name': self.brewery.name
+            'brewery_name': self.brewery.name,
+            'check_ins': [check_in.to_dict() for check_in in self.check_ins]
         }

@@ -1,0 +1,54 @@
+/* SIGN UP */
+
+#sign-up-form-container {
+    width: 375px;
+    padding: 10px 30px;
+}
+
+.sign-up-label {
+    font-size: 13px;
+    position: relative;
+    top: 4px;
+}
+
+.log-in-label {
+    font-size: 13px;
+    position: relative;
+    top: 4px;
+}
+
+
+#sign-up-heading {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+#sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.demo-user-button {
+    padding-bottom: 10px;
+    font-size: 15px;
+    color: rgb(17, 95, 95);
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* LOG IN */
+
+#login-form-container {
+    width: 375px;
+    padding: 10px 30px;
+}
+
+#signup-login-heading {
+    margin: 0 auto;
+    margin-top: 10px;
+    width: fit-content;
+}

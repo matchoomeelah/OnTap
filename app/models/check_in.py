@@ -22,3 +22,19 @@ class CheckIn(db.Model):
     beer = db.relationship('Beer', back_populates="check_ins")
     user = db.relationship('User', back_populates="check_ins")
     comments = db.relationship('Comment', back_populates="check_in", cascade="all, delete")
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "body": self.body,
+            "rating": self.rating,
+            "image_url": self.image_url,
+            "user_id": self.user_id,
+            "user_name": f"{self.user.first_name} {self.user.last_name}",
+            "created_at": self.created_at,
+            "beer": {
+                "id": self.beer_id,
+                "name": self.beer.name,
+                "brewery_id": self.beer.brewery_id,
+            }
+        }

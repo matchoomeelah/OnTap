@@ -9,12 +9,14 @@ import sessionReducer from "./session";
 import breweriesReducer from "./breweries";
 import usersReducer from "./users";
 import beersReducer from "./beers";
+import checkInsReducer from "./checkIns";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   breweries: breweriesReducer,
-  beers: beersReducer
+  beers: beersReducer,
+  checkIns: checkInsReducer
 });
 
 let enhancer;

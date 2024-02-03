@@ -43,3 +43,24 @@ export function validateSignUpForm(firstName, lastName, email, username, passwor
 
     return errors;
 }
+
+export function validateLogInForm(email, password) {
+    const errors = {};
+
+    // Email
+    if(!emailValidator(email)){
+        errors.email = "Invalid Email";
+    }
+
+    if (email.trim().length <= 0) {
+        errors.email = "This field is required"
+    }
+
+    // Password
+    if (password.trim().length <= 0) {
+        errors.password = "This field is required"
+    }
+
+    return errors;
+
+}

@@ -2,7 +2,8 @@ import { useState } from "react";
 import { thunkLogin } from "../../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
-import "./LoginForm.css";
+import { validateLogInForm } from "../validation";
+import "../Modals.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -13,6 +14,13 @@ function LoginFormModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formErrors = validateLogInForm(email, password);
+
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
 
     const serverResponse = await dispatch(
       thunkLogin({
@@ -40,33 +48,61 @@ function LoginFormModal() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
+    <div id="login-form-container">
       <form onSubmit={handleSubmit}>
-        <label>
-          Email
+        <h1 id="signup-login-heading">Log In</h1>
+        <div className="field-container">
+          <div className="form-label-container">
+            <label className="log-in-label" htmlFor="email">
+              Email*
+            </label>
+            <div className="error-container">
+              {errors.email && <span className="error-message">{errors.email}</span>}
+            </div>
+          </div>
           <input
+            id="email"
+            className="input"
             type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (errors.email) {
+                const newErrors = { ...errors };
+                delete newErrors.email;
+                setErrors(newErrors);
+              }
+            }}
           />
-        </label>
-        {errors.email && <p>{errors.email}</p>}
-        <label>
-          Password
+        </div>
+        <div className="field-container">
+          <div className="form-label-container">
+            <label className="log-in-label" htmlFor="password">
+              Password*
+            </label>
+            <div className="error-container">
+              {errors.password && <span className="error-message">{errors.password}</span>}
+            </div>
+          </div>
           <input
+            id="password"
+            className="input"
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            onChange={(e) => {
+              setPassword(e.target.value);
+              if (errors.password) {
+                const newErrors = { ...errors };
+                delete newErrors.password;
+                setErrors(newErrors);
+              }
+            }}
           />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-        <button type="submit" onClick={logInDemoUser}>Demo User</button>
+        </div>
+        <button className="submit-button" type="submit">Log In</button>
+        <button className="demo-user-button" type="submit" onClick={logInDemoUser}>Demo User</button>
       </form>
-    </>
+    </div>
   );
 }
 

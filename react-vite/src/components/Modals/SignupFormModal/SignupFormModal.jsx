@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { thunkLogin, thunkSignup } from "../../../redux/session";
-import { validateSignUpForm } from "./validation";
+import { validateSignUpForm } from "../validation";
 
-import "./SignupForm.css";
+import "../Modals.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ function SignupFormModal() {
   return (
     <div id="sign-up-form-container">
       <form id="sign-up-form" onSubmit={handleSubmit}>
-        <h1 id="sign-up-heading">Sign Up</h1>
+        <h1 id="signup-login-heading">Sign Up</h1>
         {errors.server && <p>{errors.server}</p>}
         <div className="field-container">
           <div className="form-label-container">

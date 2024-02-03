@@ -141,3 +141,15 @@ def delete_beer(id):
         return {"message": "Success"}, 200
 
     return { "message": "User unauthorized"}, 401
+
+
+# Get all check-ins for a beer
+@beer_routes.route("/<int:id>/check-ins")
+def get_check_ins_by_beer(id):
+    beer = Beer.query.get(id)
+
+    if beer:
+        check_ins = [check_in.to_dict() for check_in in beer.check_ins]
+        return {"CheckIns": check_ins}
+
+    return {"errors": {"message": "Beer could not be found"}}, 404

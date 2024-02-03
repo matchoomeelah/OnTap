@@ -46,6 +46,12 @@ function ProfileButton({ user }) {
     navigate('/');
   };
 
+  // Go to user's profile
+  const goToProfile = () => {
+    navigate(`/users/${user.id}`);
+    closeMenu();
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
@@ -61,10 +67,7 @@ function ProfileButton({ user }) {
             <div>Hello, {user.username}!</div>
             <div>{user.email}</div>
             <div className='separator'></div>
-            <div onClick={() => navigate(`/users/${user.id}`)}>My Profile</div>
-            {/* <div id='manage-spots-div' onClick={onClickManageSpots}>Manage Spots</div> */}
-            {/* <div id='manage-reviews-div' onClick={onClickManageReviews}>Manage Reviews</div> */}
-            {/* <div className='separator'></div> */}
+            <div onClick={goToProfile}>My Profile</div>
             <div>
               <button id="logout-button" onClick={logout}>Log Out</button>
             </div>
