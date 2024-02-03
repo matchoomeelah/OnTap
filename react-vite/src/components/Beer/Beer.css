@@ -2,20 +2,36 @@
 
 .beer-tile {
     display: flex;
-    align-items: center;
-    padding-left: 5px;
-    width: 400px;
-    height: 100px;
+    width: 90%;
+    min-height: 130px;
     background-color: #E09712;
-    border: 2px solid black;
+    border: 1px solid gray;
+    border-radius: 5px;
     margin-bottom: 3px;
     gap: 5px;
 }
 
 .beer-tile-image {
-    height: 90px;
-    width: 90px;
+    height: 130px;
+    width: 130px;
     border-radius: 2px;
+}
+
+.beer-tile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+#beer-tile-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#beer-tile-abv-ibu {
+    display: flex;
+    gap: 10px;
 }
 
 
@@ -28,6 +44,7 @@
     gap: 10px;
     margin-left: 40px;
     margin-right: 40px;
+    margin-top: 100px;
 }
 
 /* BEER DETAILS HEADER */

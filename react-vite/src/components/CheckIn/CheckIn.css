@@ -1,8 +1,43 @@
 .check-in-tile-container {
-    width: 680px;
-    height: 100px;
-    background-color: #E09712;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    min-height: 130px;
+    max-height: 250px;
     margin-top: 15px;
     padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
     box-sizing: border-box;
+}
+
+#check-in-username {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+#check-in-username:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+#check-in-headline {
+    font-size: 13px;
+}
+
+#check-in-body {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#delete-button {
+    align-self: flex-end;
+    text-decoration: underline;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }

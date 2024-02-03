@@ -13,14 +13,6 @@ function UserCheckIns({profileUser, sessionUser}) {
                 return (
                     <div key={checkIn.id}>
                         <CheckInTile checkIn={checkIn} />
-                        {profileUser.id === sessionUser.id &&
-                            <div className="check-in-buttons">
-                                <OpenModalButton
-                                    buttonText={'Delete'}
-                                    modalComponent={<DeleteCheckInModal checkIn={checkIn} />}
-                                />
-                            </div>
-                        }
                     </div>
                 )
             })}
