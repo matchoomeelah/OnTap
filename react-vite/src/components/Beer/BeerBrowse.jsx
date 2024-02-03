@@ -8,7 +8,6 @@ function BeerBrowse() {
     const dispatch = useDispatch();
 
     const beers = useSelector(state => state.beers);
-    console.log("BEERS: ", beers);
 
 
     useEffect(() => {
@@ -17,7 +16,7 @@ function BeerBrowse() {
 
     return (
         <div>
-            <h1>Beer Browse</h1>
+            <h1 className="browse-heading">Browse All Beers</h1>
             {Object.values(beers).map(beer => {
                 return <BeerTile key={beer.id} beer={beer} />
             })}

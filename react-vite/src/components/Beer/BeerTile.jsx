@@ -9,33 +9,36 @@ function BeerTile({ beer }) {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
-        <div className="beer-tile">
+        <div className="beer-tile" onClick={() => navigate(`/beers/${beer.id}`)}>
             <img className="beer-tile-image" src={beer.image_url} alt="Beer Image" />
             <div className="beer-tile-info">
                 <div>
                     <div id="beer-tile-name">{beer.name}</div>
                     <div id="beer-tile-style">{beer.style}</div>
                 </div>
-                <div id="beer-tile-abv-ibu">
-                    <div>
-                        ABV {beer.abv}%
-                    </div>
-                    <div>
-                        IBU {beer.ibu}
+                <div>
+                    <div id="bottom-tile-container">
+                        <div id="beer-tile-abv-ibu">
+                            <div>
+                                ABV {beer.abv}%
+                            </div>
+                            <div>
+                                IBU {beer.ibu}
+                            </div>
+                        </div>
+                        {beer?.creator_id === sessionUser?.id &&
+                            <div className="beer-buttons">
+                                <button id="beer-tile-edit" onClick={(e) => { e.stopPropagation(); navigate(`/beers/${beer.id}/edit`) }}>Edit</button>
+                                <OpenModalButton
+                                    buttonId="beer-tile-delete"
+                                    buttonText={'Delete'}
+                                    modalComponent={<DeleteBeerModal beer={beer} />}
+                                />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
-            {/* {beer?.creator_id === sessionUser?.id &&
-                <div className="beer-buttons">
-                    <OpenModalButton
-                        buttonText={'Delete'}
-                        modalComponent={<DeleteBeerModal beer={beer} />}
-                    />
-                    <button onClick={(e) => {e.stopPropagation();navigate(`/beers/${beer.id}/edit`)}}>Edit</button>
-                </div>
-            } */}
-            {/* <button onClick={() => navigate(`/beers/${beer.id}`)}>View Details</button> */}
-
         </div>
     )
 }

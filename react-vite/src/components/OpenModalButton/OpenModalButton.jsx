@@ -15,7 +15,7 @@ function OpenModalButton({
     if (typeof onButtonClick === "function") onButtonClick();
   };
 
-  return <button id={buttonId ? buttonId : 'modal-button'} onClick={onClick}>{buttonText}</button>;
+  return <button id={buttonId ? buttonId : 'modal-button'} onClick={(e) => {e.stopPropagation(); onClick();}}>{buttonText}</button>;
 }
 
 export default OpenModalButton;

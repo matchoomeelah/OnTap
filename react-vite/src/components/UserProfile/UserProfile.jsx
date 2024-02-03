@@ -62,10 +62,14 @@ function UserProfile() {
 
                 <div id="user-stuff">
                     <div id="stuff-header">
-                        <h2 className="user-section-header">{profileUser?.first_name}&apos;s Stuff </h2>
-                        <div>
-                            <button onClick={enableShowBeers}>Show Beers</button>
-                            <button onClick={enableShowBreweries}>Show Breweries</button>
+                        <h2 className="user-section-header">{profileUser?.id === sessionUser?.id ? "My " : profileUser?.first_name + "'s "} Stuff </h2>
+                        <div id="show-buttons-container">
+                            <div>
+                                {profileUser?.id === sessionUser?.id && showBeers && <button className="create-button" onClick={() => navigate(`/beers/new`)}>+ Create New Beer</button>}
+                                {profileUser?.id === sessionUser?.id && showBreweries && <button className="create-button" onClick={() => navigate(`/breweries/new`)}>+ Create New Brewery</button>}
+                                <button class="show-button show-beer" onClick={enableShowBeers}>Beers</button>
+                                <button class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</button>
+                            </div>
                         </div>
                     </div>
                     {

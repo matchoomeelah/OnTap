@@ -52,6 +52,18 @@ function ProfileButton({ user }) {
     closeMenu();
   }
 
+  // Go to user's profile
+  const goToBeerForm = () => {
+    navigate(`/beers/new`);
+    closeMenu();
+  }
+
+  // Go to user's profile
+  const goToBreweryForm = () => {
+    navigate(`/breweries/new`);
+    closeMenu();
+  }
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
@@ -68,7 +80,12 @@ function ProfileButton({ user }) {
             <div className='separator'></div>
             <div className='user-menu-option' onClick={goToProfile}>My Profile</div>
             <div className='separator'></div>
+            <div className='user-menu-option' onClick={goToBeerForm}>Add a Beer</div>
+            <div className='separator'></div>
+            <div className='user-menu-option' onClick={goToBreweryForm}>Add a Brewery</div>
+            <div className='separator'></div>
             <button id="logout-button" onClick={logout}>Log Out</button>
+
           </>
         ) : (
           <>

@@ -40,13 +40,51 @@
     text-decoration: 3px solid black underline;
 }
 
-#stuff-header {
+#show-buttons-container {
     display: flex;
+    flex-direction: column-reverse;
 }
 
-/* #user-beers-container {
+.create-button {
+    background-color: #E05512;
+    color: white;
+    border: none;
+    box-shadow: 1px 1px 1px #525151;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.show-button {
+    position: relative;
+    top: 2px;
+    width: 100px;
+    padding: 6px 5px 4px;
+    /* border-radius: 0px; */
+    /* border-top-left-radius: 2px;
+    border-top-right-radius: 2px; */
+    border: 0.5 solid gray;
+    border-bottom: none;
+    color: white;
+    margin-left: 2px;
+    cursor: pointer;
+}
+
+.show-beer {
+    background-color: #E0AE11;
+}
+
+.show-brewery {
+    background-color: #E09712;
+}
+
+
+
+#stuff-header {
     display: flex;
-} */
+    justify-content: space-between;
+    width: 90%;
+}
+
 
 #new-beer-button {
     min-width: 100px;
