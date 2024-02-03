@@ -1,3 +1,5 @@
+/*NAV BAR*/
+
 nav{
   position: fixed;
   display: flex;
@@ -20,7 +22,6 @@ nav{
   cursor: pointer;
 }
 
-
 #nav-links-div {
   display: flex;
   justify-content: space-around;
@@ -33,21 +34,10 @@ nav{
   text-decoration: none;
 }
 
+/* DROP DOWN */
+
 .profile-dropdown {
   position: absolute;
-}
-
-#user-menu-container {
-  display: flex;
-  align-items: center;
-}
-
-#new-spot-button {
-  margin-right: 8px;
-  font-size: 13px;
-  color: rgb(17, 95, 95);
-  background-color: transparent;
-  border: none;
 }
 
 #profile-button {
@@ -67,40 +57,23 @@ nav{
 
 #dropdown-menu {
   position: absolute;
+  right: 32px;
   width: 170px;
   min-width: fit-content;
-  right: 32px;
+  margin-top: 2px;
+  padding: 5px;
+  background-color: white;
   border: 1px solid lightgray;
   border-radius: 3px;
-  margin-top: 2px;
-  padding-top: 3px;
-  padding-left: 7px;
-  padding-right: 15px;
-  padding-bottom: 3px;
-  background-color: white;
   overflow: hidden;
-}
-
-#dropdown-menu * {
-  padding: 2px;
-  margin-bottom: 3px;
-  width: 100%;
-}
-
-#manage-spots-div:hover {
-  cursor: pointer;
-  font-weight: 500;
-}
-
-#manage-reviews-div:hover {
-  cursor: pointer;
-  font-weight: 500;
 }
 
 .separator {
   border-top: 1px solid gray;
-  width: 115%;
-  margin-top: 2px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .login-menu-item>p,
@@ -128,5 +101,19 @@ nav{
   padding-bottom: 5px;
   background-color: darkgray;
   color: white;
+  cursor: pointer;
   box-shadow: 1px 1px 1px black;
+}
+
+#greeting {
+  width: fit-content;
+  margin: 0 auto;
+
+}
+
+.user-menu-option {
+  width: fit-content;
+  cursor: pointer;
+  margin: 0 auto;
+
 }

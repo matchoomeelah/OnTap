@@ -64,13 +64,11 @@ function ProfileButton({ user }) {
       <div id='dropdown-menu' className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>Hello, {user.username}!</div>
-            <div>{user.email}</div>
+            <div id="greeting">Hello, {user.username}!</div>
             <div className='separator'></div>
-            <div onClick={goToProfile}>My Profile</div>
-            <div>
-              <button id="logout-button" onClick={logout}>Log Out</button>
-            </div>
+            <div className='user-menu-option' onClick={goToProfile}>My Profile</div>
+            <div className='separator'></div>
+            <button id="logout-button" onClick={logout}>Log Out</button>
           </>
         ) : (
           <>
