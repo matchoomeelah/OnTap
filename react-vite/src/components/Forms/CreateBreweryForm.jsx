@@ -212,7 +212,7 @@ function CreateBreweryForm() {
                         id="description"
                         type="text"
                         rows={5}
-                        maxLength={1024}
+                        maxLength={1500}
                         value={description}
                         className="input"
                         onChange={(e) => {
@@ -225,7 +225,7 @@ function CreateBreweryForm() {
                             }
                         }}
                     />
-                    <div id="description-char-count">{descriptionCharCount}/1024</div>
+                    <div id="description-char-count">{descriptionCharCount}/1500</div>
 
                 </div>
 

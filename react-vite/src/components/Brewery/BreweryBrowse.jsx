@@ -17,8 +17,8 @@ function BreweryBrowse() {
 
 
     return (
-        <div>
-            <h1 className="browse-heading">Browse All Breweries</h1>
+        <div className="browse-page-container">
+            <h1 className="browse-heading">All Breweries</h1>
             {Object.values(breweries).map(brewery => {
                 return <BreweryTile key={brewery.id} brewery={brewery} />
             })}

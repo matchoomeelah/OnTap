@@ -29,15 +29,15 @@ function CheckInTile({ checkIn }) {
         <div className="check-in-tile-container">
             <NavLink id="check-in-username" to={`/users/${checkIn.user_id}`}>{checkIn.user_name}</NavLink> <span id="check-in-headline"> is drinking <NavLink to={`/beers/${checkIn.beer.id}`}>{checkIn.beer.name}</NavLink> by <NavLink to={`/breweries/${currBrewery?.id}`}>{currBrewery?.name}</NavLink></span>
             <div id="check-in-body">{checkIn.body}</div>
+            <div className="check-in-buttons">
             {checkIn.user_id === sessionUser?.id &&
-                // <div className="check-in-buttons">
                     <OpenModalButton
                         buttonId="delete-button"
                         buttonText={'Delete'}
                         modalComponent={<DeleteCheckInModal checkIn={checkIn} />}
                     />
-                // </div>
             }
+            </div>
         </div>
     )
 

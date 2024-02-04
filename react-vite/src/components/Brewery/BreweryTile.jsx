@@ -11,10 +11,9 @@ function BreweryTile({ brewery }) {
         <div className="brewery-tile" onClick={() => navigate(`/breweries/${brewery.id}`)}>
             <img className="brewery-tile-image" src={brewery.image_url} alt="brewery Image" />
             <div className="brewery-tile-info">
-                {/* <div> */}
-                    <div id="brewery-tile-name">{brewery.name}</div>
-                    <div id="city-state-country">{brewery.city}, {brewery.state_province}, {brewery.country}</div>
-                {/* </div> */}
+                <div id="brewery-tile-name">{brewery.name}</div>
+                <div id="city-state-country">{brewery.city}, {brewery.state_province}, {brewery.country}</div>
+                <div>{brewery?.beers.length} Beers</div>
                 <div id="brewery-buttons-container">
                     {brewery?.creator_id === sessionUser?.id &&
                         <div className="brewery-buttons">

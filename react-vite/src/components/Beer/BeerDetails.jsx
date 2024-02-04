@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { thunkGetBeerById } from "../../redux/beers";
 import CheckInTile from "../CheckIn/CheckInTile";
+import OpenModalButton from "../OpenModalButton";
+import CreateCheckInModal from "../Modals/CreateCheckInModal";
 // import CheckInTile from "../CheckIn/CheckInTile";
 
 function BeerDetails() {
     const dispatch = useDispatch();
 
     const beers = useSelector(state => state.beers);
+    const checkIns = useSelector(state => state.checkIns)
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
 
@@ -17,8 +20,12 @@ function BeerDetails() {
 
     useEffect(() => {
         dispatch(thunkGetBeerById(beer_id));
-    }, [beer_id])
 
+    }, [beer_id, checkIns])
+
+    // useEffect(() => {
+    //     dispatch(thunk)
+    // }, [checkIns])
 
     return (
         <div id="beer-details-container">
@@ -54,9 +61,15 @@ function BeerDetails() {
                         <h4>About</h4>
                         <div>{currBeer?.description}</div>
                     </div>
-                    <button id="check-in-button" onClick={() => alert("Feature Coming Soon!")}>Check In!</button>
+                    {/* <button id="check-in-button" onClick={() => alert("Feature Coming Soon!")}>Check In!</button> */}
+                    <OpenModalButton
+                                // onButtonClick={(e) => e.stopPropagation()}
+                                buttonId="check-in-button"
+                                buttonText={'Check In!'}
+                                modalComponent={<CreateCheckInModal beer={currBeer} />}
+                    />
                     <div id="check-in-container">
-                        {currBeer?.check_ins.map(checkIn => {
+                        {currBeer?.check_ins.reverse().map(checkIn => {
                             return <CheckInTile checkIn={checkIn}/>
                         })}
                     </div>

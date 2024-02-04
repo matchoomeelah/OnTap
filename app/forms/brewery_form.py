@@ -22,7 +22,7 @@ class BreweryForm(FlaskForm):
     city = StringField("City", validators=[DataRequired(), Length(min=1, max=40)])
     state_province = StringField("State or Province", validators=[DataRequired(), Length(min=1, max=40)])
     country = StringField("Country", validators=[DataRequired(), Length(min=1, max=50)])
-    description = StringField("Description", validators=[DataRequired(), Length(min=1, max=1024)])
+    description = StringField("Description", validators=[DataRequired(), Length(min=1, max=1500)])
     image_url = FileField("Image File", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
     website_url = StringField("Website URL", validators=[(Length(min=0, max=120))])
     submit = SubmitField("Create Brewery")

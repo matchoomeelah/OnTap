@@ -64,7 +64,6 @@
     display: flex;
     width: 95%;
     height: 300px;
-    /* border: 1px solid black; */
     gap: 10px;
 }
 
@@ -78,22 +77,24 @@
 }
 
 #brewery-content-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* display: flex; */
     width: 95%;
     height: 400px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     justify-content: space-between;
 }
 
 #brewery-content {
-    width: 50%;
+    /* width: 50%; */
     height: 400px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 #brewery-about {
-    width: 30%;
+    width: 90%;
     height: 400px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     overflow: scroll;
 }

@@ -1,7 +1,8 @@
 from flask import Blueprint, request
 from flask_login import current_user, login_required
 from ..forms.beer_form import BeerForm
-from app.models import Beer, db
+from ..forms.check_in_form import CheckInForm
+from app.models import Beer, CheckIn, db
 from app.api.aws_helpers import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 
@@ -153,3 +154,40 @@ def get_check_ins_by_beer(id):
         return {"CheckIns": check_ins}
 
     return {"errors": {"message": "Beer could not be found"}}, 404
+
+
+# Create check-in for a beer
+@beer_routes.route("/<int:id>/check-ins", methods=["POST"])
+def create_check_in(id):
+    form = CheckInForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        url = ""
+        image = form.data["image_url"]
+
+        if image:
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+
+            if "url" not in upload:
+                return {"errors": {"message": "Image upload failed"}}
+
+            url = upload["url"]
+
+        params = {
+            "body": form.data["body"],
+            "rating": form.data["rating"],
+            "image_url": url,
+            "beer_id": id,
+            "user_id": current_user.id
+        }
+
+        new_check_in = CheckIn(**params)
+        db.session.add(new_check_in)
+        db.session.commit()
+
+        return new_check_in.to_dict()
+
+    return form.errors, 400

@@ -10,6 +10,6 @@ class BeerForm(FlaskForm):
     abv = FloatField("ABV", validators=[DataRequired()])
     ibu = IntegerField("IBU", validators=[DataRequired()])
     style = StringField("Style", validators=[DataRequired()])
-    description = StringField("description", validators=[DataRequired(), Length(min=1, max=1024)])
+    description = StringField("description", validators=[DataRequired(), Length(min=1, max=1500)])
     image_url = FileField("Image File", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
     submit = SubmitField("Create Beer")

@@ -31,15 +31,15 @@ function BreweryDetails() {
                 </div>
             </div>
             <div id="brewery-content-container">
+                <div id="brewery-about">
+                    <h4>About</h4>
+                    <div>{currBrewery?.description}</div>
+                </div>
                 <div id="brewery-content">
                     <h4>Beers</h4>
                     {currBrewery?.beers.map(beer => {
                         return <BeerTile key={beer.id} beer={beer} />
                     })}
-                </div>
-                <div id="brewery-about">
-                    <h4>About</h4>
-                    <div>{currBrewery?.description}</div>
                 </div>
             </div>
         </div>

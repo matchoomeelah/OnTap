@@ -10,7 +10,6 @@
     border: 1px solid gray;
     border-radius: 5px;
     box-sizing: border-box;
-    /* background-color: rgb(225, 165, 165); */
 }
 
 #check-in-username {
@@ -32,6 +31,11 @@
 #check-in-body {
     margin-top: 10px;
     font-size: 14px;
+}
+
+.check-in-buttons {
+    min-height: 20px;
+    align-self: flex-end;
 }
 
 #delete-button {

@@ -15,8 +15,8 @@ function BeerBrowse() {
     }, [])
 
     return (
-        <div>
-            <h1 className="browse-heading">Browse All Beers</h1>
+        <div className="browse-page-container">
+            <h1 className="browse-heading">All Beers</h1>
             {Object.values(beers).map(beer => {
                 return <BeerTile key={beer.id} beer={beer} />
             })}

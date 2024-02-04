@@ -8,6 +8,7 @@ import { thunkGetUserById } from "../../redux/users";
 import UserBreweries from "./UserBreweries";
 import UserBeers from "./UserBeers";
 import UserCheckIns from "./UserCheckIns";
+import { thunkGetUserCheckIns } from "../../redux/checkIns";
 
 function UserProfile() {
     const dispatch = useDispatch();
@@ -23,6 +24,8 @@ function UserProfile() {
     const [showBreweries, setShowBreweries] = useState(false);
     const [showCheckIns, setShowCheckins] = useState(true);
 
+
+    console.log("Check Ins: ", checkIns)
 
     function enableShowBeers() {
         setShowBreweries(false);
@@ -46,7 +49,8 @@ function UserProfile() {
 
     useEffect(() => {
         dispatch(thunkGetUserById(user_id));
-    }, [user_id, breweries, beers, checkIns])
+        dispatch(thunkGetUserCheckIns(sessionUser.id))
+    }, [user_id])
 
 
     return (
@@ -57,7 +61,7 @@ function UserProfile() {
                     <div>
                         <h2 className="user-section-header" id="recent-activity-header">Recent Activity</h2>
                     </div>
-                    <UserCheckIns profileUser={profileUser} sessionUser={sessionUser} />
+                    <UserCheckIns profileUser={profileUser} checkIns={checkIns}/>
                 </div>
 
                 <div id="user-stuff">

@@ -11,7 +11,7 @@ class CheckIn(db.Model):
     # Columns
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(255), nullable=True)
-    rating = db.Column(db.Float, nullable=True)
+    rating = db.Column(db.Float, nullable=False)
     image_url = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)

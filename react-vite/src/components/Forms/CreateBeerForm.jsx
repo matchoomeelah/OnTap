@@ -73,9 +73,9 @@ function CreateBeerForm() {
         formData.append("brewery_id", breweryId);
         setImageLoading(true);
 
-        const newBeer = await dispatch(thunkCreateBeer(formData));
+        console.log(formData)
 
-        console.log(newBeer)
+        const newBeer = await dispatch(thunkCreateBeer(formData));
 
         if (newBeer.errors) {
             setErrors(newBeer.errors);
@@ -244,7 +244,7 @@ function CreateBeerForm() {
                             }
                         }}
                     />
-                    <div id="description-char-count">{descriptionCharCount}/1024</div>
+                    <div id="description-char-count">{descriptionCharCount}/1500</div>
                 </div>
 
                 <div className="field-container">

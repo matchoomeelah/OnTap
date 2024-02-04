@@ -275,7 +275,7 @@ function UpdateBeerForm() {
                             }
                         }}
                     />
-                    <div id="description-char-count">{descriptionCharCount}/1024</div>
+                    <div id="description-char-count">{descriptionCharCount}/1500</div>
                 </div>
 
                 <div className="field-container">

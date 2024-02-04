@@ -1,3 +1,11 @@
+.browse-page-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 85%;
+    gap: 8px;
+}
+
 .browse-heading {
     margin-top: 100px;
 }
@@ -66,8 +74,8 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
     margin-top: 100px;
 }
 
@@ -162,15 +170,19 @@ i {
 #beer-about {
     width: 680px;
     padding: 10px;
+    padding-left: 0;
     height: fit-content;
     max-height: 150px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 2px;
     overflow: scroll;
+    /* background-color:#525151;
+    color:#E0AE11; */
 }
 
 h4 {
     margin-top: 0px;
+    text-decoration: underline;
 }
 
 #check-in-button {
@@ -182,7 +194,7 @@ h4 {
     cursor: pointer;
     font-size: 18px;
     padding: 5px 20px 5px;
-    margin-top: 10px;
+    margin: 15px 0px 10px 0px;
     box-shadow: 2px 2px 2px #525151;
 }
 
@@ -195,8 +207,8 @@ h4 {
 
 #beer-photos {
     display: grid;
-    grid-template-columns: 85px 85px 85px;
-    grid-template-rows: 85px 85px 85px;
+    grid-template-columns: 95px 95px 95px;
+    grid-template-rows: 95px 95px 95px;
     gap: 3px;
 
 
