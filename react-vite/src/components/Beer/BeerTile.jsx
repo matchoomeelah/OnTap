@@ -7,6 +7,9 @@ function BeerTile({ beer }) {
     const navigate = useNavigate();
 
     const sessionUser = useSelector(state => state.session.user);
+    // const currAvgRating = beer?.check_ins.length > 0 ? beer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / beer?.check_ins.length : "New";
+    const currAvgRating = beer?.check_ins.length > 0 ? parseFloat(beer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / beer?.check_ins.length).toFixed(1) : "New";
+
 
     return (
         <div className="beer-tile" onClick={() => navigate(`/beers/${beer.id}`)}>
@@ -24,6 +27,9 @@ function BeerTile({ beer }) {
                             </div>
                             <div>
                                 IBU {beer.ibu}
+                            </div>
+                            <div>
+                            <div><i id="beer-tile-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                             </div>
                         </div>
                         {beer?.creator_id === sessionUser?.id &&

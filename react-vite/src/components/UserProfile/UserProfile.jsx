@@ -66,18 +66,20 @@ function UserProfile() {
                     <div>
                         <h2 className="user-section-header" id="recent-activity-header">Recent Activity</h2>
                     </div>
-                    <UserCheckIns checkIns={checkIns} />
+                    <UserCheckIns profileUser={profileUser} checkIns={checkIns} />
                 </div>
 
                 <div id="user-stuff">
                     <div id="stuff-header">
                         <h2 className="user-section-header">{profileUser?.id === sessionUser?.id ? "My " : profileUser?.first_name + "'s "} Stuff </h2>
                         <div id="show-buttons-container">
-                            <div>
-                                {profileUser?.id === sessionUser?.id && showBeers && <button className="create-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</button>}
-                                {profileUser?.id === sessionUser?.id && showBreweries && <button className="create-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</button>}
-                                <button class="show-button show-beer" onClick={enableShowBeers}>Beers</button>
-                                <button class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</button>
+                            <div id="show-buttons">
+                                {profileUser?.id === sessionUser?.id && showBeers && <h5 className="create-button show-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</h5>}
+                                {profileUser?.id === sessionUser?.id && showBreweries && <h5 className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</h5>}
+                                <h5 class="show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                                <h5 class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
+                                {/* <button class="show-button show-beer" onClick={enableShowBeers}>Beers</button>
+                                <button class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</button> */}
                             </div>
                         </div>
                     </div>

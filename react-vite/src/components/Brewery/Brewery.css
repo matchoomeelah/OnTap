@@ -94,9 +94,38 @@
     height: 400px;
 }
 
+#brewery-show-buttons-container {
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+    margin-right: 70px;
+    /* background-color: #525151; */
+    /* width: fit-content; */
+    /* padding: 0 8px; */
+    /* margin-left: 120px; */
+}
+
+.brewery-show-button {
+    color: white;
+    cursor: pointer;
+    position: relative;
+    top: 10px;
+    padding: 15px 8px;
+
+}
+
+#brewery-show-beers-button {
+    background-color: #E0AE11;
+}
+
+#brewery-show-check-ins-button {
+    background-color: #525151;
+}
+
 #brewery-about {
     width: 90%;
     height: 400px;
     /* border: 1px solid blue; */
     overflow: scroll;
+    margin-top: 30px;
 }

@@ -1,22 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { thunkGetBreweryById } from "../../redux/breweries";
 import BeerTile from "../Beer/BeerTile"
+import CheckInTile from "../CheckIn/CheckInTile";
 
 function BreweryDetails() {
     const dispatch = useDispatch();
     const breweries = useSelector(state => state.breweries);
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
-    console.log(breweries);
-    console.log(currBrewery);
-    currBrewery && console.log(currBrewery.beers);
 
+    const [showBeers, setShowBeers] = useState(true)
+    const [showCheckIns, setShowCheckins] = useState(false)
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        enableShowBeers();
+    }, [])
 
     useEffect(() => {
         dispatch(thunkGetBreweryById(brewery_id));
     }, [])
+
+
+    // Finds all check ins associated with brewery and sorts them by most recent...
+    // Should probably just change the DB if I want this functionality
+    const breweryCheckIns = [];
+    currBrewery?.beers.forEach(beer => {
+        beer.check_ins.forEach(checkIn => {
+            breweryCheckIns.push(checkIn);
+        })
+    })
+    breweryCheckIns.sort((a, b) => a.created_at > b.created_at ? 1 : -1);
+
+
+    function enableShowBeers() {
+        setShowCheckins(false);
+        setShowBeers(true);
+    }
+
+    function enableShowCheckIns() {
+        setShowBeers(false);
+        setShowCheckins(true);
+    }
 
 
     return (
@@ -36,9 +64,15 @@ function BreweryDetails() {
                     <div>{currBrewery?.description}</div>
                 </div>
                 <div id="brewery-content">
-                    <h4>Beers</h4>
-                    {currBrewery?.beers.map(beer => {
+                    <div id="brewery-show-buttons-container">
+                        <h5 id="brewery-show-beers-button" className="brewery-show-button" onClick={enableShowBeers}>Beers</h5>
+                        <h5 id="brewery-show-check-ins-button" className="brewery-show-button" onClick={enableShowCheckIns}>Check Ins</h5>
+                    </div>
+                    {showBeers && currBrewery?.beers.map(beer => {
                         return <BeerTile key={beer.id} beer={beer} />
+                    })}
+                    {showCheckIns && breweryCheckIns.map(checkIn => {
+                        return <CheckInTile checkIn={checkIn} />
                     })}
                 </div>
             </div>

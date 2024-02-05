@@ -8,8 +8,12 @@ function UserBreweries({profileUser, sessionUser}) {
 
     return (
         <div>
-            {/* {profileUser?.id === sessionUser?.id && <button onClick={() => navigate(`/breweries/new`)}>Create New Brewery</button>} */}
-            {profileUser?.breweries.map(brewery => {
+            {profileUser?.breweries.length === 0 ?
+                <div id="no-breweries-placeholder">
+                    <div id="no-breweries-text">No breweries created yet!</div>
+                </div>
+            :
+            profileUser?.breweries.map(brewery => {
                 return (
                     <div key={brewery.id}>
                         <BreweryTile brewery={brewery} />

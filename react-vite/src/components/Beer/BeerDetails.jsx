@@ -16,12 +16,15 @@ function BeerDetails() {
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
 
-    const currAvgRating = currBeer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / currBeer?.check_ins.length;
+    const currAvgRating = currBeer?.check_ins.length > 0 ? parseFloat(currBeer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / currBeer?.check_ins.length).toFixed(1) : "New";
 
 
     useEffect(() => {
-        dispatch(thunkGetBeerById(beer_id));
+        window.scrollTo(0, 0);
+    }, [])
 
+    useEffect(() => {
+        dispatch(thunkGetBeerById(beer_id));
     }, [beer_id, checkIns])
 
     return (
@@ -46,7 +49,7 @@ function BeerDetails() {
                             <div>
                                 <div>Rating</div>
                                 {/* <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div> */}
-                                <div><i class="fa-solid fa-beer-mug-empty"></i>{parseFloat(currAvgRating).toFixed(1)}</div>
+                                <div><i id="beer-details-rating-mug"class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                             </div>
                         </div>
                         <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button>

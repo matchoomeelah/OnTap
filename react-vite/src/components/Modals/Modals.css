@@ -99,15 +99,14 @@
 
 .rating-list li:hover,
 .rating-list li:hover~li {
-    color: black;
+    /* color: black; */
+    color: gold;
 }
 
 .rating-list {
     display: inline-block;
     list-style: none;
     padding: 0;
-
-    /* width: fit-content; */
 }
 
 #stars-word-list-item {
@@ -117,5 +116,9 @@
 }
 
 .filled {
-    color: black;
+    color: gold;
 }
+
+/* .empty {
+    color: lightgray;
+} */

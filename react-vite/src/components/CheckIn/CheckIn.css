@@ -28,6 +28,11 @@
     display: flex;
 }
 
+#check-in-mug {
+    color: rgb(237, 210, 55);
+    /* color: gold */
+}
+
 #check-in-headline {
     font-size: 13px;
 }

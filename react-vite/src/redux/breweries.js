@@ -94,7 +94,6 @@ export const thunkGetBreweryById = (id) => async (dispatch) => {
 
     // Extract the data
     const data = await response.json();
-    console.log(data);
 
     // Send to reducer or report error
     if (response.ok) {
@@ -116,7 +115,6 @@ export const thunkUpdateBrewery = (id, brewery) => async (dispatch) => {
 
     // Extract the data
     const data = await response.json();
-    console.log("DATA: ", data);
 
     // Send to reducer or report error
     if (response.ok) {

@@ -67,6 +67,10 @@
     border: none;
 }
 
+#beer-tile-mug {
+    color: #525151;
+}
+
 /* BEER DETAILS */
 
 #beer-details-container {
@@ -138,8 +142,9 @@ i {
     width: 300px;
 }
 
-.fa-beer-mug-empty {
-    color: #E0AE11;
+#beer-details-rating-mug {
+    /* color: gold */
+    color: rgb(237, 210, 55);
 }
 #wishlist-button {
     height: fit-content;
