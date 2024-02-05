@@ -11,6 +11,7 @@ import UserProfile from '../components/UserProfile/UserProfile';
 import BeerDetails from '../components/Beer/BeerDetails';
 import CreateBeerForm from '../components/Forms/CreateBeerForm';
 import UpdateBeerForm from '../components/Forms/UpdateBeerForm';
+import LandingPage from '../components/LandingPage/LandingPage';
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <LandingPage />
       },
       {
         path: "/users/:user_id",

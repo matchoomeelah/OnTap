@@ -3,12 +3,14 @@ import CheckInTile from "../CheckIn/CheckInTile";
 import DeleteCheckInModal from "../Modals/DeleteCheckInModal"
 import OpenModalButton from "../OpenModalButton";
 
-function UserCheckIns({profileUser, checkIns}) {
+function UserCheckIns({checkIns}) {
     const navigate = useNavigate();
+
+    console.log(checkIns)
 
     return (
         <div>
-            {profileUser?.check_ins.reverse().map(checkIn => {
+            {Object.values(checkIns).reverse().map(checkIn => {
                 return (
                     <div key={checkIn.id}>
                         <CheckInTile checkIn={checkIn} />

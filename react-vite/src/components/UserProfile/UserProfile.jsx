@@ -9,6 +9,7 @@ import UserBreweries from "./UserBreweries";
 import UserBeers from "./UserBeers";
 import UserCheckIns from "./UserCheckIns";
 import { thunkGetUserCheckIns } from "../../redux/checkIns";
+import CheckInTile from "../CheckIn/CheckInTile";
 
 function UserProfile() {
     const dispatch = useDispatch();
@@ -53,6 +54,10 @@ function UserProfile() {
     }, [user_id])
 
 
+    if (!checkIns) {
+        return null;
+    }
+
     return (
         <div>
             <UserProfileHeader user={profileUser} />
@@ -61,7 +66,7 @@ function UserProfile() {
                     <div>
                         <h2 className="user-section-header" id="recent-activity-header">Recent Activity</h2>
                     </div>
-                    <UserCheckIns profileUser={profileUser} checkIns={checkIns}/>
+                    <UserCheckIns checkIns={checkIns} />
                 </div>
 
                 <div id="user-stuff">

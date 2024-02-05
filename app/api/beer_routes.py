@@ -157,6 +157,7 @@ def get_check_ins_by_beer(id):
 
 
 # Create check-in for a beer
+@login_required
 @beer_routes.route("/<int:id>/check-ins", methods=["POST"])
 def create_check_in(id):
     form = CheckInForm()
@@ -191,3 +192,22 @@ def create_check_in(id):
         return new_check_in.to_dict()
 
     return form.errors, 400
+
+# Delete a check-in for a beer
+@login_required
+@beer_routes.route("/<int:id>/check-ins/<int:check_in_id>", methods=["DELETE"])
+def delete_check_in(id, check_in_id):
+    check_in = CheckIn.query.get(check_in_id)
+
+    if not check_in:
+        return {"errors": {"message": "Check In could not be found"}}, 404
+
+    if check_in.user_id == current_user.id:
+        if check_in.image_url:
+            remove_file_from_s3(check_in.image_url)
+        db.session.delete(check_in)
+        db.session.commit()
+
+        return {"message": "Success"}, 200
+
+    return { "message": "User unauthorized"}, 401

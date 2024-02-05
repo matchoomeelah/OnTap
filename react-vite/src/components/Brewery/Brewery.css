@@ -58,6 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
 }
 
 #brewery-header {
@@ -79,17 +80,14 @@
 #brewery-content-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* display: flex; */
     width: 95%;
     height: 400px;
-    /* border: 1px solid black; */
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 #brewery-content {
-    /* width: 50%; */
     height: 400px;
-    /* border: 1px solid green; */
 }
 
 #brewery-about {

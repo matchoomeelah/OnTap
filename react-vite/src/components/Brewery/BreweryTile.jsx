@@ -13,7 +13,7 @@ function BreweryTile({ brewery }) {
             <div className="brewery-tile-info">
                 <div id="brewery-tile-name">{brewery.name}</div>
                 <div id="city-state-country">{brewery.city}, {brewery.state_province}, {brewery.country}</div>
-                <div>{brewery?.beers.length} Beers</div>
+                <div>{brewery?.beers.length} {brewery?.beers.length === 1 ? "Beer" : "Beers"}</div>
                 <div id="brewery-buttons-container">
                     {brewery?.creator_id === sessionUser?.id &&
                         <div className="brewery-buttons">

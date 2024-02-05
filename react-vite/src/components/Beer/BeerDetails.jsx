@@ -23,10 +23,6 @@ function BeerDetails() {
 
     }, [beer_id, checkIns])
 
-    // useEffect(() => {
-    //     dispatch(thunk)
-    // }, [checkIns])
-
     return (
         <div id="beer-details-container">
             <div id="beer-header">
