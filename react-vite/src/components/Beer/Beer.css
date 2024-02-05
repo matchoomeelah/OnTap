@@ -137,6 +137,10 @@ i {
     font-size: 13px;
     width: 300px;
 }
+
+.fa-beer-mug-empty {
+    color: #E0AE11;
+}
 #wishlist-button {
     height: fit-content;
     background-color: #E05512;
@@ -181,6 +185,14 @@ i {
 h4 {
     margin-top: 0px;
     text-decoration: underline;
+}
+
+#beer-details-recent-activity-header {
+    text-decoration: underline;
+}
+
+#check-in-button-div {
+    min-height: 30px;
 }
 
 #check-in-button {

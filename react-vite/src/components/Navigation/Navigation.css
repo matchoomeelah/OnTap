@@ -21,9 +21,13 @@ nav{
 
 #logo {
   cursor: pointer;
+  position: absolute;
+  left: 50px;
 }
 
 #nav-links-div {
+  position: relative;
+  left: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -116,5 +120,24 @@ nav{
   width: fit-content;
   cursor: pointer;
   margin: 0 auto;
+}
 
+#nav-bar-login-signup-buttons {
+  display: flex;
+  gap: 20px;
+  margin-right: 60px;
+}
+
+#nav-bar-login-button {
+  font-size: 14px;
+  color: #E09712;
+  background-color: transparent;
+  border: none;
+}
+
+#nav-bar-signup-button {
+  font-size: 14px;
+  color: #E09712;
+  background-color: transparent;
+  border: none;
 }

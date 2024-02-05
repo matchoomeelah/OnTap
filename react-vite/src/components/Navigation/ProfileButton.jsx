@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import * as sessionActions from '../../redux/session';
@@ -11,6 +11,7 @@ import OpenModalMenuItem from './OpenModalMenuItem';
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const sessionUser = useSelector(state => state.session.user)
   const ulRef = useRef();
 
   const [showMenu, setShowMenu] = useState(false);
@@ -39,9 +40,9 @@ function ProfileButton({ user }) {
 
 
   // Logout from current user and navigate to home page
-  const logout = (e) => {
+  const logout = async (e) => {
     e.preventDefault();
-    dispatch(sessionActions.thunkLogout());
+    await dispatch(sessionActions.thunkLogout());
     closeMenu();
     navigate('/');
   };
@@ -74,7 +75,7 @@ function ProfileButton({ user }) {
       </button>
 
       <div id='dropdown-menu' className={ulClassName} ref={ulRef}>
-        {user ? (
+        {sessionUser ? (
           <>
             <div id="greeting">Hello, {user.username}!</div>
             <div className='separator'></div>

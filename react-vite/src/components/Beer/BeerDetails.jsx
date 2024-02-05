@@ -10,12 +10,13 @@ import CreateCheckInModal from "../Modals/CreateCheckInModal";
 function BeerDetails() {
     const dispatch = useDispatch();
 
+    const sessionUser = useSelector(state => state.session.user);
     const beers = useSelector(state => state.beers);
     const checkIns = useSelector(state => state.checkIns)
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
 
-    // console.log(currBeer)
+    const currAvgRating = currBeer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / currBeer?.check_ins.length;
 
 
     useEffect(() => {
@@ -44,7 +45,8 @@ function BeerDetails() {
                             </div>
                             <div>
                                 <div>Rating</div>
-                                <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div>
+                                {/* <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div> */}
+                                <div><i class="fa-solid fa-beer-mug-empty"></i>{parseFloat(currAvgRating).toFixed(1)}</div>
                             </div>
                         </div>
                         <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button>
@@ -58,22 +60,30 @@ function BeerDetails() {
                         <div>{currBeer?.description}</div>
                     </div>
                     {/* <button id="check-in-button" onClick={() => alert("Feature Coming Soon!")}>Check In!</button> */}
-                    <OpenModalButton
-                                // onButtonClick={(e) => e.stopPropagation()}
+                        <div id="check-in-button-div">
+                            {sessionUser &&
+                            <OpenModalButton
                                 buttonId="check-in-button"
                                 buttonText={'Check In!'}
                                 modalComponent={<CreateCheckInModal beer={currBeer} />}
-                    />
+                            />}
+                            <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
+                        </div>
+
                     <div id="check-in-container">
                         {currBeer?.check_ins.toReversed().map(checkIn => {
-                            return <CheckInTile checkIn={checkIn}/>
+                            return <CheckInTile checkIn={checkIn} />
                         })}
                     </div>
                 </div>
                 <div id="beer-photos-container">
                     <h4>Photos</h4>
                     <div id="beer-photos">
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_1.jpeg"} />
+                        {currBeer?.check_ins.toReversed().map(checkIn => {
+                            return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
+
+                        })}
+                        {/* <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_1.jpeg"} />
                         <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_2.jpeg"} />
                         <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_3.webp"} />
                         <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_9.jpeg"} />
@@ -81,7 +91,7 @@ function BeerDetails() {
                         <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_8.avif"} />
                         <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_4.jpeg"} />
                         <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_5.webp"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_7.jpeg"} />
+                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_7.jpeg"} /> */}
                     </div>
                 </div>
             </div>

@@ -24,6 +24,10 @@
     font-weight: bolder;
 }
 
+#check-in-user-rating {
+    display: flex;
+}
+
 #check-in-headline {
     font-size: 13px;
 }
@@ -45,4 +49,9 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+}
+
+.check-in-image {
+    max-width: 125px;
+    max-height: 150px;
 }

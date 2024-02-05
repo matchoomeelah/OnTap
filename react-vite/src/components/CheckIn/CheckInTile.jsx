@@ -27,8 +27,9 @@ function CheckInTile({ checkIn }) {
 
     return (
         <div className="check-in-tile-container">
-            <NavLink id="check-in-username" to={`/users/${checkIn.user_id}`}>{checkIn.user_name}</NavLink> <span id="check-in-headline"> is drinking <NavLink to={`/beers/${checkIn.beer.id}`}>{checkIn.beer.name}</NavLink> by <NavLink to={`/breweries/${currBrewery?.id}`}>{currBrewery?.name}</NavLink></span>
+            <div id="check-in-user-rating"><NavLink id="check-in-username" to={`/users/${checkIn.user_id}`}>{checkIn.user_name}</NavLink><span>{"  "}&#x2022;<i class="fa-solid fa-beer-mug-empty"></i>{parseFloat(checkIn.rating).toFixed(1)}</span> </div><span id="check-in-headline"> is drinking <NavLink to={`/beers/${checkIn.beer.id}`}>{checkIn.beer.name}</NavLink> by <NavLink to={`/breweries/${currBrewery?.id}`}>{currBrewery?.name}</NavLink></span>
             <div id="check-in-body">{checkIn.body}</div>
+            {checkIn.image_url && <img src={checkIn.image_url} className="check-in-image" />}
             <div className="check-in-buttons">
             {checkIn.user_id === sessionUser?.id &&
                     <OpenModalButton
