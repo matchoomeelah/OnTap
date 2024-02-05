@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { thunkLogin, thunkSignup } from "../../../redux/session";
@@ -8,6 +9,8 @@ import "../Modals.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +32,7 @@ function SignupFormModal() {
       return;
     }
 
-    const serverResponse = await dispatch(
+    const user = await dispatch(
       thunkSignup({
         first_name: firstName,
         last_name: lastName,
@@ -39,24 +42,36 @@ function SignupFormModal() {
       })
     );
 
-    if (serverResponse) {
-      setErrors(serverResponse);
+    if (user.errors) {
+      setErrors(user.errors);
       setPassword("");
       setConfirmPassword("");
     } else {
       closeModal();
+      navigate(`/users/${user.id}`)
     }
   };
 
+  // const logInDemoUser = async (e) => {
+  //   e.preventDefault();
+
+  //   await dispatch(thunkLogin({
+  //     email: "demo@aa.io",
+  //     password: "password",
+  //   }));
+
+  //   closeModal();
+  // }
   const logInDemoUser = async (e) => {
     e.preventDefault();
 
-    await dispatch(thunkLogin({
+    const user = await dispatch(thunkLogin({
       email: "demo@aa.io",
       password: "password",
     }));
 
     closeModal();
+    navigate(`/users/${user.id}`)
   }
 
   return (

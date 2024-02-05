@@ -51,9 +51,10 @@ export const thunkSignup = (user) => async (dispatch) => {
   if(response.ok) {
     const data = await response.json();
     dispatch(setUser(data));
+    return data;
   } else if (response.status < 500) {
     const errorMessages = await response.json();
-    return errorMessages
+    return {"errors": errorMessages}
   } else {
     return { server: "Something went wrong. Please try again" }
   }
