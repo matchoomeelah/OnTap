@@ -11,16 +11,28 @@ import UserProfile from '../components/UserProfile/UserProfile';
 import BeerDetails from '../components/Beer/BeerDetails';
 import CreateBeerForm from '../components/Forms/CreateBeerForm';
 import UpdateBeerForm from '../components/Forms/UpdateBeerForm';
+// import LandingPage from '../components/LandingPage/LandingPage';
+import LandingLayout from './LandingLayout';
 import LandingPage from '../components/LandingPage/LandingPage';
 
 export const router = createBrowserRouter([
   {
-    element: <Layout />,
+    path: "/",
+    element: <LandingLayout />,
     children: [
       {
         path: "/",
         element: <LandingPage />
-      },
+      }
+    ]
+  },
+  {
+    element: <Layout />,
+    children: [
+      // {
+      //   path: "/",
+      //   element: <LandingPage />
+      // },
       {
         path: "/users/:user_id",
         element: <UserProfile />
