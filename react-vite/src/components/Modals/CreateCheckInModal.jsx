@@ -13,6 +13,7 @@ function CreateCheckInModal({beer}) {
 
 
     const [body, setBody] = useState("");
+    const [bodyCharCount, setBodyCharCount] = useState(0);
     const [rating, setRating] = useState(null);
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState({});
@@ -46,9 +47,14 @@ function CreateCheckInModal({beer}) {
                     id='check-in-body-input'
                     placeholder='Leave your review here...'
                     value={body}
-                    onChange={e => setBody(e.target.value)}
+                    onChange={e => {
+                        setBody(e.target.value);
+                        setBodyCharCount(e.target.value.length)
+                    }}
                     maxLength={255}
                 />
+                <div id="body-char-count">{bodyCharCount}/255</div>
+
                 <ul className="rating-list">
                     <li id='stars-word-list-item'>Stars</li>
                     <li onClick={() => setRating(5)}><i className={`fa fa-star ${rating >= 5 ? "filled" : "empty"}`} title="Rate 5"></i></li>

@@ -36,7 +36,7 @@
     border-radius: 20px;
     padding: 5px 8px;
     gap: 10px;
-    /* gap: 10px; */
+    background-color: white;
 }
 
 .info-tile-title {
@@ -58,6 +58,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+    color: #E09712;
 }
 
 #get-started-button {

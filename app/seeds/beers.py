@@ -58,11 +58,35 @@ def seed_beers():
         creator_id=1,
         brewery_id=5
     )
+    hairy_eyeball = Beer(
+        name="The Hairy Eyeball",
+        abv=9.1,
+        ibu=57,
+        style='American Strong Ale',
+        description="A roasty, toasty, malty, hangover-halting beer. Especially formulated for when you wake up feelin' like you need to shave your eyeballs to see the new day.",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/hairy_eyeball.jpeg",
+        orig_image_url="hairy_eyeball.jpeg",
+        creator_id=1,
+        brewery_id=1
+    )
+    cappuccino_stout = Beer(
+        name="Cappuccino Stout",
+        abv=9.3,
+        ibu=29,
+        style='Stout',
+        description="Brewed with boatloads of roasted coffee in each batch for that extra Krunk… this Mondo Coffee Stout will leave you wondering whether you’re coming or going.",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/cappuccino_stout.jpeg",
+        orig_image_url="cappuccino_stout.jpeg",
+        creator_id=1,
+        brewery_id=1
+    )
     db.session.add(lagunitas_IPA)
     db.session.add(lagunitas_little_sumpin)
     db.session.add(psychopathy)
     db.session.add(space_dust)
     db.session.add(delicious)
+    db.session.add(hairy_eyeball)
+    db.session.add(cappuccino_stout)
 
     db.session.commit()
 

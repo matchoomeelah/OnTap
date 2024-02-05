@@ -79,14 +79,22 @@
     resize: none;
 }
 
+#body-char-count {
+    font-size: 12px;
+    align-self: flex-end;
+}
+
 .rating-list li {
     float: right;
     color: #ddd;
-    padding: 10px 5px;
+    /* padding: 10px 5px; */
+    padding: 0 5px;
+
 }
 
 .rating-list li i {
     font-size: 20px;
+    padding: 0;
 }
 
 .rating-list li:hover,
@@ -98,12 +106,14 @@
     display: inline-block;
     list-style: none;
     padding: 0;
+
     /* width: fit-content; */
 }
 
 #stars-word-list-item {
     color: black;
     font-size: 17px;
+    padding: 0;
 }
 
 .filled {

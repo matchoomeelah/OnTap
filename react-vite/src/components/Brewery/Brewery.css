@@ -68,13 +68,17 @@
     gap: 10px;
 }
 
-#brewery-header > img {
+#brewery-header>img {
     height: 300px;
     width: 300px;
 }
 
-#brewery-header > div > h1 {
+#brewery-header>div>h1 {
     font-size: 60px;
+}
+
+#brewery-website, #brewery-website:visited {
+    color: blue;
 }
 
 #brewery-content-container {
