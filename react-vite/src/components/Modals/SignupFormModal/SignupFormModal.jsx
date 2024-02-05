@@ -24,6 +24,8 @@ function SignupFormModal() {
 
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
+      setPassword("");
+      setConfirmPassword("");
       return;
     }
 
@@ -39,6 +41,8 @@ function SignupFormModal() {
 
     if (serverResponse) {
       setErrors(serverResponse);
+      setPassword("");
+      setConfirmPassword("");
     } else {
       closeModal();
     }

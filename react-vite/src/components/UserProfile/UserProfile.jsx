@@ -50,7 +50,7 @@ function UserProfile() {
 
     useEffect(() => {
         dispatch(thunkGetUserById(user_id));
-        dispatch(thunkGetUserCheckIns(sessionUser.id))
+        dispatch(thunkGetUserCheckIns(user_id))
     }, [user_id])
 
 
@@ -74,8 +74,8 @@ function UserProfile() {
                         <h2 className="user-section-header">{profileUser?.id === sessionUser?.id ? "My " : profileUser?.first_name + "'s "} Stuff </h2>
                         <div id="show-buttons-container">
                             <div>
-                                {profileUser?.id === sessionUser?.id && showBeers && <button className="create-button" onClick={() => navigate(`/beers/new`)}>+ Create New Beer</button>}
-                                {profileUser?.id === sessionUser?.id && showBreweries && <button className="create-button" onClick={() => navigate(`/breweries/new`)}>+ Create New Brewery</button>}
+                                {profileUser?.id === sessionUser?.id && showBeers && <button className="create-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</button>}
+                                {profileUser?.id === sessionUser?.id && showBreweries && <button className="create-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</button>}
                                 <button class="show-button show-beer" onClick={enableShowBeers}>Beers</button>
                                 <button class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</button>
                             </div>

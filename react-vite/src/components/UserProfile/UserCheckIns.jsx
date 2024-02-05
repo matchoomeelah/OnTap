@@ -10,7 +10,7 @@ function UserCheckIns({checkIns}) {
 
     return (
         <div>
-            {Object.values(checkIns).reverse().map(checkIn => {
+            {Object.values(checkIns).toReversed().map(checkIn => {
                 return (
                     <div key={checkIn.id}>
                         <CheckInTile checkIn={checkIn} />

@@ -15,7 +15,7 @@ function BeerDetails() {
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
 
-    console.log(currBeer)
+    // console.log(currBeer)
 
 
     useEffect(() => {
@@ -65,7 +65,7 @@ function BeerDetails() {
                                 modalComponent={<CreateCheckInModal beer={currBeer} />}
                     />
                     <div id="check-in-container">
-                        {currBeer?.check_ins.reverse().map(checkIn => {
+                        {currBeer?.check_ins.toReversed().map(checkIn => {
                             return <CheckInTile checkIn={checkIn}/>
                         })}
                     </div>

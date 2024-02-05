@@ -25,7 +25,7 @@ function LandingPage() {
                 <div className="info-tile">
                     <div className="info-tile-title">Beers</div>
                     <div className="info-tile-text">Discover new and trending beers, or kick back with your old favorites.</div>
-                    <div className="info-tile-link" onClick={() => navigate("/beers")}>Browse Beer</div>
+                    <div className="info-tile-link" onClick={() => navigate("/beers")}>Browse Beers</div>
                 </div>
                 <div className="info-tile">
                     <div className="info-tile-title">Breweries</div>

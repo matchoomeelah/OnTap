@@ -28,7 +28,6 @@
 .info-tile {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
     width: 24%;
     height: 150px;
@@ -67,4 +66,5 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+    color: #E09712;
 }
