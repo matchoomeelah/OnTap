@@ -55,7 +55,7 @@ function UserProfile() {
     }, [user_id, comments, beers, breweries])
 
 
-    if (!checkIns) {
+    if (!profileUser || !checkIns) {
         return null;
     }
 

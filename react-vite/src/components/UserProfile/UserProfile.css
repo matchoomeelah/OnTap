@@ -54,17 +54,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    float: right;
 }
 
 .create-button {
     background-color: #E05512;
-    /* color: white; */
-    /* border: none; */
     box-shadow: 1px 1px 1px #525151;
-    /* padding: 15px 8px;
-    height: fit-content;
-    cursor: pointer;
-    font-weight: bold; */
 }
 
 .show-button {
@@ -94,7 +89,7 @@
 #stuff-header {
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
 }
 
 
@@ -103,7 +98,6 @@
     max-width: 40%;
     height: fit-content;
     padding: 10px 20px;
-    /* margin: 0 auto; */
     background-color: #E05512;
     color: white;
     margin-top: 5px;
