@@ -124,6 +124,18 @@
     border: 1px solid gray;
 }
 
+#no-check-ins-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    /* background-color: #525151; */
+    /* color: white; */
+    height: 150px;
+    width: 90%;
+    border: 1px solid gray;
+}
+
 #no-breweries-placeholder {
     display: flex;
     align-items: center;

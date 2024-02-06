@@ -68,10 +68,23 @@ function BreweryDetails() {
                         <h5 id="brewery-show-beers-button" className="brewery-show-button" onClick={enableShowBeers}>Beers</h5>
                         <h5 id="brewery-show-check-ins-button" className="brewery-show-button" onClick={enableShowCheckIns}>Check Ins</h5>
                     </div>
-                    {showBeers && currBrewery?.beers.map(beer => {
-                        return <BeerTile key={beer.id} beer={beer} />
-                    })}
-                    {showCheckIns && breweryCheckIns.map(checkIn => {
+                    {showBeers &&
+                        currBrewery?.beers.length === 0 ?
+                        <div id="no-beers-placeholder">
+                            <div id="no-beers-text">No beers created yet!</div>
+                        </div>
+                        :
+                        currBrewery?.beers.map(beer => {
+                            return <BeerTile key={beer.id} beer={beer} />
+                        })}
+                    {showCheckIns &&
+                        breweryCheckIns.length === 0 ?
+                        <div id="no-check-ins-placeholder">
+                            <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
+                        </div>
+                        // <div id="no-check-in-placeholder">Hmm, no activity here. Time to drink up!</div>
+                        :
+                        breweryCheckIns.map(checkIn => {
                         return <CheckInTile checkIn={checkIn} />
                     })}
                 </div>

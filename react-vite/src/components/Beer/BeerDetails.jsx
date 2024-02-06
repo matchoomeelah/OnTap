@@ -72,12 +72,13 @@ function BeerDetails() {
                     </div>
 
                     {currBeer?.check_ins.length === 0 ?
-                    <div>Hmm, no activity here. Time to drink up!</div>
-                        :
+                        <div id="no-check-ins-placeholder">
+                            <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
+                        </div> :
                         <div id="check-in-container">
-                        {currBeer?.check_ins.toReversed().map(checkIn => {
-                            return <CheckInTile checkIn={checkIn} />
-                        })}
+                            {currBeer?.check_ins.toReversed().map(checkIn => {
+                                return <CheckInTile checkIn={checkIn} />
+                            })}
                         </div>
                     }
                 </div>
