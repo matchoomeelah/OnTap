@@ -46,11 +46,11 @@ function CheckInTile({ checkIn }) {
                     <button onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button>
                     {checkIn.user_id === sessionUser?.id &&
                         <div>
-                            <OpenModalButton
+                            {/* <OpenModalButton
                                 buttonId="edit-button"
                                 buttonText={'Edit'}
                                 modalComponent={<UpdateCheckInModal checkIn={checkIn} />}
-                            />
+                            /> */}
                             <OpenModalButton
                                 buttonId="delete-button"
                                 buttonText={'Delete'}
