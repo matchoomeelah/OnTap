@@ -1,3 +1,145 @@
+/*NAV BAR*/
+
+nav{
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  top: 0;
+  background-color: #525151;
+}
+
+#left-nav-content {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  align-items: center;
+}
+
+#logo {
+  cursor: pointer;
+  position: absolute;
+  left: 50px;
+}
+
+#nav-links-div {
+  position: relative;
+  left: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 40%;
+}
+
+.nav-link, .nav-link:visited {
+  color: #E09712;
+  text-decoration: none;
+}
+
+/* DROP DOWN */
+
 .profile-dropdown {
   position: absolute;
+}
+
+#profile-button {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 40px;
+  padding: 15px;
+}
+
+#menu-bars {
+  margin-right: 10px;
+}
+
+
+#dropdown-menu {
+  position: absolute;
+  right: 32px;
+  width: 170px;
+  min-width: fit-content;
+  margin-top: 2px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.separator {
+  border-top: 1px solid gray;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.login-menu-item>p,
+.signup-menu-item>p {
+  margin: 7px;
+}
+
+.login-menu-item:hover,
+.signup-menu-item:hover {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+#logout-button {
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 40px;
+  font-size: 14px;
+  margin-left: 33px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #5f5e5e;
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px black;
+}
+
+#greeting {
+  width: fit-content;
+  margin: 0 auto;
+
+}
+
+.user-menu-option {
+  width: fit-content;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+#nav-bar-login-signup-buttons {
+  display: flex;
+  gap: 20px;
+  margin-right: 60px;
+}
+
+#nav-bar-login-button {
+  font-size: 14px;
+  color: #E09712;
+  background-color: transparent;
+  border: none;
+  font-family: 'Arvo', 'serif';
+}
+
+#nav-bar-signup-button {
+  font-size: 14px;
+  color: #E09712;
+  background-color: transparent;
+  border: none;
+  font-family: 'Arvo', 'serif';
 }

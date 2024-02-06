@@ -1,0 +1,92 @@
+
+
+.check-in-tile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
+    min-height: 130px;
+    max-height: 250px;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+#check-in-username {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+#check-in-username:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+#check-in-user-rating {
+    display: flex;
+}
+
+#check-in-mug {
+    color: rgb(237, 210, 55);
+    /* color: gold */
+}
+
+#check-in-headline {
+    font-size: 13px;
+}
+
+#check-in-body {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.check-in-buttons {
+    display: flex;
+    min-height: 20px;
+    align-self: flex-end;
+}
+
+#edit-button {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+#delete-button {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.check-in-image {
+    max-width: 125px;
+    max-height: 150px;
+}
+
+
+/* COMMENTS */
+#add-comment-button {
+    text-decoration: underline;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+#show-comments-button {
+    text-decoration: underline;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
