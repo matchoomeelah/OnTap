@@ -7,6 +7,7 @@ import CheckInTile from "../CheckIn/CheckInTile";
 
 function BreweryDetails() {
     const dispatch = useDispatch();
+    const beers = useSelector(state => state.beers);
     const breweries = useSelector(state => state.breweries);
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
@@ -22,7 +23,7 @@ function BreweryDetails() {
 
     useEffect(() => {
         dispatch(thunkGetBreweryById(brewery_id));
-    }, [])
+    }, [beers])
 
 
     // Finds all check ins associated with brewery and sorts them by most recent...

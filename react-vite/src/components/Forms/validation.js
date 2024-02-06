@@ -1,5 +1,42 @@
 export function validateBreweryForm(name, type, city, state_province, country, description, image_url, website_url) {
-    return;
+    const errors = {}
+
+    // Name
+    if (name.trim().length <= 0) {
+        errors.name = "This field is required";
+    }
+
+    // Type
+    if (type.trim().length <= 0) {
+        errors.type = "This field is required";
+    }
+
+    // City
+    if (city.trim().length <= 0) {
+        errors.city = "This field is required";
+    }
+
+    // State/Province
+    if (state_province.trim().length <= 0) {
+        errors.state_province = "This field is required";
+    }
+
+    // Country
+    if (country.trim().length <= 0) {
+        errors.country = "This field is required";
+    }
+
+    // Description
+    if (description.trim().length <= 0) {
+        errors.description = "This field is required";
+    }
+
+    // Website URL
+    if (website_url && !validURL(website_url)) {
+        errors.website_url = "The provided URL is not valid"
+    }
+
+    return errors;
 }
 
 export function validateBeerForm(name, abv, ibu, style, description, breweryId) {
@@ -53,4 +90,14 @@ export function validateBeerForm(name, abv, ibu, style, description, breweryId) 
     }
 
     return errors;
+}
+
+export function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return !!pattern.test(str);
 }

@@ -36,13 +36,13 @@ function CheckInTile({ checkIn }) {
                 <div id="check-in-body">{checkIn.body}</div>
                 {checkIn.image_url && <img src={checkIn.image_url} className="check-in-image" />}
                 <div className="check-in-buttons">
-                    <OpenModalButton
+                    {sessionUser && <OpenModalButton
                         buttonId="add-comment-button"
                         buttonText={'Add Comment'}
                         modalComponent={<CreateCommentModal checkIn={checkIn}
                         onModalClose={() => setShowComments(true)}
                          />}
-                    />
+                    />}
                     <button id="show-comments-button" onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button>
                     {checkIn.user_id === sessionUser?.id &&
                         <div>

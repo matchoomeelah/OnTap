@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { thunkGetBeers } from "../../redux/beers";
 import BeerTile from "./BeerTile";
 import "./Beer.css";
+import BeerBrowseTile from "./BeerBrowseTile";
 
 function BeerBrowse() {
     const dispatch = useDispatch();
@@ -18,7 +19,8 @@ function BeerBrowse() {
         <div className="browse-page-container">
             <h1 className="browse-heading">All Beers</h1>
             {Object.values(beers).map(beer => {
-                return <BeerTile key={beer.id} beer={beer} />
+                // return <BeerTile key={beer.id} beer={beer} />
+                return <BeerBrowseTile key={beer.id} beer={beer} />
             })}
         </div>
     )

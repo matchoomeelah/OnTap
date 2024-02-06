@@ -18,6 +18,7 @@ function UpdateBeerForm() {
     const beers = useSelector(state => state.beers);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
+    console.log(currBeer);
 
     const [name, setName] = useState("");
     const [abv, setAbv] = useState("");
@@ -92,6 +93,7 @@ function UpdateBeerForm() {
             return;
         }
 
+
         // Create form data to send to server
         const formData = new FormData();
         formData.append("name", name.trim());
@@ -103,7 +105,7 @@ function UpdateBeerForm() {
         formData.append("brewery_id", breweryId);
         setImageLoading(true);
 
-        const newBeer = await dispatch(thunkUpdateBeer(breweryId, formData));
+        const newBeer = await dispatch(thunkUpdateBeer(currBeer.id, formData));
 
         // Backend error handling
         if (newBeer.errors) {
@@ -116,7 +118,7 @@ function UpdateBeerForm() {
     }
 
     // Handle wrong user
-    if (!sessionUser || currBeer?.creator_id !== sessionUser?.id) {
+    if (!currBeer || !sessionUser || currBeer?.creator_id !== sessionUser?.id) {
         return null;
     }
 

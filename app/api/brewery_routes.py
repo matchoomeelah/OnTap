@@ -54,6 +54,7 @@ def create_brewery():
 
             url = upload["url"]
 
+
         params = {
             "name": form.data["name"],
             "type": form.data["type"],

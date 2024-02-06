@@ -113,6 +113,7 @@ export const thunkUpdateBeer= (id, beer) => async (dispatch) => {
         body: beer
     });
 
+
     // Extract the data
     const data = await response.json();
 

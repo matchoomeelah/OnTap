@@ -72,6 +72,69 @@
     color: #525151;
 }
 
+/* BEER BROWSE TILE */
+.beer-browse-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 600px;
+    height: 230px;
+    border: 1px solid gray;
+
+}
+
+.browse-tile-top-content {
+    display: flex;
+    gap: 15px;
+}
+
+.browse-tile-image {
+    width: 110px;
+    height: 110px;
+    margin-top: 12px;
+}
+
+.browse-tile-top-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 3px;
+}
+
+.beer-browse-tile-name, .beer-browse-tile-name:visited {
+    font-size: 20px;
+    color: #E09712;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.beer-browse-tile-name:hover {
+    text-decoration: underline;
+}
+
+.beer-browse-tile-brewery, .beer-browse-tile-brewery:visited {
+    color: #E09712;
+    text-decoration: none;
+}
+
+.beer-browse-tile-brewery:hover {
+    text-decoration: underline;
+}
+
+.beer-browse-tile-style {
+    margin-top: 8px;
+    color: #525151
+}
+
+.beer-browse-tile-description {
+    position: relative;
+    left: 125px;
+    bottom: 20px;
+}
+
+
+
 /* BEER DETAILS */
 
 #beer-details-container {

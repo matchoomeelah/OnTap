@@ -4,7 +4,9 @@ import { thunkCreateBrewery } from "../../redux/breweries";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 
+
 import "./Forms.css";
+import { validateBreweryForm } from "./validation";
 
 
 function CreateBreweryForm() {
@@ -41,6 +43,21 @@ function CreateBreweryForm() {
 
         setErrors({});
 
+        const formErrors = validateBreweryForm(name, type, city, stateProvince, country, description, image, websiteUrl);
+
+        if (Object.values(formErrors).length > 0) {
+            setErrors(formErrors);
+            return;
+        }
+
+
+        // Ensure website url is properly formatted
+        let validWebsiteUrl = websiteUrl;
+
+        if (!websiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
+            validWebsiteUrl = "http://" + websiteUrl;
+        }
+
         const formData = new FormData();
         formData.append("name", name);
         formData.append("type", type);
@@ -49,7 +66,7 @@ function CreateBreweryForm() {
         formData.append("country", country);
         formData.append("description", description);
         formData.append("image_url", image);
-        formData.append("website_url", websiteUrl);
+        formData.append("website_url", validWebsiteUrl);
         setImageLoading(true);
 
         const newBrewery = await dispatch(thunkCreateBrewery(formData));

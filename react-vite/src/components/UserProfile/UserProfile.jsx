@@ -27,7 +27,7 @@ function UserProfile() {
     const [showCheckIns, setShowCheckins] = useState(true);
 
 
-    console.log("Check Ins: ", checkIns)
+    // console.log("Check Ins: ", checkIns)
 
     function enableShowBeers() {
         setShowBreweries(false);
