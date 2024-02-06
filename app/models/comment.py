@@ -18,3 +18,15 @@ class Comment(db.Model):
 
     user = db.relationship('User', back_populates="comments")
     check_in = db.relationship('CheckIn', back_populates="comments")
+
+    def to_dict(self):
+        return {
+            "body": self.body,
+            "user": {
+                "first_name": self.user.first_name,
+                "last_name": self.user.last_name,
+                "username": self.user.username,
+            },
+            "user_id": self.user_id,
+            "check_in_id": self.check_in_id
+        }

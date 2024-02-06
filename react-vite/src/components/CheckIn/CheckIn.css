@@ -1,8 +1,10 @@
+
+
 .check-in-tile-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 90%;
+    width: 100%;
     min-height: 130px;
     max-height: 250px;
     margin-top: 15px;
@@ -43,6 +45,7 @@
 }
 
 .check-in-buttons {
+    display: flex;
     min-height: 20px;
     align-self: flex-end;
 }

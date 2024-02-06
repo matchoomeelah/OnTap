@@ -8,7 +8,6 @@ function CheckInModal({checkIn}) {
 
     const submitDelete = async () => {
         try {
-            // console.log("Brewery ID: ", brewery.id)
             await dispatch(thunkDeleteCheckIn(checkIn.beer.id, checkIn.id));
             closeModal();
         }

@@ -2,7 +2,8 @@ from flask import Blueprint, request
 from flask_login import current_user, login_required
 from ..forms.beer_form import BeerForm
 from ..forms.check_in_form import CheckInForm
-from app.models import Beer, CheckIn, db
+from ..forms.comment_form import CommentForm
+from app.models import Beer, CheckIn, Comment, db
 from app.api.aws_helpers import (
     upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 
@@ -211,3 +212,26 @@ def delete_check_in(id, check_in_id):
         return {"message": "Success"}, 200
 
     return { "message": "User unauthorized"}, 401
+
+
+# Create a comment on a Check-In
+@login_required
+@beer_routes.route("/<int:id>/check-ins/<int:check_in_id>/comments", methods=["POST"])
+def create_comment(id, check_in_id):
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        params = {
+            "body": form.data["body"],
+            "check_in_id": check_in_id,
+            "user_id": current_user.id
+        }
+
+        new_comment = Comment(**params)
+        db.session.add(new_comment)
+        db.session.commit()
+
+        return new_comment.to_dict()
+
+    return form.errors, 400

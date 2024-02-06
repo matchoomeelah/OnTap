@@ -1,0 +1,8 @@
+.comment-tile-container {
+    width: 75%;
+    min-height: 50px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 5px 10px;
+    float: right;
+}

@@ -36,5 +36,6 @@ class CheckIn(db.Model):
                 "id": self.beer_id,
                 "name": self.beer.name,
                 "brewery_id": self.beer.brewery_id,
-            }
+            },
+            "comments": [comment.to_dict() for comment in self.comments]
         }

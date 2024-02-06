@@ -10,13 +10,15 @@ import breweriesReducer from "./breweries";
 import usersReducer from "./users";
 import beersReducer from "./beers";
 import checkInsReducer from "./checkIns";
+import commentsReducer from "./comments";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   breweries: breweriesReducer,
   beers: beersReducer,
-  checkIns: checkInsReducer
+  checkIns: checkInsReducer,
+  comments: commentsReducer
 });
 
 let enhancer;

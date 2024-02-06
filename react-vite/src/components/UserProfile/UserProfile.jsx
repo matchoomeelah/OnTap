@@ -20,6 +20,7 @@ function UserProfile() {
     const breweries = useSelector(state => state.breweries);
     const beers = useSelector(state => state.beers);
     const checkIns = useSelector(state => state.checkIns);
+    const comments = useSelector(state => state.comments);
 
     const [showBeers, setShowBeers] = useState(true);
     const [showBreweries, setShowBreweries] = useState(false);
@@ -51,7 +52,7 @@ function UserProfile() {
     useEffect(() => {
         dispatch(thunkGetUserById(user_id));
         dispatch(thunkGetUserCheckIns(user_id))
-    }, [user_id])
+    }, [user_id, comments])
 
 
     if (!checkIns) {
@@ -78,8 +79,6 @@ function UserProfile() {
                                 {profileUser?.id === sessionUser?.id && showBreweries && <h5 className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</h5>}
                                 <h5 class="show-button show-beer" onClick={enableShowBeers}>Beers</h5>
                                 <h5 class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
-                                {/* <button class="show-button show-beer" onClick={enableShowBeers}>Beers</button>
-                                <button class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</button> */}
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,8 @@ function BeerDetails() {
 
     const sessionUser = useSelector(state => state.session.user);
     const beers = useSelector(state => state.beers);
-    const checkIns = useSelector(state => state.checkIns)
+    const checkIns = useSelector(state => state.checkIns);
+    const comments = useSelector(state => state.comments);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
 
@@ -25,7 +26,7 @@ function BeerDetails() {
 
     useEffect(() => {
         dispatch(thunkGetBeerById(beer_id));
-    }, [beer_id, checkIns])
+    }, [beer_id, checkIns, comments])
 
     return (
         <div id="beer-details-container">

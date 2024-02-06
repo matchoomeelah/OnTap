@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .breweries import seed_breweries, undo_breweries
 from .beers import seed_beers, undo_beers
 from .check_ins import seed_check_ins, undo_check_ins
+from .comments import seed_comments, undo_comments
 
 from app.models.db import db, environment, SCHEMA
 
@@ -23,10 +24,12 @@ def seed():
         undo_breweries()
         undo_beers()
         undo_check_ins()
+        undo_comments()
     seed_users()
     seed_breweries()
     seed_beers()
     seed_check_ins()
+    seed_comments()
     # Add other seed functions here
 
 
@@ -37,4 +40,6 @@ def undo():
     undo_breweries()
     undo_beers()
     undo_check_ins()
+    undo_comments()
+
     # Add other undo functions here
