@@ -7,28 +7,28 @@ def seed_check_ins():
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_1.jpeg",
+        image_url="https://i.ibb.co/2q9Cp1L/ex-beer-1.jpg",
         beer_id=1,
         user_id=1
     ),
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_2.jpeg",
+        image_url="https://i.ibb.co/jW025Dx/ex-beer-2.jpg",
         beer_id=2,
         user_id=1
     ),
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=5,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_4.jpeg",
+        image_url="https://i.ibb.co/GxHsJMm/ex-beer-5.webp",
         beer_id=3,
         user_id=1
     ),
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check5.jpeg",
+        image_url="https://i.ibb.co/LRGvGsP/space-dust-check1.jpg",
         beer_id=4,
         user_id=1
     )]
@@ -37,7 +37,7 @@ def seed_check_ins():
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check1.jpeg",
+        image_url="https://i.ibb.co/JypmmVm/space-dust-check5.jpg",
         beer_id=1,
         user_id=2
     )]
@@ -46,7 +46,7 @@ def seed_check_ins():
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check2.jpeg",
+        image_url="https://i.ibb.co/fF05Ht2/space-dust-check2.jpg",
         beer_id=4,
         user_id=3
     )]
@@ -55,7 +55,7 @@ def seed_check_ins():
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check3.jpeg",
+        image_url="https://i.ibb.co/RhxHdng/space-dust-check3.jpg",
         beer_id=4,
         user_id=4
     )]
@@ -64,7 +64,7 @@ def seed_check_ins():
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=4,
-        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check4.avif",
+        image_url="https://i.ibb.co/9V04fYy/space-dust-check4.jpg",
         beer_id=4,
         user_id=5
     )]
