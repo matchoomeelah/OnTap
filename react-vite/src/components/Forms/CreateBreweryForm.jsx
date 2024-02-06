@@ -71,8 +71,6 @@ function CreateBreweryForm() {
 
         const newBrewery = await dispatch(thunkCreateBrewery(formData));
 
-        console.log(newBrewery);
-
         if (newBrewery.errors) {
             setErrors(newBrewery.errors);
             setImageLoading(false);
@@ -285,8 +283,6 @@ function CreateBreweryForm() {
                         type="file"
                         accept="image/*"
                         onChange={(e) => {
-                            // console.log(e.target.files[0]);
-                            // console.log(URL.createObjectURL(e.target.files[0]));
                             setImage(e.target.files[0])
                             if (errors.image_url) {
                                 const newErrors = { ...errors };

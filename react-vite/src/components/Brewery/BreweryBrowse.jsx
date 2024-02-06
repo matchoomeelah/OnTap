@@ -8,8 +8,6 @@ function BreweryBrowse() {
     const dispatch = useDispatch();
 
     const breweries = useSelector(state => state.breweries)
-    console.log(breweries);
-
 
     useEffect(() => {
         dispatch(thunkGetBreweries());

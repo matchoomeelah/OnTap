@@ -16,8 +16,6 @@ function UpdateBreweryForm() {
     const breweries = useSelector(state => state.breweries);
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
-    console.log(currBrewery);
-
 
     const [name, setName] = useState("");
     const [type, setType] = useState("");
@@ -87,8 +85,6 @@ function UpdateBreweryForm() {
         setImageLoading(true);
 
         const newBrewery = await dispatch(thunkUpdateBrewery(brewery_id, formData));
-
-        console.log(newBrewery);
 
         if (newBrewery.errors) {
             setErrors(newBrewery.errors);

@@ -12,7 +12,7 @@ function CheckInModal({checkIn}) {
             closeModal();
         }
         catch (e) {
-            console.log(e);
+            return e;
         }
     }
 

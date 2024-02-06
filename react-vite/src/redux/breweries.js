@@ -56,7 +56,6 @@ export const thunkCreateBrewery = (brewery) => async (dispatch) => {
     })
 
     const data = await response.json();
-    console.log(data);
 
     // Extract the data
     if (response.ok) {
@@ -75,7 +74,6 @@ export const thunkGetBreweries = () => async (dispatch) => {
 
     // Extract the data
     const data = await response.json();
-    // console.log(data);
 
     // Send to reducer or report error
     if (response.ok) {
@@ -118,13 +116,8 @@ export const thunkUpdateBrewery = (id, brewery) => async (dispatch) => {
 
     // Send to reducer or report error
     if (response.ok) {
-        try{
-            dispatch(actionUpdateBrewery(data));
-            return data;
-        }
-        catch(e) {
-            console.log(e);
-        }
+        dispatch(actionUpdateBrewery(data));
+        return data;
     }
 
     console.log("There was an error updating the brewery");

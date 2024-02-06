@@ -1,11 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import BreweryTile from "../Brewery/BreweryTile";
-import OpenModalButton from "../OpenModalButton";
-import DeleteBreweryModal from "../Modals/DeleteBreweryModal";
 
-function UserBreweries({profileUser, sessionUser}) {
-    const navigate = useNavigate();
-
+function UserBreweries({profileUser}) {
     return (
         <div>
             {profileUser?.breweries.length === 0 ?

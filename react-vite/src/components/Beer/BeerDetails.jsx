@@ -51,7 +51,7 @@ function BeerDetails() {
                                 <div><i id="beer-details-rating-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                             </div>
                         </div>
-                        <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button>
+                        {/* <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button> */}
                     </div>
                 </div>
             </div>

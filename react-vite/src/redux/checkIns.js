@@ -43,14 +43,12 @@ export const actionDeleteCheckIn = (checkInId) => {
 // Thunks
 //
 export const thunkCreateCheckIn = (beerId, checkIn) => async (dispatch) => {
-    console.log("in the thunk");
     const response = await fetch(`/api/beers/${beerId}/check-ins`, {
         method: "POST",
         body: checkIn
     });
 
     const data = await response.json();
-    console.log("DATA: ", data)
 
     if (response.ok) {
         dispatch(actionCreateCheckIn(data));
@@ -66,7 +64,6 @@ export const thunkGetUserCheckIns = (userId) => async (dispatch) => {
     const response = await fetch(`/api/users/${userId}/check-ins`);
 
     const data = await response.json();
-    // console.log("DATA: ", data)
 
     if (response.ok) {
         dispatch(actionGetUserCheckIns(data.CheckIns));
@@ -82,7 +79,6 @@ export const thunkBeerCheckIns = (beerId) => async (dispatch) => {
     const response = await fetch(`/api/beers/${beerId}/check-ins`);
 
     const data = await response.json();
-    // console.log("DATA: ", data)
 
     if (response.ok) {
         dispatch(actionGetBeerCheckIns(data.CheckIns));

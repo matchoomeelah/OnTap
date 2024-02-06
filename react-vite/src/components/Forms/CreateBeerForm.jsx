@@ -58,7 +58,6 @@ function CreateBeerForm() {
         const formErrors = validateBeerForm(name, abv, ibu, style, description, breweryId);
 
         if (Object.keys(formErrors).length > 0) {
-            console.log(formErrors)
             setErrors(formErrors);
             return;
         }
@@ -72,8 +71,6 @@ function CreateBeerForm() {
         formData.append("image_url", image);
         formData.append("brewery_id", breweryId);
         setImageLoading(true);
-
-        console.log(formData)
 
         const newBeer = await dispatch(thunkCreateBeer(formData));
 
@@ -261,8 +258,6 @@ function CreateBeerForm() {
                         type="file"
                         accept="image/*"
                         onChange={(e) => {
-                            // console.log(e.target.files[0]);
-                            // console.log(URL.createObjectURL(e.target.files[0]));
                             setImage(e.target.files[0])
                             if (errors.image_url) {
                                 const newErrors = { ...errors };

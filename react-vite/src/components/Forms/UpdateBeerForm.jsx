@@ -18,7 +18,6 @@ function UpdateBeerForm() {
     const beers = useSelector(state => state.beers);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
-    console.log(currBeer);
 
     const [name, setName] = useState("");
     const [abv, setAbv] = useState("");
@@ -88,7 +87,6 @@ function UpdateBeerForm() {
         const formErrors = validateBeerForm(name, abv, ibu, style, description, breweryId);
 
         if (Object.keys(formErrors).length > 0) {
-            console.log(formErrors)
             setErrors(formErrors);
             return;
         }

@@ -1,11 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import CheckInTile from "../CheckIn/CheckInTile";
-// import DeleteCheckInModal from "../Modals/DeleteCheckInModal"
-// import OpenModalButton from "../OpenModalButton";
 
-function UserCheckIns({ profileUser, checkIns }) {
-    const navigate = useNavigate();
-
+function UserCheckIns({checkIns}) {
     return (
         <div>
             {Object.values(checkIns).length === 0 ?

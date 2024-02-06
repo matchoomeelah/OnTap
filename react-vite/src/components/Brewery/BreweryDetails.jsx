@@ -21,6 +21,7 @@ function BreweryDetails() {
         enableShowBeers();
     }, [])
 
+
     useEffect(() => {
         dispatch(thunkGetBreweryById(brewery_id));
     }, [beers])

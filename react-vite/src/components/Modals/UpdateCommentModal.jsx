@@ -21,11 +21,7 @@ function UpdateCommentModal({beerId, comment}) {
         const formData = new FormData();
         formData.append("body", body);
 
-        console.log(comment)
-
         const newComment = await dispatch(thunkUpdateComment(beerId, comment.check_in_id, comment.id, formData))
-
-        console.log(newComment);
 
         if (newComment.errors) {
             setErrors(newComment.errors);

@@ -10,21 +10,12 @@ import { useEffect, useState } from "react";
 function LandingNavigation() {
   const navigate = useNavigate();
   const sessionUser = useSelector(state => state.session.user);
-  // console.log(sessionUser);
-
-  // const [showProfileButton, setShowProfileButton] = useState(false);
-
-  // useEffect(() => {
-  //   setShowProfileButton(sessionUser !== null)
-  // }, [sessionUser])
 
   return (
     <nav>
       <div id="left-nav-content">
         <img onClick={() => navigate("/")} id="logo" src={"https://i.ibb.co/n1RDxpj/On-Tap-Logo.png"} alt="Home" />
       </div>
-
-      {/* <ProfileButton id='profile-button' user={sessionUser} /> */}
 
       { sessionUser ? <ProfileButton id='profile-button' user={sessionUser} />
         :

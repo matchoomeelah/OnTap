@@ -1,15 +1,14 @@
-import { useNavigate, useParams } from "react-router-dom";
-import UserProfileHeader from "./UserProfileHeader";
-
-import "./UserProfile.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetUserById } from "../../redux/users";
+import { useNavigate, useParams } from "react-router-dom";
+
+import UserProfileHeader from "./UserProfileHeader";
 import UserBreweries from "./UserBreweries";
 import UserBeers from "./UserBeers";
 import UserCheckIns from "./UserCheckIns";
+import { thunkGetUserById } from "../../redux/users";
 import { thunkGetUserCheckIns } from "../../redux/checkIns";
-import CheckInTile from "../CheckIn/CheckInTile";
+import "./UserProfile.css";
 
 function UserProfile() {
     const dispatch = useDispatch();
@@ -24,10 +23,7 @@ function UserProfile() {
 
     const [showBeers, setShowBeers] = useState(true);
     const [showBreweries, setShowBreweries] = useState(false);
-    const [showCheckIns, setShowCheckins] = useState(true);
 
-
-    // console.log("Check Ins: ", checkIns)
 
     function enableShowBeers() {
         setShowBreweries(false);
@@ -37,12 +33,6 @@ function UserProfile() {
     function enableShowBreweries() {
         setShowBeers(false);
         setShowBreweries(true);
-    }
-
-    function enableShowCheckIns() {
-        setShowBeers(false);
-        setShowBreweries(false);
-        setShowCheckins(true);
     }
 
     useEffect(() => {
@@ -67,7 +57,7 @@ function UserProfile() {
                     <div>
                         <h2 className="user-section-header" id="recent-activity-header">Recent Activity</h2>
                     </div>
-                    <UserCheckIns profileUser={profileUser} checkIns={checkIns} />
+                    <UserCheckIns checkIns={checkIns} />
                 </div>
 
                 <div id="user-stuff">
@@ -75,8 +65,16 @@ function UserProfile() {
                         <h2 className="user-section-header">{profileUser?.id === sessionUser?.id ? "My " : profileUser?.first_name + "'s "} Stuff </h2>
                         <div id="show-buttons-container">
                             <div id="show-buttons">
-                                {profileUser?.id === sessionUser?.id && showBeers && <h5 className="create-button show-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</h5>}
-                                {profileUser?.id === sessionUser?.id && showBreweries && <h5 className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</h5>}
+                                {profileUser?.id === sessionUser?.id && showBeers &&
+                                    <h5 className="create-button show-button" onClick={() => navigate(`/beers/new`)}>
+                                        + Add a Beer
+                                    </h5>
+                                }
+                                {profileUser?.id === sessionUser?.id && showBreweries &&
+                                    <h5 className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>
+                                        + Add a Brewery
+                                    </h5>
+                                }
                                 <h5 class="show-button show-beer" onClick={enableShowBeers}>Beers</h5>
                                 <h5 class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
                             </div>
@@ -84,11 +82,11 @@ function UserProfile() {
                     </div>
                     {
                         showBreweries &&
-                        <UserBreweries profileUser={profileUser} sessionUser={sessionUser} />
+                        <UserBreweries profileUser={profileUser}/>
                     }
                     {
                         showBeers &&
-                        <UserBeers profileUser={profileUser} sessionUser={sessionUser} />
+                        <UserBeers profileUser={profileUser} />
                     }
                 </div>
             </div>

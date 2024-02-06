@@ -9,12 +9,11 @@ function DeleteBeerModal({ beer }) {
 
     const submitDelete = async () => {
         try {
-            console.log("Beer ID: ", beer.id)
             await dispatch(thunkDeleteBeer(beer.id));
             closeModal();
         }
         catch (e) {
-            console.log(e);
+            return e;
         }
     }
 

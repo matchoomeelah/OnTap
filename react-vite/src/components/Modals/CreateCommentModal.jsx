@@ -24,11 +24,7 @@ function CreateCommentModal({ checkIn }) {
         formData.append("user_id", sessionUser.id);
         formData.append("check_in_id", checkIn.id);
 
-        console.log(checkIn.beer.id)
-
         const newComment = await dispatch(thunkCreateComment(checkIn.beer.id, checkIn.id, formData))
-
-        console.log(newComment);
 
         if (newComment.errors) {
             setErrors(newComment.errors);

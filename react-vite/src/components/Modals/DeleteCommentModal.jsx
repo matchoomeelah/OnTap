@@ -12,7 +12,7 @@ function DeleteCommentModal({beerId, comment}) {
             closeModal();
         }
         catch (e) {
-            console.log(e);
+            return e;
         }
     }
 
