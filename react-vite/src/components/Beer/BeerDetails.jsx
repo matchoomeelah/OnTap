@@ -48,7 +48,7 @@ function BeerDetails() {
                             </div>
                             <div>
                                 <div>Rating</div>
-                                <div><i id="beer-details-rating-mug"class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
+                                <div><i id="beer-details-rating-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                             </div>
                         </div>
                         <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button>
@@ -61,21 +61,25 @@ function BeerDetails() {
                         <h4>About</h4>
                         <div>{currBeer?.description}</div>
                     </div>
-                        <div id="check-in-button-div">
-                            {sessionUser &&
+                    <div id="check-in-button-div">
+                        {sessionUser &&
                             <OpenModalButton
                                 buttonId="check-in-button"
                                 buttonText={'Check In!'}
                                 modalComponent={<CreateCheckInModal beer={currBeer} />}
                             />}
-                            <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
-                        </div>
+                        <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
+                    </div>
 
-                    <div id="check-in-container">
+                    {currBeer?.check_ins.length === 0 ?
+                    <div>Hmm, no activity here. Time to drink up!</div>
+                        :
+                        <div id="check-in-container">
                         {currBeer?.check_ins.toReversed().map(checkIn => {
                             return <CheckInTile checkIn={checkIn} />
                         })}
-                    </div>
+                        </div>
+                    }
                 </div>
                 <div id="beer-photos-container">
                     <h4>Photos</h4>
