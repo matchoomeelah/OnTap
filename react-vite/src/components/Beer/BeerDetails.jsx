@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { thunkGetBeerById } from "../../redux/beers";
@@ -15,8 +15,9 @@ function BeerDetails() {
     const comments = useSelector(state => state.comments);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
-
     const currAvgRating = currBeer?.check_ins.length > 0 ? parseFloat(currBeer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / currBeer?.check_ins.length).toFixed(1) : "New";
+
+    const [showLongDescription, setShowLongDescription] = useState(false);
 
 
     useEffect(() => {
@@ -59,7 +60,20 @@ function BeerDetails() {
                 <div id="beer-content-left">
                     <div id="beer-about">
                         <h4>About</h4>
-                        <div>{currBeer?.description}</div>
+                        {!showLongDescription ?
+                            currBeer?.description.length < 300 ?
+                                <div>currBeer?.description</div>
+                                :
+                                <div>
+                                    {currBeer?.description.substring(0, 300) + "..."}
+                                    <button className="show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
+                                </div>
+                            :
+                            <div>
+                                <div>{currBeer?.description}</div>
+                                <button className="show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
+                            </div>
+                        }
                     </div>
                     <div id="check-in-button-div">
                         {sessionUser &&

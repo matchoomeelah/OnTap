@@ -1,9 +1,6 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms import StringField, SubmitField, IntegerField, FloatField
-from wtforms.validators import DataRequired, ValidationError, Length, NumberRange
-from app.api.aws_helpers import ALLOWED_EXTENSIONS
+from wtforms import StringField
+from wtforms.validators import DataRequired, Length
 
 class CommentForm(FlaskForm):
-    body = StringField("body", validators=[Length(min=0, max=255)])
-    # check_in_id = IntegerField("check_in_id", validators=[DataRequired()])
+    body = StringField("body", validators=[DataRequired(), Length(min=1, max=255)])

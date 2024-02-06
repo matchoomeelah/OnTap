@@ -239,10 +239,20 @@ i {
     padding: 10px;
     padding-left: 0;
     height: fit-content;
-    max-height: 150px;
-    border-radius: 2px;
-    overflow: scroll;
     overflow-wrap: break-word;
+}
+
+.show-more-button {
+    background-color: transparent;
+    border: none;
+    color: #E09712;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.show-more-button:hover {
+    color: #E0AE11;
+    text-decoration: underline;
 }
 
 h4 {

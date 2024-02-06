@@ -5,7 +5,7 @@ import { useModal } from "../../context/Modal";
 
 
 
-function CreateCheckInModal({beer}) {
+function CreateCheckInModal({ beer }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
@@ -17,14 +17,29 @@ function CreateCheckInModal({beer}) {
     const [errors, setErrors] = useState({});
 
 
+    function chooseRating(num) {
+        setRating(num);
+        if (errors.rating) {
+            const newErrors = { ...errors };
+            delete newErrors.rating;
+            setErrors(newErrors);
+        }
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
         setErrors({});
+
+        if (!rating) {
+            setErrors({ rating: "Mugs rating is required" })
+            return;
+        }
 
         const formData = new FormData();
         formData.append("body", body);
         formData.append("rating", rating);
         formData.append("image_url", image);
+
 
         const newCheckIn = await dispatch(thunkCreateCheckIn(beer.id, formData))
 
@@ -53,28 +68,32 @@ function CreateCheckInModal({beer}) {
                 />
                 <div id="body-char-count">{bodyCharCount}/255</div>
 
-                <ul className="rating-list">
-                    <li id='stars-word-list-item'>Mugs</li>
-                    <li onClick={() => setRating(5)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 5 ? "filled" : "empty"}`} title="Rate 5"></i></li>
-                    <li onClick={() => setRating(4)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 4 ? "filled" : "empty"}`} title="Rate 4"></i></li>
-                    <li onClick={() => setRating(3)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 3 ? "filled" : "empty"}`}></i></li>
-                    <li onClick={() => setRating(2)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 2 ? "filled" : "empty"}`}></i></li>
-                    <li onClick={() => setRating(1)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 1 ? "filled" : "empty"}`}></i></li>
-                </ul>
-
+                <label id="image-input-label" for="check-in-image-input">{image == null ? "+Add Photo"/*<img id="check-in-add-photo" src="https://i.ibb.co/5rYHfYk/Untitled-4.png />*/: <img id="check-in-preview-image" src={URL.createObjectURL(image)} />}</label>
                 <input
-                        id="image-input"
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => {
-                            setImage(e.target.files[0])
-                            if (errors.image_url) {
-                                const newErrors = { ...errors };
-                                delete newErrors.image_url;
-                                setErrors(newErrors);
-                            }
-                        }}
-                    />
+                    id="check-in-image-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                        setImage(e.target.files[0])
+                        if (errors.image_url) {
+                            const newErrors = { ...errors };
+                            delete newErrors.image_url;
+                            setErrors(newErrors);
+                        }
+                    }}
+                />
+
+                <ul className="rating-list">
+                    <li id='stars-word-list-item'>Mugs*</li>
+                    <li onClick={() => chooseRating(5)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 5 ? "filled" : "empty"}`} title="Rate 5"></i></li>
+                    <li onClick={() => chooseRating(4)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 4 ? "filled" : "empty"}`} title="Rate 4"></i></li>
+                    <li onClick={() => chooseRating(3)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 3 ? "filled" : "empty"}`}></i></li>
+                    <li onClick={() => chooseRating(2)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 2 ? "filled" : "empty"}`}></i></li>
+                    <li onClick={() => chooseRating(1)}><i className={`fa-solid fa-beer-mug-empty ${rating >= 1 ? "filled" : "empty"}`}></i></li>
+                </ul>
+                <div className="error-container">
+                    {errors.rating && <span className="error-message">*{errors.rating}</span>}
+                </div>
 
                 <button className='submit-button'>Confirm</button>
             </form>

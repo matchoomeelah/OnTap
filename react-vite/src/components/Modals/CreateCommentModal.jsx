@@ -19,10 +19,13 @@ function CreateCommentModal({ checkIn }) {
         e.preventDefault();
         setErrors({});
 
+        if (body.trim().length <= 0) {
+            setErrors({ body: "Your comment cannot be blank" })
+            return
+        }
+
         const formData = new FormData();
         formData.append("body", body);
-        formData.append("user_id", sessionUser.id);
-        formData.append("check_in_id", checkIn.id);
 
         const newComment = await dispatch(thunkCreateComment(checkIn.beer.id, checkIn.id, formData))
 
@@ -45,11 +48,23 @@ function CreateCommentModal({ checkIn }) {
                     value={body}
                     onChange={e => {
                         setBody(e.target.value);
-                        setBodyCharCount(e.target.value.length)
+                        setBodyCharCount(e.target.value.length);
+                        if (errors.body) {
+                            const newErrors = {...errors};
+                            delete newErrors.body;
+                            setErrors(newErrors)
+                        }
                     }}
                     maxLength={255}
                 />
-                <div id="body-char-count">{bodyCharCount}/255</div>
+                <div id="error-count-div">
+                    <div className="error-container">
+                    {errors.body && <span className="error-message">*{errors.body}</span>}
+                    </div>
+                    <div id="body-char-count">{bodyCharCount}
+                        /255
+                    </div>
+                </div>
                 <button className='submit-button'>Confirm</button>
             </form>
         </div>
