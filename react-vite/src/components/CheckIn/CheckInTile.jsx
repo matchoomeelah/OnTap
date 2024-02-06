@@ -7,6 +7,7 @@ import { thunkGetBreweries } from "../../redux/breweries";
 import "./CheckIn.css"
 import DeleteCheckInModal from "../Modals/DeleteCheckInModal"
 import OpenModalButton from "../OpenModalButton";
+import UpdateCheckInModal from "../Modals/UpdateCheckInModal";
 
 
 function CheckInTile({ checkIn }) {
@@ -31,13 +32,20 @@ function CheckInTile({ checkIn }) {
             <div id="check-in-body">{checkIn.body}</div>
             {checkIn.image_url && <img src={checkIn.image_url} className="check-in-image" />}
             <div className="check-in-buttons">
-            {checkIn.user_id === sessionUser?.id &&
-                    <OpenModalButton
-                        buttonId="delete-button"
-                        buttonText={'Delete'}
-                        modalComponent={<DeleteCheckInModal checkIn={checkIn} />}
-                    />
-            }
+                {checkIn.user_id === sessionUser?.id &&
+                    <div>
+                        <OpenModalButton
+                            buttonId="edit-button"
+                            buttonText={'Edit'}
+                            modalComponent={<UpdateCheckInModal checkIn={checkIn} />}
+                        />
+                        <OpenModalButton
+                            buttonId="delete-button"
+                            buttonText={'Delete'}
+                            modalComponent={<DeleteCheckInModal checkIn={checkIn} />}
+                        />
+                    </div>
+                }
             </div>
         </div>
     )

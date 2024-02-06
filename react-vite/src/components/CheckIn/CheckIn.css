@@ -47,8 +47,15 @@
     align-self: flex-end;
 }
 
+#edit-button {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
 #delete-button {
-    align-self: flex-end;
     text-decoration: underline;
     font-size: 11px;
     cursor: pointer;

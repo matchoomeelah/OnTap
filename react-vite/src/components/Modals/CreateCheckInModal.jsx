@@ -9,8 +9,6 @@ function CreateCheckInModal({beer}) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
-    console.log("CHECK IN BEER", beer)
-
 
     const [body, setBody] = useState("");
     const [bodyCharCount, setBodyCharCount] = useState(0);

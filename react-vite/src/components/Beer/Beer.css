@@ -3,7 +3,7 @@
     flex-direction: column;
     margin: 0 auto;
     width: 85%;
-    gap: 8px;
+    /* gap: 8px; */
 }
 
 .browse-heading {
@@ -21,6 +21,7 @@
     border: 1px solid gray;
     border-radius: 5px;
     gap: 5px;
+    margin-bottom: 10px;
 }
 
 .beer-tile-image {

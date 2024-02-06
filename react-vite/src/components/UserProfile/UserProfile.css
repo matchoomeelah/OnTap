@@ -36,6 +36,10 @@
     margin-left: 15px;
 }
 
+#recent-activity-header {
+    margin-bottom: 43px;
+}
+
 .user-section-header {
     text-decoration: 3px solid black underline;
 }
@@ -80,7 +84,6 @@
 .show-brewery {
     background-color: #E09712;
 }
-
 
 
 #stuff-header {
