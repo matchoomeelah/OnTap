@@ -3,7 +3,7 @@ import { useModal } from "../../context/Modal";
 import { thunkDeleteBrewery } from "../../redux/breweries";
 
 function DeleteBreweryModal({ brewery }) {
-    const {closeModal} = useModal()
+    const { closeModal } = useModal()
     const dispatch = useDispatch();
 
 
@@ -21,9 +21,11 @@ function DeleteBreweryModal({ brewery }) {
     return (
         <div id='delete-modal-container'>
             <h1 id='confirm-delete-heading'>Confirm Delete</h1>
-            <h4>Are you sure you want to delete this brewery?</h4>
+            <div id="confirm-delete-phrase">Are you sure you want to delete this brewery?</div>
+            <div id="confirm-delete-buttons">
                 <button id='yes-button' onClick={submitDelete}>Yes (Delete Brewery)</button>
                 <button id='no-button' onClick={closeModal}>No (Keep Brewery)</button>
+            </div>
         </div>
     )
 

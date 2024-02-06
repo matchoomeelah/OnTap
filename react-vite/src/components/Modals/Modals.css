@@ -119,6 +119,44 @@
     color: gold;
 }
 
-/* .empty {
-    color: lightgray;
-} */
+/* DELETE MODALS */
+#delete-modal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 375px;
+    padding: 10px 30px 30px 30px;
+    gap: 12px;
+}
+
+#confirm-delete-heading {
+    margin-bottom: 0;
+}
+
+#confirm-delete-phrase {
+    text-align: center;
+}
+
+#confirm-delete-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#yes-button {
+    padding: 8px;
+    background-color: #E05512;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#no-button {
+    padding: 8px;
+    background-color: #525151;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
