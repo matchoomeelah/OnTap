@@ -5,7 +5,6 @@ import { thunkGetBeerById } from "../../redux/beers";
 import CheckInTile from "../CheckIn/CheckInTile";
 import OpenModalButton from "../OpenModalButton";
 import CreateCheckInModal from "../Modals/CreateCheckInModal";
-// import CheckInTile from "../CheckIn/CheckInTile";
 
 function BeerDetails() {
     const dispatch = useDispatch();
@@ -49,7 +48,6 @@ function BeerDetails() {
                             </div>
                             <div>
                                 <div>Rating</div>
-                                {/* <div><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i></div> */}
                                 <div><i id="beer-details-rating-mug"class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                             </div>
                         </div>
@@ -63,7 +61,6 @@ function BeerDetails() {
                         <h4>About</h4>
                         <div>{currBeer?.description}</div>
                     </div>
-                    {/* <button id="check-in-button" onClick={() => alert("Feature Coming Soon!")}>Check In!</button> */}
                         <div id="check-in-button-div">
                             {sessionUser &&
                             <OpenModalButton
@@ -87,15 +84,6 @@ function BeerDetails() {
                             return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
 
                         })}
-                        {/* <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_1.jpeg"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_2.jpeg"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_3.webp"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_9.jpeg"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_6.jpeg"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_8.avif"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_4.jpeg"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_5.webp"} />
-                        <img className="beer-side-photo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/ex_beer_7.jpeg"} /> */}
                     </div>
                 </div>
             </div>

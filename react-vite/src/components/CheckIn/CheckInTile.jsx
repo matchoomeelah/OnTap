@@ -39,7 +39,9 @@ function CheckInTile({ checkIn }) {
                     <OpenModalButton
                         buttonId="add-comment-button"
                         buttonText={'Add Comment'}
-                        modalComponent={<CreateCommentModal checkIn={checkIn} />}
+                        modalComponent={<CreateCommentModal checkIn={checkIn}
+                        onModalClose={() => setShowComments(true)}
+                         />}
                     />
                     <button onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button>
                     {checkIn.user_id === sessionUser?.id &&
@@ -62,7 +64,7 @@ function CheckInTile({ checkIn }) {
             {showComments &&
                 <div className="comments-container">
                     {checkIn.comments.map(comment => {
-                        return <CommentTile comment={comment} />
+                        return <CommentTile beerId={checkIn.beer.id} comment={comment} />
                     })}
                 </div>
             }

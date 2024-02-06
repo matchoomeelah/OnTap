@@ -216,8 +216,8 @@ def delete_check_in(id, check_in_id):
 
 # Create a comment on a Check-In
 @login_required
-@beer_routes.route("/<int:id>/check-ins/<int:check_in_id>/comments", methods=["POST"])
-def create_comment(id, check_in_id):
+@beer_routes.route("/<int:beer_id>/check-ins/<int:check_in_id>/comments", methods=["POST"])
+def create_comment(beer_id, check_in_id):
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -235,3 +235,47 @@ def create_comment(id, check_in_id):
         return new_comment.to_dict()
 
     return form.errors, 400
+
+
+# Update a comment on a Check-In
+@login_required
+@beer_routes.route("/<int:id>/check-ins/<int:check_in_id>/comments/<int:comment_id>", methods=["PUT"])
+def update_comment(id, check_in_id, comment_id):
+    comment = Comment.query.get(comment_id)
+
+    if not comment:
+        return {"errors": {"message": "Comment not found"}}
+
+    form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if comment.user_id == current_user.id:
+        if form.validate_on_submit():
+            comment.body = form.data["body"]
+
+            db.session.commit()
+
+            return comment.to_dict()
+
+        return form.errors, 400
+
+    return { "message": "User unauthorized"}, 401
+
+
+
+# Delete a comment on a Check-In
+@login_required
+@beer_routes.route("/<int:id>/check-ins/<int:check_in_id>/comments/<int:comment_id>", methods=["DELETE"])
+def delete_comment(id, check_in_id, comment_id):
+    comment = Comment.query.get(comment_id)
+
+    if not comment:
+        return {"errors": {"message": "Comment not found"}}
+
+    if comment.user_id == current_user.id:
+        db.session.delete(comment)
+        db.session.commit()
+
+        return {"message": "Success"}, 200
+
+    return { "message": "User unauthorized"}, 401

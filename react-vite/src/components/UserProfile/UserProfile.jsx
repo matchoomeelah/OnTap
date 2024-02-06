@@ -52,7 +52,7 @@ function UserProfile() {
     useEffect(() => {
         dispatch(thunkGetUserById(user_id));
         dispatch(thunkGetUserCheckIns(user_id))
-    }, [user_id, comments])
+    }, [user_id, comments, beers, breweries])
 
 
     if (!checkIns) {

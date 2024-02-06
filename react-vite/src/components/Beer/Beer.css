@@ -79,9 +79,12 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
+    /* margin-left: 50px;
+    margin-right: 50px; */
+    margin: 0 auto;
     margin-top: 100px;
+    width: fit-content;
+
 }
 
 /* BEER DETAILS HEADER */
@@ -165,14 +168,7 @@ i {
 #beer-content-container {
     display: flex;
     width: 95%;
-    height: 400px;
-    justify-content: space-between;
-}
-
-#beer-content {
-    width: 580px;
-    height: 400px;
-    padding: 5px;
+    gap: 150px;
 }
 
 #beer-about {
@@ -181,11 +177,9 @@ i {
     padding-left: 0;
     height: fit-content;
     max-height: 150px;
-    /* border: 1px solid black; */
     border-radius: 2px;
     overflow: scroll;
-    /* background-color:#525151;
-    color:#E0AE11; */
+    overflow-wrap: break-word;
 }
 
 h4 {
