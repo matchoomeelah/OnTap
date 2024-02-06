@@ -43,7 +43,7 @@ function CheckInTile({ checkIn }) {
                         onModalClose={() => setShowComments(true)}
                          />}
                     />
-                    <button onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button>
+                    <button id="show-comments-button" onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button>
                     {checkIn.user_id === sessionUser?.id &&
                         <div>
                             {/* <OpenModalButton
