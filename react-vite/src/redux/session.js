@@ -1,3 +1,5 @@
+import { actionClearUser } from "./users";
+
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
@@ -63,6 +65,7 @@ export const thunkSignup = (user) => async (dispatch) => {
 export const thunkLogout = () => async (dispatch) => {
   await fetch("/api/auth/logout");
   dispatch(removeUser());
+  dispatch(actionClearUser());
 };
 
 const initialState = { user: null };

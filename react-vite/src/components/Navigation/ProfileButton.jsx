@@ -6,6 +6,7 @@ import * as sessionActions from '../../redux/session';
 import LoginFormModal from '../Modals/LoginFormModal/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal/SignupFormModal';
 import OpenModalMenuItem from './OpenModalMenuItem';
+import { actionClearUser } from '../../redux/users';
 
 
 function ProfileButton({ user }) {
@@ -39,10 +40,16 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
 
+  // Clear all user data from redux store
+  // const clearData = () => {
+
+  // }
+
   // Logout from current user and navigate to home page
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(sessionActions.thunkLogout());
+    await dispatch(actionClearUser());
     closeMenu();
     navigate('/');
   };
