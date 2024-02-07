@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { thunkGetBreweryById } from "../../redux/breweries";
 import BeerTile from "../Beer/BeerTile"
 import CheckInTile from "../CheckIn/CheckInTile";
+import BeerBrowseTile from "../Beer/BeerBrowseTile";
 
 function BreweryDetails() {
     const dispatch = useDispatch();
@@ -41,11 +42,19 @@ function BreweryDetails() {
     function enableShowBeers() {
         setShowCheckins(false);
         setShowBeers(true);
+        const beersButton = document.getElementById("beers-button");
+        const checkInsButton = document.getElementById("check-ins-button");
+        beersButton.classList.add("glow");
+        checkInsButton.classList.remove("glow")
     }
 
     function enableShowCheckIns() {
         setShowBeers(false);
         setShowCheckins(true);
+        const beersButton = document.getElementById("beers-button");
+        const checkInsButton = document.getElementById("check-ins-button");
+        beersButton.classList.remove("glow");
+        checkInsButton.classList.add("glow")
     }
 
 
@@ -67,8 +76,8 @@ function BreweryDetails() {
                 </div>
                 <div id="brewery-content">
                     <div id="brewery-show-buttons-container">
-                        <h5 id="brewery-show-beers-button" className="brewery-show-button" onClick={enableShowBeers}>Beers</h5>
-                        <h5 id="brewery-show-check-ins-button" className="brewery-show-button" onClick={enableShowCheckIns}>Check Ins</h5>
+                        <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                        <h5 id="check-ins-button" className="show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                     </div>
                     {showBeers &&
                         (currBrewery?.beers.length === 0 ?
@@ -77,7 +86,8 @@ function BreweryDetails() {
                         </div>
                         :
                         currBrewery?.beers.map(beer => {
-                            return <BeerTile key={beer.id} beer={beer} />
+                            // return <BeerTile key={beer.id} beer={beer} />
+                            return <BeerBrowseTile key={beer.id} beer={beer} />
                         }))}
                     {showCheckIns &&
                         (breweryCheckIns.length === 0 ?

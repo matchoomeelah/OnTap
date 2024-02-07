@@ -108,14 +108,13 @@
     position: relative;
     top: 10px;
     padding: 15px 8px;
-
 }
 
-#brewery-show-beers-button {
+#beers-button {
     background-color: #E0AE11;
 }
 
-#brewery-show-check-ins-button {
+#check-ins-button {
     background-color: #525151;
 }
 
