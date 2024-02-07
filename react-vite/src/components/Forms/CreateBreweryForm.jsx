@@ -51,13 +51,6 @@ function CreateBreweryForm() {
         }
 
 
-        // // Ensure website url is properly formatted
-        // let validWebsiteUrl = websiteUrl;
-
-        // if (!websiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
-        //     validWebsiteUrl = "http://" + websiteUrl;
-        // }
-
         const formData = new FormData();
         formData.append("name", name);
         formData.append("type", type);

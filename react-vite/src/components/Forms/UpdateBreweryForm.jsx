@@ -73,6 +73,13 @@ function UpdateBreweryForm() {
 
         setErrors({});
 
+        const formErrors = validateBreweryForm(name, type, city, stateProvince, country, description, image, websiteUrl);
+
+        if (Object.values(formErrors).length > 0) {
+            setErrors(formErrors);
+            return;
+        }
+
         const formData = new FormData();
         formData.append("name", name);
         formData.append("type", type);
