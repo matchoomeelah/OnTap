@@ -1,14 +1,16 @@
 
 
+.outer-check-in-tile {
+    margin-bottom: 15px;
+}
+
 .check-in-tile-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    /* max-width: 700px; */
     min-height: 130px;
     max-height: 250px;
-    margin-bottom: 15px;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
