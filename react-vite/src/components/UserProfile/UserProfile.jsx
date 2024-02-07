@@ -28,16 +28,21 @@ function UserProfile() {
     function enableShowBeers() {
         setShowBreweries(false);
         setShowBeers(true);
+        const beersButton = document.getElementById("beers-button");
+        const breweriesButton = document.getElementById("breweries-button");
+        beersButton.classList.add("glow");
+        breweriesButton.classList.remove("glow")
     }
 
     function enableShowBreweries() {
         setShowBeers(false);
         setShowBreweries(true);
-    }
+        const beersButton = document.getElementById("beers-button");
+        const breweriesButton = document.getElementById("breweries-button");
+        beersButton.classList.remove("glow");
+        breweriesButton.classList.add("glow")
 
-    useEffect(() => {
-        enableShowBeers();
-    }, [])
+    }
 
     useEffect(() => {
         dispatch(thunkGetUserById(user_id));
@@ -75,8 +80,8 @@ function UserProfile() {
                                         + Add a Brewery
                                     </h5>
                                 }
-                                <h5 class="show-button show-beer" onClick={enableShowBeers}>Beers</h5>
-                                <h5 class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
+                                <h5 id="beers-button" class="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                                <h5 id="breweries-button" class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
                             </div>
                         </div>
                     </div>

@@ -62,7 +62,7 @@ function BeerDetails() {
                         <h4>About</h4>
                         {!showLongDescription ?
                             currBeer?.description.length < 300 ?
-                                <div>currBeer?.description</div>
+                                <div>{currBeer?.description}</div>
                                 :
                                 <div>
                                     {currBeer?.description.substring(0, 300) + "..."}
