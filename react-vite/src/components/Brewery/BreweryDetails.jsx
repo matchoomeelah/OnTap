@@ -105,7 +105,7 @@ function BreweryDetails() {
                             <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
                         </div>
                         :
-                        breweryCheckIns.map(checkIn => {
+                        breweryCheckIns.toReversed().map(checkIn => {
                         return <CheckInTile checkIn={checkIn} />
                     }))}
                 </div>
