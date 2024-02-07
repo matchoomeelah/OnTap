@@ -13,6 +13,7 @@ import "./UserProfile.css";
 function UserProfile() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const { user_id } = useParams();
     const profileUser = useSelector(state => state.users.profileUser);
     const sessionUser = useSelector(state => state.session.user);
@@ -44,10 +45,34 @@ function UserProfile() {
 
     }
 
+
     useEffect(() => {
-        dispatch(thunkGetUserById(user_id));
-        dispatch(thunkGetUserCheckIns(user_id))
+        async function wrapper() {
+            const response = await dispatch(thunkGetUserById(user_id));
+            if (response.errors) {
+                navigate("/error");
+            }
+        }
+        wrapper();
     }, [user_id, comments, beers, breweries])
+
+    useEffect(() => {
+        async function wrapper() {
+            const response = await dispatch(thunkGetUserCheckIns(user_id));
+            if (response.errors) {
+                navigate("/error");
+            }
+        }
+        wrapper();
+    }, [checkIns])
+
+    // useEffect(() => {
+    //     dispatch(thunkGetUserById(user_id));
+    // }, [user_id, comments, beers, breweries])
+
+    // useEffect(() => {
+    //     dispatch(thunkGetUserCheckIns(user_id));
+    // }, [checkIns])
 
 
     if (!profileUser || !checkIns) {

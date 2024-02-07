@@ -118,7 +118,7 @@
     padding: 10px;
     background-color: #E0AE11;
     height: 150px;
-    width: 90%;
+    width: 100%;
     border: 1px solid gray;
 }
 
@@ -128,7 +128,7 @@
     justify-content: center;
     padding: 10px;
     height: 150px;
-    width: 90%;
+    width: 100%;
     border: 1px solid gray;
 }
 
@@ -139,6 +139,6 @@
     padding: 10px;
     background-color:#E09712;
     height: 150px;
-    width: 90%;
+    width: 100%;
     border: 1px solid gray;
 }

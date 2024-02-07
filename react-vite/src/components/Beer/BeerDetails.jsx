@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { thunkGetBeerById } from "../../redux/beers";
 import CheckInTile from "../CheckIn/CheckInTile";
 import OpenModalButton from "../OpenModalButton";
@@ -8,6 +8,7 @@ import CreateCheckInModal from "../Modals/CreateCheckInModal";
 
 function BeerDetails() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const sessionUser = useSelector(state => state.session.user);
     const beers = useSelector(state => state.beers);
@@ -25,7 +26,14 @@ function BeerDetails() {
     }, [])
 
     useEffect(() => {
-        dispatch(thunkGetBeerById(beer_id));
+        async function wrapper() {
+            const response = await dispatch(thunkGetBeerById(beer_id));
+            if (response.errors) {
+                navigate("/error");
+            }
+        }
+
+        wrapper();
     }, [beer_id, checkIns, comments])
 
     return (

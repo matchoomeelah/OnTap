@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { thunkGetBreweryById } from "../../redux/breweries";
 import BeerTile from "../Beer/BeerTile"
 import CheckInTile from "../CheckIn/CheckInTile";
@@ -8,6 +8,8 @@ import BeerBrowseTile from "../Beer/BeerBrowseTile";
 
 function BreweryDetails() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const beers = useSelector(state => state.beers);
     const breweries = useSelector(state => state.breweries);
     const { brewery_id } = useParams();
@@ -24,7 +26,15 @@ function BreweryDetails() {
 
 
     useEffect(() => {
-        dispatch(thunkGetBreweryById(brewery_id));
+        async function wrapper() {
+            const response = await dispatch(thunkGetBreweryById(brewery_id));
+            if (response.errors) {
+                navigate("/error");
+            }
+        }
+
+        wrapper();
+
     }, [beers])
 
 

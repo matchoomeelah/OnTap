@@ -25,12 +25,11 @@ export const thunkGetUserById = (id) => async (dispatch) => {
 
     if (response.ok) {
         dispatch(actionGetUserById(data));
-    }
-    else {
-        console.log("There was an error getting the user");
+        return data;
     }
 
-    return data;
+    console.log("There was an error getting user")
+    return {"errors": data};
 }
 
 

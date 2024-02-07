@@ -44,8 +44,9 @@ function CreateCheckInModal({ beer }) {
         const newCheckIn = await dispatch(thunkCreateCheckIn(beer.id, formData))
 
         if (newCheckIn.errors) {
-            setErrors(newBeer.errors);
-            setImageLoading(false);
+            setErrors(newCheckIn.errors);
+            // setImageLoading(false);
+            console.log(newCheckIn.errors)
         }
         else {
             closeModal();
@@ -68,7 +69,7 @@ function CreateCheckInModal({ beer }) {
                 />
                 <div id="body-char-count">{bodyCharCount}/255</div>
 
-                <label id="image-input-label" for="check-in-image-input">{image == null ? "+Add Photo"/*<img id="check-in-add-photo" src="https://i.ibb.co/5rYHfYk/Untitled-4.png />*/: <img id="check-in-preview-image" src={URL.createObjectURL(image)} />}</label>
+                <label id="image-input-label" for="check-in-image-input">{image == null ? "+Add Photo"/*<img id="check-in-add-photo" src="https://i.ibb.co/5rYHfYk/Untitled-4.png />*/ : <img id="check-in-preview-image" src={URL.createObjectURL(image)} />}</label>
                 <input
                     id="check-in-image-input"
                     type="file"
@@ -82,6 +83,9 @@ function CreateCheckInModal({ beer }) {
                         }
                     }}
                 />
+                <div id="image-error-container" className="error-container">
+                    {errors.image_url && <span className="error-message">*{errors.image_url}</span>}
+                </div>
 
                 <ul className="rating-list">
                     <li id='stars-word-list-item'>Mugs*</li>
