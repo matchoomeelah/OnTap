@@ -3,14 +3,11 @@
     flex-direction: column;
     margin: 0 auto;
     width: 60%;
-    /* gap: 8px; */
 }
 
 #all-beers-container {
     display: flex;
     flex-direction: column;
-    /* background-color: white; */
-    /* gap: 15px; */
 }
 
 .browse-heading {
@@ -20,7 +17,7 @@
 
 /* BEER TILE */
 
-.beer-tile {
+/* .beer-tile {
     display: grid;
     grid-template-columns: 130px 1fr;
     width: 100%;
@@ -78,7 +75,7 @@
 
 #beer-tile-mug {
     color: #525151;
-}
+} */
 
 /* BEER BROWSE TILE */
 .beer-browse-tile {
@@ -203,15 +200,6 @@
     margin: 0 auto;
     margin-top: 100px;
     width: 90%;
-
-
-    /* align-items: center;
-    gap: 10px;
-    margin: 0 auto;
-    margin-left: 30px;
-    margin-top: 100px;
-    width: fit-content; */
-
 }
 
 /* BEER DETAILS HEADER */
@@ -325,6 +313,7 @@ h4 {
 
 #check-in-button-div {
     min-height: 30px;
+    margin-bottom: 20px;
 }
 
 #check-in-button {
