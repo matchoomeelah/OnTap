@@ -29,8 +29,8 @@
 
 #profile-content-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 50px;
+    grid-template-columns: 48% 48%;
+    column-gap: 4%;
 }
 
 #user-check-ins {

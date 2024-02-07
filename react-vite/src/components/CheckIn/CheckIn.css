@@ -10,7 +10,7 @@
     justify-content: space-between;
     width: 100%;
     min-height: 130px;
-    max-height: 250px;
+    /* max-height: 260px; */
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
@@ -70,6 +70,7 @@
     display: flex;
     min-height: 20px;
     align-self: flex-end;
+    /* align-items: center; */
 }
 
 #edit-button {
@@ -86,6 +87,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
+    margin-bottom: 4px;
 }
 
 

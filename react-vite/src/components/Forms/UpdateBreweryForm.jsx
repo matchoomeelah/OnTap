@@ -6,6 +6,7 @@ import Select from "react-select";
 import { thunkGetBreweryById, thunkUpdateBrewery } from "../../redux/breweries";
 
 import "./Forms.css";
+import { validateBreweryForm } from "./validation";
 
 
 function UpdateBreweryForm() {

@@ -92,7 +92,7 @@ function BeerDetails() {
                             />}
                         <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
                     </div>
-
+                    {/* <div id="lower-content"> */}
                     {currBeer?.check_ins.length === 0 ?
                         <div id="no-check-ins-placeholder">
                             <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>

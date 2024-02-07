@@ -104,7 +104,6 @@
     min-width: 110px;
     max-width: 110px;
     height: 110px;
-    /* margin-top: 12px; */
 }
 
 .browse-tile-top-info {
@@ -203,8 +202,6 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    /* margin-left: 50px;
-    margin-right: 50px; */
     margin: 0 auto;
     margin-top: 100px;
     width: fit-content;
@@ -284,9 +281,15 @@ i {
 /* BEER DETAILS CONTENT */
 
 #beer-content-container {
+    /* display: grid;
+    grid-template-columns: 60% 25%; */
     display: flex;
     width: 95%;
     gap: 150px;
+}
+
+#beer-content-left {
+    max-width: 680px;
 }
 
 #beer-about {
