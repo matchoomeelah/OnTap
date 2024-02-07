@@ -6,7 +6,7 @@ def seed_check_ins():
     demo_seeds = [
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
-        rating=4,
+        rating=5,
         image_url="https://i.ibb.co/2q9Cp1L/ex-beer-1.jpg",
         beer_id=1,
         user_id=1

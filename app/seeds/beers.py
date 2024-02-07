@@ -80,6 +80,19 @@ def seed_beers():
         creator_id=1,
         brewery_id=1
     )
+
+    tangerine_express = Beer(
+        name="Tangerine Express",
+        abv=6.7,
+        ibu=75,
+        style='Hazy IPA',
+        description="This ain’t no just-add-juice approach. This one is for adults. We use bountiful whole tangerine purée, which brings pithy, crisp bitterness to the citrus flavor. In addition to the complexities of the tangerine — the likes of which you can only get by using the whole fruit — we judiciously employ just a hint of whole pineapple for a backnote (you’d likely not even pick it out of the mix if we didn’t tell you it was there). We’re not looking for a sweet concoction to appease the “I want my beer to taste like fruit juice” crowd. This is Stone. We like our IPAs to taste like IPAs. Big, bold and not for kids.",
+        image_url="https://i.ibb.co/4J36jDc/stone-tangerine-express.jpg",
+        orig_image_url="stone-tangerine-express.jpg",
+        creator_id=2,
+        brewery_id=5
+    )
+
     db.session.add(lagunitas_IPA)
     db.session.add(lagunitas_little_sumpin)
     db.session.add(psychopathy)
@@ -87,6 +100,7 @@ def seed_beers():
     db.session.add(delicious)
     db.session.add(hairy_eyeball)
     db.session.add(cappuccino_stout)
+    db.session.add(tangerine_express)
 
     db.session.commit()
 

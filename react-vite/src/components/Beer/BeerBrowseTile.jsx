@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import DeleteBeerModal from "../Modals/DeleteBeerModal";
 
 function BeerBrowseTile({ beer }) {
+    const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
     const currAvgRating = beer?.check_ins.length > 0 ? parseFloat(beer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / beer?.check_ins.length).toFixed(1) : "New";
 
@@ -17,21 +20,32 @@ function BeerBrowseTile({ beer }) {
                     <NavLink to={`/breweries/${beer.brewery_id}`} className="beer-browse-tile-brewery">{beer.brewery_name}</NavLink>
                     <div className="beer-browse-tile-style">{beer.style}</div>
                     {!showLongDescription ?
-                            beer.description.length < 160 ?
-                                <div className="beer-browse-tile-description">{beer.description}</div>
-                                :
-                                <div className="beer-browse-tile-description">
-                                    {beer.description.substring(0, 160) + "..."}
-                                    <button className="tile-show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
-                                </div>
+                        beer.description.length < 180 ?
+                            <div className="beer-browse-tile-description">{beer.description}</div>
                             :
                             <div className="beer-browse-tile-description">
-                                <div>{beer.description}</div>
-                                <button className="tile-show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
+                                {beer.description.substring(0, 180) + "..."}
+                                <button className="tile-show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
                             </div>
-                        }
+                        :
+                        <div className="beer-browse-tile-description">
+                            <div>{beer.description}</div>
+                            <button className="tile-show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
+                        </div>
+                    }
+
 
                 </div>
+                {beer?.creator_id === sessionUser?.id &&
+                        <div className="beer-buttons">
+                            <button id="beer-tile-edit" onClick={(e) => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
+                            <OpenModalButton
+                                buttonId="beer-tile-delete"
+                                buttonText={'Delete'}
+                                modalComponent={<DeleteBeerModal beer={beer} />}
+                            />
+                        </div>
+                }
             </div>
             <div>
                 <div className="beer-browse-tile-abv-ibu">

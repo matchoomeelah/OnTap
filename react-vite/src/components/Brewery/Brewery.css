@@ -1,6 +1,105 @@
 /* BREWERY TILE */
 
 .brewery-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-height: 160px;
+    background-color: white;
+    padding-top: 5px;
+    position: relative;
+}
+
+.brewery-tile-top-content {
+    display: flex;
+    gap: 15px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.brewery-tile-image {
+    min-width: 100px;
+    max-width: 100px;
+    height: 100px;
+}
+
+.brewery-tile-top-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    gap: 5px;
+}
+
+#brewery-tile-name, #brewery-tile-name:visited {
+    font-size: 20px;
+    color: #E09712;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    width: fit-content;
+}
+
+#brewery-tile-name:hover {
+    text-decoration: underline;
+    color: #E0AE11;
+}
+
+#city-state-country {
+    font-size: 13px;
+}
+
+#brewery-tile-type {
+    font-size: 12px;
+}
+
+.brewery-buttons {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+#brewery-tile-delete {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+#brewery-tile-edit {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.brewery-stats {
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+    border-top: 0.5px solid lightgray;
+    border-bottom: 0.5px solid lightgray;
+}
+
+.brewery-tile-vertical-line {
+    border-right: 0.5px solid lightgray;
+    margin: 0;
+    padding: 0;
+}
+
+.brewery-tile-bottom-section {
+    width: 33%;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+#brewery-tile-mug {
+    color: rgb(237, 210, 55);
+}
+
+/* .brewery-tile {
     display: grid;
     grid-template-columns: 130px 1fr;
     width: 100%;
@@ -52,7 +151,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-}
+} */
 
 /* BREWERY DETAILS */
 #brewery-details-container {
@@ -124,8 +223,4 @@
     /* border: 1px solid blue; */
     overflow: scroll;
     margin-top: 30px;
-}
-
-#no-check-in-placeholder {
-
 }

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 85%;
+    width: 50%;
     /* gap: 8px; */
 }
 
@@ -14,8 +14,8 @@
 }
 
 .browse-heading {
-    margin-top: 70px;
     text-decoration: underline;
+    margin: 70px auto 30px;
 }
 
 /* BEER TILE */
@@ -85,10 +85,11 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 600px;
+    width: 100%;
     min-height: 210px;
     background-color: white;
     padding-top: 5px;
+    position: relative;
 }
 
 .browse-tile-top-content {
@@ -162,7 +163,7 @@
 }
 
 .beer-browse-bottom-section {
-    width: 150px;
+    width: 25%;
     text-align: center;
     padding: 5px 0px;
 }
@@ -179,6 +180,16 @@
 .tile-show-more-button:hover {
     color: #E0AE11;
     text-decoration: underline;
+}
+
+.beer-buttons {
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+#beer-tile-mug {
+    color: rgb(237, 210, 55);
 }
 
 
@@ -209,12 +220,6 @@
 }
 
 #beer-header > img {
-    /* width: 25%;
-    height: auto;
-    min-width: 250px;
-    max-width: 300px;
-    min-height: 250px;
-    max-height: 300px; */
     width: 250px;
     height: 250px;
 }
@@ -258,9 +263,9 @@ i {
 }
 
 #beer-details-rating-mug {
-    /* color: gold */
     color: rgb(237, 210, 55);
 }
+
 #wishlist-button {
     height: fit-content;
     background-color: #E05512;
