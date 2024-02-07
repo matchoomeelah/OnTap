@@ -74,8 +74,8 @@ function BreweryDetails() {
                 <img src={currBrewery?.image_url} />
                 <div>
                     <h1>{currBrewery?.name}</h1>
-                    <p>{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</p>
-                    <p>{currBrewery?.type}</p>
+                    <p id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</p>
+                    <p id="brewery-type">{currBrewery?.type}</p>
                     <a href={currBrewery?.website_url} target={"_blank"} id="brewery-website">{currBrewery?.website_url}</a>
                 </div>
             </div>

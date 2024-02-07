@@ -37,7 +37,7 @@ function BreweryTile({ brewery }) {
             </div>
             {brewery.creator_id === sessionUser?.id &&
                 <div className="brewery-buttons">
-                    <button id="brewery-tile-edit" onClick={(e) => navigate(`/brewerie/${brewery.id}/edit`)}>Edit</button>
+                    <button id="brewery-tile-edit" onClick={(e) => navigate(`/breweries/${brewery.id}/edit`)}>Edit</button>
                     <OpenModalButton
                         buttonId="brewery-tile-delete"
                         buttonText={'Delete'}
@@ -58,17 +58,6 @@ function BreweryTile({ brewery }) {
                     <div className="brewery-tile-bottom-section">
                         {breweryRatingInfo.numRatings} {breweryRatingInfo.numRatings === 1 ? "Rating" : "Ratings"}
                     </div>
-                    {/* <div className="brewery-bottom-section">
-                        {beer.ibu} IBU
-                    </div> */}
-                    {/* <div className="brewery-tile-vertical-line"></div>
-                    <div className="brewery-bottom-section">
-                        <i id="beer-tile-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}
-                    </div>
-                    <div className="brewery-tile-vertical-line"></div>
-                    <div className="brewery-bottom-section">
-                        {beer.check_ins.length} {beer.check_ins.length === 1 ? "Rating" : "Ratings"}
-                    </div> */}
                 </div>
             </div>
         </div>

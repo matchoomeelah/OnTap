@@ -32,9 +32,15 @@ export function validateBreweryForm(name, type, city, state_province, country, d
     }
 
     // Website URL
-    if (website_url && !validURL(website_url)) {
-        errors.website_url = "The provided URL is not valid"
+    if (website_url && !website_url.startsWith("http://") && !website_url.startsWith("https://")) {
+        errors.website_url = "Website URL must begin with http:// or https://";
     }
+
+    if (website_url && !validURL(website_url)) {
+        errors.website_url = "The provided URL is not valid";
+    }
+
+
 
     return errors;
 }

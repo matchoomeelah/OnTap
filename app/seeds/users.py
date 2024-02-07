@@ -11,7 +11,7 @@ def seed_users():
     bender = User(
         first_name="Bender", last_name="Rodriguez", username='bender', email='bender@aa.io', password='password')
     leela = User(
-        first_name="Toranga", last_name="Leela", username='leela', email='leela@aa.io', password='password')
+        first_name="Turanga", last_name="Leela", username='leela', email='leela@aa.io', password='password')
     amy = User(
         first_name="Amy", last_name="Wong", username='amy', email='amy@aa.io', password='password')
     farnsworth = User(
