@@ -70,12 +70,12 @@ function OptionsButton() {
         <div className='options-menu-option' onClick={gotToBeers}>Beers</div>
         <div className='separator'></div>
         <div className='options-menu-option' onClick={gotToBreweries}>Breweries</div>
-        {sessionUser ?
-          <>
-            <div className='separator'></div>
-            <button className="logout-button options-menu-option" onClick={logout}>Log Out</button>
-          </>
-          :
+        {!sessionUser &&
+          // <>
+          //   <div className='separator'></div>
+          //   <button className="logout-button options-menu-option" onClick={logout}>Log Out</button>
+          // </>
+          // :
           <>
             <div className='separator'></div>
             <OpenModalMenuItem
