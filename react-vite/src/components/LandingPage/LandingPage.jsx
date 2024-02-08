@@ -14,7 +14,7 @@ function LandingPage() {
             <div id="landing-page-banner">
                 <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/Screenshot+2024-02-04+at+8.47.30+PM.png" />
             </div>
-            {/* <div id="landing-page-info-tiles">
+            <div id="landing-page-info-tiles">
                 <div className="info-tile">
                     <div className="info-tile-title">Beers</div>
                     <div className="info-tile-text">Discover new and trending beers, or kick back with your old favorites.</div>
@@ -34,7 +34,7 @@ function LandingPage() {
                         modalComponent={<SignupFormModal />}
                     />}
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
