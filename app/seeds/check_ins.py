@@ -9,6 +9,7 @@ def seed_check_ins():
         rating=5,
         image_url="https://i.ibb.co/2q9Cp1L/ex-beer-1.jpg",
         beer_id=1,
+        brewery_id=1,
         user_id=1
     ),
     CheckIn(
@@ -16,6 +17,7 @@ def seed_check_ins():
         rating=4,
         image_url="https://i.ibb.co/jW025Dx/ex-beer-2.jpg",
         beer_id=2,
+        brewery_id=1,
         user_id=1
     ),
     CheckIn(
@@ -23,6 +25,7 @@ def seed_check_ins():
         rating=5,
         image_url="https://i.ibb.co/GxHsJMm/ex-beer-5.webp",
         beer_id=3,
+        brewery_id=3,
         user_id=1
     ),
     CheckIn(
@@ -30,6 +33,7 @@ def seed_check_ins():
         rating=4,
         image_url="https://i.ibb.co/LRGvGsP/space-dust-check1.jpg",
         beer_id=4,
+        brewery_id=4,
         user_id=1
     )]
 
@@ -39,6 +43,7 @@ def seed_check_ins():
         rating=4,
         image_url="https://i.ibb.co/JypmmVm/space-dust-check5.jpg",
         beer_id=1,
+        brewery_id=1,
         user_id=2
     )]
 
@@ -48,6 +53,7 @@ def seed_check_ins():
         rating=4,
         image_url="https://i.ibb.co/fF05Ht2/space-dust-check2.jpg",
         beer_id=4,
+        brewery_id=4,
         user_id=3
     )]
 
@@ -57,6 +63,7 @@ def seed_check_ins():
         rating=4,
         image_url="https://i.ibb.co/RhxHdng/space-dust-check3.jpg",
         beer_id=4,
+        brewery_id=4,
         user_id=4
     )]
 
@@ -66,6 +73,7 @@ def seed_check_ins():
         rating=4,
         image_url="https://i.ibb.co/9V04fYy/space-dust-check4.jpg",
         beer_id=4,
+        brewery_id=4,
         user_id=5
     )]
 

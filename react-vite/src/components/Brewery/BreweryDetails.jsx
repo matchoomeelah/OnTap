@@ -39,17 +39,6 @@ function BreweryDetails() {
     }, [beers, checkIns])
 
 
-    // Finds all check ins associated with brewery and sorts them by most recent...
-    // Should probably just change the DB if I want this functionality
-    const breweryCheckIns = [];
-    currBrewery?.beers.forEach(beer => {
-        beer.check_ins.forEach(checkIn => {
-            breweryCheckIns.push(checkIn);
-        })
-    })
-    breweryCheckIns.sort((a, b) => a.created_at > b.created_at ? 1 : -1);
-
-
     function enableShowBeers() {
         setShowCheckins(false);
         setShowBeers(true);
@@ -106,12 +95,12 @@ function BreweryDetails() {
                             return <BeerBrowseTile key={beer.id} beer={beer} />
                         }))}
                     {showCheckIns &&
-                        (breweryCheckIns.length === 0 ?
+                        (currBrewery.check_ins.length === 0 ?
                         <div id="no-check-ins-placeholder">
                             <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
                         </div>
                         :
-                        breweryCheckIns.toReversed().map(checkIn => {
+                        currBrewery.check_ins.toReversed().map(checkIn => {
                         return <CheckInTile checkIn={checkIn} />
                     }))}
                 </div>
