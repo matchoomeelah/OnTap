@@ -235,6 +235,7 @@ nav {
 
 @media (max-width: 500px) {
   #logo {
+    margin-left: 20px;
     width: 119px;
     height: 35px;
   }
