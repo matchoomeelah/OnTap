@@ -88,7 +88,7 @@ function ProfileButton({ user }) {
             <div className='separator'></div>
             <div className='user-menu-option' onClick={goToBreweryForm}>Add a Brewery</div>
             <div className='separator'></div>
-            <button id="logout-button" onClick={logout}>Log Out</button>
+            <div className='user-menu-option'><button className="logout-button" onClick={logout}>Log Out</button></div>
 
           </>
         ) : (

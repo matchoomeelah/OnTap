@@ -12,6 +12,7 @@ function BreweryDetails() {
 
     const beers = useSelector(state => state.beers);
     const breweries = useSelector(state => state.breweries);
+    const checkIns = useSelector(state => state.checkIns);
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
 
@@ -35,7 +36,7 @@ function BreweryDetails() {
 
         wrapper();
 
-    }, [beers])
+    }, [beers, checkIns])
 
 
     // Finds all check ins associated with brewery and sorts them by most recent...

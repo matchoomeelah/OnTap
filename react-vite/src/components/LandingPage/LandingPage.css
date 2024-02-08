@@ -79,6 +79,10 @@
     color: #E09712;
 }
 
+#get-started-container {
+    min-height: 10px;
+}
+
 
 /* MEDIA QUERIES */
 

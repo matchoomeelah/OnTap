@@ -33,11 +33,12 @@ function LandingPage() {
                 <div className="info-tile">
                     <div className="info-tile-title">Check-Ins</div>
                     <div className="info-tile-text">Let your friends know what you're drinking and see what they're putting down, because beer is better with friends.</div>
-                    {!sessionUser && <OpenModalButton
+                    <div id="get-started-container">{!sessionUser && <OpenModalButton
                         buttonId="get-started-button"
                         buttonText={'Get Started'}
                         modalComponent={<SignupFormModal />}
                     />}
+                    </div>
                 </div>
             </div>
         </div>
