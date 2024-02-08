@@ -2,10 +2,14 @@ import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import DeleteBreweryModal from "../Modals/DeleteBreweryModal";
+import { useEffect, useRef, useState } from "react";
+import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BreweryTile({ brewery }) {
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
+    const [showButtons, setShowButtons] = useState(false);
+    const ellipsisRef = useRef();
 
     function setDefaultImage() {
         const breweryLogo = document.getElementById(`brewery-logo${brewery.id}`);
@@ -16,39 +20,49 @@ function BreweryTile({ brewery }) {
         let numRatings = 0;
         let totalMugs = 0;
 
-        for (let beer of brewery.beers) {
-            for (let checkIn of beer.check_ins) {
-                numRatings++;
-                totalMugs += checkIn.rating;
-            }
+        for (let check_in of brewery.check_ins) {
+            numRatings++;
+            totalMugs += check_in.rating;
         }
 
-        const rating = numRatings === 0 || totalMugs === 0 ?  "New" : parseFloat(totalMugs / numRatings).toFixed(1);
+        const rating = numRatings === 0 || totalMugs === 0 ? "New" : parseFloat(totalMugs / numRatings).toFixed(1);
 
-        return { rating, numRatings};
+        return { rating, numRatings };
     }
 
     const breweryRatingInfo = getRatingInfo(brewery);
 
+    useEffect(() => {
+        if (!showButtons) return;
+
+        const closeMenu = (e) => {
+          if (!ellipsisRef.current.contains(e.target)) {
+            setShowButtons(false);
+          }
+        };
+        document.getElementById("options-button")?.addEventListener('click', closeMenu);
+        document.getElementById("profile-button")?.addEventListener('click', closeMenu);
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+      }, [showButtons]);
+
+    // document.addEventListener("click", () => setShowButtons(false))
+    // document.querySelectorAll(".brewery-tile-ellipsis-button").forEach(button => button.addEventListener("click", () => setShowButtons(!showButtons)))
+
+
     return (
         <div className="brewery-tile">
             <div className="brewery-tile-top-content">
-                <img id={`brewery-logo${brewery.id}`} className="brewery-tile-image" src={brewery.image_url} alt="Brewery Image" onError={setDefaultImage}/>
+                <img id={`brewery-logo${brewery.id}`} className="brewery-tile-image" src={brewery.image_url} alt="Brewery Image" onError={setDefaultImage} />
                 <div className="brewery-tile-top-info">
-                    <NavLink to={`/breweries/${brewery.id}`}id="brewery-tile-name">{brewery.name}</NavLink>
+                    <NavLink to={`/breweries/${brewery.id}`} id="brewery-tile-name">{brewery.name}</NavLink>
                     <div id="city-state-country">{brewery.city}, {brewery.state_province}, {brewery.country}</div>
                     <div id="brewery-tile-type">{brewery.type}</div>
                 </div>
             </div>
             {brewery.creator_id === sessionUser?.id &&
-                <div className="brewery-buttons">
-                    <button id="brewery-tile-edit" onClick={(e) => navigate(`/breweries/${brewery.id}/edit`)}>Edit</button>
-                    <OpenModalButton
-                        buttonId="brewery-tile-delete"
-                        buttonText={'Delete'}
-                        modalComponent={<DeleteBreweryModal brewery={brewery} />}
-                    />
-                </div>
+                <EditDeleteButtons brewery={brewery} />
             }
             <div>
                 <div className="brewery-stats">

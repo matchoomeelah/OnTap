@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import DeleteBeerModal from "../Modals/DeleteBeerModal";
+import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BeerBrowseTile({ beer }) {
     const navigate = useNavigate();
@@ -42,14 +43,15 @@ function BeerBrowseTile({ beer }) {
 
                 </div>
                 {beer?.creator_id === sessionUser?.id &&
-                        <div className="beer-buttons">
-                            <button id="beer-tile-edit" onClick={(e) => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
-                            <OpenModalButton
-                                buttonId="beer-tile-delete"
-                                buttonText={'Delete'}
-                                modalComponent={<DeleteBeerModal beer={beer} />}
-                            />
-                        </div>
+                        // <div className="beer-buttons">
+                        //     <button id="beer-tile-edit" onClick={(e) => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
+                        //     <OpenModalButton
+                        //         buttonId="beer-tile-delete"
+                        //         buttonText={'Delete'}
+                        //         modalComponent={<DeleteBeerModal beer={beer} />}
+                        //     />
+                        // </div>
+                        <EditDeleteButtons beer={beer} />
                 }
             </div>
             <div>

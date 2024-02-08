@@ -38,7 +38,7 @@ function UpdateCommentModal({beerId, comment}) {
 
     return (
         <div id="create-comment-modal-container">
-            <h1>Update comment</h1>
+            <h1>Update Comment</h1>
             <form id='comment-form' onSubmit={handleSubmit}>
                 <textarea
                     id='comment-body-input'

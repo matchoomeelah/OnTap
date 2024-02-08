@@ -91,7 +91,6 @@ function BreweryDetails() {
                         </div>
                         :
                         currBrewery?.beers.map(beer => {
-                            // return <BeerTile key={beer.id} beer={beer} />
                             return <BeerBrowseTile key={beer.id} beer={beer} />
                         }))}
                     {showCheckIns &&

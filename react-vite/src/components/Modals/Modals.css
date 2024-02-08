@@ -57,11 +57,11 @@
 /* CHECK IN */
 #check-in-form-container {
     width: 400px;
-    height: 475px;
+    height: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 20px;
 }
 
 #check-in-form {
@@ -86,6 +86,24 @@
 #body-char-count {
     font-size: 12px;
     align-self: flex-end;
+}
+
+#image-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    align-self: flex-start;
+}
+
+#rating-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+#rating-label {
+    text-align: center;
 }
 
 .rating-list li {
@@ -129,11 +147,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    min-height: 75px;
+    min-height: 65px;
+    min-width: 65px;
     padding: 0;
     margin: 0;
-    position: relative;
-    bottom: 20px;
+    /* position: relative; */
+    /* bottom: 20px; */
 }
 
 #check-in-image-input {
@@ -150,13 +169,13 @@
 }
 
 #check-in-preview-image {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
 }
 
 #check-in-add-photo {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
 }
 
 /* DELETE MODALS */

@@ -11,6 +11,7 @@
     padding: 5px 10px;
     align-self: flex-end;
     overflow-wrap: break-word;
+    position: relative;
 }
 
 .comment-edit-delete-buttons {

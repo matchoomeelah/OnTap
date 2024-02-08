@@ -15,6 +15,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    position: relative;
 }
 
 #check-in-username {
