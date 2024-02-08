@@ -53,7 +53,7 @@ def seed_breweries():
         creator_id=2
         )
     stone = Brewery(
-        name='Stone Brewing Co',
+        name='Stone Brewing Co.',
         type='Regional Brewery',
         city='Escondido',
         state_province='California',

@@ -1,4 +1,4 @@
-import BeerTile from "../Beer/BeerTile"
+import BeerBrowseTile from "../Beer/BeerBrowseTile";
 
 function UserBeers({ profileUser }) {
     return (
@@ -12,7 +12,7 @@ function UserBeers({ profileUser }) {
                 {profileUser?.beers.map(beer => {
                     return (
                         <div key={beer.id}>
-                            <BeerTile beer={beer} />
+                            <BeerBrowseTile beer={beer} />
                         </div>
                     )
                 })}

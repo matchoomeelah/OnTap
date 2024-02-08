@@ -51,13 +51,6 @@ function CreateBreweryForm() {
         }
 
 
-        // Ensure website url is properly formatted
-        let validWebsiteUrl = websiteUrl;
-
-        if (!websiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
-            validWebsiteUrl = "http://" + websiteUrl;
-        }
-
         const formData = new FormData();
         formData.append("name", name);
         formData.append("type", type);
@@ -66,7 +59,7 @@ function CreateBreweryForm() {
         formData.append("country", country);
         formData.append("description", description);
         formData.append("image_url", image);
-        formData.append("website_url", validWebsiteUrl);
+        formData.append("website_url", websiteUrl);
         setImageLoading(true);
 
         const newBrewery = await dispatch(thunkCreateBrewery(formData));

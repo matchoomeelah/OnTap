@@ -12,6 +12,7 @@ import UpdateBeerForm from '../components/Forms/UpdateBeerForm';
 // import LandingPage from '../components/LandingPage/LandingPage';
 import LandingLayout from './LandingLayout';
 import LandingPage from '../components/LandingPage/LandingPage';
+import NotFound from '../components/NotFound/NotFound';
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <LandingPage />
-      }
+      },
+
     ]
   },
   {
@@ -62,6 +64,14 @@ export const router = createBrowserRouter([
       {
         path: "/breweries/:brewery_id/edit",
         element: <UpdateBreweryForm />
+      },
+      {
+        path: "/error",
+        element: <NotFound />
+      },
+      {
+        path: "*",
+        element: <NotFound />
       }
     ],
   },

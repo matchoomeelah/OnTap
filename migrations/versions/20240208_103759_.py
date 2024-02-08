@@ -1,19 +1,19 @@
 """empty message
 
-Revision ID: f2f81c9c3548
+Revision ID: 3fe276c134b0
 Revises:
-Create Date: 2024-02-01 14:42:21.441532
+Create Date: 2024-02-08 10:37:59.989037
 
 """
 from alembic import op
 import sqlalchemy as sa
-
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = 'f2f81c9c3548'
+revision = '3fe276c134b0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -83,13 +83,15 @@ def upgrade():
     op.create_table('check_ins',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(length=255), nullable=True),
-    sa.Column('rating', sa.Float(), nullable=True),
+    sa.Column('rating', sa.Float(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.Column('beer_id', sa.Integer(), nullable=False),
+    sa.Column('brewery_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['beer_id'], ['beers.id'], ),
+    sa.ForeignKeyConstraint(['brewery_id'], ['breweries.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

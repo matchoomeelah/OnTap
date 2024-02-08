@@ -16,10 +16,12 @@ class CheckIn(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     beer_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('beers.id')), nullable=False)
+    brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('breweries.id')), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     # Relationships
     beer = db.relationship('Beer', back_populates="check_ins")
+    brewery = db.relationship('Brewery', back_populates="check_ins")
     user = db.relationship('User', back_populates="check_ins")
     comments = db.relationship('Comment', back_populates="check_in", cascade="all, delete")
 
@@ -36,6 +38,10 @@ class CheckIn(db.Model):
                 "id": self.beer_id,
                 "name": self.beer.name,
                 "brewery_id": self.beer.brewery_id,
+            },
+            "brewery": {
+                "id": self.brewery_id,
+                "name": self.brewery.name,
             },
             "comments": [comment.to_dict() for comment in self.comments]
         }

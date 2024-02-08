@@ -6,6 +6,7 @@ import * as sessionActions from '../../redux/session';
 import LoginFormModal from '../Modals/LoginFormModal/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal/SignupFormModal';
 import OpenModalMenuItem from './OpenModalMenuItem';
+import { actionClearUser } from '../../redux/users';
 
 
 function ProfileButton({ user }) {
@@ -30,6 +31,7 @@ function ProfileButton({ user }) {
       }
     };
 
+    document.getElementById("options-button")?.addEventListener('click', closeMenu);
     document.addEventListener('click', closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
@@ -39,10 +41,12 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
 
+
   // Logout from current user and navigate to home page
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(sessionActions.thunkLogout());
+    await dispatch(actionClearUser());
     closeMenu();
     navigate('/');
   };
@@ -70,7 +74,6 @@ function ProfileButton({ user }) {
   return (
     <div>
       <button id='profile-button' onClick={toggleMenu}>
-        <i id='menu-bars' className="fas fa-bars"></i>
         <i id='profile-icon' className="fas fa-user-circle fa-lg" />
       </button>
 
@@ -85,7 +88,7 @@ function ProfileButton({ user }) {
             <div className='separator'></div>
             <div className='user-menu-option' onClick={goToBreweryForm}>Add a Brewery</div>
             <div className='separator'></div>
-            <button id="logout-button" onClick={logout}>Log Out</button>
+            <div className='user-menu-option'><button className="logout-button" onClick={logout}>Log Out</button></div>
 
           </>
         ) : (

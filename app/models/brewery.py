@@ -23,6 +23,7 @@ class Brewery(db.Model):
     # Relationships
     creator = db.relationship('User', back_populates="breweries")
     beers = db.relationship('Beer', back_populates="brewery", cascade="all, delete")
+    check_ins = db.relationship('CheckIn', back_populates="brewery", cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -37,5 +38,6 @@ class Brewery(db.Model):
             'orig_image_url': self.orig_image_url,
             'website_url': self.website_url,
             'beers': [beer.to_dict() for beer in self.beers],
+            'check_ins': [check_in.to_dict() for check_in in self.check_ins],
             'creator_id': self.creator_id
         }

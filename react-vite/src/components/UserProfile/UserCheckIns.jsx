@@ -6,7 +6,8 @@ function UserCheckIns({checkIns}) {
             {Object.values(checkIns).length === 0 ?
                 <div id="no-check-ins-placeholder">
                     <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
-                </div> :
+                </div>
+                :
                 Object.values(checkIns).toReversed().map(checkIn => {
                     return (
                         <div key={checkIn.id}>

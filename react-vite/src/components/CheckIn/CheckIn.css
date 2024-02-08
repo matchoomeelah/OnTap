@@ -1,14 +1,15 @@
 
 
+.outer-check-in-tile {
+    margin-bottom: 15px;
+    max-width: 100%;
+}
+
 .check-in-tile-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
-    max-width: 700px;
     min-height: 130px;
-    max-height: 250px;
-    margin-top: 15px;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
@@ -23,6 +24,7 @@
     color: black;
 }
 
+
 #check-in-username:hover {
     text-decoration: underline;
     font-weight: bolder;
@@ -30,20 +32,37 @@
 
 #check-in-user-rating {
     display: flex;
+    gap: 5px;
 }
 
 #check-in-mug {
     color: rgb(237, 210, 55);
-    /* color: gold */
 }
 
 #check-in-headline {
     font-size: 13px;
+    margin-top: 2px;
+}
+
+.check-in-headline-navlink, .check-in-headline-navlink:visited {
+    color: #E09712;
+    text-decoration: none;
+}
+
+.check-in-headline-navlink:hover {
+    color: #E0AE11;
+    text-decoration: underline;
 }
 
 #check-in-body {
     margin-top: 10px;
     font-size: 14px;
+}
+
+.check-in-image {
+    max-width: 125px;
+    max-height: 150px;
+    margin-top: 8px;
 }
 
 .check-in-buttons {
@@ -66,11 +85,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-}
-
-.check-in-image {
-    max-width: 125px;
-    max-height: 150px;
+    margin-bottom: 4px;
 }
 
 

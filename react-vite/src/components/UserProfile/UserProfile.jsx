@@ -13,6 +13,7 @@ import "./UserProfile.css";
 function UserProfile() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const { user_id } = useParams();
     const profileUser = useSelector(state => state.users.profileUser);
     const sessionUser = useSelector(state => state.session.user);
@@ -28,21 +29,31 @@ function UserProfile() {
     function enableShowBeers() {
         setShowBreweries(false);
         setShowBeers(true);
+        const beersButton = document.getElementById("beers-button");
+        const breweriesButton = document.getElementById("breweries-button");
+        beersButton.classList.add("glow");
+        breweriesButton.classList.remove("glow")
     }
 
     function enableShowBreweries() {
         setShowBeers(false);
         setShowBreweries(true);
+        const beersButton = document.getElementById("beers-button");
+        const breweriesButton = document.getElementById("breweries-button");
+        beersButton.classList.remove("glow");
+        breweriesButton.classList.add("glow")
     }
 
-    useEffect(() => {
-        enableShowBeers();
-    }, [])
 
     useEffect(() => {
-        dispatch(thunkGetUserById(user_id));
-        dispatch(thunkGetUserCheckIns(user_id))
-    }, [user_id, comments, beers, breweries])
+        async function wrapper() {
+            const response = await dispatch(thunkGetUserById(user_id));
+            if (response.errors) {
+                navigate("/error");
+            }
+        }
+        wrapper();
+    }, [user_id, comments, beers, breweries, checkIns]);
 
 
     if (!profileUser || !checkIns) {
@@ -57,7 +68,7 @@ function UserProfile() {
                     <div>
                         <h2 className="user-section-header" id="recent-activity-header">Recent Activity</h2>
                     </div>
-                    <UserCheckIns checkIns={checkIns} />
+                    <UserCheckIns checkIns={profileUser?.check_ins} />
                 </div>
 
                 <div id="user-stuff">
@@ -75,8 +86,8 @@ function UserProfile() {
                                         + Add a Brewery
                                     </h5>
                                 }
-                                <h5 class="show-button show-beer" onClick={enableShowBeers}>Beers</h5>
-                                <h5 class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
+                                <h5 id="beers-button" class="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                                <h5 id="breweries-button" class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
                             </div>
                         </div>
                     </div>

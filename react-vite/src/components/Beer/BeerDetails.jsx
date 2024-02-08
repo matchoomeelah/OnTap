@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { thunkGetBeerById } from "../../redux/beers";
 import CheckInTile from "../CheckIn/CheckInTile";
 import OpenModalButton from "../OpenModalButton";
@@ -8,6 +8,7 @@ import CreateCheckInModal from "../Modals/CreateCheckInModal";
 
 function BeerDetails() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const sessionUser = useSelector(state => state.session.user);
     const beers = useSelector(state => state.beers);
@@ -25,13 +26,25 @@ function BeerDetails() {
     }, [])
 
     useEffect(() => {
-        dispatch(thunkGetBeerById(beer_id));
+        async function wrapper() {
+            const response = await dispatch(thunkGetBeerById(beer_id));
+            if (response.errors) {
+                navigate("/error");
+            }
+        }
+
+        wrapper();
     }, [beer_id, checkIns, comments])
+
+    function setDefaultImage() {
+        const beerLogo = document.getElementById("beer-logo");
+        beerLogo.src = "https://i.ibb.co/qChdf5n/default-beer.jpg";
+    }
 
     return (
         <div id="beer-details-container">
             <div id="beer-header">
-                <img src={currBeer?.image_url} />
+                <img id="beer-logo" src={currBeer?.image_url} onError={setDefaultImage} />
                 <div id="beer-header-info">
                     <div id="beer-name">{currBeer?.name}</div>
                     <div style={{ textDecoration: "none" }}><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
@@ -62,7 +75,7 @@ function BeerDetails() {
                         <h4>About</h4>
                         {!showLongDescription ?
                             currBeer?.description.length < 300 ?
-                                <div>currBeer?.description</div>
+                                <div>{currBeer?.description}</div>
                                 :
                                 <div>
                                     {currBeer?.description.substring(0, 300) + "..."}
@@ -84,7 +97,6 @@ function BeerDetails() {
                             />}
                         <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
                     </div>
-
                     {currBeer?.check_ins.length === 0 ?
                         <div id="no-check-ins-placeholder">
                             <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
@@ -98,8 +110,9 @@ function BeerDetails() {
                 </div>
                 <div id="beer-photos-container">
                     <h4>Photos</h4>
+                    <div id="dummy"></div>
                     <div id="beer-photos">
-                        {currBeer?.check_ins.toReversed().map(checkIn => {
+                        {currBeer?.check_ins.toReversed().slice(0,9).map(checkIn => {
                             return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
 
                         })}

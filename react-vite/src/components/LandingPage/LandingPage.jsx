@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
@@ -12,14 +12,12 @@ function LandingPage() {
     return (
         <div id="landing-page-container">
             <div id="landing-page-banner">
-                {/* <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/Screenshot+2024-02-04+at+8.48.48+PM.png" /> */}
-                <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/Screenshot+2024-02-04+at+8.47.30+PM.png" />
-                {/* <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/Screenshot+2024-02-04+at+8.41.26+PM.png" /> */}
-                {/* <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/landing_page1.jpeg" /> */}
-                {/* <div id="landing-page-banner-text">
-                    <h1>Beer Lovers Unite</h1>
-                    <div>Whether you're a sipper or a chugger, we're all here for the love of beer.</div>
-                </div> */}
+                {/* <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/Screenshot+2024-02-04+at+8.47.30+PM.png" /> */}
+                <img id="landing-page-banner-image" src="https://i.ibb.co/rQW6BxX/beer-banner.jpg" />
+                <div id="landing-page-banner-text">
+                    <div id="beer-lovers">Beer Lovers Unite</div>
+                    <div id="tagline">Whether you're a sipper or a chugger, we're all here for the love of beer</div>
+                </div>
             </div>
             <div id="landing-page-info-tiles">
                 <div className="info-tile">
@@ -35,16 +33,14 @@ function LandingPage() {
                 <div className="info-tile">
                     <div className="info-tile-title">Check-Ins</div>
                     <div className="info-tile-text">Let your friends know what you're drinking and see what they're putting down, because beer is better with friends.</div>
-                    {/* <div className="info-tile-link">Get Started</div> */}
-                    {!sessionUser && <OpenModalButton
+                    <div id="get-started-container">{!sessionUser && <OpenModalButton
                         buttonId="get-started-button"
                         buttonText={'Get Started'}
                         modalComponent={<SignupFormModal />}
                     />}
+                    </div>
                 </div>
-
             </div>
-
         </div>
     )
 }

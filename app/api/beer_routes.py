@@ -161,6 +161,13 @@ def get_check_ins_by_beer(id):
 @login_required
 @beer_routes.route("/<int:id>/check-ins", methods=["POST"])
 def create_check_in(id):
+    curr_beer = Beer.query.get(id)
+
+    if not curr_beer:
+        return {"errors": {"message": "Beer could not be found"}}
+
+    brewery_id = curr_beer.brewery_id
+
     form = CheckInForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -183,6 +190,7 @@ def create_check_in(id):
             "rating": form.data["rating"],
             "image_url": url,
             "beer_id": id,
+            "brewery_id": brewery_id,
             "user_id": current_user.id
         }
 
