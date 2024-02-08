@@ -36,10 +36,15 @@ function BeerDetails() {
         wrapper();
     }, [beer_id, checkIns, comments])
 
+    function setDefaultImage() {
+        const beerLogo = document.getElementById("beer-logo");
+        beerLogo.src = "https://i.ibb.co/qChdf5n/default-beer.jpg";
+    }
+
     return (
         <div id="beer-details-container">
             <div id="beer-header">
-                <img src={currBeer?.image_url} />
+                <img id="beer-logo" src={currBeer?.image_url} onError={setDefaultImage} />
                 <div id="beer-header-info">
                     <div id="beer-name">{currBeer?.name}</div>
                     <div style={{ textDecoration: "none" }}><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
@@ -92,7 +97,6 @@ function BeerDetails() {
                             />}
                         <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
                     </div>
-                    {/* <div id="lower-content"> */}
                     {currBeer?.check_ins.length === 0 ?
                         <div id="no-check-ins-placeholder">
                             <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
@@ -112,16 +116,6 @@ function BeerDetails() {
                             return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
 
                         })}
-                        {/* <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div>
-                        <div className="beer-side-photo"></div> */}
-
                     </div>
                 </div>
             </div>

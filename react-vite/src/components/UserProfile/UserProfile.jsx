@@ -42,7 +42,6 @@ function UserProfile() {
         const breweriesButton = document.getElementById("breweries-button");
         beersButton.classList.remove("glow");
         breweriesButton.classList.add("glow")
-
     }
 
 
@@ -54,25 +53,7 @@ function UserProfile() {
             }
         }
         wrapper();
-    }, [user_id, comments, beers, breweries])
-
-    useEffect(() => {
-        async function wrapper() {
-            const response = await dispatch(thunkGetUserCheckIns(user_id));
-            if (response.errors) {
-                navigate("/error");
-            }
-        }
-        wrapper();
-    }, [checkIns])
-
-    // useEffect(() => {
-    //     dispatch(thunkGetUserById(user_id));
-    // }, [user_id, comments, beers, breweries])
-
-    // useEffect(() => {
-    //     dispatch(thunkGetUserCheckIns(user_id));
-    // }, [checkIns])
+    }, [user_id, comments, beers, breweries, checkIns]);
 
 
     if (!profileUser || !checkIns) {
@@ -87,7 +68,7 @@ function UserProfile() {
                     <div>
                         <h2 className="user-section-header" id="recent-activity-header">Recent Activity</h2>
                     </div>
-                    <UserCheckIns checkIns={checkIns} />
+                    <UserCheckIns checkIns={profileUser?.check_ins} />
                 </div>
 
                 <div id="user-stuff">

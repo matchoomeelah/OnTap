@@ -15,69 +15,9 @@
     margin: 70px auto 30px;
 }
 
+
 /* BEER TILE */
 
-/* .beer-tile {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    width: 100%;
-    min-height: 130px;
-    background-color: #E0AE11;
-    border: 1px solid gray;
-    border-radius: 5px;
-    gap: 5px;
-    margin-bottom: 10px;
-}
-
-.beer-tile-image {
-    height: 130px;
-    width: 130px;
-    border-radius: 2px;
-}
-
-.beer-tile-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-#beer-tile-name {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 6px;
-}
-
-#beer-tile-abv-ibu {
-    display: flex;
-    gap: 10px;
-}
-
-
-#bottom-tile-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-#beer-tile-delete {
-    text-decoration: underline;
-    font-size: 11px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
-#beer-tile-edit {
-    text-decoration: underline;
-    font-size: 11px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
-
-#beer-tile-mug {
-    color: #525151;
-} */
-
-/* BEER BROWSE TILE */
 .beer-browse-tile {
     display: flex;
     flex-direction: column;
@@ -148,7 +88,6 @@
 
 .beer-browse-tile-abv-ibu {
     display: flex;
-    /* justify-content: space-between; */
     width: 95%;
     margin: 0 auto;
     border-top: 0.5px solid lightgray;
@@ -188,6 +127,21 @@
 
 #beer-tile-mug {
     color: rgb(237, 210, 55);
+}
+
+#beer-tile-delete {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+#beer-tile-edit {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
 

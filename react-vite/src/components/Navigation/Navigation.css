@@ -1,6 +1,6 @@
 /*NAV BAR*/
 
-nav{
+nav {
   position: fixed;
   z-index: 10;
   display: flex;
@@ -12,29 +12,26 @@ nav{
   background-color: #525151;
 }
 
-#left-nav-content {
+#nav-bar-left-content {
   display: flex;
-  justify-content: space-around;
-  width: 40%;
-  align-items: center;
+  gap: 20px;
 }
 
 #logo {
   cursor: pointer;
-  position: absolute;
-  left: 50px;
+  margin-left: 20px;
 }
 
 #nav-links-div {
-  position: relative;
-  left: 100px;
+  position: absolute;
+  left: 220px;
   display: flex;
-  justify-content: space-around;
+  gap: 30px;
   align-items: center;
-  width: 40%;
 }
 
-.nav-link, .nav-link:visited {
+.nav-link,
+.nav-link:visited {
   color: #E09712;
   text-decoration: none;
 }
@@ -42,6 +39,45 @@ nav{
 .nav-link:hover {
   color: #E0AE11;
 }
+
+#options-button-container {
+  display: none;
+}
+
+#options-button {
+  font-size: 25px;
+  margin-left: 20px;
+  background-color: #525151;
+  color: white;
+  width: fit-content;
+  cursor: pointer;
+  border: none;
+}
+
+#options-menu {
+  position: absolute;
+  left: 20px;
+  width: 110px;
+  min-width: fit-content;
+  margin-top: 2px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.options-menu-option {
+  width: fit-content;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.options-menu-option:hover {
+  font-weight: 600;
+}
+
+
 
 /* DROP DOWN */
 
@@ -53,10 +89,15 @@ nav{
   display: flex;
   align-items: center;
   margin-right: 30px;
-  background-color: white;
-  border: 1px solid lightgray;
-  border-radius: 40px;
-  padding: 15px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+
+#profile-icon {
+  font-size: 30px;
+  color: rgb(87, 192, 224);
 }
 
 #menu-bars {
@@ -126,6 +167,10 @@ nav{
   margin: 0 auto;
 }
 
+.user-menu-option:hover {
+  font-weight: 600;
+}
+
 #nav-bar-login-signup-buttons {
   display: flex;
   gap: 20px;
@@ -156,4 +201,29 @@ nav{
 
 #nav-bar-signup-button:hover {
   color: #E0AE11;
+}
+
+/* NAV BAR MEDIA QUERIES */
+
+@media (max-width: 900px) {
+  #nav-links-div {
+    display: none;
+  }
+
+  #options-button-container {
+    display: block;
+  }
+
+  /* #logo {
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+  } */
+
+  #nav-bar-login-signup-buttons {
+    margin-right: 10px;
+    gap: 15px;
+  }
+
 }

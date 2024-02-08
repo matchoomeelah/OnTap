@@ -11,10 +11,15 @@ function BeerBrowseTile({ beer }) {
 
     const [showLongDescription, setShowLongDescription] = useState(false);
 
+    function setDefaultImage() {
+        const beerLogo = document.getElementById(`beer-logo${beer.id}`);
+        beerLogo.src = "https://i.ibb.co/qChdf5n/default-beer.jpg";
+    }
+
     return (
         <div className="beer-browse-tile">
             <div className="browse-tile-top-content">
-                <img className="browse-tile-image" src={beer.image_url} alt="beer-image" />
+                <img id={`beer-logo${beer.id}`}className="browse-tile-image" src={beer.image_url} alt="beer-image" onError={setDefaultImage}/>
                 <div className="browse-tile-top-info">
                     <NavLink to={`/beers/${beer.id}`} className="beer-browse-tile-name">{beer.name}</NavLink>
                     <NavLink to={`/breweries/${beer.brewery_id}`} className="beer-browse-tile-brewery">{beer.brewery_name}</NavLink>

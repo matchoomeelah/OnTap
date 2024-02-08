@@ -31,6 +31,7 @@ function ProfileButton({ user }) {
       }
     };
 
+    document.getElementById("options-button")?.addEventListener('click', closeMenu);
     document.addEventListener('click', closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
@@ -40,10 +41,6 @@ function ProfileButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
 
-  // Clear all user data from redux store
-  // const clearData = () => {
-
-  // }
 
   // Logout from current user and navigate to home page
   const logout = async (e) => {
@@ -77,7 +74,6 @@ function ProfileButton({ user }) {
   return (
     <div>
       <button id='profile-button' onClick={toggleMenu}>
-        <i id='menu-bars' className="fas fa-bars"></i>
         <i id='profile-icon' className="fas fa-user-circle fa-lg" />
       </button>
 

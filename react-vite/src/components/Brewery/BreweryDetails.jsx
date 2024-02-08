@@ -67,11 +67,16 @@ function BreweryDetails() {
         checkInsButton.classList.add("glow")
     }
 
+    function setDefaultImage() {
+        const breweryLogo = document.getElementById("brewery-logo");
+        breweryLogo.src = "https://i.ibb.co/ys9X0Jg/brewery-default.jpg";
+    }
+
 
     return (
         <div id="brewery-details-container">
             <div id="brewery-header">
-                <img src={currBrewery?.image_url} />
+                <img id="brewery-logo" src={currBrewery?.image_url} onError={setDefaultImage}/>
                 <div>
                     <h1>{currBrewery?.name}</h1>
                     <p id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</p>

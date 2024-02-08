@@ -7,6 +7,11 @@ function BreweryTile({ brewery }) {
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
 
+    function setDefaultImage() {
+        const breweryLogo = document.getElementById(`brewery-logo${brewery.id}`);
+        breweryLogo.src = "https://i.ibb.co/ys9X0Jg/brewery-default.jpg";
+    }
+
     function getRatingInfo(brewery) {
         let numRatings = 0;
         let totalMugs = 0;
@@ -28,7 +33,7 @@ function BreweryTile({ brewery }) {
     return (
         <div className="brewery-tile">
             <div className="brewery-tile-top-content">
-                <img className="brewery-tile-image" src={brewery.image_url} alt="brewery Image" />
+                <img id={`brewery-logo${brewery.id}`} className="brewery-tile-image" src={brewery.image_url} alt="Brewery Image" onError={setDefaultImage}/>
                 <div className="brewery-tile-top-info">
                     <NavLink to={`/breweries/${brewery.id}`}id="brewery-tile-name">{brewery.name}</NavLink>
                     <div id="city-state-country">{brewery.city}, {brewery.state_province}, {brewery.country}</div>
