@@ -54,7 +54,7 @@
     font-size: 12px;
 }
 
-.brewery-tile-ellipsis-button-container {
+/* .brewery-tile-ellipsis-button-container {
     position: absolute;
     right: 10px;
     top: 10px;
@@ -83,7 +83,7 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-}
+} */
 
 .brewery-stats {
     display: flex;

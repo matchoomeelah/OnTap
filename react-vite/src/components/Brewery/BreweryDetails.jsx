@@ -74,11 +74,11 @@ function BreweryDetails() {
                     <a href={currBrewery?.website_url} target={"_blank"} id="brewery-website">{currBrewery?.website_url}</a>
                 </div>
             </div>
-            <div id="brewery-content-container">
-                <div id="brewery-about">
+            <div id="brewery-about">
                     <h4>About</h4>
                     <div>{currBrewery?.description}</div>
                 </div>
+            <div id="brewery-content-container">
                 <div id="brewery-content">
                     <div id="brewery-show-buttons-container">
                         <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>

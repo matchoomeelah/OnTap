@@ -11,11 +11,22 @@
     justify-content: space-between;
     min-height: 130px;
     padding: 10px;
-    border: 1px solid gray;
+    border: 0.5px solid gray;
+    background-color: white;
     border-radius: 5px;
     box-sizing: border-box;
     overflow-wrap: break-word;
     position: relative;
+}
+
+.check-in-top-container {
+    display: flex;
+    gap: 5px;
+}
+
+.profile-picture {
+    font-size: 24px;
+    margin-top: 5px;
 }
 
 #check-in-username {
@@ -56,14 +67,15 @@
 }
 
 #check-in-body {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-size: 14px;
 }
 
 .check-in-image {
-    max-width: 125px;
-    max-height: 150px;
-    margin-top: 8px;
+    /* max-width: 125px;
+    max-height: 150px; */
+    max-width: 60%;
 }
 
 .check-in-buttons {
@@ -72,37 +84,15 @@
     align-self: flex-end;
 }
 
-#edit-button {
-    text-decoration: underline;
-    font-size: 11px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
-
-#delete-button {
-    text-decoration: underline;
-    font-size: 11px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    margin-bottom: 4px;
-}
-
 
 /* COMMENTS */
-#add-comment-button {
-    text-decoration: underline;
-    font-size: 12px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
 
-#show-comments-button {
-    text-decoration: underline;
+#add-comment-button, #show-comments-button {
+    /* text-decoration: underline; */
+    color: #525151;
     font-size: 12px;
     cursor: pointer;
     background-color: transparent;
     border: none;
+    margin-top: 8px;
 }

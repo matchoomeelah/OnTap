@@ -1,0 +1,31 @@
+.brewery-tile-ellipsis-button-container {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.brewery-tile-ellipsis-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.brewery-tile-buttons {
+    position: absolute;
+    /* left: 20px; */
+    right: 5px;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 2px;
+    padding: 2px 4px 4px;
+}
+
+
+#brewery-tile-delete, #brewery-tile-edit {
+    text-decoration: underline;
+    font-size: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
