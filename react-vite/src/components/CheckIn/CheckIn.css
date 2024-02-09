@@ -28,7 +28,23 @@
 
 .check-in-profile-picture {
     font-size: 24px;
-    margin-top: 5px;
+    width: 35px;
+    height: 35px;
+    /* margin-top: 5px; */
+}
+
+#check-in-default-profile-pic {
+    font-size: 35px;
+    margin-top: 7px;
+}
+
+.check-in-custom-profile-pic {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 35px;
+    width: 35px;
+    margin-top: 2px;
+
 }
 
 #check-in-username {

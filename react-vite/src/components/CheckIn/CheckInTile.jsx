@@ -33,7 +33,11 @@ function CheckInTile({ checkIn }) {
                 }
                 <div className="check-in-top-container">
                     <div className='check-in-profile-picture'>
-                        <i className="fas fa-user-circle fa-lg" />
+                        {checkIn.user_profile_pic ?
+                            <img className="check-in-custom-profile-pic" src={checkIn.user_profile_pic} />
+                            :
+                            <i id="check-in-default-profile-pic" className="fas fa-user-circle fa-lg" />
+                        }
                     </div>
                     <div>
                         <div id="check-in-user-rating"><NavLink id="check-in-username" to={`/users/${checkIn.user_id}`}>{checkIn.user_name}</NavLink><span>{"  "}&#x2022;</span><span><i id="check-in-mug" class="fa-solid fa-beer-mug-empty"></i>{parseFloat(checkIn.rating).toFixed(1)}</span> </div>

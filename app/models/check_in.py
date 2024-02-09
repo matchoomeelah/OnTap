@@ -33,6 +33,7 @@ class CheckIn(db.Model):
             "image_url": self.image_url,
             "user_id": self.user_id,
             "user_name": f"{self.user.first_name} {self.user.last_name}",
+            "user_profile_pic": self.user.profile_pic,
             "created_at": self.created_at,
             "beer": {
                 "id": self.beer_id,
