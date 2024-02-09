@@ -88,6 +88,14 @@ function BeerDetails() {
                             </div>
                         }
                     </div>
+                    <div id="small-screen-beer-photos-container">
+                        <div id="small-screen-dummy"></div>
+                        <div id="small-screen-beer-photos">
+                            {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
+                                return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
+                            })}
+                        </div>
+                    </div>
                     <div id="check-in-button-div">
                         {sessionUser &&
                             <OpenModalButton
@@ -112,7 +120,7 @@ function BeerDetails() {
                     <h4>Photos</h4>
                     <div id="dummy"></div>
                     <div id="beer-photos">
-                        {currBeer?.check_ins.toReversed().slice(0,9).map(checkIn => {
+                        {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
                             return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
 
                         })}

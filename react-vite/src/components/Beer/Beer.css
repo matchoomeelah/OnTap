@@ -51,7 +51,8 @@
     gap: 3px;
 }
 
-.beer-browse-tile-name, .beer-browse-tile-name:visited {
+.beer-browse-tile-name,
+.beer-browse-tile-name:visited {
     font-size: 20px;
     color: #E09712;
     text-decoration: none;
@@ -65,7 +66,8 @@
     color: #E0AE11;
 }
 
-.beer-browse-tile-brewery, .beer-browse-tile-brewery:visited {
+.beer-browse-tile-brewery,
+.beer-browse-tile-brewery:visited {
     color: #E09712;
     text-decoration: none;
     width: fit-content;
@@ -94,6 +96,7 @@
     border-top: 0.5px solid lightgray;
     border-bottom: 0.5px solid lightgray;
 }
+
 .beer-browse-tile-vertical-line {
     border-right: 0.5px solid lightgray;
     margin: 0;
@@ -137,6 +140,7 @@
     background-color: transparent;
     border: none;
 }
+
 #beer-tile-edit {
     text-decoration: underline;
     font-size: 11px;
@@ -155,6 +159,7 @@
     margin: 0 auto;
     margin-top: 100px;
     width: 90%;
+    max-width: 1100px;
 }
 
 /* BEER DETAILS HEADER */
@@ -163,11 +168,10 @@
     display: flex;
     width: 95%;
     height: fit-content;
-    max-height: 250px;
     gap: 15px;
 }
 
-#beer-header > img {
+#beer-header>img {
     width: 250px;
     height: 250px;
 }
@@ -236,7 +240,7 @@ i {
 #beer-content-container {
     display: grid;
     grid-template-columns: 60% 25%;
-    gap: 8%;
+    gap: 10%;
 
 }
 
@@ -293,6 +297,7 @@ h4 {
     width: 90%;
     position: relative;
     height: fit-content;
+    margin-top: 10px;
 }
 
 #dummy {
@@ -317,6 +322,31 @@ h4 {
     height: 100%;
 }
 
+#small-screen-beer-photos-container {
+    display: none;
+    width: 90%;
+    /* position: relative;
+    height: fit-content;
+    margin-top: 10px; */
+}
+
+#small-screen-dummy {
+    /* margin-top: 100%; */
+}
+
+#small-screen-beer-photos {
+    /* position: absolute;
+    top: 46px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 33% 33% 33%;
+    gap: 3px; */
+}
+
 
 /* MEDIA QUERIES */
 
@@ -325,9 +355,121 @@ h4 {
         width: 70%;
     }
 
-    .beer-browse-bottom-section, .brewery-tile-bottom-section {
+    .beer-browse-bottom-section,
+    .brewery-tile-bottom-section {
         font-size: 15px;
     }
+}
+
+@media (max-width: 800px) {
+
+    #beer-header>img {
+        width: 200px;
+        height: 200px;
+    }
+
+    #beer-header-info {
+        gap: 8px;
+        margin-top: 24px;
+    }
+
+    #beer-name {
+        font-size: 40px;
+    }
+
+    #brewery-nav-link {
+        font-size: 15px;
+    }
+
+    #beer-style {
+        font-size: 13px;
+    }
+
+    #bottom-info {
+        font-size: 12px;
+        width: 240px;
+    }
+
+    /* BEER DETAILS CONTENT */
+
+    #beer-content-container {
+        display: grid;
+        grid-template-columns: 60% 25%;
+        gap: 10%;
+
+    }
+
+    #beer-about {
+        width: 100%;
+        padding: 10px;
+        padding-left: 0;
+        height: fit-content;
+        overflow-wrap: break-word;
+        font-size: 14px;
+    }
+
+    h4 {
+        margin-top: 7px;
+        margin-bottom: 7px;
+        text-decoration: underline;
+        font-size: 14px;
+    }
+
+    .show-more-button {
+        font-size: 13px;
+    }
+
+
+    #beer-details-recent-activity-header {
+        text-decoration: underline;
+    }
+
+    #check-in-button-div {
+        min-height: 30px;
+        margin-bottom: 20px;
+    }
+
+    #check-in-button {
+        height: fit-content;
+        background-color: #E05512;
+        color: white;
+        border-radius: 2px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4.5px 18px 4.5px;
+        margin: 13.5px 0px 9px 0px;
+        box-shadow: 1.8px 1.8px 1.8px #525151;
+    }
+
+    #beer-photos-container {
+        width: 100%;
+        position: relative;
+        height: fit-content;
+    }
+
+    #dummy {
+        margin-top: 100%;
+    }
+
+    #beer-photos {
+        position: absolute;
+        top: 46px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-template-rows: 33% 33% 33%;
+        gap: 3px;
+    }
+
+    .beer-side-photo {
+        width: 100%;
+        height: 100%;
+    }
+
 }
 
 @media (max-width: 700px) {
@@ -335,8 +477,133 @@ h4 {
         width: 80%;
     }
 
-    .beer-browse-bottom-section, .brewery-tile-bottom-section {
+    .beer-browse-bottom-section,
+    .brewery-tile-bottom-section {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    #beer-header>img {
+        width: 160px;
+        height: 160px;
+    }
+
+    #beer-header-info {
+        gap: 6.4px;
+        margin-top: 19.2px;
+    }
+
+    #beer-name {
+        font-size: 32px;
+    }
+
+    #brewery-nav-link {
+        font-size: 13px;
+    }
+
+    #beer-style {
+        font-size: 12px;
+    }
+
+    #bottom-info {
+        font-size: 12px;
+        width: 192px;
+    }
+
+    /* BEER DETAILS CONTENT */
+
+    #beer-content-container {
+        /* display: grid;
+        grid-template-columns: 60% 25%;
+        gap: 10%; */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #beer-about {
+        /* width: 100%;
+        padding: 10px;
+        padding-left: 0;
+        height: fit-content;
+        overflow-wrap: break-word;
+        font-size: 14px; */
+    }
+
+    h4 {
+        /* margin-top: 7px;
+        margin-bottom: 7px;
+        text-decoration: underline;
+        font-size: 14px; */
+    }
+
+    .show-more-button {
+        /* font-size: 13px; */
+    }
+
+
+    #beer-details-recent-activity-header {
+        /* text-decoration: underline; */
+    }
+
+    #check-in-button-div {
+        /* min-height: 30px;
+        margin-bottom: 20px; */
+    }
+
+    #check-in-button {
+        /* height: fit-content;
+        background-color: #E05512;
+        color: white;
+        border-radius: 2px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4.5px 18px 4.5px;
+        margin: 13.5px 0px 9px 0px;
+        box-shadow: 1.8px 1.8px 1.8px #525151; */
+    }
+
+    #beer-photos-container {
+        display: none;
+        /* width: 100%;
+        position: relative;
+        height: fit-content; */
+    }
+
+    #dummy {
+        /* margin-top: 100%; */
+    }
+
+    #beer-photos {
+        /* position: absolute;
+        top: 46px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        grid-template-rows: 33% 33% 33%;
+        gap: 3px; */
+    }
+
+    .beer-side-photo {
+        width: 60px;
+        height: 60px;
+    }
+
+    #small-screen-beer-photos-container {
+        display: flex;
+        height: 60px;
+        margin: 10px 0px;
+    }
+    #small-screen-beer-photos {
+        display: grid;
+        grid-template-columns: repeat(5, 60px);
+        height: 60px;
+        gap: 2px;
     }
 }
 
@@ -345,7 +612,47 @@ h4 {
         width: 95%;
     }
 
-    .beer-browse-bottom-section, .brewery-tile-bottom-section {
+    .beer-browse-bottom-section,
+    .brewery-tile-bottom-section {
         font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    #beer-header>img {
+        width: 130px;
+        height: 130px;
+    }
+
+    #beer-header-info {
+        gap: 5.4px;
+        margin-top: 16px;
+    }
+
+    #beer-name {
+        font-size: 26px;
+    }
+
+    #brewery-nav-link {
+        font-size: 12px;
+    }
+
+    #beer-style {
+        font-size: 11px;
+    }
+
+    #bottom-info {
+        font-size: 11px;
+        width: 192px;
+    }
+
+    .beer-side-photo {
+        width: 50px;
+        height: 50px;
+    }
+
+    #small-screen-beer-photos {
+        grid-template-columns: repeat(5, 50px);
     }
 }

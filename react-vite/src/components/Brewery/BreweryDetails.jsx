@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkGetBreweryById } from "../../redux/breweries";
-import BeerTile from "../Beer/BeerTile"
+// import BeerTile from "../Beer/BeerTile"
 import CheckInTile from "../CheckIn/CheckInTile";
 import BeerBrowseTile from "../Beer/BeerBrowseTile";
 
@@ -68,36 +68,19 @@ function BreweryDetails() {
         <div id="brewery-details-container">
             <div id="brewery-header">
                 <img id="brewery-logo" src={currBrewery?.image_url} onError={setDefaultImage} />
-                <div>
-                    <h1>{currBrewery?.name}</h1>
-                    <p id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</p>
-                    <p id="brewery-type">{currBrewery?.type}</p>
+                <div id="brewery-header-info">
+                    <div id="brewery-name">{currBrewery?.name}</div>
+                    <div id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</div>
+                    <div id="brewery-type">{currBrewery?.type}</div>
                     <a href={currBrewery?.website_url} target={"_blank"} id="brewery-website">{currBrewery?.website_url}</a>
                 </div>
             </div>
 
             <div id="brewery-content-container">
                 <div id="brewery-content">
-                    {/* <div id="brewery-about">
-                        <h4>About</h4>
-                        {!showLongDescription ?
-                            currBrewery?.description.length < 300 ?
-                                <div>{currBrewery?.description}</div>
-                                :
-                                <div>
-                                    {currBrewery?.description.substring(0, 300) + "..."}
-                                    <button className="show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
-                                </div>
-                            :
-                            <div>
-                                <div>{currBrewery?.description}</div>
-                                <button className="show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
-                            </div>
-                        }
-                    </div> */}
                     <div id="brewery-show-buttons-container">
-                        <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
-                        <h5 id="check-ins-button" className="show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
+                        <h5 id="beers-button" className="glow brewery-show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                        <h5 id="check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                     </div>
                     {showBeers &&
                         (currBrewery?.beers.length === 0 ?
