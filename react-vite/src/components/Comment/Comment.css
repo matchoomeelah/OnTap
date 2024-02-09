@@ -23,6 +23,7 @@
     display: flex;
     gap: 5px;
     align-items: center;
+    padding-right: 25px;
 }
 
 .comment-profile-picture {

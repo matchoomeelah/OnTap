@@ -162,6 +162,7 @@
     width: 95%;
     height: fit-content;
     gap: 15px;
+    overflow: auto;
 }
 
 #beer-header>img {

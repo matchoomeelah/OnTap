@@ -63,6 +63,7 @@
 #check-in-user-rating {
     display: flex;
     gap: 5px;
+    padding-right: 25px;
 }
 
 #check-in-mug {

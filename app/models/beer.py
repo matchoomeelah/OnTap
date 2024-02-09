@@ -9,7 +9,7 @@ class Beer(db.Model):
 
     # Columns
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
     abv = db.Column(db.Float, nullable=False)
     ibu = db.Column(db.Integer, nullable=False)
     style = db.Column(db.String(255), nullable=False)
