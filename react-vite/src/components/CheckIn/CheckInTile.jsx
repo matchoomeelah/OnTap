@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetBreweries } from "../../redux/breweries";
 
 import "./CheckIn.css"
-import DeleteCheckInModal from "../Modals/DeleteCheckInModal"
 import OpenModalButton from "../OpenModalButton";
-import UpdateCheckInModal from "../Modals/UpdateCheckInModal";
 import CommentTile from "../Comment/CommentTile";
 import CreateCommentModal from "../Modals/CreateCommentModal";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
