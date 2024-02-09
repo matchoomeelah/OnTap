@@ -47,8 +47,8 @@ function BeerDetails() {
                 <img id="beer-logo" src={currBeer?.image_url} onError={setDefaultImage} />
                 <div id="beer-header-info">
                     <div id="beer-name">{currBeer?.name}</div>
-                    <div style={{ textDecoration: "none" }}><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
-                    <div>{currBeer?.style}</div>
+                    <div><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
+                    <div id="beer-style">{currBeer?.style}</div>
                     <div id="bottom-info">
                         <div id="abv-ibu-rating">
                             <div>

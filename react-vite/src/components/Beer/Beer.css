@@ -190,6 +190,10 @@
     color: black;
 }
 
+#beer-style {
+    font-size: 15px;
+}
+
 #abv-ibu-rating {
     display: flex;
     width: 55%;
@@ -258,6 +262,7 @@ i {
 
 h4 {
     margin-top: 0px;
+    margin-bottom: 8px;
     text-decoration: underline;
 }
 
@@ -295,7 +300,7 @@ h4 {
 
 #beer-photos {
     position: absolute;
-    top: 55px;
+    top: 38px;
     bottom: 0;
     left: 0;
     right: 0;

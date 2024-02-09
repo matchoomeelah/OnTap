@@ -70,6 +70,10 @@
     color: #E09712;
 }
 
+.info-tile-link:hover {
+    color: #E0AE11;
+}
+
 #get-started-button {
     text-decoration: underline;
     font-size: 12px;
@@ -77,6 +81,10 @@
     background-color: transparent;
     border: none;
     color: #E09712;
+}
+
+#get-started-button:hover {
+    color: #E0AE11;
 }
 
 #get-started-container {

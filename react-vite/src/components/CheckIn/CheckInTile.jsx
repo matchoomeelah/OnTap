@@ -32,7 +32,7 @@ function CheckInTile({ checkIn }) {
                     <EditDeleteButtons checkIn={checkIn} />
                 }
                 <div className="check-in-top-container">
-                    <div className='profile-picture'>
+                    <div className='check-in-profile-picture'>
                         <i className="fas fa-user-circle fa-lg" />
                     </div>
                     <div>
@@ -51,8 +51,6 @@ function CheckInTile({ checkIn }) {
                             onModalClose={() => setShowComments(true)}
                         />}
                     />}
-                    {/* <button id="show-comments-button" onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button> */}
-
                 </div>
             </div>
 
