@@ -152,4 +152,5 @@
 
 #brewery-about {
     margin-top: 50px;
+    overflow-wrap: break-word;
 }
