@@ -20,7 +20,6 @@ function BeerBrowse() {
             <h1 className="browse-heading">All Beers</h1>
             <div id="all-beers-container">
             {Object.values(beers).map(beer => {
-                // return <BeerTile key={beer.id} beer={beer} />
                 return <BeerBrowseTile key={beer.id} beer={beer} />
             })}
             </div>
