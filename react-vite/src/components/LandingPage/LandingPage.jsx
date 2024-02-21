@@ -13,7 +13,8 @@ function LandingPage() {
         <div id="landing-page-container">
             <div id="landing-page-banner">
                 {/* <img id="landing-page-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/Screenshot+2024-02-04+at+8.47.30+PM.png" /> */}
-                <img id="landing-page-banner-image" src="https://i.ibb.co/rQW6BxX/beer-banner.jpg" />
+                {/* <img id="landing-page-banner-image" src="https://i.ibb.co/rQW6BxX/beer-banner.jpg" /> */}
+                <img id="landing-page-banner-image" src="https://i.ibb.co/2Ky7V2D/beer-banner-new-1.jpg" />
                 <div id="landing-page-banner-text">
                     <div id="beer-lovers">Beer Lovers Unite</div>
                     <div id="tagline">Whether you're a sipper or a chugger, we're all here for the love of beer</div>

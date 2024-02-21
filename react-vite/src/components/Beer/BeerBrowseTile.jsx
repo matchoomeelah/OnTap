@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import OpenModalButton from "../OpenModalButton";
-import DeleteBeerModal from "../Modals/DeleteBeerModal";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BeerBrowseTile({ beer }) {

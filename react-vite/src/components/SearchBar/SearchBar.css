@@ -1,0 +1,17 @@
+#search-bar {
+    position: absolute;
+    top: 25px;
+    right: 200px;
+}
+
+#search-input {
+    padding: 5px;
+}
+
+.search-list-item {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 8px;
+    font-size: 10px;
+    cursor: pointer;
+}
