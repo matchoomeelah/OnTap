@@ -31,7 +31,7 @@ function SearchBar() {
     }, [breweries])
 
     function goToBeer(beerId) {
-        navigate(`/breweries/${beerId}`);
+        navigate(`/beers/${beerId}`);
         setQuery("");
     }
 
