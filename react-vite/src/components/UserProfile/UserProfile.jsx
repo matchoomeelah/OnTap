@@ -44,6 +44,9 @@ function UserProfile() {
         breweriesButton.classList.add("glow")
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [user_id])
 
     useEffect(() => {
         async function wrapper() {

@@ -27,6 +27,7 @@ function OptionsButton() {
   useEffect(() => {
     if (!showOptionsMenu) return;
 
+    // Closes menu when you click outside it
     const closeOptionsMenu = (e) => {
       if (!ulOptionsRef.current.contains(e.target)) {
         setshowOptionsMenu(false);
@@ -50,12 +51,12 @@ function OptionsButton() {
     navigate('/');
   };
 
-  function gotToBeers() {
+  function goToBeers() {
     navigate("/beers");
     closeOptionsMenu();
   }
 
-  function gotToBreweries() {
+  function goToBreweries() {
     navigate("/breweries");
     closeOptionsMenu();
   }
@@ -67,15 +68,10 @@ function OptionsButton() {
       </div>
 
       <div id='options-menu' className={ulOptionsClassName} ref={ulOptionsRef}>
-        <div className='options-menu-option' onClick={gotToBeers}>Beers</div>
+        <div className='options-menu-option' onClick={goToBeers}>Beers</div>
         <div className='separator'></div>
-        <div className='options-menu-option' onClick={gotToBreweries}>Breweries</div>
+        <div className='options-menu-option' onClick={goToBreweries}>Breweries</div>
         {!sessionUser &&
-          // <>
-          //   <div className='separator'></div>
-          //   <button className="logout-button options-menu-option" onClick={logout}>Log Out</button>
-          // </>
-          // :
           <>
             <div className='separator'></div>
             <OpenModalMenuItem

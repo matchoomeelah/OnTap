@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { thunkGetBreweryById } from "../../redux/breweries";
-import BeerTile from "../Beer/BeerTile"
+// import BeerTile from "../Beer/BeerTile"
 import CheckInTile from "../CheckIn/CheckInTile";
 import BeerBrowseTile from "../Beer/BeerBrowseTile";
 
@@ -16,8 +16,9 @@ function BreweryDetails() {
     const { brewery_id } = useParams();
     const currBrewery = breweries[brewery_id];
 
-    const [showBeers, setShowBeers] = useState(true)
-    const [showCheckIns, setShowCheckins] = useState(false)
+    const [showBeers, setShowBeers] = useState(true);
+    const [showCheckIns, setShowCheckins] = useState(false);
+    const [showLongDescription, setShowLongDescription] = useState(false)
 
 
     useEffect(() => {
@@ -66,43 +67,56 @@ function BreweryDetails() {
     return (
         <div id="brewery-details-container">
             <div id="brewery-header">
-                <img id="brewery-logo" src={currBrewery?.image_url} onError={setDefaultImage}/>
-                <div>
-                    <h1>{currBrewery?.name}</h1>
-                    <p id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</p>
-                    <p id="brewery-type">{currBrewery?.type}</p>
+                <img id="brewery-logo" src={currBrewery?.image_url} onError={setDefaultImage} />
+                <div id="brewery-header-info">
+                    <div id="brewery-name">{currBrewery?.name}</div>
+                    <div id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</div>
+                    <div id="brewery-type">{currBrewery?.type}</div>
                     <a href={currBrewery?.website_url} target={"_blank"} id="brewery-website">{currBrewery?.website_url}</a>
                 </div>
             </div>
+
             <div id="brewery-content-container">
-                <div id="brewery-about">
-                    <h4>About</h4>
-                    <div>{currBrewery?.description}</div>
-                </div>
                 <div id="brewery-content">
                     <div id="brewery-show-buttons-container">
-                        <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
-                        <h5 id="check-ins-button" className="show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
+                        <h5 id="beers-button" className="glow brewery-show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                        <h5 id="check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                     </div>
                     {showBeers &&
                         (currBrewery?.beers.length === 0 ?
-                        <div id="no-beers-placeholder">
-                            <div id="no-beers-text">No beers created yet!</div>
-                        </div>
-                        :
-                        currBrewery?.beers.map(beer => {
-                            // return <BeerTile key={beer.id} beer={beer} />
-                            return <BeerBrowseTile key={beer.id} beer={beer} />
-                        }))}
+                            <div id="no-beers-placeholder">
+                                <div id="no-beers-text">No beers created yet!</div>
+                            </div>
+                            :
+                            currBrewery?.beers.map(beer => {
+                                return <BeerBrowseTile key={beer.id} beer={beer} />
+                            }))}
                     {showCheckIns &&
                         (currBrewery.check_ins.length === 0 ?
-                        <div id="no-check-ins-placeholder">
-                            <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
-                        </div>
+                            <div id="no-check-ins-placeholder">
+                                <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
+                            </div>
+                            :
+                            currBrewery.check_ins.toReversed().map(checkIn => {
+                                return <CheckInTile checkIn={checkIn} />
+                            }))}
+                </div>
+                <div id="brewery-about">
+                    <h4>About</h4>
+                    {!showLongDescription ?
+                        currBrewery?.description.length < 300 ?
+                            <div>{currBrewery?.description}</div>
+                            :
+                            <div>
+                                {currBrewery?.description.substring(0, 300) + "..."}
+                                <button className="show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
+                            </div>
                         :
-                        currBrewery.check_ins.toReversed().map(checkIn => {
-                        return <CheckInTile checkIn={checkIn} />
-                    }))}
+                        <div>
+                            <div>{currBrewery?.description}</div>
+                            <button className="show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

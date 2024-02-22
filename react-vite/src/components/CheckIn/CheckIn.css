@@ -9,12 +9,42 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 130px;
+    /* min-height: 130px; */
+    /* max-height: 400px; */
+    overflow-y: hidden;
     padding: 10px;
-    border: 1px solid gray;
+    border: 0.5px solid gray;
+    background-color: white;
     border-radius: 5px;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    position: relative;
+}
+
+.check-in-top-container {
+    display: flex;
+    gap: 5px;
+}
+
+.check-in-profile-picture {
+    font-size: 24px;
+    width: 35px;
+    height: 35px;
+    /* margin-top: 5px; */
+}
+
+#check-in-default-profile-pic {
+    font-size: 35px;
+    margin-top: 7px;
+}
+
+.check-in-custom-profile-pic {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 35px;
+    width: 35px;
+    margin-top: 2px;
+
 }
 
 #check-in-username {
@@ -33,6 +63,7 @@
 #check-in-user-rating {
     display: flex;
     gap: 5px;
+    padding-right: 25px;
 }
 
 #check-in-mug {
@@ -55,14 +86,16 @@
 }
 
 #check-in-body {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-size: 14px;
 }
 
 .check-in-image {
-    max-width: 125px;
-    max-height: 150px;
-    margin-top: 8px;
+    /* max-width: 125px;
+    max-height: 150px; */
+    max-width: 60%;
+    max-height: 470px;
 }
 
 .check-in-buttons {
@@ -71,37 +104,15 @@
     align-self: flex-end;
 }
 
-#edit-button {
-    text-decoration: underline;
-    font-size: 11px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
-
-#delete-button {
-    text-decoration: underline;
-    font-size: 11px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    margin-bottom: 4px;
-}
-
 
 /* COMMENTS */
-#add-comment-button {
-    text-decoration: underline;
-    font-size: 12px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
 
-#show-comments-button {
-    text-decoration: underline;
+#add-comment-button, #show-comments-button {
+    /* text-decoration: underline; */
+    color: #525151;
     font-size: 12px;
     cursor: pointer;
     background-color: transparent;
     border: none;
+    margin-top: 8px;
 }

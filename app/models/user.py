@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_pic = db.Column(db.Text, nullable=True)
+    banner_pic = db.Column(db.Text, nullable=True)
 
     # Relationships
     breweries = db.relationship('Brewery', back_populates="creator", cascade="all, delete")
@@ -44,6 +46,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
+            'profile_pic': self.profile_pic,
             'beers': [beer.to_dict() for beer in self.beers],
             'breweries': [brewery.to_dict() for brewery in self.breweries],
             'check_ins': [check_in.to_dict() for check_in in self.check_ins]

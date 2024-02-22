@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, ValidationError, Length
 from app.api.aws_helpers import ALLOWED_EXTENSIONS
 
 class BeerForm(FlaskForm):
-    name = StringField("Name", validators=[DataRequired(), Length(min=1, max=60)])
+    name = StringField("Name", validators=[DataRequired(), Length(min=1, max=50)])
     brewery_id = IntegerField("Brewery", validators=[DataRequired()])
     abv = FloatField("ABV", validators=[DataRequired()])
     ibu = IntegerField("IBU", validators=[DataRequired()])

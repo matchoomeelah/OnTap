@@ -6,13 +6,60 @@
 .comment-tile-container {
     width: 85%;
     min-height: 50px;
-    border: 1px solid gray;
+    border: 0.5px solid gray;
     border-radius: 3px;
-    padding: 5px 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 8px;
     align-self: flex-end;
     overflow-wrap: break-word;
+    position: relative;
 }
 
 .comment-edit-delete-buttons {
     float: right;
+}
+
+.comment-user-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding-right: 25px;
+}
+
+.comment-profile-picture {
+    width: 1.3em;
+    height: 1.3em;
+
+}
+
+#comment-default-profile-pic {
+    font-size: 1.33em;
+    margin-top: 3px;
+}
+
+.comment-custom-profile-pic {
+    border-radius: 50%;
+    overflow: hidden;
+    height: 1.3em;
+    width: 1.3em;
+    /* margin-top: 3px; */
+
+}
+
+#comment-username {
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+#comment-username:hover {
+    text-decoration: underline;
+}
+
+#comment-body {
+    margin-top: 5px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-left: 2px;
 }

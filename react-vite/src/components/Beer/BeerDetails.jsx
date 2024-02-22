@@ -47,8 +47,8 @@ function BeerDetails() {
                 <img id="beer-logo" src={currBeer?.image_url} onError={setDefaultImage} />
                 <div id="beer-header-info">
                     <div id="beer-name">{currBeer?.name}</div>
-                    <div style={{ textDecoration: "none" }}><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
-                    <div>{currBeer?.style}</div>
+                    <div><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
+                    <div id="beer-style">{currBeer?.style}</div>
                     <div id="bottom-info">
                         <div id="abv-ibu-rating">
                             <div>
@@ -88,6 +88,14 @@ function BeerDetails() {
                             </div>
                         }
                     </div>
+                    <div id="small-screen-beer-photos-container">
+                        <div id="small-screen-dummy"></div>
+                        <div id="small-screen-beer-photos">
+                            {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
+                                return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
+                            })}
+                        </div>
+                    </div>
                     <div id="check-in-button-div">
                         {sessionUser &&
                             <OpenModalButton
@@ -112,9 +120,8 @@ function BeerDetails() {
                     <h4>Photos</h4>
                     <div id="dummy"></div>
                     <div id="beer-photos">
-                        {currBeer?.check_ins.toReversed().slice(0,9).map(checkIn => {
+                        {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
                             return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
-
                         })}
                     </div>
                 </div>

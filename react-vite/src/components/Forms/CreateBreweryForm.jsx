@@ -93,8 +93,10 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <input
-                        id="name"
                         type="text"
+                        id="name"
+                        className="input"
+                        maxLength={60}
                         value={name}
                         onChange={(e) => {
                             setName(e.target.value);
@@ -104,7 +106,6 @@ function CreateBreweryForm() {
                                 setErrors(newErrors);
                             }
                         }}
-                        className="input"
                     />
                 </div>
 
@@ -119,8 +120,8 @@ function CreateBreweryForm() {
                     </div>
                     <Select
                         id="type"
-                        options={breweryTypeOptions}
                         className="input"
+                        options={breweryTypeOptions}
                         onChange={(e) => {
                             setType(e.value);
                             if (errors.type) {
@@ -128,6 +129,13 @@ function CreateBreweryForm() {
                                 delete newErrors.type;
                                 setErrors(newErrors);
                             }
+                        }}
+                        styles={{
+                            control: (baseStyles, state) => ({
+                                ...baseStyles,
+                                width: "100%",
+
+                              }),
                         }}
                     />
                 </div>
@@ -142,10 +150,11 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <input
-                        id="city"
                         type="text"
-                        value={city}
+                        id="city"
                         className="input"
+                        maxLength={40}
+                        value={city}
                         onChange={(e) => {
                             setCity(e.target.value);
                             if (errors.city) {
@@ -167,10 +176,11 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <input
-                        id="state-province"
                         type="text"
-                        value={stateProvince}
+                        id="state-province"
                         className="input"
+                        maxLength={40}
+                        value={stateProvince}
                         onChange={(e) => {
                             setStateProvince(e.target.value);
                             if (errors.state_province) {
@@ -192,9 +202,10 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <input
+                        type="text"
                         id="country"
                         className="input"
-                        type="text"
+                        maxLength={40}
                         value={country}
                         onChange={(e) => {
                             setCountry(e.target.value);
@@ -217,12 +228,12 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <textarea
-                        id="description"
                         type="text"
+                        id="description"
+                        className="input"
                         rows={5}
                         maxLength={1500}
                         value={description}
-                        className="input"
                         onChange={(e) => {
                             setDescription(e.target.value);
                             setDescriptionCharCount(e.target.value.length)
@@ -247,10 +258,11 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <input
-                        id="website-url"
                         type="text"
-                        value={websiteUrl}
+                        id="website-url"
                         className="input"
+                        maxLength={120}
+                        value={websiteUrl}
                         onChange={(e) => {
                             setWebsiteUrl(e.target.value);
                             if (errors.website_url) {
@@ -272,8 +284,8 @@ function CreateBreweryForm() {
                         </div>
                     </div>
                     <input
-                        id="image-input"
                         type="file"
+                        id="image-input"
                         accept="image/*"
                         onChange={(e) => {
                             setImage(e.target.files[0])

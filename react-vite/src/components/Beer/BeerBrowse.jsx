@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { thunkGetBeers } from "../../redux/beers";
-import BeerTile from "./BeerTile";
+// import BeerTile from "./BeerTile";
 import "./Beer.css";
 import BeerBrowseTile from "./BeerBrowseTile";
 
@@ -20,7 +20,6 @@ function BeerBrowse() {
             <h1 className="browse-heading">All Beers</h1>
             <div id="all-beers-container">
             {Object.values(beers).map(beer => {
-                // return <BeerTile key={beer.id} beer={beer} />
                 return <BeerBrowseTile key={beer.id} beer={beer} />
             })}
             </div>

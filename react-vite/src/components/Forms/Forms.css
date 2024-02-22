@@ -71,6 +71,10 @@ form {
     font-size: 12px;
 }
 
+.css-hlgwow {
+    padding: 2px 12px;
+}
+
 /* BREWERIES */
 
 #brewery-form-container {
@@ -95,4 +99,36 @@ form {
 
 .beer-form {
     margin: 0 auto;
+}
+
+
+@media (max-width: 800px) {
+    #brewery-form-container, #beer-form-container {
+        width: 70%;
+    }
+}
+
+@media (max-width: 700px) {
+    #brewery-form-container, #beer-form-container {
+        width: 75%;
+    }
+}
+
+@media (max-width: 600px) {
+    #brewery-form-container, #beer-form-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    #brewery-form-container, #beer-form-container {
+        width: 85%;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    #brewery-form-container, #beer-form-container {
+        width: 90%;
+    }
 }

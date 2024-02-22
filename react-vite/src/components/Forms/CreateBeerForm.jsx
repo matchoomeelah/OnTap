@@ -90,7 +90,7 @@ function CreateBeerForm() {
 
     return (
         <div id="beer-form-container">
-            <h1>Create Beer</h1>
+            <h1>Add a Beer</h1>
 
             <form className="beer-form" onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="field-container">
@@ -103,8 +103,10 @@ function CreateBeerForm() {
                         </div>
                     </div>
                     <input
-                        id="name"
                         type="text"
+                        id="name"
+                        className="input"
+                        maxLength={50}
                         value={name}
                         onChange={(e) => {
                             setName(e.target.value);
@@ -114,7 +116,6 @@ function CreateBeerForm() {
                                 setErrors(newErrors);
                             }
                         }}
-                        className="input"
                     />
                 </div>
 
@@ -129,8 +130,8 @@ function CreateBeerForm() {
                     </div>
                     <Select
                         id="brewery_id"
-                        options={breweryOptions}
                         className="input"
+                        options={breweryOptions}
                         onChange={(e) => {
                             setBreweryId(e.value);
                             if (errors.brewery_id) {
@@ -152,10 +153,11 @@ function CreateBeerForm() {
                         </div>
                     </div>
                     <input
-                        id="abv"
                         type="text"
-                        value={abv}
+                        id="abv"
                         className="input"
+                        maxLength={6}
+                        value={abv}
                         onChange={(e) => {
                             setAbv(e.target.value);
                             if (errors.abv) {
@@ -177,10 +179,11 @@ function CreateBeerForm() {
                         </div>
                     </div>
                     <input
-                        id="ibu"
                         type="text"
-                        value={ibu}
+                        id="ibu"
                         className="input"
+                        maxLength={3}
+                        value={ibu}
                         onChange={(e) => {
                             setIbu(e.target.value);
                             if (errors.ibu) {
@@ -203,8 +206,8 @@ function CreateBeerForm() {
                     </div>
                     <Select
                         id="style"
-                        options={styleOptions}
                         className="input"
+                        options={styleOptions}
                         onChange={(e) => {
                             setStyle(e.value);
                             if (errors.style) {
@@ -226,11 +229,12 @@ function CreateBeerForm() {
                         </div>
                     </div>
                     <textarea
-                        id="description"
                         type="text"
-                        value={description}
-                        rows={5}
+                        id="description"
                         className="input"
+                        maxLength={1500}
+                        rows={5}
+                        value={description}
                         onChange={(e) => {
                             setDescription(e.target.value);
                             setDescriptionCharCount(e.target.value.length)
@@ -254,8 +258,8 @@ function CreateBeerForm() {
                         </div>
                     </div>
                     <input
-                        id="image-input"
                         type="file"
+                        id="image-input"
                         accept="image/*"
                         onChange={(e) => {
                             setImage(e.target.files[0])

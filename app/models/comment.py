@@ -27,6 +27,7 @@ class Comment(db.Model):
                 "first_name": self.user.first_name,
                 "last_name": self.user.last_name,
                 "username": self.user.username,
+                "profile_pic": self.user.profile_pic
             },
             "user_id": self.user_id,
             "check_in_id": self.check_in_id
