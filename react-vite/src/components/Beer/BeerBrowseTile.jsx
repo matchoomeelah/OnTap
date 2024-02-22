@@ -10,6 +10,7 @@ function BeerBrowseTile({ beer }) {
     const sessionUser = useSelector(state => state.session.user);
     const currAvgRating = beer?.check_ins.length > 0 ? parseFloat(beer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / beer?.check_ins.length).toFixed(1) : "New";
 
+
     const [showLongDescription, setShowLongDescription] = useState(false);
 
     function setDefaultImage() {
