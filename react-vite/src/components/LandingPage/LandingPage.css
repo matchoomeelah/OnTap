@@ -5,13 +5,23 @@
 #landing-page-banner-image {
     width: 100%;
     max-height: 360px;
+    animation: fadeIn 1s;
+    overflow: hidden;
+}
+
+#landing-page-banner-image-content {
+    position: relative;
+    width: 100%;
+    bottom: 120px;
+    /* margin-bottom: 150px; */
 }
 
 #landing-page-banner-text {
     position: relative;
-    bottom: 140px;
+    bottom: 130px;
     left: 10px;
     color: white;
+    animation: fadeIn 1s;
 }
 
 #beer-lovers {
@@ -22,6 +32,7 @@
 
 #tagline {
     font-size: 16px;
+    font-weight: bold;
 }
 
 #landing-page-info-tiles {
@@ -31,7 +42,7 @@
     position: relative;
     bottom: 30px;
     padding: 0 20px;
-    /* box-sizing: border-box; */
+    animation: fadeIn 1s;
 }
 
 .info-tile {
@@ -95,6 +106,10 @@
 /* MEDIA QUERIES */
 
 @media (max-width: 1044px) {
+    #landing-page-banner-image-content {
+        bottom: 100px;
+    }
+
     #landing-page-info-tiles {
         padding: 0;
     }
@@ -105,6 +120,10 @@
 }
 
 @media (max-width: 830px) {
+    #landing-page-banner-image-content {
+        bottom: 50px;
+    }
+
     #landing-page-info-tiles {
         padding: 0;
     }
@@ -126,11 +145,15 @@
     }
 
     #landing-page-banner-text {
-        bottom: 110px;
+        bottom: 115px;
     }
 }
 
 @media (max-width: 700px) {
+    #landing-page-banner-image-content {
+        position: static;
+    }
+
     #landing-page-info-tiles {
         padding: 0;
         flex-direction: column;
@@ -170,7 +193,7 @@
     }
 
     #landing-page-banner-text {
-        bottom: 80px;
+        bottom: 105px;
     }
 
     .info-tile-title {
@@ -193,9 +216,16 @@
 
     #tagline {
         font-size: 10px;
+        padding-right: 25px;
     }
 
     #landing-page-banner-text {
-        bottom: 65px;
+        bottom: 90px;
     }
 }
+
+/* Keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

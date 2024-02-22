@@ -34,8 +34,7 @@ function SearchBar() {
     }, [breweries])
 
     useEffect(() => {
-        // if (!isFocused) return;
-        // Closes menu when you click outside it
+        // Closes search results when you click outside it
         const onClick = (e) => {
             const searchBar = document.getElementById("search-bar");
             if (!searchListRef.current.contains(e.target) && !searchListRef.current.contains(searchBar)) {
@@ -80,14 +79,18 @@ function SearchBar() {
                 onClick={e => {
                     focus(e);
                 }}
-                placeholder="Find a beer or brewery...">
+                placeholder="Find a beer or brewery..."
+                autocomplete="off">
             </input>
             <div id="search-list" className={isFocused ? "search-list" : "search-list hidden"} ref={searchListRef}>
                 {query.length > 0 && searchBeers.length > 0 &&
                     <div>
                         <div className="search-menu-beers-label">Beers</div>
                         {searchBeers.map(beer => {
-                            return <div key={beer.id} className="search-list-item" onClick={() => goToBeer(beer.id)}>{beer.name}</div>
+                            return <div key={beer.id} className="search-list-item" onClick={() => goToBeer(beer.id)}>
+                                {/* <img src={beer.image_url} /> */}
+                                {beer.name}
+                            </div>
                         })}
                     </div>
                 }
