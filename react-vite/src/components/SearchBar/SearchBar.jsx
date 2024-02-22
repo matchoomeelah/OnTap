@@ -49,7 +49,8 @@ function SearchBar() {
     }, [isFocused]);
 
 
-    function focus() {
+    function focus(e) {
+        e.stopPropagation();
         setIsFocused(true);
     }
 
@@ -73,12 +74,11 @@ function SearchBar() {
                 value={query}
                 onChange={e => {
                     setQuery(e.target.value);
-                    focus();
+                    focus(e);
                 }}
                 onFocus={focus}
-                onClick={() => {
-                    console.log(isFocused);
-                    focus();
+                onClick={e => {
+                    focus(e);
                 }}
                 placeholder="Find a beer or brewery...">
             </input>
