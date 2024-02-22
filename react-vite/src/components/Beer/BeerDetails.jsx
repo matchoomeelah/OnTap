@@ -5,6 +5,7 @@ import { thunkGetBeerById } from "../../redux/beers";
 import CheckInTile from "../CheckIn/CheckInTile";
 import OpenModalButton from "../OpenModalButton";
 import CreateCheckInModal from "../Modals/CreateCheckInModal";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 function BeerDetails() {
     const dispatch = useDispatch();
@@ -42,91 +43,96 @@ function BeerDetails() {
     }
 
     return (
-        <div id="beer-details-container">
-            <div id="beer-header">
-                <img id="beer-logo" src={currBeer?.image_url} onError={setDefaultImage} />
-                <div id="beer-header-info">
-                    <div id="beer-name">{currBeer?.name}</div>
-                    <div><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
-                    <div id="beer-style">{currBeer?.style}</div>
-                    <div id="bottom-info">
-                        <div id="abv-ibu-rating">
-                            <div>
-                                <div>ABV</div>
-                                <div>{currBeer?.abv}%</div>
-                            </div>
-                            <div>
-                                <div>IBU</div>
-                                <div>{currBeer?.ibu}
+        <PhotoProvider>
+            <div id="beer-details-container">
+                <div id="beer-header">
+                    <img id="beer-logo" src={currBeer?.image_url} onError={setDefaultImage} />
+                    <div id="beer-header-info">
+                        <div id="beer-name">{currBeer?.name}</div>
+                        <div><NavLink to={`/breweries/${currBeer?.brewery_id}`} id="brewery-nav-link">{currBeer?.brewery_name}</NavLink></div>
+                        <div id="beer-style">{currBeer?.style}</div>
+                        <div id="bottom-info">
+                            <div id="abv-ibu-rating">
+                                <div>
+                                    <div>ABV</div>
+                                    <div>{currBeer?.abv}%</div>
+                                </div>
+                                <div>
+                                    <div>IBU</div>
+                                    <div>{currBeer?.ibu}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>Rating</div>
+                                    <div><i id="beer-details-rating-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                                 </div>
                             </div>
-                            <div>
-                                <div>Rating</div>
-                                <div><i id="beer-details-rating-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
-                            </div>
+                            {/* <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button> */}
                         </div>
-                        {/* <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button> */}
                     </div>
                 </div>
-            </div>
-            <div id="beer-content-container">
-                <div id="beer-content-left">
-                    <div id="beer-about">
-                        <h4>About</h4>
-                        {!showLongDescription ?
-                            currBeer?.description.length < 300 ?
-                                <div>{currBeer?.description}</div>
+                <div id="beer-content-container">
+                    <div id="beer-content-left">
+                        <div id="beer-about">
+                            <h4>About</h4>
+                            {!showLongDescription ?
+                                currBeer?.description.length < 300 ?
+                                    <div>{currBeer?.description}</div>
+                                    :
+                                    <div>
+                                        {currBeer?.description.substring(0, 300) + "..."}
+                                        <button className="show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
+                                    </div>
                                 :
                                 <div>
-                                    {currBeer?.description.substring(0, 300) + "..."}
-                                    <button className="show-more-button" onClick={() => setShowLongDescription(true)}>Show more</button>
+                                    <div>{currBeer?.description}</div>
+                                    <button className="show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
                                 </div>
-                            :
-                            <div>
-                                <div>{currBeer?.description}</div>
-                                <button className="show-more-button" onClick={() => setShowLongDescription(false)}>Show less</button>
+                            }
+                        </div>
+                        <div id="small-screen-beer-photos-container">
+                            <div id="small-screen-dummy"></div>
+                            <div id="small-screen-beer-photos">
+                                {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
+                                    return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
+                                })}
+                            </div>
+                        </div>
+                        <div id="check-in-button-div">
+                            {sessionUser &&
+                                <OpenModalButton
+                                    buttonId="check-in-button"
+                                    buttonText={'Check In!'}
+                                    modalComponent={<CreateCheckInModal beer={currBeer} />}
+                                />}
+                            <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
+                        </div>
+                        {currBeer?.check_ins.length === 0 ?
+                            <div id="no-check-ins-placeholder">
+                                <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
+                            </div> :
+                            <div id="check-in-container">
+                                {currBeer?.check_ins.toReversed().map(checkIn => {
+                                    return <CheckInTile checkIn={checkIn} />
+                                })}
                             </div>
                         }
                     </div>
-                    <div id="small-screen-beer-photos-container">
-                        <div id="small-screen-dummy"></div>
-                        <div id="small-screen-beer-photos">
+                    <div id="beer-photos-container">
+                        <h4>Photos</h4>
+                        <div id="dummy"></div>
+                        <div id="beer-photos">
                             {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
-                                return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
+                                return checkIn.image_url &&
+                                    <PhotoView key={checkIn.id} src={checkIn.image_url}>
+                                        <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
+                                    </PhotoView>
                             })}
                         </div>
-                    </div>
-                    <div id="check-in-button-div">
-                        {sessionUser &&
-                            <OpenModalButton
-                                buttonId="check-in-button"
-                                buttonText={'Check In!'}
-                                modalComponent={<CreateCheckInModal beer={currBeer} />}
-                            />}
-                        <h2 id="beer-details-recent-activity-header">Recent Activity</h2>
-                    </div>
-                    {currBeer?.check_ins.length === 0 ?
-                        <div id="no-check-ins-placeholder">
-                            <div id="no-check-ins-text">Hmm, no activity here. Time to drink up!</div>
-                        </div> :
-                        <div id="check-in-container">
-                            {currBeer?.check_ins.toReversed().map(checkIn => {
-                                return <CheckInTile checkIn={checkIn} />
-                            })}
-                        </div>
-                    }
-                </div>
-                <div id="beer-photos-container">
-                    <h4>Photos</h4>
-                    <div id="dummy"></div>
-                    <div id="beer-photos">
-                        {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
-                            return checkIn.image_url && <img key={checkIn.id} className="beer-side-photo" src={checkIn.image_url} />
-                        })}
                     </div>
                 </div>
             </div>
-        </div>
+        </PhotoProvider>
     )
 }
 
