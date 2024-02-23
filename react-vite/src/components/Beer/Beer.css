@@ -4,6 +4,7 @@
     margin: 0 auto;
     width: 60%;
     max-width: 900px;
+    animation: fadeIn 0.5s;
 }
 
 #all-beers-container {
@@ -153,6 +154,7 @@
     margin-top: 100px;
     width: 90%;
     max-width: 1100px;
+    animation: fadeIn 0.5s;
 }
 
 /* BEER DETAILS HEADER */
