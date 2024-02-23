@@ -13,6 +13,10 @@ function BreweryBrowse() {
         dispatch(thunkGetBreweries());
     }, [])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
 
     return (
         <div className="browse-page-container">

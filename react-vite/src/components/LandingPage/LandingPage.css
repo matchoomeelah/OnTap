@@ -5,7 +5,7 @@
 #landing-page-banner-image {
     width: 100%;
     max-height: 360px;
-    animation: fadeIn 1s;
+    animation: fadeIn 0.8s;
     overflow: hidden;
 }
 
@@ -21,7 +21,7 @@
     bottom: 130px;
     left: 10px;
     color: white;
-    animation: fadeIn 1s;
+    animation: fadeIn 0.8s;
 }
 
 #beer-lovers {
@@ -42,7 +42,7 @@
     position: relative;
     bottom: 30px;
     padding: 0 20px;
-    animation: fadeIn 1s;
+    animation: fadeIn 0.8s;
 }
 
 .info-tile {

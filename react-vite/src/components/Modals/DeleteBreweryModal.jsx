@@ -1,16 +1,19 @@
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { thunkDeleteBrewery } from "../../redux/breweries";
+import { useNavigate } from "react-router-dom";
 
 function DeleteBreweryModal({ brewery }) {
     const { closeModal } = useModal()
     const dispatch = useDispatch();
+    // const navigate = useNavigate();
 
 
     const submitDelete = async () => {
         try {
             await dispatch(thunkDeleteBrewery(brewery.id));
             closeModal();
+
         }
         catch (e) {
             return e

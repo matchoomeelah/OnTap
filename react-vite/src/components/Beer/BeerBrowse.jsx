@@ -15,6 +15,10 @@ function BeerBrowse() {
         dispatch(thunkGetBeers());
     }, [])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <div className="browse-page-container">
             <h1 className="browse-heading">All Beers</h1>

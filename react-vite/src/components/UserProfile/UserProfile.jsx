@@ -64,7 +64,7 @@ function UserProfile() {
     }
 
     return (
-        <div>
+        <div id="user-profile-container">
             <UserProfileHeader user={profileUser} />
             <div id="profile-content-container">
                 <div id="user-check-ins">
