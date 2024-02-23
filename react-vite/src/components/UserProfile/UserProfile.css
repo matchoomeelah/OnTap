@@ -190,8 +190,10 @@
         display: none;
     }
 
-    #check-ins-button {
+    #user-check-ins-button {
         display: block;
+        background-color: #525151;
+
     }
 
     #small-screen-check-ins {

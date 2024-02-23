@@ -33,10 +33,10 @@ function UserProfile() {
         setShowCheckins(false);
         const beersButton = document.getElementById("beers-button");
         const breweriesButton = document.getElementById("breweries-button");
-        const checkInsButton = document.getElementById("check-ins-button");
-        beersButton.classList.add("glow");
-        checkInsButton.classList.remove("glow")
-        breweriesButton.classList.remove("glow")
+        const checkInsButton = document.getElementById("user-check-ins-button");
+        beersButton?.classList.add("glow");
+        checkInsButton?.classList.remove("glow")
+        breweriesButton?.classList.remove("glow")
     }
 
     function enableShowBreweries() {
@@ -45,10 +45,10 @@ function UserProfile() {
         setShowCheckins(false);
         const beersButton = document.getElementById("beers-button");
         const breweriesButton = document.getElementById("breweries-button");
-        const checkInsButton = document.getElementById("check-ins-button");
-        beersButton.classList.remove("glow");
-        checkInsButton.classList.remove("glow")
-        breweriesButton.classList.add("glow")
+        const checkInsButton = document.getElementById("user-check-ins-button");
+        beersButton?.classList.remove("glow");
+        checkInsButton?.classList.remove("glow")
+        breweriesButton?.classList.add("glow")
     }
 
     function enableShowCheckIns() {
@@ -57,10 +57,10 @@ function UserProfile() {
         setShowCheckins(true);
         const beersButton = document.getElementById("beers-button");
         const breweriesButton = document.getElementById("breweries-button");
-        const checkInsButton = document.getElementById("check-ins-button");
-        beersButton.classList.remove("glow");
-        breweriesButton.classList.remove("glow");
-        checkInsButton.classList.add("glow")
+        const checkInsButton = document.getElementById("user-check-ins-button");
+        beersButton?.classList.remove("glow");
+        breweriesButton?.classList.remove("glow");
+        checkInsButton?.classList.add("glow")
     }
 
     useEffect(() => {
@@ -111,7 +111,7 @@ function UserProfile() {
                                 }
                                 <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
                                 <h5 id="breweries-button" className="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
-                                <h5 id="user-check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
+                                <h5 id="user-check-ins-button" className="show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                             </div>
                         </div>
                     </div>
