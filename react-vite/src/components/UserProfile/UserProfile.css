@@ -83,6 +83,14 @@
     float: right;
 }
 
+#check-ins-button {
+    display: none;
+}
+
+#small-screen-check-ins {
+    display: none;
+}
+
 .create-button {
     background-color: #E05512;
     box-shadow: 1px 1px 1px #525151;
@@ -106,6 +114,7 @@
 .show-brewery {
     background-color: #E09712;
 }
+
 
 .glow {
     box-shadow: 0px 0px 2px 4px gold;
@@ -167,4 +176,27 @@
     height: 150px;
     width: 100%;
     border: 1px solid gray;
+}
+
+
+@media (max-width: 820px) {
+    #profile-content-container {
+        display: block;
+        margin-left: 15px;
+
+    }
+
+    #user-check-ins {
+        display: none;
+    }
+
+    #check-ins-button {
+        display: block;
+    }
+
+    #small-screen-check-ins {
+        display: block;
+    }
+
+
 }

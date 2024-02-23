@@ -1,12 +1,12 @@
 #search-bar {
     position: absolute;
-    top: 25px;
+    top: 23px;
     right: 175px;
 }
 
 #search-input {
-    padding: 8px;
-    width: 200px;
+    padding: 9px;
+    width: 210px;
     border-radius: 10px;
     border: none;
     margin-bottom: 3px;
