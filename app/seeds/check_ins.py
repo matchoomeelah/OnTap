@@ -138,7 +138,7 @@ def seed_check_ins():
         user_id=3
     ),
     CheckIn(
-        body="It's just like the story of the grasshopper and the octopus. All year long, the grasshopper kept burying acorns for the winter, while the octopus mooched off his girlfriend and watched TV. But then the winter came, and the grasshopper died, and the octopus ate all his acorns.",
+        body="It's like the story of the grasshopper and the octopus..."
         rating=5,
         image_url="https://i.ibb.co/HtTwC82/DSC-0012-1024x683.jpg",
         beer_id=3,
