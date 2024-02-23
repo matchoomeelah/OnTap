@@ -55,7 +55,7 @@ When a user signs up, a user profile page is generated for them. From this page 
 
 ## Future Goals
 
-### Toasts
+### Cheers
 - Users will be able to show their approval through a simple button rather than commenting
 
 ### Friends
