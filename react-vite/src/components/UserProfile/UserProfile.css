@@ -1,5 +1,6 @@
 #user-profile-container {
     animation: fadeIn 0.8s;
+    min-height: 85vh;
 }
 
 /* HEADER */
@@ -82,7 +83,7 @@
     float: right;
 }
 
-#check-ins-button {
+#user-check-ins-button {
     display: none;
 }
 

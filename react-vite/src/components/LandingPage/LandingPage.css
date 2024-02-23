@@ -1,5 +1,6 @@
 #landing-page-container {
     width: 100%;
+    min-height: 85vh;
 }
 
 #landing-page-banner-image {

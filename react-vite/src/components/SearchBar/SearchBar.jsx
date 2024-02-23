@@ -88,7 +88,7 @@ function SearchBar() {
                         <div className="search-menu-beers-label">Beers</div>
                         {searchBeers.map(beer => {
                             return <div key={beer.id} className="search-list-item" onClick={() => goToBeer(beer.id)}>
-                                {/* <img src={beer.image_url} /> */}
+                                <img src={beer.image_url} />
                                 {beer.name}
                             </div>
                         })}
@@ -98,7 +98,10 @@ function SearchBar() {
                     <div>
                         <div className="search-menu-breweries-label">Breweries</div>
                         {searchBreweries.map(brewery => {
-                            return <div key={brewery.id} className="search-list-item" onClick={() => goToBrewery(brewery.id)} >{brewery.name}</div>
+                            return <div key={brewery.id} className="search-list-item" onClick={() => goToBrewery(brewery.id)} >
+                                <img src={brewery.image_url} />
+                                {brewery.name}
+                            </div>
                         })}
                     </div>
                 }

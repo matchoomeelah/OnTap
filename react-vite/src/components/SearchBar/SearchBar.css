@@ -18,6 +18,9 @@
     padding: 8px;
     font-size: 11px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .search-list-item:hover {

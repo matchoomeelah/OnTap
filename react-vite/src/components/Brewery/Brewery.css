@@ -91,6 +91,8 @@
     width: 90%;
     max-width: 1100px;
     animation: fadeIn 0.3s;
+    min-height: 85vh;
+
 }
 
 #brewery-header {

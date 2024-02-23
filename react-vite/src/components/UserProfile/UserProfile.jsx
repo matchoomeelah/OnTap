@@ -111,7 +111,7 @@ function UserProfile() {
                                 }
                                 <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
                                 <h5 id="breweries-button" className="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
-                                <h5 id="check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
+                                <h5 id="user-check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                             </div>
                         </div>
                     </div>
