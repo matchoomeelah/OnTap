@@ -200,5 +200,18 @@
         display: block;
     }
 
+}
 
+@media (max-width: 520px) {
+    .create-button {
+        display: none;
+    }
+
+    #stuff-header {
+        flex-direction: column;
+    }
+
+    .show-button {
+        margin-top: 0;
+    }
 }
