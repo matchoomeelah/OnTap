@@ -119,7 +119,7 @@ function CreateBreweryForm() {
                     </div>
                     <Select
                         id="type"
-                        className="input"
+                        className="input select-input"
                         options={breweryTypeOptions}
                         onChange={(e) => {
                             setType(e.value);
