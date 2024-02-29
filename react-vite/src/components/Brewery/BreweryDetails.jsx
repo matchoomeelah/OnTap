@@ -5,11 +5,13 @@ import { thunkGetBreweryById } from "../../redux/breweries";
 // import BeerTile from "../Beer/BeerTile"
 import CheckInTile from "../CheckIn/CheckInTile";
 import BeerBrowseTile from "../Beer/BeerBrowseTile";
+import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BreweryDetails() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const sessionUser = useSelector(state => state.session.user);
     const beers = useSelector(state => state.beers);
     const breweries = useSelector(state => state.breweries);
     const checkIns = useSelector(state => state.checkIns);
@@ -63,6 +65,9 @@ function BreweryDetails() {
         breweryLogo.src = "https://i.ibb.co/ys9X0Jg/brewery-default.jpg";
     }
 
+    if (!currBrewery) {
+        navigate("/breweries");
+    }
 
     return (
         <div id="brewery-details-container">
@@ -76,11 +81,21 @@ function BreweryDetails() {
                 </div>
             </div>
 
+
             <div id="brewery-content-container">
                 <div id="brewery-content">
                     <div id="brewery-show-buttons-container">
                         <h5 id="beers-button" className="glow brewery-show-button show-beer" onClick={enableShowBeers}>Beers</h5>
                         <h5 id="check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
+                        <div id="you-own-this">
+                            {sessionUser?.id === currBrewery?.creator_id &&
+                                <span>
+                                    <i class="fa-solid fa-medal"></i>You own this!
+                                    <div className="owner-button">
+                                        <EditDeleteButtons brewery={currBrewery}/>
+                                    </div>
+                                </span>}
+                        </div>
                     </div>
                     {showBeers &&
                         (currBrewery?.beers.length === 0 ?
@@ -102,7 +117,9 @@ function BreweryDetails() {
                             }))}
                 </div>
                 <div id="brewery-about">
-                    <h4>About</h4>
+                    <h4>About
+                        {/* {sessionUser?.id === currBrewery?.creator_id && <span id="you-own-this"><i class="fa-solid fa-medal"></i>You own this!</span>} */}
+                    </h4>
                     {!showLongDescription ?
                         currBrewery?.description.length < 300 ?
                             <div>{currBrewery?.description}</div>

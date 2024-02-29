@@ -85,9 +85,8 @@ form {
 
 .brewery-form {
     margin: 0 auto;
+    animation: fadeIn 0.4s;
 }
-
-
 
 /* BEERS */
 
@@ -95,6 +94,7 @@ form {
     width: 60%;
     margin: 0 auto;
     margin-top: 100px;
+    animation: fadeIn 0.4s;
 }
 
 .beer-form {

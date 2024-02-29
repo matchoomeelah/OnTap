@@ -1,0 +1,60 @@
+#search-bar {
+    position: absolute;
+    top: 23px;
+    right: 175px;
+}
+
+#search-input {
+    padding: 9px;
+    width: 210px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 3px;
+}
+
+.search-list-item {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 8px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.search-list-item:hover {
+    font-weight: bold;
+    background-color: rgb(237, 237, 237);
+}
+
+.search-menu-beers-label {
+    background-color: #E0AE11;
+    border: 1px solid gray;
+    padding: 2px;
+    font-size: 13px;
+    color: white;
+}
+
+.search-menu-breweries-label {
+    background-color: #E09712;
+    border: 1px solid gray;
+    padding: 2px;
+    font-size: 12px;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.search-list-item > img {
+    width: 25px;
+    height: 25px;
+}
+
+@media(max-width: 775px) {
+    #search-bar {
+        display: none;
+    }
+}

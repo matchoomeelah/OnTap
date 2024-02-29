@@ -59,7 +59,7 @@ function CreateCheckInModal({ beer }) {
             <form id='check-in-form' onSubmit={handleSubmit}>
                 <textarea
                     id='check-in-body-input'
-                    placeholder='Leave your review here...'
+                    placeholder="Whaddya think?"
                     value={body}
                     onChange={e => {
                         setBody(e.target.value);

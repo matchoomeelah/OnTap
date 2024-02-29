@@ -24,24 +24,43 @@ function UserProfile() {
 
     const [showBeers, setShowBeers] = useState(true);
     const [showBreweries, setShowBreweries] = useState(false);
+    const [showCheckIns, setShowCheckins] = useState(false);
 
 
     function enableShowBeers() {
         setShowBreweries(false);
         setShowBeers(true);
+        setShowCheckins(false);
         const beersButton = document.getElementById("beers-button");
         const breweriesButton = document.getElementById("breweries-button");
-        beersButton.classList.add("glow");
-        breweriesButton.classList.remove("glow")
+        const checkInsButton = document.getElementById("user-check-ins-button");
+        beersButton?.classList.add("glow");
+        checkInsButton?.classList.remove("glow")
+        breweriesButton?.classList.remove("glow")
     }
 
     function enableShowBreweries() {
         setShowBeers(false);
         setShowBreweries(true);
+        setShowCheckins(false);
         const beersButton = document.getElementById("beers-button");
         const breweriesButton = document.getElementById("breweries-button");
-        beersButton.classList.remove("glow");
-        breweriesButton.classList.add("glow")
+        const checkInsButton = document.getElementById("user-check-ins-button");
+        beersButton?.classList.remove("glow");
+        checkInsButton?.classList.remove("glow")
+        breweriesButton?.classList.add("glow")
+    }
+
+    function enableShowCheckIns() {
+        setShowBeers(false);
+        setShowBreweries(false);
+        setShowCheckins(true);
+        const beersButton = document.getElementById("beers-button");
+        const breweriesButton = document.getElementById("breweries-button");
+        const checkInsButton = document.getElementById("user-check-ins-button");
+        beersButton?.classList.remove("glow");
+        breweriesButton?.classList.remove("glow");
+        checkInsButton?.classList.add("glow")
     }
 
     useEffect(() => {
@@ -59,12 +78,13 @@ function UserProfile() {
     }, [user_id, comments, beers, breweries, checkIns]);
 
 
+
     if (!profileUser || !checkIns) {
         return null;
     }
 
     return (
-        <div>
+        <div id="user-profile-container">
             <UserProfileHeader user={profileUser} />
             <div id="profile-content-container">
                 <div id="user-check-ins">
@@ -89,18 +109,25 @@ function UserProfile() {
                                         + Add a Brewery
                                     </h5>
                                 }
-                                <h5 id="beers-button" class="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
-                                <h5 id="breweries-button" class="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
+                                <h5 id="beers-button" className="glow show-button show-beer" onClick={enableShowBeers}>Beers</h5>
+                                <h5 id="breweries-button" className="show-button show-brewery" onClick={enableShowBreweries}>Breweries</h5>
+                                <h5 id="user-check-ins-button" className="show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                             </div>
                         </div>
                     </div>
                     {
                         showBreweries &&
-                        <UserBreweries profileUser={profileUser}/>
+                        <UserBreweries profileUser={profileUser} />
                     }
                     {
                         showBeers &&
                         <UserBeers profileUser={profileUser} />
+                    }
+                    {
+                        showCheckIns &&
+                        <div id="small-screen-check-ins">
+                            <UserCheckIns checkIns={profileUser?.check_ins} />
+                        </div>
                     }
                 </div>
             </div>

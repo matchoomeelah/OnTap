@@ -4,6 +4,8 @@
     margin: 0 auto;
     width: 60%;
     max-width: 900px;
+    animation: fadeIn 0.4s;
+    min-height: 85vh;
 }
 
 #all-beers-container {
@@ -14,6 +16,34 @@
 .browse-heading {
     text-decoration: underline;
     margin: 70px auto 30px;
+}
+
+.browse-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    /* gap: 20px; */
+}
+
+.placeholder-text {
+    font-weight: bold;
+}
+
+
+.filters-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.clear-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #E05512;
 }
 
 
@@ -153,6 +183,7 @@
     margin-top: 100px;
     width: 90%;
     max-width: 1100px;
+    animation: fadeIn 0.3s;
 }
 
 /* BEER DETAILS HEADER */
@@ -306,7 +337,7 @@ h4 {
     right: 0;
 
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 32% 32% 32%;
     grid-template-rows: 33% 33% 33%;
     gap: 3px;
 }
@@ -319,27 +350,9 @@ h4 {
 #small-screen-beer-photos-container {
     display: none;
     width: 90%;
-    /* position: relative;
-    height: fit-content;
-    margin-top: 10px; */
 }
 
-#small-screen-dummy {
-    /* margin-top: 100%; */
-}
 
-#small-screen-beer-photos {
-    /* position: absolute;
-    top: 46px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: 33% 33% 33%;
-    gap: 3px; */
-}
 
 
 /* MEDIA QUERIES */
@@ -454,8 +467,8 @@ h4 {
         right: 0;
 
         display: grid;
-        grid-template-columns: 30% 30% 30%;
-        grid-template-rows: 33% 33% 33%;
+        grid-template-columns: 31% 31% 31%;
+        grid-template-rows: 32% 32% 32%;
         gap: 3px;
     }
 
@@ -534,9 +547,13 @@ h4 {
     }
     #small-screen-beer-photos {
         display: grid;
-        grid-template-columns: repeat(5, 60px);
+        grid-template-columns: repeat(6, 65px);
+        height: 65px;
+        gap: 4px;
+    }
+    .small-beer-photo {
         height: 60px;
-        gap: 2px;
+        width: 60px;
     }
 }
 

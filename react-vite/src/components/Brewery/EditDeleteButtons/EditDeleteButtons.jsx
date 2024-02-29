@@ -6,7 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import DeleteBreweryModal from "../../Modals/DeleteBreweryModal";
 
 
-function EditDeleteButtons({brewery}) {
+function EditDeleteButtons({text, brewery}) {
     const navigate = useNavigate();
     const [showButtons, setShowButtons] = useState(false);
     const ellipsisRef = useRef();
@@ -29,7 +29,7 @@ function EditDeleteButtons({brewery}) {
 
     return (
         <div className="brewery-tile-ellipsis-button-container">
-            <button className="brewery-tile-ellipsis-button" ref={ellipsisRef} onClick={() => setShowButtons(!showButtons)}>...</button>
+            <button className="brewery-tile-ellipsis-button" ref={ellipsisRef} onClick={() => setShowButtons(!showButtons)}>{text || "..."}</button>
             {showButtons && <div className="brewery-tile-buttons">
                 <button id="brewery-tile-edit" onClick={(e) => navigate(`/breweries/${brewery.id}/edit`)}>Edit</button>
                 <OpenModalButton

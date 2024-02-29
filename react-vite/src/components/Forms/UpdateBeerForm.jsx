@@ -7,6 +7,7 @@ import { thunkGetBeerById, thunkUpdateBeer } from "../../redux/beers";
 import { thunkGetBreweries } from "../../redux/breweries";
 import { validateBeerForm } from "./validation";
 
+import { BEER_STYLES } from "./validation";
 import "./Forms.css";
 
 function UpdateBeerForm() {
@@ -60,7 +61,6 @@ function UpdateBeerForm() {
     })
 
     // Create array of beer style object for the Select input
-    const BEER_STYLES = ["American IPA", "American Strong Ale", "Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
     let styleOptions = BEER_STYLES.sort().map(style => {
         return {
             value: style,

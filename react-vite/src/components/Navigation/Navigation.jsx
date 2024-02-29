@@ -6,6 +6,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../Modals/LoginFormModal/LoginFormModal";
 import SignupFormModal from "../Modals/SignupFormModal/SignupFormModal";
 import OptionsButton from "./OptionsButton";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 function Navigation() {
@@ -20,6 +21,7 @@ function Navigation() {
         <NavLink to="/beers" className="nav-link">Beers</NavLink>
         <NavLink to="/breweries" className="nav-link">Breweries</NavLink>
       </div>
+      <SearchBar />
       <div id="nav-right-content">
         {
           sessionUser ? <ProfileButton id='profile-button' user={sessionUser} />
