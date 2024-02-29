@@ -5,13 +5,16 @@ import Select from 'react-select'
 
 import "./Beer.css";
 import BeerBrowseTile from "./BeerBrowseTile";
+import { useNavigate } from "react-router-dom";
 
 function BeerBrowse() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const beers = useSelector(state => state.beers);
 
     const [style, setStyle] = useState("");
+    const [selectedStyle, setSelectedStyle] = useState({})
     const [minAbv, setMinAbv] = useState(0);
     const [maxAbv, setMaxAbv] = useState(100);
 
@@ -48,40 +51,39 @@ function BeerBrowse() {
     return (
         <div className="browse-page-container">
             <h1 className="browse-heading">All Beers</h1>
-            <div id="all-beers-container">
-                {/* {Object.values(beers).map(beer => {
-                    return <BeerBrowseTile key={beer.id} beer={beer} />
-                })} */}
-                {beersArray.map(beer => {
-                    return <BeerBrowseTile key={beer.id} beer={beer} />
-                })}
-            </div>
-            <div id="filters-container">
-                <h4>Filters</h4>
+            <div className="filters-container">
                 <label>Style:</label>
                 <Select
                     id="style-filter"
+                    value={selectedStyle}
                     className="input"
                     options={styleOptions}
                     onChange={(e) => {
                         setStyle(e.value);
+                        setSelectedStyle({
+                            value: e.value,
+                            label: e.label
+                        })
                     }}
                 />
-                {/* <label>ABV</label>
-                <div id="abv-min-max">
-                    <input
-                        placeholder="min"
-                        value={minAbv}
-                        onChange={e => setMinAbv(e.value)}
-                    />
-                    -
-                    <input
-                        placeholder="max"
-                        value={maxAbv}
-                        onChange={e => setMaxAbv(e.value)}
-                    />
-
-                </div> */}
+                <button
+                    className="clear-button"
+                    onClick={() => {
+                        setStyle("");
+                        setSelectedStyle({})
+                    }}>Clear</button>
+            </div>
+            <div id="all-beers-container">
+                {beersArray.length > 0 ?
+                    beersArray.map(beer => {
+                        return <BeerBrowseTile key={beer.id} beer={beer} />
+                    })
+                    :
+                    <div className="browse-placeholder">
+                        <div className="placeholder-text">No beers of this style created yet!</div>
+                        <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>Create One</button>
+                    </div>
+                }
             </div>
         </div>
     )

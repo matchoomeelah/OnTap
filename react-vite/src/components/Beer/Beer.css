@@ -18,13 +18,32 @@
     margin: 70px auto 30px;
 }
 
+.browse-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    /* gap: 20px; */
+}
+
+.placeholder-text {
+    font-weight: bold;
+}
 
 
-#filters-container {
-    position: absolute;
-    left: 10px;
-    top: 400px;
-    width: 200px;
+.filters-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.clear-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #E05512;
 }
 
 
@@ -331,27 +350,9 @@ h4 {
 #small-screen-beer-photos-container {
     display: none;
     width: 90%;
-    /* position: relative;
-    height: fit-content;
-    margin-top: 10px; */
 }
 
-#small-screen-dummy {
-    /* margin-top: 100%; */
-}
 
-#small-screen-beer-photos {
-    /* position: absolute;
-    top: 46px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: 33% 33% 33%;
-    gap: 3px; */
-}
 
 
 /* MEDIA QUERIES */
