@@ -73,7 +73,7 @@ function BreweryBrowse() {
                 :
                 <div className="browse-placeholder">
                     <div className="placeholder-text">No breweries of this type yet!</div>
-                    <button className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>Add a Brewery</button>
+                    <button className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</button>
                 </div>
             }
         </div>

@@ -80,7 +80,7 @@ function BeerBrowse() {
                     :
                     <div className="browse-placeholder">
                         <div className="placeholder-text">No beers of this style created yet!</div>
-                        <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>Add a Beer</button>
+                        <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</button>
                     </div>
                 }
             </div>

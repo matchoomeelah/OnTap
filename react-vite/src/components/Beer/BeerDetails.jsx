@@ -18,6 +18,7 @@ function BeerDetails() {
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
     const currAvgRating = currBeer?.check_ins.length > 0 ? parseFloat(currBeer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / currBeer?.check_ins.length).toFixed(1) : "New";
+    const beerPhotos = currBeer?.check_ins.filter(checkIn => checkIn.image_url);
 
     const [showLongDescription, setShowLongDescription] = useState(false);
 
@@ -90,17 +91,19 @@ function BeerDetails() {
                                 </div>
                             }
                         </div>
-                        <div id="small-screen-beer-photos-container">
-                            <div id="small-screen-dummy"></div>
-                            <div id="small-screen-beer-photos">
-                                {currBeer?.check_ins.toReversed().slice(0, 5).map(checkIn => {
-                                    return checkIn.image_url &&
-                                        <PhotoView key={checkIn.id} src={checkIn.image_url}>
-                                            <img key={checkIn.id} className="small-beer-photo" src={checkIn.image_url} />
-                                        </PhotoView>
-                                })}
+                        {beerPhotos.length > 0 &&
+                            <div id="small-screen-beer-photos-container">
+                                <div id="small-screen-dummy"></div>
+                                <div id="small-screen-beer-photos">
+                                    {currBeer?.check_ins.toReversed().slice(0, 5).map(checkIn => {
+                                        return checkIn.image_url &&
+                                            <PhotoView key={checkIn.id} src={checkIn.image_url}>
+                                                <img key={checkIn.id} className="small-beer-photo" src={checkIn.image_url} />
+                                            </PhotoView>
+                                    })}
+                                </div>
                             </div>
-                        </div>
+                        }
                         <div id="check-in-button-div">
                             {sessionUser &&
                                 <OpenModalButton
@@ -121,18 +124,20 @@ function BeerDetails() {
                             </div>
                         }
                     </div>
-                    <div id="beer-photos-container">
-                        <h4>Photos</h4>
-                        <div id="dummy"></div>
-                        <div id="beer-photos">
-                            {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
-                                return checkIn.image_url &&
-                                    <PhotoView key={checkIn.id} src={checkIn.image_url}>
-                                        <img className="beer-side-photo" src={checkIn.image_url} />
-                                    </PhotoView>
-                            })}
+                    {beerPhotos.length > 0 &&
+                        <div id="beer-photos-container">
+                            <h4>Photos</h4>
+                            <div id="dummy"></div>
+                            <div id="beer-photos">
+                                {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
+                                    return checkIn.image_url &&
+                                        <PhotoView key={checkIn.id} src={checkIn.image_url}>
+                                            <img className="beer-side-photo" src={checkIn.image_url} />
+                                        </PhotoView>
+                                })}
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </PhotoProvider>

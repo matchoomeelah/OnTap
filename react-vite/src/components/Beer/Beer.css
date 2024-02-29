@@ -184,12 +184,14 @@
     width: 90%;
     max-width: 1100px;
     animation: fadeIn 0.3s;
+    min-height: 82vh;
 }
 
 /* BEER DETAILS HEADER */
 
 #beer-header {
     display: flex;
+    align-items: center;
     width: 95%;
     height: fit-content;
     gap: 15px;
@@ -204,10 +206,10 @@
 #beer-header-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    gap: 10px;
+    gap: 20px;
     width: 75%;
-    margin-top: 30px;
+    height: 80%;
+    /* margin-top: 30px; */
 }
 
 #beer-name {
