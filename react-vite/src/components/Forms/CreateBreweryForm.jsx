@@ -4,7 +4,7 @@ import { thunkCreateBrewery } from "../../redux/breweries";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 
-
+import { BREWERY_TYPES } from "./validation";
 import "./Forms.css";
 import { validateBreweryForm } from "./validation";
 
@@ -29,8 +29,7 @@ function CreateBreweryForm() {
     const [errors, setErrors] = useState({});
 
     // Create array of brewery type objects for the Select input
-    const breweryTypes = ["Microbrewery", "Macrobrewery", "Nanobrewery", "Regional Brewery", "Brewpub", "Taproom", "Craft Brewery", "Contract Brewing Company"];
-    const breweryTypeOptions = breweryTypes.sort().map(type => {
+    const breweryTypeOptions = BREWERY_TYPES.sort().map(type => {
         return {
             value: type,
             label: type

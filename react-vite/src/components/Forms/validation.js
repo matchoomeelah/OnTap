@@ -1,3 +1,6 @@
+export const BEER_STYLES = ["Hazy IPA", "American IPA", "American Strong Ale", "Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch", "White/Wheat IPA"];
+export const BREWERY_TYPES = ["Microbrewery", "Macrobrewery", "Nanobrewery", "Regional Brewery", "Brewpub", "Taproom", "Craft Brewery", "Contract Brewing Company"];
+
 export function validateBreweryForm(name, type, city, state_province, country, description, image_url, website_url) {
     const errors = {}
 

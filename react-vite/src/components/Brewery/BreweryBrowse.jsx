@@ -4,6 +4,7 @@ import { thunkGetBreweries } from "../../redux/breweries";
 import BreweryTile from "./BreweryTile";
 import Select from 'react-select'
 import "./Brewery.css"
+import { BREWERY_TYPES } from "../Forms/validation";
 import { useNavigate } from "react-router-dom";
 
 function BreweryBrowse() {
@@ -12,7 +13,6 @@ function BreweryBrowse() {
 
     const breweries = useSelector(state => state.breweries)
 
-    // const [type, setType] = useState("");
     const [selectedType, setSelectedType] = useState({})
 
     let breweriesArray = Object.values(breweries);
@@ -27,8 +27,7 @@ function BreweryBrowse() {
         });
     }
 
-    const breweryTypes = ["Microbrewery", "Macrobrewery", "Nanobrewery", "Regional Brewery", "Brewpub", "Taproom", "Craft Brewery", "Contract Brewing Company"];
-    const breweryTypeOptions = breweryTypes.sort().map(type => {
+    const breweryTypeOptions = BREWERY_TYPES.sort().map(type => {
         return {
             value: type,
             label: type
@@ -74,7 +73,7 @@ function BreweryBrowse() {
                 :
                 <div className="browse-placeholder">
                     <div className="placeholder-text">No breweries of this type yet!</div>
-                    <button className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>Create One</button>
+                    <button className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>Add a Brewery</button>
                 </div>
             }
         </div>

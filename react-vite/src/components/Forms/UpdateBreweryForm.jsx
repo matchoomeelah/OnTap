@@ -5,6 +5,7 @@ import Select from "react-select";
 
 import { thunkGetBreweryById, thunkUpdateBrewery } from "../../redux/breweries";
 
+import { BREWERY_TYPES } from "./validation";
 import "./Forms.css";
 import { validateBreweryForm } from "./validation";
 
@@ -50,7 +51,6 @@ function UpdateBreweryForm() {
     }, [currBrewery])
 
     // Create array of brewery type objects for the Select input
-    const breweryTypes = ["Microbrewery", "Macrobrewery", "Nanobrewery", "Regional Brewery", "Brewpub", "Taproom", "Craft Brewery", "Contract Brewing Company"];
     const breweryTypeOptions = breweryTypes.sort().map(type => {
         return {
             value: type,

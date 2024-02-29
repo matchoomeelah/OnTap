@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { thunkGetBeers } from "../../redux/beers";
 import Select from 'react-select'
 
+import { BEER_STYLES } from "../Forms/validation";
 import "./Beer.css";
 import BeerBrowseTile from "./BeerBrowseTile";
 import { useNavigate } from "react-router-dom";
@@ -30,14 +31,12 @@ function BeerBrowse() {
         });
     }
 
-    const BEER_STYLES = ["Hazy IPA", "American IPA", "American Strong Ale", "Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
     let styleOptions = BEER_STYLES.sort().map(style => {
         return {
             value: style,
             label: style
         }
     });
-
 
     useEffect(() => {
         dispatch(thunkGetBeers());
@@ -81,7 +80,7 @@ function BeerBrowse() {
                     :
                     <div className="browse-placeholder">
                         <div className="placeholder-text">No beers of this style created yet!</div>
-                        <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>Create One</button>
+                        <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>Add a Beer</button>
                     </div>
                 }
             </div>
