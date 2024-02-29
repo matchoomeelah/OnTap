@@ -62,7 +62,7 @@ export const thunkCreateBrewery = (brewery) => async (dispatch) => {
         dispatch(actionCreateBrewery(data))
         return data;
     }
-    console.log("There was an error creating your brewery");
+    // console.log("There was an error creating your brewery");
 
     return {"errors": data};
 }
@@ -80,7 +80,7 @@ export const thunkGetBreweries = () => async (dispatch) => {
         dispatch(actionGetBreweries(data.Breweries))
     }
     else {
-        console.log("There was an error");
+        // console.log("There was an error");
     }
 
     return data;
@@ -98,7 +98,7 @@ export const thunkGetBreweryById = (id) => async (dispatch) => {
         dispatch(actionGetBreweryById(data.Brewery));
     }
     else {
-        console.log("There was an error");
+        // console.log("There was an error");
     }
 
     return data;
@@ -120,7 +120,7 @@ export const thunkUpdateBrewery = (id, brewery) => async (dispatch) => {
         return data;
     }
 
-    console.log("There was an error updating the brewery");
+    // console.log("There was an error updating the brewery");
 
 
     return {"errors": data};
@@ -140,7 +140,7 @@ export const thunkDeleteBrewery = (id) => async (dispatch) => {
         dispatch(actionDeleteBrewery(id));
     }
     else {
-        console.log("There was an error deleting the brewery")
+        // console.log("There was an error deleting the brewery")
     }
 
     return data;

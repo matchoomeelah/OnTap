@@ -45,8 +45,6 @@ function CreateCheckInModal({ beer }) {
 
         if (newCheckIn.errors) {
             setErrors(newCheckIn.errors);
-            // setImageLoading(false);
-            console.log(newCheckIn.errors)
         }
         else {
             closeModal();

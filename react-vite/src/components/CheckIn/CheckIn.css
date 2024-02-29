@@ -9,8 +9,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* min-height: 130px; */
-    /* max-height: 400px; */
     overflow-y: hidden;
     padding: 10px;
     border: 0.5px solid gray;
@@ -30,7 +28,6 @@
     font-size: 24px;
     width: 35px;
     height: 35px;
-    /* margin-top: 5px; */
 }
 
 #check-in-default-profile-pic {
@@ -44,7 +41,6 @@
     height: 35px;
     width: 35px;
     margin-top: 2px;
-
 }
 
 #check-in-username {
@@ -109,7 +105,6 @@
 /* COMMENTS */
 
 #add-comment-button, #show-comments-button {
-    /* text-decoration: underline; */
     color: #525151;
     font-size: 12px;
     cursor: pointer;

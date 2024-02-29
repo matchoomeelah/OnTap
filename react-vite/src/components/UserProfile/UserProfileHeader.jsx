@@ -2,7 +2,6 @@ import "./UserProfile.css";
 
 
 function UserProfileHeader({ user }) {
-console.log(user?.profile_pic)
 
     return (
         <div id="profile-header">

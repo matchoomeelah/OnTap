@@ -37,7 +37,6 @@ function CreateBeerForm() {
     })
 
     // Create array of beer style objects for Select input
-    // const BEER_STYLES = ["Hazy IPA", "American IPA", "American Strong Ale", "Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch"];
     let styleOptions = BEER_STYLES.sort().map(style => {
         return {
             value: style,
@@ -120,7 +119,7 @@ function CreateBeerForm() {
                     />
                 </div>
 
-                <div className="field-container">
+                <div className="field-container select-container">
                     <div className="form-label-container">
                         <label htmlFor="brewery_id">
                             Brewery*
@@ -131,7 +130,7 @@ function CreateBeerForm() {
                     </div>
                     <Select
                         id="brewery_id"
-                        className="input"
+                        className="input select-input"
                         options={breweryOptions}
                         onChange={(e) => {
                             setBreweryId(e.value);
@@ -207,7 +206,7 @@ function CreateBeerForm() {
                     </div>
                     <Select
                         id="style"
-                        className="input"
+                        className="input select-input"
                         options={styleOptions}
                         onChange={(e) => {
                             setStyle(e.value);

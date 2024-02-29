@@ -9,10 +9,21 @@ form {
 .input {
     width:100%;
     padding: 4px;
+    font-size: 15px;
+    font-family: Arvo, Arial, Helvetica, sans-serif;
+    margin-top: 3px;
 }
 
 .field-container {
     width: 100%;
+}
+
+
+.select-input {
+    position: relative;
+    right: 4px;
+    width: 101%;
+    font-size: 15px;
 }
 
 .form-label-container {
