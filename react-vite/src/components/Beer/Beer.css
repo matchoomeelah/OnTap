@@ -360,6 +360,7 @@ h4 {
 .beer-side-photo {
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 #small-screen-beer-photos-container {
