@@ -62,7 +62,7 @@
 #user-check-ins {
     margin-left: 20px;
 }
-
+/*
 .user-check-ins-container {
     height: 100vh;
     overflow: auto;
@@ -77,7 +77,7 @@
 .user-breweries-container {
     height: 100vh;
     overflow: auto;
-}
+} */
 
 #recent-activity-header {
     margin-bottom: 43px;
