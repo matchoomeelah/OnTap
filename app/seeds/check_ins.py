@@ -49,7 +49,7 @@ def seed_check_ins():
 
     bender_seeds = [
     CheckIn(
-        body="Bite my shiny golden beer glass!",
+        body="Bite my shiny golden glass!",
         rating=4,
         image_url="https://i.ibb.co/fF05Ht2/space-dust-check2.jpg",
         beer_id=4,
