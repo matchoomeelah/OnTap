@@ -5,15 +5,15 @@
 }
 
 .brewery-tile-ellipsis-button {
-    background-color: transparent;
+    background-color: white;
     border: none;
     cursor: pointer;
     font-size: 22px;
+    padding-bottom: 8px;
 }
 
 .brewery-tile-buttons {
     position: absolute;
-    /* left: 20px; */
     right: 5px;
     border: 1px solid gray;
     background-color: white;

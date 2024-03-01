@@ -7,8 +7,9 @@ import UserBreweries from "./UserBreweries";
 import UserBeers from "./UserBeers";
 import UserCheckIns from "./UserCheckIns";
 import { thunkGetUserById } from "../../redux/users";
-import { thunkGetUserCheckIns } from "../../redux/checkIns";
+
 import "./UserProfile.css";
+
 
 function UserProfile() {
     const dispatch = useDispatch();
@@ -75,7 +76,7 @@ function UserProfile() {
             }
         }
         wrapper();
-    }, [user_id, comments, beers, breweries, checkIns]);
+    }, [user_id, comments, beers, breweries, checkIns, dispatch, navigate]);
 
 
 

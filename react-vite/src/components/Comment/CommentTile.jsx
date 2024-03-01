@@ -1,9 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Comment.css"
 import { useSelector } from "react-redux";
-import UpdateCommentModal from "../Modals/UpdateCommentModal";
-import DeleteCommentModal from "../Modals/DeleteCommentModal";
-import OpenModalButton from "../OpenModalButton";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function CommentTile({ beerId, comment }) {

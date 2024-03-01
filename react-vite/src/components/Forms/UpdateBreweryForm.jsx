@@ -5,9 +5,9 @@ import Select from "react-select";
 
 import { thunkGetBreweryById, thunkUpdateBrewery } from "../../redux/breweries";
 
+import { validateBreweryForm } from "./validation";
 import { BREWERY_TYPES } from "./validation";
 import "./Forms.css";
-import { validateBreweryForm } from "./validation";
 
 
 function UpdateBreweryForm() {
@@ -34,7 +34,7 @@ function UpdateBreweryForm() {
 
     useEffect(() => {
         dispatch(thunkGetBreweryById(brewery_id));
-    }, [brewery_id])
+    }, [brewery_id, dispatch])
 
     useEffect(() => {
         if (currBrewery) {
@@ -51,7 +51,7 @@ function UpdateBreweryForm() {
     }, [currBrewery])
 
     // Create array of brewery type objects for the Select input
-    const breweryTypeOptions = breweryTypes.sort().map(type => {
+    const breweryTypeOptions = BREWERY_TYPES.sort().map(type => {
         return {
             value: type,
             label: type

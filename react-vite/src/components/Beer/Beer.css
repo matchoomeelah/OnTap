@@ -92,6 +92,8 @@
     flex-direction: column;
     margin-top: 5px;
     gap: 3px;
+    overflow-wrap: break-word;
+    overflow: auto;
 }
 
 .beer-browse-tile-name,
@@ -101,8 +103,7 @@
     text-decoration: none;
     cursor: pointer;
     font-weight: 600;
-    width: fit-content;
-    padding-right: 25px;
+    width: 100%;
 }
 
 .beer-browse-tile-name:hover {

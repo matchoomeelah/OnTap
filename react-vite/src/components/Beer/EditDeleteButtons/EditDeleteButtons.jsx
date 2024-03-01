@@ -31,7 +31,7 @@ function EditDeleteButtons({beer}) {
         <div className="brewery-tile-ellipsis-button-container">
             <button className="brewery-tile-ellipsis-button" ref={ellipsisRef} onClick={() => setShowButtons(!showButtons)}>...</button>
             {showButtons && <div className="brewery-tile-buttons">
-                <button id="brewery-tile-edit" onClick={(e) => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
+                <button id="brewery-tile-edit" onClick={() => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
                 <OpenModalButton
                     buttonId="brewery-tile-delete"
                     buttonText={'Delete'}
@@ -39,7 +39,6 @@ function EditDeleteButtons({beer}) {
                 />
             </div>
             }
-
         </div>
     )
 }

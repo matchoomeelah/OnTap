@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-import "./EditDeleteButtons.css"
 import OpenModalButton from "../../OpenModalButton";
 import DeleteCommentModal from "../../Modals/DeleteCommentModal"
 import UpdateCommentModal from "../../Modals/UpdateCommentModal";
+
+import "./EditDeleteButtons.css"
 
 
 function EditDeleteButtons({ beerId, comment }) {

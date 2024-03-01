@@ -50,6 +50,4 @@ class User(db.Model, UserMixin):
             'beers': [beer.to_dict() for beer in self.beers],
             'breweries': [brewery.to_dict() for brewery in self.breweries],
             'check_ins': [check_in.to_dict() for check_in in self.check_ins]
-            # 'comments': [comment.to_dict() for comment in self.comments],
-            # 'lists': [list.to_dict() for list in self.lists],
         }

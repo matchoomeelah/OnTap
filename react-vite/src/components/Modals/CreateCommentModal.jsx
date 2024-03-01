@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useState } from "react";
 import { thunkCreateComment } from "../../redux/comments";
@@ -7,8 +7,6 @@ import { thunkCreateComment } from "../../redux/comments";
 function CreateCommentModal({ checkIn }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-
-    const sessionUser = useSelector(state => state.session.user);
 
     const [body, setBody] = useState("");
     const [bodyCharCount, setBodyCharCount] = useState(0);
@@ -31,7 +29,6 @@ function CreateCommentModal({ checkIn }) {
 
         if (newComment.errors) {
             setErrors(newComment.errors);
-            setImageLoading(false);
         }
         else {
             closeModal();

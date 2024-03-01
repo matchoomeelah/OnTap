@@ -64,7 +64,3 @@ export function validateLogInForm(email, password) {
     return errors;
 
 }
-
-export function validateCheckInForm(rating) {
-
-}

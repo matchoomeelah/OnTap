@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Select from 'react-select'
 
 import { thunkGetBeerById, thunkUpdateBeer } from "../../redux/beers";
@@ -35,7 +35,7 @@ function UpdateBeerForm() {
     useEffect(() => {
         dispatch(thunkGetBeerById(beer_id));
         dispatch(thunkGetBreweries());
-    }, [beer_id])
+    }, [beer_id, dispatch])
 
     // Prepopulate the form fields
     useEffect(() => {

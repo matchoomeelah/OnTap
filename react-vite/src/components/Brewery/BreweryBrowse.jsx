@@ -16,7 +16,7 @@ function BreweryBrowse() {
 
     const breweries = useSelector(state => state.breweries)
     const sessionUser = useSelector(state => state.session.user);
-    const { setModalContent, setOnModalClose } = useModal();
+    const { setModalContent } = useModal();
 
     const [selectedType, setSelectedType] = useState({})
 
@@ -41,7 +41,7 @@ function BreweryBrowse() {
 
     useEffect(() => {
         dispatch(thunkGetBreweries());
-    }, [])
+    })
 
     useEffect(() => {
         window.scrollTo(0, 0);

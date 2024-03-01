@@ -43,11 +43,6 @@ export const thunkGetUserById = (id) => async (dispatch) => {
 //
 // Reducer
 //
-const initialState = {
-    profileUser: {},
-    otherUsers: {}
-}
-
 
 export default function usersReducer(state = {}, action) {
     switch(action.type) {

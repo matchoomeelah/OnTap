@@ -1,16 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../Modals/LoginFormModal/LoginFormModal';
 import SignupFormModal from '../Modals/SignupFormModal/SignupFormModal';
-import { thunkLogout } from '../../redux/session';
-import { actionClearUser } from '../../redux/users';
-import { useDispatch, useSelector } from 'react-redux';
 
 
 function OptionsButton() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const ulOptionsRef = useRef();
   const sessionUser = useSelector(state => state.session.user);
 
@@ -41,15 +38,6 @@ function OptionsButton() {
   }, [showOptionsMenu]);
 
   const ulOptionsClassName = "options-dropdown" + (showOptionsMenu ? "" : " hidden");
-
-
-  const logout = async (e) => {
-    e.preventDefault();
-    await dispatch(thunkLogout());
-    await dispatch(actionClearUser());
-    closeOptionsMenu();
-    navigate('/');
-  };
 
   function goToBeers() {
     navigate("/beers");

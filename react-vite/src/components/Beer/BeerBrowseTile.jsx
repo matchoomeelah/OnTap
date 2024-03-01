@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BeerBrowseTile({ beer }) {
-    const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
     const currAvgRating = beer?.check_ins.length > 0 ? parseFloat(beer?.check_ins.reduce((acc, curr) => curr.rating + acc, 0) / beer?.check_ins.length).toFixed(1) : "New";
-
 
     const [showLongDescription, setShowLongDescription] = useState(false);
 
@@ -42,15 +40,7 @@ function BeerBrowseTile({ beer }) {
 
                 </div>
                 {beer?.creator_id === sessionUser?.id &&
-                        // <div className="beer-buttons">
-                        //     <button id="beer-tile-edit" onClick={(e) => navigate(`/beers/${beer.id}/edit`)}>Edit</button>
-                        //     <OpenModalButton
-                        //         buttonId="beer-tile-delete"
-                        //         buttonText={'Delete'}
-                        //         modalComponent={<DeleteBeerModal beer={beer} />}
-                        //     />
-                        // </div>
-                        <EditDeleteButtons beer={beer} />
+                    <EditDeleteButtons beer={beer} />
                 }
             </div>
             <div>
@@ -64,7 +54,7 @@ function BeerBrowseTile({ beer }) {
                     </div>
                     <div className="beer-browse-tile-vertical-line"></div>
                     <div className="beer-browse-bottom-section">
-                        <i id="beer-tile-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}
+                        <i id="beer-tile-mug" className="fa-solid fa-beer-mug-empty"></i>{currAvgRating}
                     </div>
                     <div className="beer-browse-tile-vertical-line"></div>
                     <div className="beer-browse-bottom-section">

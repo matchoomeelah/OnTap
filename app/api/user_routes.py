@@ -50,3 +50,11 @@ def get_user_check_ins(id):
         return {"CheckIns": check_ins}
 
     return {"errors": { "message": "User Not Found" } }, 404
+
+# Update user info
+@user_routes.route('/<int:id>', methods=["PUT"])
+def update_user_info(id):
+    user = User.query.get(id)
+
+    if not user:
+        return {"errors": { "message": "User Not Found" } }, 404

@@ -30,20 +30,21 @@
     flex-direction: column;
     margin-top: 10px;
     gap: 5px;
+    overflow-wrap: break-word;
+    overflow: auto;
 }
 
-#brewery-tile-name,
-#brewery-tile-name:visited {
+.brewery-tile-name,
+.brewery-tile-name:visited {
     font-size: 20px;
     color: #E09712;
     text-decoration: none;
     cursor: pointer;
     font-weight: 600;
-    width: fit-content;
-    padding-right: 25px;
+    width: 100%;
 }
 
-#brewery-tile-name:hover {
+.brewery-tile-name:hover {
     text-decoration: underline;
     color: #E0AE11;
 }

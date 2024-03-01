@@ -129,13 +129,6 @@ function CreateBreweryForm() {
                                 setErrors(newErrors);
                             }
                         }}
-                        styles={{
-                            control: (baseStyles, state) => ({
-                                ...baseStyles,
-                                width: "100%",
-
-                              }),
-                        }}
                     />
                 </div>
 

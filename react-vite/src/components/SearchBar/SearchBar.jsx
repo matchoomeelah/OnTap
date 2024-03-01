@@ -25,13 +25,13 @@ function SearchBar() {
         if (!beers || Object.values(beers).length < 2) {
             dispatch(thunkGetBeers());
         }
-    }, [beers])
+    }, [beers, dispatch])
 
     useEffect(() => {
         if (!breweries || Object.values(breweries).length < 2) {
             dispatch(thunkGetBreweries());
         }
-    }, [breweries])
+    }, [breweries, dispatch])
 
     useEffect(() => {
         // Closes search results when you click outside it
@@ -80,7 +80,7 @@ function SearchBar() {
                     focus(e);
                 }}
                 placeholder="Find a beer or brewery..."
-                autocomplete="off">
+                autoComplete="off">
             </input>
             <div id="search-list" className={isFocused ? "search-list" : "search-list hidden"} ref={searchListRef}>
                 {query.length > 0 && searchBeers.length > 0 &&

@@ -12,15 +12,12 @@ function LandingPage() {
     return (
         <div id="landing-page-container">
             <div id="landing-page-banner">
-                {/* <img id="landing-page-banner-image" src="https://i.ibb.co/rQW6BxX/beer-banner.jpg" /> */}
-                {/* <img id="landing-page-banner-image" src="https://i.ibb.co/2Ky7V2D/beer-banner-new-1.jpg" /> */}
                 <div id="landing-page-banner-image">
-                    {/* <img id="landing-page-banner-image-content" src="https://i.ibb.co/VQcFcWW/beer-flight-2.jpg" /> */}
                     <img id="landing-page-banner-image-content" src="https://i.ibb.co/GdhLNPt/beer-flight-1.jpg" />
                 </div>
                 <div id="landing-page-banner-text">
                     <div id="beer-lovers">Beer Lovers Unite</div>
-                    <div id="tagline">Whether you're a sipper or a chugger, we're all here for the love of beer</div>
+                    <div id="tagline">Whether you&apos;re a sipper or a chugger, we&apos;re all here for the love of beer</div>
                 </div>
             </div>
             <div id="landing-page-info-tiles">
@@ -31,12 +28,12 @@ function LandingPage() {
                 </div>
                 <div className="info-tile">
                     <div className="info-tile-title">Breweries</div>
-                    <div className="info-tile-text">Browse our list of breweries and what they brew. Maybe you'll learn a thing or two along the way.</div>
+                    <div className="info-tile-text">Browse our list of breweries and what they brew. Maybe you&apos;ll learn a thing or two along the way.</div>
                     <div className="info-tile-link" onClick={() => navigate("/breweries")}>Browse Breweries</div>
                 </div>
                 <div className="info-tile">
                     <div className="info-tile-title">Check-Ins</div>
-                    <div className="info-tile-text">Let your friends know what you're drinking and see what they're putting down, because beer is better with friends.</div>
+                    <div className="info-tile-text">Let your friends know what you&apos;re drinking and see what they&apos;re putting down, because beer is better with friends.</div>
                     <div id="get-started-container">{!sessionUser && <OpenModalButton
                         buttonId="get-started-button"
                         buttonText={'Get Started'}

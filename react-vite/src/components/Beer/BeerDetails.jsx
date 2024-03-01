@@ -36,7 +36,7 @@ function BeerDetails() {
         }
 
         wrapper();
-    }, [beer_id, checkIns, comments])
+    }, [beer_id, checkIns, comments, dispatch, navigate])
 
     function setDefaultImage() {
         const beerLogo = document.getElementById("beer-logo");
@@ -65,7 +65,7 @@ function BeerDetails() {
                                 </div>
                                 <div>
                                     <div>Rating</div>
-                                    <div><i id="beer-details-rating-mug" class="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
+                                    <div><i id="beer-details-rating-mug" className="fa-solid fa-beer-mug-empty"></i>{currAvgRating}</div>
                                 </div>
                             </div>
                             {/* <button id="wishlist-button" onClick={() => alert("Feature Coming Soon!")}> Add to WishList</button> */}
@@ -119,7 +119,7 @@ function BeerDetails() {
                             </div> :
                             <div id="check-in-container">
                                 {currBeer?.check_ins.toReversed().map(checkIn => {
-                                    return <CheckInTile checkIn={checkIn} />
+                                    return <CheckInTile key={checkIn.id} checkIn={checkIn} />
                                 })}
                             </div>
                         }

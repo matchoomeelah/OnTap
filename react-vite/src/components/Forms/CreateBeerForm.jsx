@@ -47,7 +47,7 @@ function CreateBeerForm() {
     // Populate Breweries in store
     useEffect(() => {
         dispatch(thunkGetBreweries());
-    }, [])
+    }, [dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

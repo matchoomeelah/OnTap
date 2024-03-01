@@ -1,12 +1,9 @@
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
-import OpenModalButton from "../OpenModalButton";
-import DeleteBreweryModal from "../Modals/DeleteBreweryModal";
+import { NavLink } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BreweryTile({ brewery }) {
-    const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
     const [showButtons, setShowButtons] = useState(false);
     const ellipsisRef = useRef();
@@ -47,16 +44,13 @@ function BreweryTile({ brewery }) {
         return () => document.removeEventListener("click", closeMenu);
       }, [showButtons]);
 
-    // document.addEventListener("click", () => setShowButtons(false))
-    // document.querySelectorAll(".brewery-tile-ellipsis-button").forEach(button => button.addEventListener("click", () => setShowButtons(!showButtons)))
-
 
     return (
         <div className="brewery-tile">
             <div className="brewery-tile-top-content">
                 <img id={`brewery-logo${brewery.id}`} className="brewery-tile-image" src={brewery.image_url} alt="Brewery Image" onError={setDefaultImage} />
                 <div className="brewery-tile-top-info">
-                    <NavLink to={`/breweries/${brewery.id}`} id="brewery-tile-name">{brewery.name}</NavLink>
+                    <NavLink to={`/breweries/${brewery.id}`} className="brewery-tile-name">{brewery.name}</NavLink>
                     <div id="city-state-country">{brewery.city}, {brewery.state_province}, {brewery.country}</div>
                     <div id="brewery-tile-type">{brewery.type}</div>
                 </div>
@@ -71,7 +65,7 @@ function BreweryTile({ brewery }) {
                     </div>
                     <div className="brewery-tile-vertical-line"></div>
                     <div className="brewery-tile-bottom-section">
-                        <i id="brewery-tile-mug" class="fa-solid fa-beer-mug-empty"></i>{breweryRatingInfo.rating}
+                        <i id="brewery-tile-mug" className="fa-solid fa-beer-mug-empty"></i>{breweryRatingInfo.rating}
                     </div>
                     <div className="brewery-tile-vertical-line"></div>
                     <div className="brewery-tile-bottom-section">

@@ -18,23 +18,16 @@ function BeerBrowse() {
 
     const beers = useSelector(state => state.beers);
     const sessionUser = useSelector(state => state.session.user);
-    const { setModalContent, setOnModalClose } = useModal();
+    const { setModalContent } = useModal();
 
     const [style, setStyle] = useState("");
     const [selectedStyle, setSelectedStyle] = useState({})
-    const [minAbv, setMinAbv] = useState(0);
-    const [maxAbv, setMaxAbv] = useState(100);
 
     let beersArray = Object.values(beers);
 
     // Apply filters
-    if (style || minAbv || maxAbv < 100) {
-        beersArray = beersArray.filter(beer => {
-            if (style && beer.style !== style) {
-                return false;
-            }
-            return true;
-        });
+    if (style) {
+        beersArray = beersArray.filter(beer => beer.style === style);
     }
 
     let styleOptions = BEER_STYLES.sort().map(style => {
@@ -46,7 +39,7 @@ function BeerBrowse() {
 
     useEffect(() => {
         dispatch(thunkGetBeers());
-    }, [])
+    })
 
     useEffect(() => {
         window.scrollTo(0, 0);

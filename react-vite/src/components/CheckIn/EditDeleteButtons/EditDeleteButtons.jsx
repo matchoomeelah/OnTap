@@ -1,13 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-import "./EditDeleteButtons.css"
 import OpenModalButton from "../../OpenModalButton";
 import DeleteCheckInModal from "../../Modals/DeleteCheckInModal"
 
+import "./EditDeleteButtons.css"
+
 
 function EditDeleteButtons({checkIn}) {
-    // const navigate = useNavigate();
     const [showButtons, setShowButtons] = useState(false);
     const ellipsisRef = useRef();
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+
 import { thunkGetBreweryById } from "../../redux/breweries";
-// import BeerTile from "../Beer/BeerTile"
 import CheckInTile from "../CheckIn/CheckInTile";
 import BeerBrowseTile from "../Beer/BeerBrowseTile";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
@@ -39,7 +39,7 @@ function BreweryDetails() {
 
         wrapper();
 
-    }, [beers, checkIns])
+    }, [beers, checkIns, brewery_id, dispatch, navigate])
 
 
     function enableShowBeers() {
@@ -77,7 +77,7 @@ function BreweryDetails() {
                     <div id="brewery-name">{currBrewery?.name}</div>
                     <div id="brewery-location">{currBrewery?.city}, {currBrewery?.state_province}, {currBrewery?.country}</div>
                     <div id="brewery-type">{currBrewery?.type}</div>
-                    <a href={currBrewery?.website_url} target={"_blank"} id="brewery-website">{currBrewery?.website_url}</a>
+                    <a href={currBrewery?.website_url} target="_blank" rel="noreferrer" id="brewery-website">{currBrewery?.website_url}</a>
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ function BreweryDetails() {
                         <div id="you-own-this">
                             {sessionUser?.id === currBrewery?.creator_id &&
                                 <span>
-                                    <i class="fa-solid fa-medal"></i>You own this!
+                                    <i className="fa-solid fa-medal"></i>You own this!
                                     <div className="owner-button">
                                         <EditDeleteButtons brewery={currBrewery}/>
                                     </div>
@@ -113,7 +113,7 @@ function BreweryDetails() {
                             </div>
                             :
                             currBrewery.check_ins.toReversed().map(checkIn => {
-                                return <CheckInTile checkIn={checkIn} />
+                                return <CheckInTile key={checkIn.id} checkIn={checkIn} />
                             }))}
                 </div>
                 <div id="brewery-about">
