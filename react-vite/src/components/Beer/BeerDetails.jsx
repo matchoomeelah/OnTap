@@ -91,7 +91,7 @@ function BeerDetails() {
                                 </div>
                             }
                         </div>
-                        {beerPhotos.length > 0 &&
+                        {beerPhotos?.length > 0 &&
                             <div id="small-screen-beer-photos-container">
                                 <div id="small-screen-dummy"></div>
                                 <div id="small-screen-beer-photos">
@@ -124,7 +124,7 @@ function BeerDetails() {
                             </div>
                         }
                     </div>
-                    {beerPhotos.length > 0 &&
+                    {beerPhotos?.length > 0 &&
                         <div id="beer-photos-container">
                             <h4>Photos</h4>
                             <div id="dummy"></div>
