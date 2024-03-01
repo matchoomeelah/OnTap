@@ -31,6 +31,19 @@
     font-weight: bold;
 }
 
+.log-or-sign-message {
+    margin-top: 15px;
+}
+
+.log-or-sign-message > button {
+    background-color: transparent;
+    border: none;
+    color: #E09712;
+    font-family: Arvo, Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
 
 .filters-container {
     display: flex;

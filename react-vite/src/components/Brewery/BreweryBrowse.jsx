@@ -6,12 +6,17 @@ import Select from 'react-select'
 import "./Brewery.css"
 import { BREWERY_TYPES } from "../Forms/validation";
 import { useNavigate } from "react-router-dom";
+import { useModal } from '../../context/Modal';
+import LoginFormModal from "../Modals/LoginFormModal"
+import SignupFormModal from "../Modals/SignupFormModal"
 
 function BreweryBrowse() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const breweries = useSelector(state => state.breweries)
+    const sessionUser = useSelector(state => state.session.user);
+    const { setModalContent, setOnModalClose } = useModal();
 
     const [selectedType, setSelectedType] = useState({})
 
@@ -73,7 +78,11 @@ function BreweryBrowse() {
                 :
                 <div className="browse-placeholder">
                     <div className="placeholder-text">No breweries of this type yet!</div>
-                    <button className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</button>
+                    {sessionUser ?
+                        <button className="create-button show-button" onClick={() => navigate(`/breweries/new`)}>+ Add a Brewery</button>
+                        :
+                        <div className="log-or-sign-message"><button onClick={() => setModalContent(<LoginFormModal />)}>Log In</button> or <button onClick={() => setModalContent(<SignupFormModal />)}>Sign Up</button> to add a brewery.</div>
+                    }
                 </div>
             }
         </div>
