@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { thunkGetBeers } from "../../redux/beers";
+import { useModal } from '../../context/Modal';
+import LoginFormModal from "../Modals/LoginFormModal"
+import SignupFormModal from "../Modals/SignupFormModal"
+
 import Select from 'react-select'
 
 import { BEER_STYLES } from "../Forms/validation";
@@ -13,6 +17,8 @@ function BeerBrowse() {
     const navigate = useNavigate();
 
     const beers = useSelector(state => state.beers);
+    const sessionUser = useSelector(state => state.session.user);
+    const { setModalContent, setOnModalClose } = useModal();
 
     const [style, setStyle] = useState("");
     const [selectedStyle, setSelectedStyle] = useState({})
@@ -80,7 +86,11 @@ function BeerBrowse() {
                     :
                     <div className="browse-placeholder">
                         <div className="placeholder-text">No beers of this style created yet!</div>
-                        <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</button>
+                        {sessionUser ?
+                            <button className="create-button show-button" onClick={() => navigate(`/beers/new`)}>+ Add a Beer</button>
+                            :
+                            <div className="log-or-sign-message"><button onClick={() => setModalContent(<LoginFormModal />)}>Log In</button> or <button onClick={() => setModalContent(<SignupFormModal />)}>Sign Up</button> to add a beer.</div>
+                        }
                     </div>
                 }
             </div>
