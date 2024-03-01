@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 import { thunkGetBreweries } from "../../redux/breweries";
 
@@ -43,7 +44,14 @@ function CheckInTile({ checkIn }) {
                     </div>
                 </div>
                 <div id="check-in-body">{checkIn.body}</div>
-                {checkIn.image_url && <img src={checkIn.image_url} className="check-in-image" />}
+                {checkIn.image_url &&
+                    <PhotoProvider>
+                        <PhotoView key={checkIn.id} src={checkIn.image_url}>
+                            <img className="check-in-image" src={checkIn.image_url} />
+                        </PhotoView>
+                    </PhotoProvider>
+                }
+                {/* {checkIn.image_url && <img src={checkIn.image_url} className="check-in-image" />} */}
                 <div className="check-in-buttons">
                     <button id="show-comments-button" onClick={() => setShowComments(!showComments)}>{showComments ? "Hide Comments" : `Show Comments (${checkIn.comments.length})`}</button>
                     {sessionUser && <OpenModalButton
