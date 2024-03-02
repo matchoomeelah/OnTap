@@ -33,9 +33,11 @@ export function validateUserSettingsForm(firstName, lastName, email, username, p
         if (password !== confirmPassword) {
             errors.confirm_password = "Passwords do not match";
         }
-        else if (user.id == 1) {
-            errors.confirm_password = "Cannot update password for Demo!";
-        }
+    }
+
+    // No Demo User changes
+    if (user.id == 1) {
+        errors.demo_user = "Sorry, settings for Demo cannot be updated. Try with your own account!"
     }
 
 

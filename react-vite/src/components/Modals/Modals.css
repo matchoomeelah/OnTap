@@ -286,7 +286,7 @@
 
 #profile-picture-field {
     margin-top: 20px;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
     display: flex;
     gap: 53px;
     align-items: center;

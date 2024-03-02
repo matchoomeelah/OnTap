@@ -15,13 +15,18 @@ function UserProfileHeader({ user }) {
             setModalContent(<UserSettingsModal user={user} />)
     }
 
+    function setDefaultImage() {
+        const profilePic = document.querySelector(".banner-custom-profile-pic");
+        profilePic.src = "https://i.ibb.co/KxrZx4s/hand-drawn-wheat-doodle-illustration-cute-harvest-clipart-farm-market-product-vector.jpg";
+    }
+
     return (
         <div id="profile-header">
             <img id="profile-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/profile_banner1.jpeg" />
             <div id="profile-header-info">
                 <div id='banner-profile-picture' className={sessionUser.id == profileUser.id ? 'clickable' : ""} onClick={openUserSettings}>
                     {user?.profile_pic ?
-                        <img className="banner-custom-profile-pic" src={user?.profile_pic} />
+                        <img className="banner-custom-profile-pic" src={user?.profile_pic} onError={setDefaultImage}/>
                         :
                         <i id="banner-default-profile-pic" className="fas fa-user-circle fa-lg" />
                     }

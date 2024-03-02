@@ -45,14 +45,14 @@ function UserSettingsModal({ user }) {
             thunkUpdateUser(formData, user.id)
         );
 
-          if (updatedUser.errors) {
+        if (updatedUser.errors) {
             setErrors(updatedUser.errors);
             setPassword("");
             setConfirmPassword("");
-          } else {
+        } else {
             closeModal();
             navigate(`/users/${user.id}`)
-          }
+        }
     }
 
     return (
@@ -236,6 +236,9 @@ function UserSettingsModal({ user }) {
                             }
                         }}
                     />
+                </div>
+                <div className="error-container">
+                    {errors.demo_user && <span className="error-message">{errors.demo_user}</span>}
                 </div>
                 <button className="submit-button" type="submit">Save Settings</button>
             </form>
