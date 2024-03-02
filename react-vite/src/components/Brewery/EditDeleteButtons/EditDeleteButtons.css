@@ -5,7 +5,7 @@
 }
 
 .brewery-tile-ellipsis-button {
-    background-color: white;
+    background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 22px;
@@ -19,6 +19,14 @@
     background-color: white;
     border-radius: 2px;
     padding: 2px 4px 4px;
+    z-index: 2;
+}
+
+#owner-button {
+    position: relative;
+    bottom: 36px;
+    left: 40px;
+    font-size: 12px;
 }
 
 

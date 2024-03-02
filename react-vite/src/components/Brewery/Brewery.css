@@ -155,12 +155,12 @@
     height: fit-content;
 }
 
-.owner-button {
+/* .owner-button {
     position: relative;
     bottom: 36px;
     left: 40px;
     font-size: 12px;
-}
+} */
 
 #brewery-content-container {
     display: grid;

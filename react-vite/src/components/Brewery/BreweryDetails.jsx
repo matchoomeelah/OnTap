@@ -91,7 +91,7 @@ function BreweryDetails() {
                             {sessionUser?.id === currBrewery?.creator_id &&
                                 <span>
                                     <i className="fa-solid fa-medal"></i>You own this!
-                                    <div className="owner-button">
+                                    <div id="owner-button">
                                         <EditDeleteButtons brewery={currBrewery}/>
                                     </div>
                                 </span>}
