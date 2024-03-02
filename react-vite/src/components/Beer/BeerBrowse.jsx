@@ -9,7 +9,7 @@ import Select from 'react-select'
 
 import { BEER_STYLES } from "../Forms/validation";
 import "./Beer.css";
-import BeerBrowseTile from "./BeerBrowseTile";
+import BeerTile from "./BeerTile";
 import { useNavigate } from "react-router-dom";
 
 function BeerBrowse() {
@@ -74,7 +74,7 @@ function BeerBrowse() {
             <div id="all-beers-container">
                 {beersArray.length > 0 ?
                     beersArray.map(beer => {
-                        return <BeerBrowseTile key={beer.id} beer={beer} />
+                        return <BeerTile key={beer.id} beer={beer} />
                     })
                     :
                     <div className="browse-placeholder">

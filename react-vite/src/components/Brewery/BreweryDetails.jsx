@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { thunkGetBreweryById } from "../../redux/breweries";
 import CheckInTile from "../CheckIn/CheckInTile";
-import BeerBrowseTile from "../Beer/BeerBrowseTile";
+import BeerTile from "../Beer/BeerTile";
 import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BreweryDetails() {
@@ -104,7 +104,7 @@ function BreweryDetails() {
                             </div>
                             :
                             currBrewery?.beers.map(beer => {
-                                return <BeerBrowseTile key={beer.id} beer={beer} />
+                                return <BeerTile key={beer.id} beer={beer} />
                             }))}
                     {showCheckIns &&
                         (currBrewery.check_ins.length === 0 ?

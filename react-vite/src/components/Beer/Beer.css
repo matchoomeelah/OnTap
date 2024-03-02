@@ -62,7 +62,7 @@
 
 /* BEER TILE */
 
-.beer-browse-tile {
+.beer-tile {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -96,8 +96,8 @@
     overflow: auto;
 }
 
-.beer-browse-tile-name,
-.beer-browse-tile-name:visited {
+.beer-tile-name,
+.beer-tile-name:visited {
     font-size: 20px;
     color: #E09712;
     text-decoration: none;
@@ -106,35 +106,35 @@
     width: 100%;
 }
 
-.beer-browse-tile-name:hover {
+.beer-tile-name:hover {
     text-decoration: underline;
     color: #E0AE11;
 }
 
-.beer-browse-tile-brewery,
-.beer-browse-tile-brewery:visited {
+.beer-tile-brewery,
+.beer-tile-brewery:visited {
     color: #E09712;
     text-decoration: none;
     width: fit-content;
 }
 
-.beer-browse-tile-brewery:hover {
+.beer-tile-brewery:hover {
     text-decoration: underline;
     color: #E0AE11;
 }
 
-.beer-browse-tile-style {
+.beer-tile-style {
     margin-top: 5px;
     margin-bottom: 3px;
     color: #525151;
     font-size: 14px;
 }
 
-.beer-browse-tile-description {
+.beer-tile-description {
     font-size: 13px;
 }
 
-.beer-browse-tile-abv-ibu {
+.beer-tile-abv-ibu {
     display: flex;
     width: 95%;
     margin: 0 auto;
@@ -142,7 +142,7 @@
     border-bottom: 0.5px solid lightgray;
 }
 
-.beer-browse-tile-vertical-line {
+.beer-tile-vertical-line {
     border-right: 0.5px solid lightgray;
     margin: 0;
     padding: 0;
@@ -584,7 +584,7 @@ h4 {
         font-size: 13px;
     }
 
-    .beer-browse-tile {
+    .beer-tile {
         padding: 10px 5px 30px;
     }
 
@@ -594,7 +594,7 @@ h4 {
         height: 90px;
     }
 
-    .beer-browse-tile-name {
+    .beer-tile-name {
         /* font-size: 20px;
         color: #E09712;
         text-decoration: none;
@@ -604,15 +604,15 @@ h4 {
         font-size: 18px;
     }
 
-    .beer-browse-tile-brewery {
+    .beer-tile-brewery {
         font-size: 14px;
     }
 
-    .beer-browse-tile-style {
+    .beer-tile-style {
         font-size: 12.5px;
     }
 
-    .beer-browse-tile-description {
+    .beer-tile-description {
         font-size: 12px;
     }
 
