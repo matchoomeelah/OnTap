@@ -39,7 +39,7 @@ function BeerBrowse() {
 
     useEffect(() => {
         dispatch(thunkGetBeers());
-    })
+    }, [dispatch])
 
     useEffect(() => {
         window.scrollTo(0, 0);
