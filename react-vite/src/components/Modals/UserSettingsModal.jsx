@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import { validateUserSettingsForm } from "./validation";
 import { thunkUpdateUser } from "../../redux/users";
+import { thunkAuthenticate } from "../../redux/session";
 
 function UserSettingsModal({ user }) {
     const dispatch = useDispatch();
@@ -50,8 +51,8 @@ function UserSettingsModal({ user }) {
             setPassword("");
             setConfirmPassword("");
         } else {
+            dispatch(thunkAuthenticate())
             closeModal();
-            navigate(`/users/${user.id}`)
         }
     }
 
@@ -81,6 +82,7 @@ function UserSettingsModal({ user }) {
                                     setErrors(newErrors);
                                 }
                             }}
+                            maxLength={40}
                         />
                     </div>
                     <div></div>
@@ -104,6 +106,7 @@ function UserSettingsModal({ user }) {
                                     setErrors(newErrors);
                                 }
                             }}
+                            maxLength={40}
                         />
                     </div>
                 </div>
@@ -129,6 +132,7 @@ function UserSettingsModal({ user }) {
                                 setErrors(newErrors);
                             }
                         }}
+                        maxLength={100}
                     />
                 </div>
 
@@ -154,6 +158,7 @@ function UserSettingsModal({ user }) {
                                 setErrors(newErrors);
                             }
                         }}
+                        maxLength={40}
                     />
                 </div>
 
@@ -179,6 +184,7 @@ function UserSettingsModal({ user }) {
                                 setErrors(newErrors);
                             }
                         }}
+                        maxLength={50}
                     />
                 </div>
 
@@ -204,6 +210,7 @@ function UserSettingsModal({ user }) {
                                 setErrors(newErrors);
                             }
                         }}
+                        maxLength={50}
                     />
                 </div>
                 <div id="profile-picture-field">

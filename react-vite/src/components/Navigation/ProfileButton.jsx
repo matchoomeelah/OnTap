@@ -80,7 +80,7 @@ function ProfileButton({ user }) {
       <div id='dropdown-menu' className={ulClassName} ref={ulRef}>
         {sessionUser ? (
           <>
-            <div id="greeting">Hello, {user.username}!</div>
+          <div id="greeting">Hello, {user.username.length < 20 ? user.username : user.username.slice(0,20) + "..."}!</div>
             <div className='separator'></div>
             <div className='user-menu-option' onClick={goToProfile}>My Profile</div>
             <div className='separator'></div>
