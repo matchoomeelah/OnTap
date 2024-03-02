@@ -1,6 +1,47 @@
 import { validate as emailValidator } from 'react-email-validator'
 
 
+export function validateUserSettingsForm(firstName, lastName, email, username, password, confirmPassword, user) {
+    const errors = {};
+
+    // First Name
+    if (firstName.trim().length <= 0) {
+        errors.first_name = "This field is required"
+    }
+
+    // Last Name
+    if (lastName.trim().length <= 0) {
+        errors.last_name = "This field is required"
+    }
+
+    // Email
+    if (!emailValidator(email)) {
+        errors.email = "Invalid Email";
+    }
+
+    if (email.trim().length <= 0) {
+        errors.email = "This field is required"
+    }
+
+    // Username
+    if (username.trim().length <= 0) {
+        errors.username = "This field is required"
+    }
+
+    // Confirm Password
+    if (password || confirmPassword) {
+        if (password !== confirmPassword) {
+            errors.confirm_password = "Passwords do not match";
+        }
+        else if (user.id == 1) {
+            errors.confirm_password = "Cannot update password for Demo!";
+        }
+    }
+
+
+    return errors;
+}
+
 export function validateSignUpForm(firstName, lastName, email, username, password, confirmPassword) {
     const errors = {};
 
@@ -15,7 +56,7 @@ export function validateSignUpForm(firstName, lastName, email, username, passwor
     }
 
     // Email
-    if(!emailValidator(email)){
+    if (!emailValidator(email)) {
         errors.email = "Invalid Email";
     }
 
@@ -33,7 +74,7 @@ export function validateSignUpForm(firstName, lastName, email, username, passwor
         errors.password = "This field is required"
     }
 
-    // Password
+    // Confirm Password
     if (password !== confirmPassword) {
         errors.confirm_password = "Passwords do not match";
     }
@@ -48,7 +89,7 @@ export function validateLogInForm(email, password) {
     const errors = {};
 
     // Email
-    if(!emailValidator(email)){
+    if (!emailValidator(email)) {
         errors.email = "Invalid Email";
     }
 

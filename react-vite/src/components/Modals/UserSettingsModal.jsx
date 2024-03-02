@@ -1,25 +1,64 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useModal } from "../../context/Modal";
+import { validateUserSettingsForm } from "./validation";
+import { thunkUpdateUser } from "../../redux/users";
 
 function UserSettingsModal({ user }) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { closeModal } = useModal();
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
+    const [firstName, setFirstName] = useState(user.first_name);
+    const [lastName, setLastName] = useState(user.last_name);
+    const [email, setEmail] = useState(user.email);
+    const [username, setUsername] = useState(user.username);
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+
+        const formErrors = validateUserSettingsForm(firstName, lastName, email, username, password, confirmPassword, user);
+
+        if (Object.keys(formErrors).length > 0) {
+            setErrors(formErrors);
+            return;
+        }
+
+        // Create form data to send to server
+        const formData = new FormData();
+        formData.append("first_name", firstName.trim());
+        formData.append("last_name", lastName.trim());
+        formData.append("email", email.trim());
+        formData.append("username", username.trim());
+        formData.append("password", password.trim());
+        formData.append("profile_pic", image);
+        setImageLoading(true);
+
+        const updatedUser = await dispatch(
+            thunkUpdateUser(formData, user.id)
+        );
+
+          if (updatedUser.errors) {
+            setErrors(updatedUser.errors);
+            setPassword("");
+            setConfirmPassword("");
+          } else {
+            closeModal();
+            navigate(`/users/${user.id}`)
+          }
+    }
 
     return (
         <div id="user-settings-container">
             <h2>User Settings</h2>
-            <form id="user-settings-form">
+            <form id="user-settings-form" onSubmit={handleSubmit}>
                 <div id="user-settings-name-container">
                     <div>
                         <label className="profile-label" htmlFor="first-name">

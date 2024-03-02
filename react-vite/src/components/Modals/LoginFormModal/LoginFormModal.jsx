@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { validateLogInForm } from "../validation";
 import "../Modals.css";
+import { thunkGetUserById } from "../../../redux/users";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -44,8 +45,11 @@ function LoginFormModal() {
   const logInDemoUser = async (e) => {
     e.preventDefault();
 
+    const demoUser = await dispatch(thunkGetUserById(1));
+    console.log(demoUser);
+
     const user = await dispatch(thunkLogin({
-      email: "demo@aa.io",
+      email: demoUser.email,
       password: "password",
     }));
 

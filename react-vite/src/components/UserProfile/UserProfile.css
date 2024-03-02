@@ -31,6 +31,9 @@
 #banner-profile-picture {
     font-size: 60px;
     height: 80px;
+}
+
+.clickable {
     cursor: pointer;
 }
 
