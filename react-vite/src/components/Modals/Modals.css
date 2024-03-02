@@ -297,3 +297,8 @@
     width: 100%;
     grid-template-columns: 45% 10% 45%;
 }
+
+/* .user-error-container {
+    display: flex;
+    flex-direction: column-reverse;
+} */

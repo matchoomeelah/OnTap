@@ -64,9 +64,9 @@ function UserSettingsModal({ user }) {
                     <div>
                         <label className="profile-label" htmlFor="first-name">
                             First Name:
-                            {/* <div className="error-container"> */}
+                            <div className="user-error-container">
                             {errors.first_name && <span className="error-message">{errors.first_name}</span>}
-                            {/* </div> */}
+                            </div>
                         </label>
 
                         <input
@@ -89,9 +89,9 @@ function UserSettingsModal({ user }) {
                     <div>
                         <label className="profile-label" htmlFor="last-name">
                             Last Name:
-                            {/* <div className="error-container"> */}
+                            <div className="user-error-container">
                             {errors.last_name && <span className="error-message">{errors.last_name}</span>}
-                            {/* </div> */}
+                            </div>
                         </label>
                         <input
                             id="last-name"
@@ -115,9 +115,9 @@ function UserSettingsModal({ user }) {
                         <label className="profile-label" htmlFor="email">
                             Email:
                         </label>
-                        {/* <div className="error-container"> */}
+                        <div className="user-error-container">
                         {errors.email && <span className="error-message">{errors.email}</span>}
-                        {/* </div> */}
+                        </div>
                     </div>
                     <input
                         id="email"
@@ -141,9 +141,9 @@ function UserSettingsModal({ user }) {
                         <label className="profile-label" htmlFor="username">
                             Username:
                         </label>
-                        {/* <div className="error-container"> */}
+                        <div className="user-error-container">
                         {errors.username && <span className="error-message">{errors.username}</span>}
-                        {/* </div> */}
+                        </div>
                     </div>
                     <input
                         id="username"
@@ -167,9 +167,9 @@ function UserSettingsModal({ user }) {
                         <label className="profile-label" htmlFor="password">
                             New Password:
                         </label>
-                        {/* <div className="error-container"> */}
+                        <div className="user-error-container">
                         {errors.password && <span className="error-message">{errors.password}</span>}
-                        {/* </div> */}
+                        </div>
                     </div>
                     <input
                         id="password"
@@ -193,9 +193,9 @@ function UserSettingsModal({ user }) {
                         <label className="profile-label" htmlFor="confirm-password">
                             Confirm Password:
                         </label>
-                        {/* <div className="error-container"> */}
+                        <div className="user-error-container">
                         {errors.confirm_password && <span className="error-message">{errors.confirm_password}</span>}
-                        {/* </div> */}
+                        </div>
                     </div>
                     <input
                         id="confirm-password"
@@ -217,12 +217,6 @@ function UserSettingsModal({ user }) {
                     <label>
                         Profile Picture:
                     </label>
-                    {/* <label htmlFor="profile-image-input">
-                        Profile Picture:
-                    </label> */}
-                    {/* <div>
-                        Profile Picture:
-                    </div> */}
                     <label id="image-input-label" htmlFor="profile-image-input">
                         {image == null ?
                             <img id="profile-add-photo" src="https://i.ibb.co/5rYHfYk/Untitled-4.png" />
