@@ -52,6 +52,8 @@ If a user is the owner of a beer or brewery, they will see options to edit or de
 
 When a user signs up, a user profile page is generated for them. From this page users can see their past check-ins, beers/breweries they have created, and create new beers/breweries.
 
+A user can update their settings/info by clicking on their profile picture icon in the header of the page.
+
 
 ## Future Goals
 
