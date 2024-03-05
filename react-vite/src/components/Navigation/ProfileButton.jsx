@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
       }
     };
 
-    document.getElementById("options-button")?.addEventListener('click', closeMenu);
+    document.querySelector("nav").addEventListener('click', closeMenu);
     document.addEventListener('click', closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
@@ -39,7 +39,6 @@ function ProfileButton({ user }) {
 
   // Named function to use as a callback to close the menu
   const closeMenu = () => setShowMenu(false);
-
 
 
   // Logout from current user and navigate to home page

@@ -31,7 +31,7 @@ function OptionsButton() {
       }
     };
 
-    document.getElementById("profile-button")?.addEventListener('click', closeOptionsMenu);
+    document.querySelector("nav").addEventListener('click', closeOptionsMenu);
     document.addEventListener('click', closeOptionsMenu);
 
     return () => document.removeEventListener("click", closeOptionsMenu);

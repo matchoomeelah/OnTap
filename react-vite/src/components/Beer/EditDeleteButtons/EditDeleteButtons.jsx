@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-
-import "./EditDeleteButtons.css"
 import OpenModalButton from "../../OpenModalButton";
 import DeleteBeerModal from "../../Modals/DeleteBeerModal";
+import "./EditDeleteButtons.css"
 
 
-function EditDeleteButtons({beer}) {
+function EditDeleteButtons({ beer }) {
     const navigate = useNavigate();
     const [showButtons, setShowButtons] = useState(false);
     const ellipsisRef = useRef();
@@ -19,8 +18,8 @@ function EditDeleteButtons({beer}) {
                 setShowButtons(false);
             }
         };
-        document.getElementById("options-button")?.addEventListener('click', closeMenu);
-        document.getElementById("profile-button")?.addEventListener('click', closeMenu);
+
+        document.querySelector("nav").addEventListener('click', closeMenu);
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
