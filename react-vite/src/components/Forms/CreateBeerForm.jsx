@@ -36,7 +36,6 @@ function CreateBeerForm() {
     const styleProps = useReactSelect("style", null, styleOptions, errorProps);
     const descriptionProps = useTextInput("description", "", 1500, errorProps);
 
-
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
 
