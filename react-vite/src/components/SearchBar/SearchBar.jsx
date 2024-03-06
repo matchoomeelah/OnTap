@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetBeers } from "../../redux/beers";
 import { thunkGetBreweries } from "../../redux/breweries";
@@ -89,7 +89,7 @@ function SearchBar() {
                         {searchBeers.map(beer => {
                             return <div key={beer.id} className="search-list-item" onClick={() => goToBeer(beer.id)}>
                                 <img src={beer.image_url} />
-                                {beer.name}
+                                <div className="search-list-item-name">{beer.name}</div>
                             </div>
                         })}
                     </div>
@@ -100,7 +100,7 @@ function SearchBar() {
                         {searchBreweries.map(brewery => {
                             return <div key={brewery.id} className="search-list-item" onClick={() => goToBrewery(brewery.id)} >
                                 <img src={brewery.image_url} />
-                                {brewery.name}
+                                <div className="search-list-item-name">{brewery.name}</div>
                             </div>
                         })}
                     </div>

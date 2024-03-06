@@ -12,6 +12,10 @@
     margin-bottom: 3px;
 }
 
+#search-list {
+    width: 210px;
+}
+
 .search-list-item {
     background-color: white;
     border: 1px solid gray;
@@ -26,6 +30,11 @@
 .search-list-item:hover {
     font-weight: bold;
     background-color: rgb(237, 237, 237);
+}
+
+.search-list-item-name {
+    overflow: auto;
+    overflow-wrap: break-word;
 }
 
 .search-menu-beers-label {

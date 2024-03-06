@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Select from 'react-select'
@@ -29,20 +29,20 @@ function CreateBeerForm() {
     const [errors, setErrors] = useState({});
 
     // Create array of brewery objects for Select input
-    const breweryOptions = Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
+    const breweryOptions = useMemo(() => Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
         return {
             value: brewery.id,
             label: brewery.name
         }
-    })
+    }), []);
 
     // Create array of beer style objects for Select input
-    let styleOptions = BEER_STYLES.sort().map(style => {
+    let styleOptions = useMemo(() => BEER_STYLES.sort().map(style => {
         return {
             value: style,
             label: style
         }
-    });
+    }), []);
 
     // Populate Breweries in store
     useEffect(() => {

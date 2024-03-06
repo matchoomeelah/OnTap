@@ -1,50 +1,44 @@
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { thunkGetBeers } from "../../redux/beers";
 import { useModal } from '../../context/Modal';
 import LoginFormModal from "../Modals/LoginFormModal"
 import SignupFormModal from "../Modals/SignupFormModal"
-
+import BeerTile from "./BeerTile";
 import Select from 'react-select'
-
 import { BEER_STYLES } from "../Forms/validation";
 import "./Beer.css";
-import BeerTile from "./BeerTile";
-import { useNavigate } from "react-router-dom";
+
 
 function BeerBrowse() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { setModalContent } = useModal();
 
     const beers = useSelector(state => state.beers);
     const sessionUser = useSelector(state => state.session.user);
-    const { setModalContent } = useModal();
+    const [selectedStyle, setSelectedStyle] = useState(null)
 
-    const [style, setStyle] = useState("");
-    const [selectedStyle, setSelectedStyle] = useState({})
-
-    let beersArray = Object.values(beers);
-
-    // Apply filters
-    if (style) {
-        beersArray = beersArray.filter(beer => beer.style === style);
-    }
-
-    let styleOptions = BEER_STYLES.sort().map(style => {
+    let styleOptions = useMemo(() => BEER_STYLES.sort().map(style => {
         return {
             value: style,
             label: style
         }
-    });
+    }), []);
+
+    let beersArray = Object.values(beers);
+
+    // Apply filters
+    if (selectedStyle?.value) {
+        beersArray = beersArray.filter(beer => beer.style === selectedStyle.value);
+    }
+
+    window.scrollTo(0, 0);
 
     useEffect(() => {
         dispatch(thunkGetBeers());
     }, [dispatch])
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
-
 
     return (
         <div className="browse-page-container">
@@ -57,7 +51,6 @@ function BeerBrowse() {
                     className="input"
                     options={styleOptions}
                     onChange={(e) => {
-                        setStyle(e.value);
                         setSelectedStyle({
                             value: e.value,
                             label: e.label
@@ -67,8 +60,7 @@ function BeerBrowse() {
                 <button
                     className="clear-button"
                     onClick={() => {
-                        setStyle("");
-                        setSelectedStyle({})
+                        setSelectedStyle(null)
                     }}>Clear</button>
             </div>
             <div id="all-beers-container">

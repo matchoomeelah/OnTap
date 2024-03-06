@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { thunkGetBreweries } from "../../redux/breweries";
 import BreweryTile from "./BreweryTile";
 import Select from 'react-select'
@@ -13,40 +13,31 @@ import SignupFormModal from "../Modals/SignupFormModal"
 function BreweryBrowse() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { setModalContent } = useModal();
 
     const breweries = useSelector(state => state.breweries)
     const sessionUser = useSelector(state => state.session.user);
-    const { setModalContent } = useModal();
+    const [selectedType, setSelectedType] = useState(null)
 
-    const [selectedType, setSelectedType] = useState({})
-
-    let breweriesArray = Object.values(breweries);
-
-    // Apply filters
-    if (Object.values(selectedType).length > 0) {
-        breweriesArray = breweriesArray.filter(brewery => {
-            if (brewery.type !== selectedType.value) {
-                return false;
-            }
-            return true;
-        });
-    }
-
-    const breweryTypeOptions = BREWERY_TYPES.sort().map(type => {
+    const breweryTypeOptions = useMemo(() => BREWERY_TYPES.sort().map(type => {
         return {
             value: type,
             label: type
         }
-    })
+    }), [])
+
+    let breweriesArray = Object.values(breweries);
+
+    // Apply filters
+    if (selectedType?.value) {
+        breweriesArray = breweriesArray.filter(brewery => brewery.type === selectedType.value);
+    }
+
+    window.scrollTo(0, 0);
 
     useEffect(() => {
         dispatch(thunkGetBreweries());
     }, [dispatch])
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
-
 
     return (
         <div className="browse-page-container">
@@ -68,7 +59,7 @@ function BreweryBrowse() {
                 <button
                     className="clear-button"
                     onClick={() => {
-                        setSelectedType({})
+                        setSelectedType(null)
                     }}>Clear</button>
             </div>
             {breweriesArray.length > 0 ?

@@ -34,7 +34,10 @@ function ProfileButton({ user }) {
     document.querySelector("nav").addEventListener('click', closeMenu);
     document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
+    return () => {
+      document.removeEventListener("click", closeMenu);
+      document.removeEventListener("click", closeMenu);
+    }
   }, [showMenu]);
 
   // Named function to use as a callback to close the menu

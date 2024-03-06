@@ -34,7 +34,11 @@ function OptionsButton() {
     document.querySelector("nav").addEventListener('click', closeOptionsMenu);
     document.addEventListener('click', closeOptionsMenu);
 
-    return () => document.removeEventListener("click", closeOptionsMenu);
+    return () => {
+      document.removeEventListener("click", closeOptionsMenu);
+      document.querySelector("nav").removeEventListener("click", closeOptionsMenu);
+
+    }
   }, [showOptionsMenu]);
 
   const ulOptionsClassName = "options-dropdown" + (showOptionsMenu ? "" : " hidden");

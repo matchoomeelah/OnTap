@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Select from 'react-select'
 
-import { thunkGetBeerById, thunkUpdateBeer } from "../../redux/beers";
+import { thunkUpdateBeer } from "../../redux/beers";
 import { thunkGetBreweries } from "../../redux/breweries";
 import { validateBeerForm } from "./validation";
 
@@ -33,7 +33,7 @@ function UpdateBeerForm() {
 
     // Retrieve the current beer and breweries data
     useEffect(() => {
-        dispatch(thunkGetBeerById(beer_id));
+        // Search bar covers getting beers for us for now
         dispatch(thunkGetBreweries());
     }, [beer_id, dispatch])
 

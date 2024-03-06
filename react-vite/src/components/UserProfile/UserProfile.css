@@ -1,6 +1,7 @@
 #user-profile-container {
     animation: fadeIn 0.8s;
     min-height: 85vh;
+    margin-bottom: 50px;
 }
 
 /* HEADER */

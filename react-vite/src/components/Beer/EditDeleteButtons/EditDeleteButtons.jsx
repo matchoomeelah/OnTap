@@ -8,7 +8,7 @@ import "./EditDeleteButtons.css"
 function EditDeleteButtons({ beer }) {
     const navigate = useNavigate();
     const [showButtons, setShowButtons] = useState(false);
-    const ellipsisRef = useRef();
+    const ellipsisRef = useRef({});
 
     useEffect(() => {
         if (!showButtons) return;
@@ -22,7 +22,10 @@ function EditDeleteButtons({ beer }) {
         document.querySelector("nav").addEventListener('click', closeMenu);
         document.addEventListener('click', closeMenu);
 
-        return () => document.removeEventListener("click", closeMenu);
+        return () => {
+            document.removeEventListener("click", closeMenu);
+            document.removeEventListener("click", closeMenu);
+        }
     }, [showButtons]);
 
 
