@@ -11,7 +11,7 @@ function UserProfileHeader({ user }) {
     const profileUser = useSelector(state => state.users.profileUser);
 
     function openUserSettings() {
-        if (sessionUser.id == profileUser.id)
+        if (sessionUser?.id == profileUser.id)
             setModalContent(<UserSettingsModal user={user} />)
     }
 
@@ -24,7 +24,7 @@ function UserProfileHeader({ user }) {
         <div id="profile-header">
             <img id="profile-banner-image" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/profile_banner1.jpeg" />
             <div id="profile-header-info">
-                <div id='banner-profile-picture' className={sessionUser.id == profileUser.id ? 'clickable' : ""} onClick={openUserSettings}>
+                <div id='banner-profile-picture' className={sessionUser?.id == profileUser.id ? 'clickable' : ""} onClick={openUserSettings}>
                     {user?.profile_pic ?
                         <img className="banner-custom-profile-pic" src={user?.profile_pic} onError={setDefaultImage}/>
                         :
