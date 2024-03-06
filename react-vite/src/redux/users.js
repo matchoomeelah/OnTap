@@ -44,7 +44,7 @@ export const thunkGetUserById = (id) => async (dispatch) => {
     }
 
     // console.log("There was an error getting user")
-    return {"errors": data};
+    return {errors: data};
 }
 
 export const thunkUpdateUser = (user, id) => async (dispatch) => {
@@ -61,7 +61,7 @@ export const thunkUpdateUser = (user, id) => async (dispatch) => {
     }
 
     console.log(data.errors)
-    return {"errors": data.errors};
+    return {errors: data.errors};
 }
 
 

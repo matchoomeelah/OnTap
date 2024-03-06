@@ -23,7 +23,7 @@ def get_brewery_by_id(id):
     if brewery:
         return {"Brewery": brewery.to_dict()}
 
-    return {"errors": { "message": "Brewery Not Found" } }, 404
+    return { "message": "Brewery Not Found" }, 404
 
 
 # Get all breweries checked in for???
@@ -50,7 +50,7 @@ def create_brewery():
             print(upload)
 
             if "url" not in upload:
-                return {"errors": {"message": "Image upload failed"}}
+                return {"message": "Image upload failed"}, 500
 
             url = upload["url"]
 
@@ -75,7 +75,7 @@ def create_brewery():
         try:
             db.session.commit()
         except:
-            return {"errors": {"name": "A Brewery with this name already exists"}}
+            return {"name": "A Brewery with this name already exists"}, 403
 
 
         return new_brewery.to_dict()
@@ -90,7 +90,7 @@ def update_brewery(id):
     brewery = Brewery.query.get(id)
 
     if not brewery:
-        return {"errors": {"message": "Brewery not found"}}
+        return {"message": "Brewery not found"}, 404
 
     form = BreweryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -107,7 +107,7 @@ def update_brewery(id):
                 upload = upload_file_to_s3(image)
 
                 if "url" not in upload:
-                    return {"errors": {"message": "Image upload failed"}}
+                    return {"message": "Image upload failed"}, 500
 
                 url = upload["url"]
                 brewery.image_url = url
@@ -125,7 +125,7 @@ def update_brewery(id):
             try:
                 db.session.commit()
             except:
-                return {"errors": {"name": "A Brewery with this name already exists"}}
+                return {"name": "A Brewery with this name already exists"}, 403
 
             return brewery.to_dict()
 
@@ -143,7 +143,7 @@ def delete_brewery(id):
     brewery = Brewery.query.get(id)
 
     if not brewery:
-        return {"errors": {"message": "Brewery could not be found"}}, 404
+        return {"message": "Brewery could not be found"}, 404
 
     if brewery.creator_id == current_user.id:
         remove_file_from_s3(brewery.image_url)

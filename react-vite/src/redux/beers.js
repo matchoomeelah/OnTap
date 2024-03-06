@@ -67,7 +67,7 @@ export const thunkCreateBeer = (beer) => async (dispatch) => {
     }
 
     // console.log("There was an error creating your beer");
-    return {"errors": data};
+    return {errors: data};
 }
 
 export const thunkGetBeers = () => async (dispatch) => {
@@ -84,7 +84,7 @@ export const thunkGetBeers = () => async (dispatch) => {
     }
 
     // console.log("Something went wrong getting all Beers")
-    return {"errors": data};
+    return {error: data};
 }
 
 
@@ -102,7 +102,7 @@ export const thunkGetBeerById = (id) => async (dispatch) => {
     }
 
     // console.log("Something went wrong getting a specific Beer")
-    return {"errors": data};
+    return {errors: data};
 
 }
 
@@ -124,7 +124,7 @@ export const thunkUpdateBeer= (id, beer) => async (dispatch) => {
     }
 
     // console.log("There was an error updating your beer")
-    return {"errors": data};
+    return {errors: data};
 
 }
 
@@ -147,7 +147,7 @@ export const thunkDeleteBeer = (id) => async (dispatch) => {
     }
 
     // console.log("There was an error deleting the brewery")
-    return {"errors": data};
+    return {errors: data};
 
 }
 

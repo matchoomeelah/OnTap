@@ -46,7 +46,7 @@ export const thunkCreateComment = (beerId, checkInId, comment) => async (dispatc
     }
 
     // console.log("There was an error creating your comment")
-    return {"errors": data}
+    return {errors: data}
 }
 
 export const thunkUpdateComment = (beerId, checkInId, commentId, comment) => async (dispatch) => {
@@ -63,7 +63,7 @@ export const thunkUpdateComment = (beerId, checkInId, commentId, comment) => asy
     }
 
     // console.log("There was an error updating your comment")
-    return {"errors": data}
+    return {errors: data}
 }
 
 export const thunkDeleteComment = (beerId, checkInId, commentId) => async (dispatch) => {
@@ -84,7 +84,7 @@ export const thunkDeleteComment = (beerId, checkInId, commentId) => async (dispa
     }
 
     // console.log("There was an error deleting the comment")
-    return {"errors": data};
+    return {errors: data};
 }
 
 //

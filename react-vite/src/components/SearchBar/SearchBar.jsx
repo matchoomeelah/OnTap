@@ -18,7 +18,7 @@ function SearchBar() {
     const searchListRef = useRef();
 
     const searchBeers = Object.values(beers).filter(beer => beer.name.toLowerCase().includes(query.toLowerCase()));
-    const searchBreweries = Object.values(breweries).filter(brewery => brewery.name.toLowerCase().includes(query));
+    const searchBreweries = Object.values(breweries).filter(brewery => brewery.name?.toLowerCase().includes(query));
 
 
     useEffect(() => {

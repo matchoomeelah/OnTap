@@ -26,10 +26,7 @@ def get_beer_by_id(id):
     if beer:
         return {"Beer": beer.to_dict()}
 
-    return {"errors": { "message": "Beer Not Found" } }, 404
-
-
-# Get all beers checked in for???
+    return {"message": "Beer Not Found"}, 404
 
 
 #Create a Beer
@@ -54,7 +51,7 @@ def create_beer():
             print(upload)
 
             if "url" not in upload:
-                return {"errors": {"message": "Image upload failed"}}
+                return {"message": "Image upload failed"}, 500
 
             url = upload["url"]
 
@@ -86,7 +83,7 @@ def update_beer(id):
     beer = Beer.query.get(id)
 
     if not beer:
-        return {"errors": {"message": "Beer not found"}}
+        return {"message": "Beer not found"}, 404
 
     form = BeerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -104,7 +101,7 @@ def update_beer(id):
                 print(upload)
 
                 if "url" not in upload:
-                    return {"errors": {"message": "Image upload failed"}}
+                    return {"message": "Image upload failed"}, 500
 
                 url = upload["url"]
                 beer.image_url = url
@@ -133,7 +130,7 @@ def delete_beer(id):
     beer = Beer.query.get(id)
 
     if not beer:
-        return {"errors": {"message": "Beer could not be found"}}, 404
+        return {"message": "Beer could not be found"}, 404
 
     if beer.creator_id == current_user.id:
         remove_file_from_s3(beer.image_url)
@@ -154,7 +151,7 @@ def get_check_ins_by_beer(id):
         check_ins = [check_in.to_dict() for check_in in beer.check_ins]
         return {"CheckIns": check_ins}
 
-    return {"errors": {"message": "Beer could not be found"}}, 404
+    return {"message": "Beer could not be found"}, 404
 
 
 # Create check-in for a beer
@@ -164,7 +161,7 @@ def create_check_in(id):
     curr_beer = Beer.query.get(id)
 
     if not curr_beer:
-        return {"errors": {"message": "Beer could not be found"}}
+        return {"message": "Beer could not be found"}, 404
 
     brewery_id = curr_beer.brewery_id
 
@@ -181,7 +178,7 @@ def create_check_in(id):
             print(upload)
 
             if "url" not in upload:
-                return {"errors": {"message": "Image upload failed"}}
+                return {"message": "Image upload failed"}, 500
 
             url = upload["url"]
 
@@ -209,7 +206,7 @@ def delete_check_in(id, check_in_id):
     check_in = CheckIn.query.get(check_in_id)
 
     if not check_in:
-        return {"errors": {"message": "Check In could not be found"}}, 404
+        return {"message": "Check In could not be found"}, 404
 
     if check_in.user_id == current_user.id:
         if check_in.image_url:
@@ -252,7 +249,7 @@ def update_comment(id, check_in_id, comment_id):
     comment = Comment.query.get(comment_id)
 
     if not comment:
-        return {"errors": {"message": "Comment not found"}}
+        return {"message": "Comment not found"}, 404
 
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -278,7 +275,7 @@ def delete_comment(id, check_in_id, comment_id):
     comment = Comment.query.get(comment_id)
 
     if not comment:
-        return {"errors": {"message": "Comment not found"}}
+        return {"message": "Comment not found"}, 404
 
     if comment.user_id == current_user.id:
         db.session.delete(comment)

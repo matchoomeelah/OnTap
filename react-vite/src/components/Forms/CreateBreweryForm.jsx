@@ -49,7 +49,6 @@ function CreateBreweryForm() {
             return;
         }
 
-
         const formData = new FormData();
         formData.append("name", name);
         formData.append("type", type);
@@ -62,6 +61,7 @@ function CreateBreweryForm() {
         setImageLoading(true);
 
         const newBrewery = await dispatch(thunkCreateBrewery(formData));
+        console.log(newBrewery)
 
         if (newBrewery.errors) {
             setErrors(newBrewery.errors);

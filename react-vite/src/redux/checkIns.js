@@ -56,7 +56,7 @@ export const thunkCreateCheckIn = (beerId, checkIn) => async (dispatch) => {
     }
 
     // console.log("There was an error creating your check in");
-    return {"errors": data};
+    return {errors: data};
 
 }
 
@@ -71,7 +71,7 @@ export const thunkGetUserCheckIns = (userId) => async (dispatch) => {
     }
 
     // console.log("There was an error getting user check ins");
-    return {"errors": data};
+    return {errors: data};
 
 }
 
@@ -86,7 +86,7 @@ export const thunkBeerCheckIns = (beerId) => async (dispatch) => {
     }
 
     // console.log("There was an error getting user check ins");
-    return {"errors": data};
+    return {errors: data};
 
 }
 
@@ -108,7 +108,7 @@ export const thunkDeleteCheckIn = (beerId, checkInId) => async (dispatch) => {
     }
 
     // console.log("There was an error deleting the check in")
-    return {"errors": data};
+    return {errors: data};
 }
 
 //
