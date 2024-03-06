@@ -4,7 +4,7 @@ import { thunkGetBreweries } from "../../redux/breweries";
 import BreweryTile from "./BreweryTile";
 import Select from 'react-select'
 import "./Brewery.css"
-import { BREWERY_TYPES } from "../Forms/validation";
+import { BREWERY_TYPES } from "../Forms/form-utils";
 import { useNavigate } from "react-router-dom";
 import { useModal } from '../../context/Modal';
 import LoginFormModal from "../Modals/LoginFormModal"

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetBeers } from "../../redux/beers";
 import { thunkGetBreweries } from "../../redux/breweries";

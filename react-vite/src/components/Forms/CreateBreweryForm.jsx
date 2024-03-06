@@ -4,9 +4,8 @@ import { thunkCreateBrewery } from "../../redux/breweries";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 
-import { BREWERY_TYPES } from "./validation";
+import { BREWERY_TYPES, validateBreweryForm } from "./form-utils";
 import "./Forms.css";
-import { validateBreweryForm } from "./validation";
 
 
 function CreateBreweryForm() {

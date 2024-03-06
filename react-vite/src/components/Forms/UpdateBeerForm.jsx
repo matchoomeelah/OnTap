@@ -5,10 +5,11 @@ import Select from 'react-select'
 
 import { thunkGetBeers, thunkUpdateBeer } from "../../redux/beers";
 import { thunkGetBreweries } from "../../redux/breweries";
-import { validateBeerForm } from "./validation";
+import { validateBeerForm } from "./form-utils";
 
-import { BEER_STYLES } from "./validation";
+import { BEER_STYLES } from "./form-utils";
 import "./Forms.css";
+import { useTextInput } from "../../hooks/useTextInput";
 
 function UpdateBeerForm() {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function UpdateBeerForm() {
     const beers = useSelector(state => state.beers);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
+
 
     const [name, setName] = useState("");
     const [abv, setAbv] = useState("");
@@ -31,11 +33,14 @@ function UpdateBeerForm() {
     const [imageLoading, setImageLoading] = useState(false);
     const [errors, setErrors] = useState({});
 
+    const errorProps = { errors, setErrors };
+    const nameProps = useTextInput("name", currBeer?.name, 50, errorProps);
+
     // Retrieve the current beer and breweries data
     useEffect(() => {
-        // if (Object.values(beers).length === 0) {
-        //     dispatch(thunkGetBeers())
-        // }
+        if (Object.values(beers).length === 0) {
+            dispatch(thunkGetBeers())
+        }
         dispatch(thunkGetBreweries());
     }, [beer_id, dispatch])
 

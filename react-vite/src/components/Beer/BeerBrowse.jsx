@@ -7,7 +7,7 @@ import LoginFormModal from "../Modals/LoginFormModal"
 import SignupFormModal from "../Modals/SignupFormModal"
 import BeerTile from "./BeerTile";
 import Select from 'react-select'
-import { BEER_STYLES } from "../Forms/validation";
+import { BEER_STYLES } from "../Forms/form-utils";
 import "./Beer.css";
 
 

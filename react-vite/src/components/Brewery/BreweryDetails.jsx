@@ -33,6 +33,7 @@ function BreweryDetails() {
         async function wrapper() {
             const response = await dispatch(thunkGetBreweryById(brewery_id));
             if (response.errors) {
+                console.log("ERRORS!!!!!!", response.errors)
                 navigate("/error");
             }
         }

@@ -62,7 +62,6 @@ export const thunkCreateBrewery = (brewery) => async (dispatch) => {
         dispatch(actionCreateBrewery(data))
         return data;
     }
-    // console.log("There was an error creating your brewery");
 
     return {errors: data};
 }
@@ -78,6 +77,7 @@ export const thunkGetBreweries = () => async (dispatch) => {
     // Send to reducer or report error
     if (response.ok) {
         dispatch(actionGetBreweries(data.Breweries))
+        return data;
     }
 
     return {errors: data};
@@ -93,6 +93,7 @@ export const thunkGetBreweryById = (id) => async (dispatch) => {
     // Send to reducer or report error
     if (response.ok) {
         dispatch(actionGetBreweryById(data.Brewery));
+        return data;
     }
 
     return {errors: data};
@@ -130,6 +131,7 @@ export const thunkDeleteBrewery = (id) => async (dispatch) => {
 
     if (response.ok) {
         dispatch(actionDeleteBrewery(id));
+        return data;
     }
 
     return {errors: data};

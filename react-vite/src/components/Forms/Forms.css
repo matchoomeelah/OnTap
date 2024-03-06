@@ -57,6 +57,7 @@ form {
     box-shadow: 2px 2px 2px #525151;
 }
 
+
 #image-input {
     width: fit-content;
     margin-top: 10px;
@@ -78,7 +79,7 @@ form {
 }
 
 #description-char-count {
-    float: right;
+    text-align: end;
     font-size: 12px;
 }
 

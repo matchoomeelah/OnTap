@@ -60,7 +60,6 @@ export const thunkUpdateUser = (user, id) => async (dispatch) => {
         return data;
     }
 
-    console.log(data.errors)
     return {errors: data.errors};
 }
 

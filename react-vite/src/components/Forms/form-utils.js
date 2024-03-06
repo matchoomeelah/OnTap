@@ -1,6 +1,14 @@
 export const BEER_STYLES = ["Hazy IPA", "American IPA", "American Strong Ale", "Ale", "Lager", "IPA", "Stout", "Pale Ale", "Witbier", "Pilsner", "Brown Ale", "Cream Ale", "Porter", "Hefeweizen", "Saison", "Bock", "Dunkel", "Barley Wine", "Amber Ale", "Red Ale", "Wheat Beer", "Double IPA", "Gose", "English IPA", "Scotch Ale", "Kölsch", "White/Wheat IPA"];
 export const BREWERY_TYPES = ["Microbrewery", "Macrobrewery", "Nanobrewery", "Regional Brewery", "Brewpub", "Taproom", "Craft Brewery", "Contract Brewing Company"];
 
+// Create array of beer style objects for Select input
+export const styleOptions = BEER_STYLES.sort().map(style => {
+    return {
+        value: style,
+        label: style
+    }
+});
+
 export function validateBreweryForm(name, type, city, state_province, country, description, image_url, website_url) {
     const errors = {}
 
@@ -43,12 +51,10 @@ export function validateBreweryForm(name, type, city, state_province, country, d
         errors.website_url = "The provided URL is not valid";
     }
 
-
-
     return errors;
 }
 
-export function validateBeerForm(name, abv, ibu, style, description, breweryId) {
+export function validateBeerForm({name, abv, ibu, style, description, breweryId}) {
     const errors = {}
 
     // Name
@@ -57,7 +63,7 @@ export function validateBeerForm(name, abv, ibu, style, description, breweryId) 
     }
 
     // Brewery
-    if (breweryId === 0) {
+    if (!breweryId) {
         errors.brewery_id = "This field is required";
     }
 
@@ -89,7 +95,7 @@ export function validateBeerForm(name, abv, ibu, style, description, breweryId) 
     }
 
     // Style
-    if (style.trim().length <= 0) {
+    if (!style) {
         errors.style = "This field is required";
     }
 
