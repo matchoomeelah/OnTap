@@ -93,8 +93,9 @@ def update_beer(id):
         if form.validate_on_submit:
             image = form.data["image_url"]
 
-            if image is not None and image.filename != beer.image_url:
-                removed = remove_file_from_s3(beer.image_url)
+            if image:
+                if beer.image_url:
+                    removed = remove_file_from_s3(beer.image_url)
                 orig_url = image.filename
                 image.filename = get_unique_filename(image.filename)
                 upload = upload_file_to_s3(image)

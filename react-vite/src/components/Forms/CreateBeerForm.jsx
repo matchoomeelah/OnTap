@@ -30,10 +30,10 @@ function CreateBeerForm() {
 
     const errorProps = { errors, setErrors };
     const nameProps = useTextInput("name", "", 50, errorProps);
-    const breweryIdProps = useReactSelect("brewery_id", breweryOptions, errorProps);
+    const breweryIdProps = useReactSelect("brewery_id", null, breweryOptions, errorProps);
     const abvProps = useTextInput("abv", "", 6, errorProps);
     const ibuProps = useTextInput("ibu", "", 3, errorProps);
-    const styleProps = useReactSelect("style", styleOptions, errorProps);
+    const styleProps = useReactSelect("style", null, styleOptions, errorProps);
     const descriptionProps = useTextInput("description", "", 1500, errorProps);
 
 
@@ -44,6 +44,10 @@ function CreateBeerForm() {
     useEffect(() => {
         dispatch(thunkGetBreweries());
     }, [dispatch])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

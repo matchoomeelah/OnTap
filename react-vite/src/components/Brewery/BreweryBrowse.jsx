@@ -33,7 +33,9 @@ function BreweryBrowse() {
         breweriesArray = breweriesArray.filter(brewery => brewery.type === selectedType.value);
     }
 
-    window.scrollTo(0, 0);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     useEffect(() => {
         dispatch(thunkGetBreweries());

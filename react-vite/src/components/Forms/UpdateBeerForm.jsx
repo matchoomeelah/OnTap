@@ -5,11 +5,12 @@ import Select from 'react-select'
 
 import { thunkGetBeers, thunkUpdateBeer } from "../../redux/beers";
 import { thunkGetBreweries } from "../../redux/breweries";
-import { validateBeerForm } from "./form-utils";
+import { validateBeerForm, styleOptions } from "./form-utils";
 
-import { BEER_STYLES } from "./form-utils";
-import "./Forms.css";
 import { useTextInput } from "../../hooks/useTextInput";
+import { useReactSelect } from "../../hooks/useReactSelect";
+import FormField from "./FormField";
+import "./Forms.css";
 
 function UpdateBeerForm() {
     const dispatch = useDispatch();
@@ -20,44 +21,8 @@ function UpdateBeerForm() {
     const beers = useSelector(state => state.beers);
     const { beer_id } = useParams();
     const currBeer = beers[beer_id];
-
-
-    const [name, setName] = useState("");
-    const [abv, setAbv] = useState("");
-    const [ibu, setIbu] = useState("");
-    const [style, setStyle] = useState("");
-    const [description, setDescription] = useState("");
-    const [descriptionCharCount, setDescriptionCharCount] = useState(0);
-    const [image, setImage] = useState(null);
-    const [breweryId, setBreweryId] = useState(0);
-    const [imageLoading, setImageLoading] = useState(false);
-    const [errors, setErrors] = useState({});
-
-    const errorProps = { errors, setErrors };
-    const nameProps = useTextInput("name", currBeer?.name, 50, errorProps);
-
-    // Retrieve the current beer and breweries data
-    useEffect(() => {
-        if (Object.values(beers).length === 0) {
-            dispatch(thunkGetBeers())
-        }
-        dispatch(thunkGetBreweries());
-    }, [beer_id, dispatch])
-
-    // Prepopulate the form fields
-    useEffect(() => {
-        if (currBeer) {
-            setName(currBeer.name);
-            setAbv(currBeer.abv.toString());
-            setIbu(currBeer.ibu.toString());
-            setStyle(currBeer.style);
-            setDescription(currBeer.description);
-            setDescriptionCharCount(currBeer.description.length)
-            setImage(currBeer.image_url);
-            setBreweryId(currBeer.brewery_id);
-        }
-    }, [currBeer])
-
+    const currStyle = {value: currBeer?.style, label:currBeer?.style}
+    const currBrewery = { value: currBeer?.brewery_id, label: currBeer?.brewery_name }
 
     // Create array of brewery objects for the Select input
     const breweryOptions = Object.values(breweries).sort((a, b) => a.name > b.name ? 1 : -1).map(brewery => {
@@ -67,13 +32,31 @@ function UpdateBeerForm() {
         }
     })
 
-    // Create array of beer style object for the Select input
-    let styleOptions = BEER_STYLES.sort().map(style => {
-        return {
-            value: style,
-            label: style
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
+    const [errors, setErrors] = useState({});
+
+    const errorProps = { errors, setErrors };
+    const nameProps = useTextInput("name", currBeer?.name, 50, errorProps);
+    const breweryIdProps = useReactSelect("brewery_id", currBrewery, breweryOptions, errorProps);
+    const abvProps = useTextInput("abv", currBeer?.abv.toString(), 6, errorProps);
+    const ibuProps = useTextInput("ibu", currBeer?.ibu.toString(), 3, errorProps);
+    const styleProps = useReactSelect("style", currStyle, styleOptions, errorProps);
+    const descriptionProps = useTextInput("description", currBeer?.description, 1500, errorProps);
+
+    // Retrieve the current beer and breweries data
+    useEffect(() => {
+        if (Object.values(beers).length === 0) {
+            dispatch(thunkGetBeers())
         }
-    });
+        dispatch(thunkGetBreweries());
+    }, [beer_id, dispatch])
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
 
     // Changes image title
     const changeImageTitle = () => {
@@ -87,27 +70,32 @@ function UpdateBeerForm() {
     // Executes when form is submitted
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         setErrors({});
 
         // Check for front end form errors
-        const formErrors = validateBeerForm(name, abv, ibu, style, description, breweryId);
+        const values = {
+            name: nameProps.value,
+            abv: abvProps.value,
+            ibu: ibuProps.value,
+            description: descriptionProps.value,
+            style: styleProps.selectedValue,
+            breweryId: breweryIdProps.selectedValue
+        }
+        const formErrors = validateBeerForm(values);
 
         if (Object.keys(formErrors).length > 0) {
-            setErrors(formErrors);
-            return;
+            return setErrors(formErrors);
         }
-
 
         // Create form data to send to server
         const formData = new FormData();
-        formData.append("name", name.trim());
-        formData.append("abv", abv.trim());
-        formData.append("ibu", ibu.trim());
-        formData.append("style", style.trim());
-        formData.append("description", description.trim());
+        formData.append("name", nameProps.value.trim());
+        formData.append("brewery_id", breweryIdProps.selectedValue);
+        formData.append("abv", abvProps.value.trim());
+        formData.append("ibu", ibuProps.value.trim());
+        formData.append("style", styleProps.selectedValue.trim());
+        formData.append("description", descriptionProps.value.trim());
         formData.append("image_url", image);
-        formData.append("brewery_id", breweryId);
         setImageLoading(true);
 
         const newBeer = await dispatch(thunkUpdateBeer(currBeer.id, formData));
@@ -123,7 +111,7 @@ function UpdateBeerForm() {
     }
 
     // Handle wrong user
-    if (!currBeer || !sessionUser || currBeer?.creator_id !== sessionUser?.id) {
+    if (!sessionUser || currBeer?.creator_id !== sessionUser?.id) {
         return null;
     }
 
@@ -132,169 +120,16 @@ function UpdateBeerForm() {
             <h1>Update Beer</h1>
 
             <form className="beer-form" onSubmit={handleSubmit} encType="multipart/form-data">
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label htmlFor="name">
-                            Beer Name*
-                        </label>
-                        <div className="error-container">
-                            {errors.name && <span className="error-message">{errors.name}</span>}
-                        </div>
-                    </div>
-                    <input
-                        id="name"
-                        type="text"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value);
-                            if (errors.name) {
-                                const newErrors = { ...errors };
-                                delete newErrors.name;
-                                setErrors(newErrors);
-                            }
-                        }}
-                        className="input"
-                    />
-                </div>
-
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label htmlFor="brewery_id">
-                            Brewery*
-                        </label>
-                        <div className="error-container">
-                            {errors.brewery_id && <span className="error-message">{errors.brewery_id}</span>}
-                        </div>
-                    </div>
-                    <Select
-                        id="brewery_id"
-                        className="input"
-                        options={breweryOptions}
-                        defaultValue={{ value: currBeer?.brewery_id, label: currBeer?.brewery_name }}
-                        onChange={(e) => {
-                            setBreweryId(e.value);
-                            if (errors.brewery_id) {
-                                const newErrors = { ...errors };
-                                delete newErrors.brewery_id;
-                                setErrors(newErrors);
-                            }
-                        }}
-                    />
-                </div>
-
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label htmlFor="abv">
-                            ABV*
-                        </label>
-                        <div className="error-container">
-                            {errors.abv && <span className="error-message">{errors.abv}</span>}
-                        </div>
-                    </div>
-                    <input
-                        id="abv"
-                        type="text"
-                        value={abv}
-                        className="input"
-                        onChange={(e) => {
-                            setAbv(e.target.value);
-                            if (errors.abv) {
-                                const newErrors = { ...errors };
-                                delete newErrors.abv;
-                                setErrors(newErrors);
-                            }
-                        }}
-                    />
-                </div>
-
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label htmlFor="ibu">
-                            IBU*
-                        </label>
-                        <div className="error-container">
-                            {errors.ibu && <span className="error-message">{errors.ibu}</span>}
-                        </div>
-                    </div>
-                    <input
-                        id="ibu"
-                        type="text"
-                        value={ibu}
-                        className="input"
-                        onChange={(e) => {
-                            setIbu(e.target.value);
-                            if (errors.ibu) {
-                                const newErrors = { ...errors };
-                                delete newErrors.ibu;
-                                setErrors(newErrors);
-                            }
-                        }}
-                    />
-                </div>
-
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label htmlFor="style">
-                            Style*
-                        </label>
-                        <div className="error-container">
-                            {errors.style && <span className="error-message">{errors.style}</span>}
-                        </div>
-                    </div>
-                    <Select
-                        id="style"
-                        className="input"
-                        options={styleOptions}
-                        defaultValue={{value: currBeer.style, label:currBeer.style}}
-                        onChange={(e) => {
-                            setStyle(e.value);
-                            if (errors.style) {
-                                const newErrors = { ...errors };
-                                delete newErrors.style;
-                                setErrors(newErrors);
-                            }
-                        }}
-                    />
-                </div>
-
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label htmlFor="description">
-                            Description*
-                        </label>
-                        <div className="error-container">
-                            {errors.description && <span className="error-message">{errors.description}</span>}
-                        </div>
-                    </div>
-                    <textarea
-                        id="description"
-                        type="text"
-                        value={description}
-                        rows={5}
-                        className="input"
-                        onChange={(e) => {
-                            setDescription(e.target.value);
-                            setDescriptionCharCount(e.target.value.length)
-                            if (errors.description) {
-                                const newErrors = { ...errors };
-                                delete newErrors.description;
-                                setErrors(newErrors);
-                            }
-                        }}
-                    />
-                    <div id="description-char-count">{descriptionCharCount}/1500</div>
-                </div>
-
-                <div className="field-container">
-                    <div className="form-label-container">
-                        <label>
-                            Logo Image
-                        </label>
-                        <div className="error-container">
-                            {errors.image_url && <span className="error-message">{errors.image_url}</span>}
-                        </div>
-                    </div>
-                    <input
+                <FormField label={"Beer Name*"} errors={errors} inputComponent={<input {...nameProps} />} />
+                <FormField label={"Brewery*"} errors={errors} inputComponent={<Select {...breweryIdProps} />} />
+                <FormField label={"ABV*"} errors={errors} inputComponent={<input {...abvProps} />} />
+                <FormField label={"IBU*"} errors={errors} inputComponent={<input {...ibuProps} />} />
+                <FormField label={"Style*"} errors={errors} inputComponent={<Select {...styleProps} />} />
+                <FormField label={"Description*"} errors={errors} inputComponent={<textarea {...descriptionProps} rows={5} />} />
+                <div id="description-char-count">{descriptionProps.value.length}/1500</div>
+                <FormField label={"Logo Image"} errors={errors} inputComponent={
+                    <>
+                        <input
                         id="image-input"
                         type="file"
                         accept="image/*"
@@ -309,8 +144,9 @@ function UpdateBeerForm() {
                             changeImageTitle();
                         }}
                     />
-                    <span id="orig-url">{currBeer?.orig_image_url}</span>
-                </div>
+                        <span id="orig-url">{currBeer?.orig_image_url}</span>
+                    </>
+                } />
                 {(imageLoading) && <p>Loading...</p>}
                 <button className="submit-button" type="submit">Update Beer</button>
             </form>

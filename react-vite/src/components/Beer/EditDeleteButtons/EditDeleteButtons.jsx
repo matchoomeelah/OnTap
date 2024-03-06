@@ -8,7 +8,7 @@ import "./EditDeleteButtons.css"
 function EditDeleteButtons({ beer }) {
     const navigate = useNavigate();
     const [showButtons, setShowButtons] = useState(false);
-    const ellipsisRef = useRef({});
+    const ellipsisRef = useRef();
 
     useEffect(() => {
         if (!showButtons) return;

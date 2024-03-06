@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export function useReactSelect(id, options, errorProps) {
-    const [selectedValue, setSelectedValue] = useState(null);
+export function useReactSelect(id, initialValue, options, errorProps) {
+    const [selectedValue, setSelectedValue] = useState(initialValue.value);
     const {errors, setErrors} = errorProps;
 
     function handleChange(e) {
@@ -18,7 +18,8 @@ export function useReactSelect(id, options, errorProps) {
         selectedValue,
         onChange: handleChange,
         options,
-        className: "input select-input"
+        className: "input select-input",
+        defaultValue: initialValue
     }
 
 
