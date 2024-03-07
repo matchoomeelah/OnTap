@@ -155,7 +155,7 @@ function UpdateBreweryForm() {
                     <Select
                         id="type"
                         options={breweryTypeOptions}
-                        className="input"
+                        className="input select-input"
                         onChange={(e) => {
                             setType(e.value);
                             if (errors.type) {

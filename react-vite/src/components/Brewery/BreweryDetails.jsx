@@ -88,17 +88,6 @@ function BreweryDetails() {
                     <div id="brewery-show-buttons-container">
                         <h5 id="beers-button" className="glow brewery-show-button show-beer" onClick={enableShowBeers}>Beers</h5>
                         <h5 id="check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
-                        <div id="you-own-this">
-                            {sessionUser?.id === currBrewery?.creator_id &&
-                                <div>
-                                    <div id="you-own-this-text">
-                                        <i className="fa-solid fa-medal"></i>You own this!
-                                    </div>
-                                    <div id="owner-button">
-                                        <EditDeleteButtons brewery={currBrewery}/>
-                                    </div>
-                                </div>}
-                        </div>
                     </div>
                     {showBeers &&
                         (currBrewery?.beers.length === 0 ?
@@ -120,9 +109,21 @@ function BreweryDetails() {
                             }))}
                 </div>
                 <div id="brewery-about">
-                    <h4>About
-                        {/* {sessionUser?.id === currBrewery?.creator_id && <span id="you-own-this"><i class="fa-solid fa-medal"></i>You own this!</span>} */}
-                    </h4>
+                    <div id="about-heading">
+                        <h4>About</h4>
+                        <div id="you-own-this">
+                            {sessionUser?.id === currBrewery?.creator_id &&
+                                <div>
+                                    <div id="you-own-this-text">
+                                        <i className="fa-solid fa-medal"></i>You own this!
+                                    </div>
+                                    <div id="owner-button">
+                                        <EditDeleteButtons brewery={currBrewery}/>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
                     {!showLongDescription ?
                         currBrewery?.description.length < 300 ?
                             <div>{currBrewery?.description}</div>

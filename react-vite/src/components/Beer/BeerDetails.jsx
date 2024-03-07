@@ -6,6 +6,7 @@ import CheckInTile from "../CheckIn/CheckInTile";
 import OpenModalButton from "../OpenModalButton";
 import CreateCheckInModal from "../Modals/CreateCheckInModal";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import EditDeleteButtons from "./EditDeleteButtons/EditDeleteButtons";
 
 function BeerDetails() {
     const dispatch = useDispatch();
@@ -75,7 +76,21 @@ function BeerDetails() {
                 <div id="beer-content-container">
                     <div id="beer-content-left">
                         <div id="beer-about">
-                            <h4>About</h4>
+                            <div id="about-heading">
+                                <h4>About</h4>
+                                <div id="you-own-this">
+                                    {sessionUser?.id === currBeer?.creator_id &&
+                                        <div>
+                                            <div id="you-own-this-text">
+                                                <i className="fa-solid fa-medal"></i>You own this!
+                                            </div>
+                                            <div id="owner-button">
+                                                <EditDeleteButtons beer={currBeer} />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                             {!showLongDescription ?
                                 currBeer?.description.length < 300 ?
                                     <div>{currBeer?.description}</div>

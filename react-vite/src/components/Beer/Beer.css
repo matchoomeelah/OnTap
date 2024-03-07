@@ -294,6 +294,11 @@ i {
     overflow-wrap: break-word;
 }
 
+#about-heading {
+    display: flex;
+    gap: 10px;
+}
+
 .show-more-button {
     background-color: transparent;
     border: none;

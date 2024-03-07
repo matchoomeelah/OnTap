@@ -40,7 +40,10 @@ function BeerTile({ beer }) {
 
                 </div>
                 {beer?.creator_id === sessionUser?.id &&
-                    <EditDeleteButtons beer={beer} />
+                    <>
+                        {/* <i className="fa-solid fa-medal"></i> */}
+                        <EditDeleteButtons beer={beer} />
+                    </>
                 }
             </div>
             <div>
