@@ -90,12 +90,14 @@ function BreweryDetails() {
                         <h5 id="check-ins-button" className="brewery-show-button show-checkins" onClick={enableShowCheckIns}>Check Ins</h5>
                         <div id="you-own-this">
                             {sessionUser?.id === currBrewery?.creator_id &&
-                                <span>
-                                    <i className="fa-solid fa-medal"></i>You own this!
+                                <div>
+                                    <div id="you-own-this-text">
+                                        <i className="fa-solid fa-medal"></i>You own this!
+                                    </div>
                                     <div id="owner-button">
                                         <EditDeleteButtons brewery={currBrewery}/>
                                     </div>
-                                </span>}
+                                </div>}
                         </div>
                     </div>
                     {showBeers &&

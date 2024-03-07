@@ -148,12 +148,12 @@
     color: rgb(87, 192, 224);
     font-size: 12px;
     text-decoration: none;
-    position: relative;
-    top: 36px;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: 3px;
-    height: fit-content;
 }
+
 
 /* .owner-button {
     position: relative;
@@ -170,16 +170,21 @@
 
 #brewery-show-buttons-container {
     display: flex;
+    align-items: center;
     gap: 15px;
     margin-top: 10px;
-    /* justify-content: end; */
+}
+
+#brewery-show-buttons-container > * {
+    position: relative;
+    top: 10px;
 }
 
 .brewery-show-button {
     color: white;
     cursor: pointer;
-    position: relative;
-    top: 10px;
+    /* position: relative; */
+    /* top: 10px; */
     padding: 15px 8px;
     border-radius: 3px;
 }
