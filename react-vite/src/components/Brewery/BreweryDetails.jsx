@@ -67,7 +67,7 @@ function BreweryDetails() {
     }
 
     if (!currBrewery) {
-        navigate("/breweries");
+        return navigate("/breweries");
     }
 
     return (

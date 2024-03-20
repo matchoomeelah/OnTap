@@ -16,7 +16,7 @@ function EditDeleteButtons({text, brewery}) {
         if (!showButtons) return;
 
         const closeMenu = (e) => {
-            if (!ellipsisRef.current.contains(e.target)) {
+            if (ellipsisRef.current && !ellipsisRef.current.contains(e.target)) {
                 setShowButtons(false);
             }
         };

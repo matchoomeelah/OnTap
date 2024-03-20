@@ -44,6 +44,10 @@ function BeerDetails() {
         beerLogo.src = "https://i.ibb.co/qChdf5n/default-beer.jpg";
     }
 
+    if (!currBeer) {
+        return navigate("/beers");
+    }
+
     return (
         <PhotoProvider>
             <div id="beer-details-container">
