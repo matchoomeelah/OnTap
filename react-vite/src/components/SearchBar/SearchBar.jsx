@@ -37,7 +37,7 @@ function SearchBar() {
         // Closes search results when you click outside it
         const onClick = (e) => {
             const searchBar = document.getElementById("search-bar");
-            if (!searchListRef.current.contains(e.target) && !searchListRef.current.contains(searchBar)) {
+            if (!searchListRef.current?.contains(e.target) && !searchListRef.current?.contains(searchBar)) {
                 setIsFocused(false);
             }
         };
