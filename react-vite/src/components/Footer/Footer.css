@@ -1,9 +1,10 @@
 footer {
+    position: fixed;
+    bottom: 3px;
+    right: 3px;
     display: flex;
-    gap: 20px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-    animation: fadeIn 3s;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .about-me-link {
