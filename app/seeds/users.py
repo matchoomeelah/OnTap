@@ -10,6 +10,7 @@ def seed_users():
         first_name="Phillip J.", last_name="Fry", username='fry', email='fry@aa.io', password='password', profile_pic='https://i.ibb.co/7JJG7yp/fry-pic.jpg')
     bender = User(
         first_name="Bender", last_name="Rodriguez", username='bender', email='bender@aa.io', password='password', profile_pic='https://i.ibb.co/N7rgq3b/bender-pic.jpg')
+        # first_name="Bender", last_name="Rodriguez", username='bender', email='bender@aa.io', password='password', profile_pic='https://i.ibb.co/N7rgq3b/bender-pic.jpg')
     leela = User(
         first_name="Turanga", last_name="Leela", username='leela', email='leela@aa.io', password='password', profile_pic='https://i.ibb.co/cgKfL4h/leela-pic.jpg')
     amy = User(

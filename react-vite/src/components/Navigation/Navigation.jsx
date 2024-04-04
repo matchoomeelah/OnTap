@@ -7,7 +7,7 @@ import LoginFormModal from "../Modals/LoginFormModal/LoginFormModal";
 import SignupFormModal from "../Modals/SignupFormModal/SignupFormModal";
 import OptionsButton from "./OptionsButton";
 import SearchBar from "../SearchBar/SearchBar";
-
+import logo from "../../../public/images/On-Tap-Logo.png"
 
 function Navigation() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Navigation() {
   return (
     <nav>
       <OptionsButton />
-      <img onClick={() => navigate("/")} id="logo" src={"https://i.ibb.co/n1RDxpj/On-Tap-Logo.png"} alt="Home" />
+      <img onClick={() => navigate("/")} id="logo" src={logo} alt="Home" />
       <div id="nav-links-div">
         <NavLink to="/beers" className="nav-link">Beers</NavLink>
         <NavLink to="/breweries" className="nav-link">Breweries</NavLink>

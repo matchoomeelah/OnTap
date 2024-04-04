@@ -1,6 +1,7 @@
 from app.models import db, Brewery, environment, SCHEMA
 from sqlalchemy.sql import text
 
+
 # Add seed data
 def seed_breweries():
     lagunitas = Brewery(

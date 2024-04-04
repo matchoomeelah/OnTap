@@ -9,7 +9,8 @@ def seed_beers():
         ibu=51,
         style='American IPA',
         description="This is our unique version of an ancient style. A style as old as the ocean trade routes of the last centuries of Great Ships. Not as old as the equator they had to cross twice enroute, nor as old as the 10,000 miles or so of Di-Hydrogen Oxide and Sodium upon which they sailed, but older than the Circulithium-4 Lentoid that binds the Lupulin Quartnate onto your taste buds. Weird. IPA has loads of “C” Hops balanced on a bed of fine English Crystal, Caramel & Munich Malts. Designed to pair well with food and pretty much everything else!",
-        image_url="https://i.ibb.co/y8Tpr4Y/lagunitas-ipa.jpg",
+        # image_url="https://i.ibb.co/y8Tpr4Y/lagunitas-ipa.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/beer-logos/lagunitas_ipa.jpeg",
         orig_image_url="lagunitas-ipa.jpg",
         creator_id=1,
         brewery_id=1
