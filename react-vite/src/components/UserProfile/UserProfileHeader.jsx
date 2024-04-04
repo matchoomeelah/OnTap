@@ -17,7 +17,7 @@ function UserProfileHeader({ user }) {
 
     function setDefaultImage() {
         const profilePic = document.querySelector(".banner-custom-profile-pic");
-        profilePic.src = "https://i.ibb.co/KxrZx4s/hand-drawn-wheat-doodle-illustration-cute-harvest-clipart-farm-market-product-vector.jpg";
+        profilePic.src = "https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/default-beer.jpg";
     }
 
     return (

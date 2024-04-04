@@ -7,7 +7,7 @@ def seed_check_ins():
     CheckIn(
         body="This beer is pretty dang good. I think I'll drink it now!",
         rating=5,
-        image_url="https://i.ibb.co/hf54n1M/Lagunitas-IPA-lifestyle-1.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/Lagunitas+IPA+lifestyle(1).jpg",
         beer_id=1,
         brewery_id=1,
         user_id=1
@@ -15,7 +15,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/jW025Dx/ex-beer-2.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/example-beers/ex_beer_2.jpeg",
         beer_id=2,
         brewery_id=1,
         user_id=1
@@ -23,7 +23,7 @@ def seed_check_ins():
     CheckIn(
         body="It's real good and also fake good.",
         rating=4,
-        image_url="https://i.ibb.co/LRGvGsP/space-dust-check1.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check1.jpeg",
         beer_id=4,
         brewery_id=4,
         user_id=2
@@ -33,7 +33,7 @@ def seed_check_ins():
     CheckIn(
         body="The Fighting Mongooses out celebrating!",
         rating=4,
-        image_url="https://i.ibb.co/JypmmVm/space-dust-check5.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check5.jpeg",
         beer_id=1,
         brewery_id=1,
         user_id=2
@@ -41,7 +41,7 @@ def seed_check_ins():
     CheckIn(
         body="Slurm is better.",
         rating=4,
-        image_url="https://i.ibb.co/LRGvGsP/space-dust-check1.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check3.jpeg",
         beer_id=4,
         brewery_id=4,
         user_id=2
@@ -51,7 +51,7 @@ def seed_check_ins():
     CheckIn(
         body="Bite my shiny golden glass!",
         rating=4,
-        image_url="https://i.ibb.co/fF05Ht2/space-dust-check2.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check2.jpeg",
         beer_id=4,
         brewery_id=4,
         user_id=3
@@ -62,7 +62,7 @@ def seed_check_ins():
     CheckIn(
         body="It's like I have a 2nd eyeball!",
         rating=4,
-        image_url="https://i.ibb.co/RhxHdng/space-dust-check3.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check3.jpeg",
         beer_id=4,
         brewery_id=4,
         user_id=4
@@ -73,7 +73,7 @@ def seed_check_ins():
     CheckIn(
         body="Spluh buh dubba doo",
         rating=4,
-        image_url="https://i.ibb.co/9V04fYy/space-dust-check4.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/Space-Dust-Check-Ins/space_dust_check4.avif",
         beer_id=4,
         brewery_id=4,
         user_id=5
@@ -84,7 +84,7 @@ def seed_check_ins():
     CheckIn(
         body="Spluh buh dubba doo",
         rating=4,
-        image_url="https://i.ibb.co/4MtwFpc/IMG-20190427-182516060-HDR.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/IMG-20190427-182516060-HDR.jpg",
         beer_id=3,
         brewery_id=3,
         user_id=6
@@ -92,7 +92,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/ZdfxN0Z/psych3.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/psych3.jpg",
         beer_id=3,
         brewery_id=3,
         user_id=5
@@ -100,7 +100,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/jW025Dx/ex-beer-2.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/example-beers/ex_beer_2.jpeg",
         beer_id=3,
         brewery_id=3,
         user_id=4
@@ -108,7 +108,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/tpJKy09/image-99ea41ab-378a-4f93-955b-daa6d6ae97a4-600x.webp",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/image-99ea41ab-378a-4f93-955b-daa6d6ae97a4-600x.webp",
         beer_id=3,
         brewery_id=3,
         user_id=3
@@ -116,7 +116,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/yqDfQJB/madtree-psychopathy-og.webp",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/madtree-psychopathy-og-1.webp",
         beer_id=3,
         brewery_id=3,
         user_id=2
@@ -124,7 +124,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/5G0WpKj/psychopathy1.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/psychopathy1.jpg",
         beer_id=3,
         brewery_id=3,
         user_id=1
@@ -132,7 +132,7 @@ def seed_check_ins():
     CheckIn(
         body="I may be a demo user, but this ain't no demo beer!",
         rating=4,
-        image_url="https://i.ibb.co/fNj843Y/0085833600425-A.webp",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/0085833600425-A.webp",
         beer_id=3,
         brewery_id=3,
         user_id=3
@@ -140,7 +140,7 @@ def seed_check_ins():
     CheckIn(
         body="It's like the story of the grasshopper and the octopus...",
         rating=5,
-        image_url="https://i.ibb.co/HtTwC82/DSC-0012-1024x683.jpg",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/check-ins/DSC-0012-1024x683.jpg",
         beer_id=3,
         brewery_id=3,
         user_id=2
@@ -148,7 +148,7 @@ def seed_check_ins():
     CheckIn(
         body="More pleeeaaase.",
         rating=5,
-        image_url="https://i.ibb.co/GxHsJMm/ex-beer-5.webp",
+        image_url="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/example-beers/ex_beer_5.webp",
         beer_id=3,
         brewery_id=3,
         user_id=1

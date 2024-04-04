@@ -39,7 +39,7 @@ def create_brewery():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        url = "https://i.ibb.co/ys9X0Jg/brewery-default.jpg"
+        url = "https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/brewery-default.jpg"
         orig_url = "No File Chosen"
         image = form.data["image_url"]
 

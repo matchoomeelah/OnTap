@@ -219,7 +219,7 @@ function UserSettingsModal({ user }) {
                     </label>
                     <label id="image-input-label" htmlFor="profile-image-input">
                         {image == null ?
-                            <img id="profile-add-photo" src="https://i.ibb.co/5rYHfYk/Untitled-4.png" />
+                            <img id="profile-add-photo" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/Untitled-4.png" />
                             :
                             <img id="profile-preview-image" src={URL.createObjectURL(image)} />
                         }

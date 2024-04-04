@@ -13,7 +13,7 @@ function LandingPage() {
         <div id="landing-page-container">
             <div id="landing-page-banner">
                 <div id="landing-page-banner-image">
-                    <img id="landing-page-banner-image-content" src="https://i.ibb.co/GdhLNPt/beer-flight-1.jpg" />
+                    <img id="landing-page-banner-image-content" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/beer-flight-1.jpg" />
                 </div>
                 <div id="landing-page-banner-text">
                     <div id="beer-lovers">Beer Lovers Unite</div>

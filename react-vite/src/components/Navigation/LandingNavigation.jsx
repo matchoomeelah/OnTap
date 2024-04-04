@@ -16,7 +16,7 @@ function LandingNavigation() {
   return (
     <nav>
       <OptionsButton />
-      <img onClick={() => navigate("/")} id="logo" src={"https://i.ibb.co/n1RDxpj/On-Tap-Logo.png"} alt="Home" />
+      <img onClick={() => navigate("/")} id="logo" src={"https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/On-Tap-Logo.png"} alt="Home" />
       <div id="nav-right-content">
         {
           sessionUser ? <ProfileButton id='profile-button' user={sessionUser} />

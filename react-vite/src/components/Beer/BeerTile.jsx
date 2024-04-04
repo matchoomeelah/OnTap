@@ -11,7 +11,7 @@ function BeerTile({ beer }) {
 
     function setDefaultImage() {
         const beerLogo = document.getElementById(`beer-logo${beer.id}`);
-        beerLogo.src = "https://i.ibb.co/qChdf5n/default-beer.jpg";
+        beerLogo.src = "https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/default-beer.jpg";
     }
 
     return (

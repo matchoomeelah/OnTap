@@ -41,7 +41,7 @@ function BeerDetails() {
 
     function setDefaultImage() {
         const beerLogo = document.getElementById("beer-logo");
-        beerLogo.src = "https://i.ibb.co/qChdf5n/default-beer.jpg";
+        beerLogo.src = "https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/default-beer.jpg";
     }
 
     if (!currBeer) {

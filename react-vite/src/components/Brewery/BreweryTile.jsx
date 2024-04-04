@@ -10,7 +10,7 @@ function BreweryTile({ brewery }) {
 
     function setDefaultImage() {
         const breweryLogo = document.getElementById(`brewery-logo${brewery.id}`);
-        breweryLogo.src = "https://i.ibb.co/ys9X0Jg/brewery-default.jpg";
+        breweryLogo.src = "https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/brewery-default.jpg";
     }
 
     function getRatingInfo(brewery) {

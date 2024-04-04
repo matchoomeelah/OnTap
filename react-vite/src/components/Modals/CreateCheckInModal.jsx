@@ -67,7 +67,7 @@ function CreateCheckInModal({ beer }) {
                 />
                 <div id="body-char-count">{bodyCharCount}/255</div>
                 <div id="image-rating-container">
-                    <label id="image-input-label" htmlFor="check-in-image-input">{image == null ? <img id="check-in-add-photo" src="https://i.ibb.co/5rYHfYk/Untitled-4.png" /> : <img id="check-in-preview-image" src={URL.createObjectURL(image)} />}</label>
+                    <label id="image-input-label" htmlFor="check-in-image-input">{image == null ? <img id="check-in-add-photo" src="https://on-tap-bucket.s3.us-west-1.amazonaws.com/OnTap+Images/other/Untitled-4.png" /> : <img id="check-in-preview-image" src={URL.createObjectURL(image)} />}</label>
                     <input
                         id="check-in-image-input"
                         type="file"
