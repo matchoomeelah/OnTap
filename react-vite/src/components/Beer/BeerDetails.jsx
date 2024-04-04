@@ -147,13 +147,15 @@ function BeerDetails() {
                         <div id="beer-photos-container">
                             <h4>Photos</h4>
                             <div id="dummy"></div>
-                            <div id="beer-photos">
-                                {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
-                                    return checkIn.image_url &&
-                                        <PhotoView key={checkIn.id} src={checkIn.image_url}>
-                                            <img className="beer-side-photo" src={checkIn.image_url} />
-                                        </PhotoView>
-                                })}
+                            <div id="inner-beer-photos-container">
+                                <div id="beer-photos">
+                                    {currBeer?.check_ins.toReversed().slice(0, 9).map(checkIn => {
+                                        return checkIn.image_url &&
+                                            <PhotoView key={checkIn.id} src={checkIn.image_url}>
+                                                <img className="beer-side-photo" src={checkIn.image_url} />
+                                            </PhotoView>
+                                    })}
+                                </div>
                             </div>
                         </div>
                     }

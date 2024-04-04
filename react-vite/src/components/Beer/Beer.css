@@ -357,6 +357,7 @@ h4 {
     bottom: 0;
     left: 0;
     right: 0;
+    height: 85%;
 
     display: grid;
     grid-template-columns: 32% 32% 32%;

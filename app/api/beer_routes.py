@@ -200,6 +200,7 @@ def create_check_in(id):
 
     return form.errors, 400
 
+
 # Delete a check-in for a beer
 @login_required
 @beer_routes.route("/<int:id>/check-ins/<int:check_in_id>", methods=["DELETE"])
@@ -266,7 +267,6 @@ def update_comment(id, check_in_id, comment_id):
         return form.errors, 400
 
     return { "message": "User unauthorized"}, 401
-
 
 
 # Delete a comment on a Check-In

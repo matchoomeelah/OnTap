@@ -152,15 +152,10 @@
     flex-direction: column;
     justify-content: center;
     gap: 3px;
+    margin-left: 8px;
+    margin-top: 3px;
+
 }
-
-
-/* .owner-button {
-    position: relative;
-    bottom: 36px;
-    left: 40px;
-    font-size: 12px;
-} */
 
 #brewery-content-container {
     display: grid;
