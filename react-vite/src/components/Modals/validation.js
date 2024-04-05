@@ -37,7 +37,7 @@ export function validateUserSettingsForm(firstName, lastName, email, username, p
 
     // No Demo User changes
     // if (user.id == 1) {
-    //     errors.demo_user = "Sorry, settings for Demo cannot be updated. Try with your own account!"
+    //     errors.demo_user = "Sorry, settings for Demo cannot be updated. Try with your own account!!"
     // }
 
 
