@@ -26,7 +26,7 @@ function OptionsButton() {
 
     // Closes menu when you click outside it
     const closeOptionsMenu = (e) => {
-      if (ulOptionsRef,current && !ulOptionsRef.current.contains(e.target)) {
+      if (ulOptionsRef.current && !ulOptionsRef.current.contains(e.target)) {
         setshowOptionsMenu(false);
       }
     };
