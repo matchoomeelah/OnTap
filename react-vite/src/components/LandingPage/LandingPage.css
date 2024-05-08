@@ -19,7 +19,7 @@
 #landing-page-banner-text {
     position: relative;
     bottom: 130px;
-    left: 10px;
+    padding-left: 10px;
     color: white;
     animation: fadeIn 0.8s;
 }

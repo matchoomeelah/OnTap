@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -26,7 +26,6 @@ function UserProfile() {
     const [showBeers, setShowBeers] = useState(true);
     const [showBreweries, setShowBreweries] = useState(false);
     const [showCheckIns, setShowCheckins] = useState(false);
-
 
     function enableShowBeers() {
         setShowBreweries(false);
