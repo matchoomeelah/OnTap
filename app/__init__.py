@@ -1,8 +1,8 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, request, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
-from flask_wtf.csrf import CSRFProtect, generate_csrf
+from flask_wtf.csrf import generate_csrf
 from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
@@ -35,7 +35,7 @@ app.register_blueprint(beer_routes, url_prefix='/api/beers')
 db.init_app(app)
 Migrate(app, db)
 
-# Application Security
+# Application Security (Actually the opposite? Allows the Cross Origin Resource Sharing)
 CORS(app)
 
 
